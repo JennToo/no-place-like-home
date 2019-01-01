@@ -12,6 +12,7 @@ ruby
 ruby-dev
 keepass2
 curl
+apt-transport-https
 """
 
 PIP3_PACKAGES = """
@@ -32,6 +33,7 @@ CARGO_PACKAGES = [("rg", "ripgrep")]
 
 @task
 def install_apt_packages(c):
+    c.sudo("add-apt-repository -y -n ppa:neovim-ppa/stable")
     c.sudo("apt-get update")
     c.sudo("apt-get install -y {}".format(format_list(APT_PACKAGES)))
 
@@ -70,7 +72,26 @@ def setup_nvim(c):
     )
 
 
-@task(install_apt_packages, install_pip3_packages, install_cargo_packages, setup_nvim)
+@task(install_apt_packages)
+def install_docker(c):
+    c.run(
+        "curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -"
+    )
+    c.sudo(
+        'add-apt-repository "deb [arch=amd64] '
+        'https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"'
+    )
+    c.sudo("apt-get install -y docker-ce")
+    c.sudo("adduser $(id -un) docker")
+
+
+@task(
+    install_apt_packages,
+    install_pip3_packages,
+    install_cargo_packages,
+    setup_nvim,
+    install_docker,
+)
 def setup(c):
     pass
 
