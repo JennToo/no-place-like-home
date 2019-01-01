@@ -4,4 +4,5 @@ set -e
 set -x
 
 sudo apt-get install python3-pip
-python3 -m pip install --user Jinja2 docopt PyYAML invoke
+python3 -m pip install --user dotdrop invoke
+~/.local/bin/dotdrop install --profile unified-host

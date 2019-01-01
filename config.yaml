@@ -1,6 +1,27 @@
 config:
   backup: true
+  banner: true
   create: true
   dotpath: dotfiles
+  ignoreempty: false
+  keepdot: false
+  link_by_default: false
+  longkey: false
+  showdiff: false
+  workdir: ~/.config/dotdrop
 dotfiles:
+  d_nvim:
+    dst: ~/.config/nvim
+    src: config/nvim
+  f_gitconfig:
+    dst: ~/.gitconfig
+    src: gitconfig
+  f_profile:
+    dst: ~/.profile
+    src: profile
 profiles:
+  unified-host:
+    dotfiles:
+    - d_nvim
+    - f_gitconfig
+    - f_profile
