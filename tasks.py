@@ -23,6 +23,10 @@ black
 virtualenv
 """
 
+RUBY_PACKAGES = """
+neovim
+"""
+
 CARGO_PACKAGES = [("rg", "ripgrep")]
 
 
@@ -52,14 +56,21 @@ def install_cargo_packages(c):
             c.run("cargo install {}".format(pkg))
 
 
-@task(install_apt_packages, install_pip3_packages, install_rust)
+@task(install_apt_packages)
+def install_ruby_packages(c):
+    c.run("gem install --user {}".format(format_list(RUBY_PACKAGES)))
+
+
+@task(install_apt_packages, install_pip3_packages, install_rust, install_ruby_packages)
 def setup_nvim(c):
     # This uses subprocess specifically because nvim needs to borrow the TTY
     # that the command was run with. c.run loses the TTY
-    subprocess.check_call("nvim +PlugInstall +PlugUpdate +qa", shell=True)
+    subprocess.check_call(
+        ". ~/.profile && nvim +PlugInstall +PlugUpdate +qa", shell=True
+    )
 
 
-@task(install_apt_packages, install_pip3_packages, install_cargo_packages)
+@task(install_apt_packages, install_pip3_packages, install_cargo_packages, setup_nvim)
 def setup(c):
     pass
 
