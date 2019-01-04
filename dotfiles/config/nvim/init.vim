@@ -15,6 +15,7 @@ Plug 'flazz/vim-colorschemes'
 Plug 'jremmen/vim-ripgrep'
 Plug 'nathanalderson/yang.vim'
 Plug 'tpope/vim-fugitive'
+Plug 'w0rp/ale'
 
 call plug#end()
 
@@ -59,3 +60,13 @@ nmap <Leader>b <Plug>(CommandTBuffer)
 set t_Co=256
 set background=light
 colorscheme PaperColor
+
+" ALE
+let g:ale_sign_error = "!"
+let g:ale_sign_warning = "-"
+highlight ALEErrorSign ctermbg=red guibg=red
+highlight ALEWarningSign ctermbg=yellow guibg=yellow
+
+let g:ale_linters = {
+\   'python': ['flake8', 'pylint', 'black', 'mypy'],
+\}
