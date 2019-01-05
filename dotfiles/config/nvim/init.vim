@@ -16,6 +16,7 @@ Plug 'jremmen/vim-ripgrep'
 Plug 'nathanalderson/yang.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'w0rp/ale'
+Plug 'christoomey/vim-tmux-navigator'
 
 call plug#end()
 
@@ -38,6 +39,12 @@ set autoindent
 set smartindent
 set scrolloff=3
 set autoread
+
+" Do the splits
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
 
 " LanguageClient-neovim config
 let g:LanguageClient_serverCommands = {

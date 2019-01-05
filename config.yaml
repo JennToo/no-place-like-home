@@ -19,9 +19,13 @@ dotfiles:
   f_profile:
     dst: ~/.profile
     src: profile
+  f_tmux.conf:
+    dst: ~/.tmux.conf
+    src: tmux.conf
 profiles:
   unified-host:
     dotfiles:
     - d_nvim
     - f_gitconfig
     - f_profile
+    - f_tmux.conf
