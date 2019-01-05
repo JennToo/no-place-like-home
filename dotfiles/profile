@@ -13,3 +13,11 @@ PATH="$HOME/.cargo/bin:$PATH"
 if which ruby >/dev/null && which gem >/dev/null; then
     PATH="$(ruby -r rubygems -e 'puts Gem.user_dir')/bin:$PATH"
 fi
+
+export P4CONFIG=.p4config
+export P4IGNORE=.p4ignore
+export PACKAGE_MAKE_USE_BEAR=1
+export INSTALL4J_JAVA_HOME_OVERRIDE=/usr/lib/jvm/java-8-openjdk-amd64/
+
+export VISUAL=nvim
+export EDITOR=nvim
