@@ -22,6 +22,9 @@ dotfiles:
   f_tmux.conf:
     dst: ~/.tmux.conf
     src: tmux.conf
+  f_xresources:
+    dst: ~/.Xresources
+    src: Xresources
 profiles:
   unified-host:
     dotfiles:
@@ -29,3 +32,4 @@ profiles:
     - f_gitconfig
     - f_profile
     - f_tmux.conf
+    - f_xresources

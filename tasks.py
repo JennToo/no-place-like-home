@@ -13,6 +13,7 @@ ruby-dev
 keepass2
 curl
 apt-transport-https
+rxvt
 """
 
 PIP3_PACKAGES = """

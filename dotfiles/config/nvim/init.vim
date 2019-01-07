@@ -8,7 +8,6 @@ Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
     \ 'do': 'bash install.sh',
     \ }
-Plug 'ncm2/ncm2'
 Plug 'roxma/nvim-yarp'
 Plug 't9md/vim-choosewin'
 Plug 'flazz/vim-colorschemes'
@@ -51,10 +50,6 @@ let g:LanguageClient_serverCommands = {
     \ 'rust': ['rustup', 'run', 'stable', 'rls'],
     \ }
 let g:LanguageClient_autoStart = 1
-
-" ncm2 config
-autocmd BufEnter * call ncm2#enable_for_buffer()
-set completeopt=noinsert,menuone,noselect
 
 " vim-choosewin config
 nmap <Leader>w <Plug>(choosewin)
