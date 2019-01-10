@@ -5,7 +5,7 @@ config:
   dotpath: dotfiles
   ignoreempty: false
   keepdot: false
-  link_by_default: false
+  link_by_default: true
   longkey: false
   showdiff: false
   workdir: ~/.config/dotdrop
@@ -13,18 +13,23 @@ dotfiles:
   d_nvim:
     dst: ~/.config/nvim
     src: config/nvim
+    link: true
   f_gitconfig:
     dst: ~/.gitconfig
     src: gitconfig
+    link: true
   f_profile:
     dst: ~/.profile
     src: profile
+    link: true
   f_tmux.conf:
     dst: ~/.tmux.conf
     src: tmux.conf
+    link: true
   f_xresources:
     dst: ~/.Xresources
     src: Xresources
+    link: true
 profiles:
   unified-host:
     dotfiles:
