@@ -14,6 +14,7 @@ keepass2
 curl
 apt-transport-https
 rxvt
+tmux
 """
 
 PIP3_PACKAGES = """
