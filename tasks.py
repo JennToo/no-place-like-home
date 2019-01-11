@@ -15,6 +15,7 @@ curl
 apt-transport-https
 rxvt
 tmux
+xclip
 """
 
 PIP3_PACKAGES = """
