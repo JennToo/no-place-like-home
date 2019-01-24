@@ -16,6 +16,7 @@ apt-transport-https
 rxvt
 tmux
 xclip
+shellcheck
 """
 
 PIP3_PACKAGES = """

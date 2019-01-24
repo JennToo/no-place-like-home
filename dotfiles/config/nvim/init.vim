@@ -4,10 +4,6 @@ Plug 'sheerun/vim-polyglot'
 Plug 'wincent/command-t', {
     \   'do': 'cd ruby/command-t/ext/command-t && ruby extconf.rb && make'
     \ }
-Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }
 Plug 'roxma/nvim-yarp'
 Plug 't9md/vim-choosewin'
 Plug 'flazz/vim-colorschemes'
