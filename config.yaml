@@ -12,24 +12,28 @@ config:
 dotfiles:
   d_nvim:
     dst: ~/.config/nvim
-    src: config/nvim
     link: true
+    src: config/nvim
+  f_bashrc:
+    dst: ~/.bashrc
+    link: true
+    src: bashrc
   f_gitconfig:
     dst: ~/.gitconfig
-    src: gitconfig
     link: true
+    src: gitconfig
   f_profile:
     dst: ~/.profile
-    src: profile
     link: true
+    src: profile
   f_tmux.conf:
     dst: ~/.tmux.conf
-    src: tmux.conf
     link: true
+    src: tmux.conf
   f_xresources:
     dst: ~/.Xresources
-    src: Xresources
     link: true
+    src: Xresources
 profiles:
   unified-host:
     dotfiles:
@@ -38,3 +42,4 @@ profiles:
     - f_profile
     - f_tmux.conf
     - f_xresources
+    - f_bashrc
