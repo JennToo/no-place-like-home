@@ -17,6 +17,7 @@ rxvt
 tmux
 xclip
 shellcheck
+virtualenvwrapper
 """
 
 PIP3_PACKAGES = """
