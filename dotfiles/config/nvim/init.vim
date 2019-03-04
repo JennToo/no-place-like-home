@@ -70,3 +70,7 @@ let g:riv_fold_auto_update = 0
 let g:rst_syntax_folding = 0
 let g:riv_auto_fold_force = 0
 set nofoldenable
+
+
+
+let g:netrw_dirhistmax=0
