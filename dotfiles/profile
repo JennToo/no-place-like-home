@@ -20,6 +20,7 @@ export P4IGNORE=.p4ignore
 export PACKAGE_MAKE_USE_BEAR=1
 export INSTALL4J_JAVA_HOME_OVERRIDE=/usr/lib/jvm/java-8-openjdk-amd64/
 export OS_CLOUD=openstack
+export GHIDRA_INSTALL_DIR=/opt/ghidra_9.0
 
 export VISUAL=nvim
 export EDITOR=nvim
