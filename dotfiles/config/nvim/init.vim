@@ -12,6 +12,7 @@ Plug 'nathanalderson/yang.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'w0rp/ale'
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'nfvs/vim-perforce'
 
 call plug#end()
 
