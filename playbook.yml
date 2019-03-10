@@ -102,3 +102,11 @@
       command: cargo install ripgrep
       args:
         creates: "{{ lookup('env', 'HOME') }}/.cargo/bin/rg"
+    - name: Install devkitPro pacman
+      become: yes
+      apt:
+        deb: https://github.com/devkitPro/pacman/releases/download/devkitpro-pacman-1.0.1/devkitpro-pacman.deb
+    - name: Install devkitARM
+      shell: "dkp-pacman -Sy --noconfirm gba-dev"
+      args:
+        creates: "/opt/devkitpro/libgba/lib/libgba.a"
