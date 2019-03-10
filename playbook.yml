@@ -10,6 +10,11 @@
       become: yes
       apt_repository:
         repo: ppa:neovim-ppa/stable
+    - name: Add universe repo
+      become: yes
+      apt_repository:
+        repo: "deb http://us.archive.ubuntu.com/ubuntu {{ ansible_distribution_release|lower }} universe"
+        state: present
     - name: Install apt packages 
       become: yes
       apt:
@@ -30,6 +35,9 @@
         - virtualenvwrapper
         - google-chrome-stable
         - python3-pip
+        - mgba-qt
+        - htop
+        - gdb
     - name: Prepare docker repo key
       become: yes
       apt_key:
@@ -38,7 +46,7 @@
     - name: Prepare docker repo
       become: yes
       apt_repository:
-        repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable"
+        repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release|lower }} stable"
         filename: docker-ce
     - name: Install docker 
       become: yes
