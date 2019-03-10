@@ -29,6 +29,15 @@
       apt_repository:
         repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release|lower }} stable"
         filename: docker-ce
+    - name: Add ownCloud key
+      become: yes
+      apt_key:
+        url: https://download.opensuse.org/repositories/isv:ownCloud:desktop/Ubuntu_18.04/Release.key
+    - name: Add ownCloud repo
+      become: yes
+      apt_repository:
+        repo: "deb http://download.opensuse.org/repositories/isv:/ownCloud:/desktop/Ubuntu_18.04/ /"
+        filename: owncloud
     - name: Add neovim PPA
       become: yes
       apt_repository:
@@ -54,6 +63,7 @@
         - keepass2
         - mgba-qt
         - neovim
+        - owncloud-client
         - python3-pip
         - ruby
         - ruby-dev
