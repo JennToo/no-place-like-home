@@ -44,24 +44,24 @@
         name: "{{ packages }}"
       vars:
         packages:
-        - neovim
         - build-essential
+        - code
+        - curl
+        - docker-ce
+        - gdb
+        - google-chrome-stable
+        - htop
+        - keepass2
+        - mgba-qt
+        - neovim
+        - python3-pip
         - ruby
         - ruby-dev
-        - keepass2
-        - curl
         - rxvt
-        - tmux
-        - xclip
         - shellcheck
+        - tmux
         - virtualenvwrapper
-        - google-chrome-stable
-        - python3-pip
-        - mgba-qt
-        - htop
-        - gdb
-        - docker-ce
-        - code
+        - xclip
     - name: Add user to docker group
       user:
         name: "{{ lookup('env', 'USER') }}"
@@ -74,13 +74,13 @@
         extra_args: --user
       vars:
         packages:
+          - black
+          - dotdrop
           - flake8
-          - pylint
           - invoke
           - neovim
-          - black
+          - pylint
           - virtualenv
-          - dotdrop
     - name: Install neovim ruby extension
       gem:
         name: neovim
