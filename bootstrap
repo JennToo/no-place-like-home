@@ -3,8 +3,9 @@
 set -e
 set -x
 
-sudo apt-get install python3-pip
-python3 -m pip install --user dotdrop ansible
+sudo add-apt-repository ppa:ansible/ansible
+sudo apt-get install python3-pip ansible
+python3 -m pip install --user dotdrop
 ~/.local/bin/dotdrop install --profile unified-host
 
 . ~/.profile
