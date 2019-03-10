@@ -1,0 +1,76 @@
+- hosts: all
+  connection: local
+  tasks:
+    - name: Add chrome repo
+      become: yes
+      apt_repository:
+        repo: "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main"
+        filename: google-chrome
+    - name: Add neovim PPA
+      become: yes
+      apt_repository:
+        repo: ppa:neovim-ppa/stable
+    - name: Install apt packages 
+      become: yes
+      apt:
+        name: "{{ packages }}"
+      vars:
+        packages:
+        - neovim
+        - build-essential
+        - ruby
+        - ruby-dev
+        - keepass2
+        - curl
+        - apt-transport-https
+        - rxvt
+        - tmux
+        - xclip
+        - shellcheck
+        - virtualenvwrapper
+        - google-chrome-stable
+        - python3-pip
+    - name: Prepare docker repo key
+      become: yes
+      apt_key:
+        url: https://download.docker.com/linux/ubuntu/gpg
+        id: 9DC858229FC7DD38854AE2D88D81803C0EBFCD88
+    - name: Prepare docker repo
+      become: yes
+      apt_repository:
+        repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable"
+        filename: docker-ce
+    - name: Install docker 
+      become: yes
+      apt:
+        name: docker-ce
+    - name: Add user to docker group
+      user:
+        name: "{{ lookup('env', 'USER') }}"
+        groups: docker
+        append: yes
+    - name: Install python packages
+      pip:
+        name: "{{ packages }}"
+        executable: pip3
+        extra_args: --user
+      vars:
+        packages:
+          - flake8
+          - pylint
+          - invoke
+          - neovim
+          - black
+          - virtualenv
+          - dotdrop
+    - name: Install neovim ruby extension
+      gem:
+        name: neovim
+    - name: Install rust
+      shell: "curl https://sh.rustup.rs -sSf | sh -s -- -y --no-modify-path && rustup component add rls rustc-src"
+      args:
+        creates: "{{ lookup('env', 'HOME') }}/.cargo/bin/rustc"
+    - name: Install ripgrep
+      command: cargo install ripgrep
+      args:
+        creates: "{{ lookup('env', 'HOME') }}/.cargo/bin/rg"
