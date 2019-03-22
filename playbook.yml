@@ -66,6 +66,7 @@
         - build-essential
         - code
         - curl
+        - default-jdk
         - docker-ce
         - gdb
         - google-chrome-stable
