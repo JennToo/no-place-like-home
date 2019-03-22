@@ -25,3 +25,5 @@ export GHIDRA_INSTALL_DIR=/opt/ghidra_9.0
 
 export VISUAL=nvim
 export EDITOR=nvim
+
+export QSYS_ROOTDIR="$HOME/.local/share/intelFPGA_lite/18.1/quartus/sopc_builder/bin"
