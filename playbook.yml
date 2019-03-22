@@ -42,6 +42,16 @@
       become: yes
       apt_repository:
         repo: ppa:neovim-ppa/stable
+    - name: Add SBT key
+      become: yes
+      apt_key:
+        keyserver: keyserver.ubuntu.com
+        id: 2EE0EA64E40A89B84B2DF73499E82A75642AC823
+    - name: Add SBT repo
+      become: yes
+      apt_repository:
+        repo: "deb https://dl.bintray.com/sbt/debian /"
+        state: present
     - name: Add universe repo
       become: yes
       apt_repository:
@@ -68,6 +78,7 @@
         - ruby
         - ruby-dev
         - rxvt
+        - sbt
         - shellcheck
         - tmux
         - virtualenvwrapper
