@@ -1,6 +1,26 @@
 - hosts: all
   connection: local
   tasks:
+    - name: Setup dotfiles
+      file:
+        src: "{{ playbook_dir }}/dotfiles/{{ item.src }}"
+        dest: "{{ lookup('env','HOME') }}/{{ item.dest }}"
+        state: link
+      with_items:
+        - src: gitconfig
+          dest: .gitconfig
+        - src: config/nvim
+          dest: .config/nvim
+        - src: bashrc
+          dest: .bashrc
+        - src: inputrc
+          dest: .inputrc
+        - src: profile
+          dest: .profile
+        - src: tmux.conf
+          dest: .tmux.conf
+        - src: Xresources
+          dest: .Xresources
     - name: Install apt transport https
       become: yes
       apt:

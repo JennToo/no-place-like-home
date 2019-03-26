@@ -1,0 +1,13 @@
+#!/bin/bash
+
+set -e
+set -x
+
+if ! command -v ansible-playbook
+then
+    sudo add-apt-repository ppa:ansible/ansible
+    sudo apt-get install python3-pip ansible cowsay
+fi
+
+. dotfiles/profile
+ansible-playbook -i hosts.ini playbook.yml --ask-sudo-pass

@@ -1,8 +1,0 @@
-#!/bin/bash
-
-set -e
-set -x
-
-~/.local/bin/dotdrop install --profile unified-host
-. ~/.profile
-exec ansible-playbook -i hosts.ini playbook.yml --ask-sudo-pass
