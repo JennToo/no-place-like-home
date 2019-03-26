@@ -89,9 +89,11 @@
         - default-jdk
         - docker-ce
         - gdb
+        - git
         - google-chrome-stable
         - htop
         - keepass2
+        - meld
         - mgba-qt
         - neovim
         - owncloud-client
@@ -117,10 +119,9 @@
       vars:
         packages:
           - black
-          - dotdrop
           - flake8
-          - invoke
           - neovim
+          - pycodestyle
           - pylint
           - virtualenv
     - name: Install neovim ruby extension
