@@ -102,6 +102,7 @@
         - sbt
         - shellcheck
         - tmux
+        - verilator
         - virtualenvwrapper
         - xclip
     - name: Add user to docker group
