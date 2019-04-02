@@ -85,6 +85,7 @@
         packages:
         - build-essential
         - code
+        - cowsay
         - curl
         - default-jdk
         - docker-ce
