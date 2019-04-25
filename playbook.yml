@@ -6,6 +6,7 @@
         src: "{{ playbook_dir }}/dotfiles/{{ item.src }}"
         dest: "{{ lookup('env','HOME') }}/{{ item.dest }}"
         state: link
+        force: yes
       with_items:
         - src: gitconfig
           dest: .gitconfig
@@ -25,6 +26,11 @@
       become: yes
       apt:
         name: apt-transport-https
+    - name: Add chrome key
+      become: yes
+      apt_key:
+        id: 6494C6D6997C215E
+        keyserver: keyserver.ubuntu.com
     - name: Add chrome repo
       become: yes
       apt_repository:
@@ -109,6 +115,7 @@
         - virtualenvwrapper
         - xclip
     - name: Add user to docker group
+      become: yes
       user:
         name: "{{ lookup('env', 'USER') }}"
         groups: docker
