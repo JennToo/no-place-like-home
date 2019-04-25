@@ -1,0 +1,21 @@
+Host nat.ddns.me
+    Port 28
+    User nitori
+Host tor.testbed
+    PubkeyAuthentication no
+    User ocnos
+
+{% for testbed in testbeds %}
+Host dpoe.{{ testbed }}
+    PubkeyAuthentication no
+    User adtran
+Host infra.{{ testbed }}
+    PubkeyAuthentication no
+    User adtran
+Host rolt.{{ testbed }}
+    PubkeyAuthentication no
+    User hsvroot
+Host rolt-oob.{{ testbed }}
+    PubkeyAuthentication no
+    User hsvroot
+{% endfor %}
