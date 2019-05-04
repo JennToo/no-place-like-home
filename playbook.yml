@@ -168,6 +168,14 @@
       command: cargo install ripgrep
       args:
         creates: "{{ lookup('env', 'HOME') }}/.cargo/bin/rg"
+    - name: Install cargo-xbuild
+      command: cargo install cargo-xbuild
+      args:
+        creates: "{{ lookup('env', 'HOME') }}/.cargo/bin/cargo-xbuild"
+    - name: Install cargo-edit
+      command: cargo install cargo-edit
+      args:
+        creates: "{{ lookup('env', 'HOME') }}/.cargo/bin/cargo-add"
     - name: Install devkitPro pacman
       become: yes
       apt:
