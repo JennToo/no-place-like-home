@@ -127,6 +127,7 @@
         - mgba-qt
         - neovim
         - owncloud-client
+        - pkg-config
         - python3-pip
         - ruby
         - ruby-dev
