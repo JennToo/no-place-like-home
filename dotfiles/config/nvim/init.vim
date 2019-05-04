@@ -50,6 +50,7 @@ nmap <Leader>w <Plug>(choosewin)
 " Command-T config
 nmap <Leader>ff <Plug>(CommandT)
 nmap <Leader>b <Plug>(CommandTBuffer)
+nmap <C-]> <Plug>(ale_go_to_definition)
 
 " Color scheme
 set t_Co=256
@@ -74,6 +75,7 @@ let g:rst_syntax_folding = 0
 let g:riv_auto_fold_force = 0
 set nofoldenable
 
-
+set wildignore+=*/.cquery/*
+set wildignore+=*/.ezdebugger/*
 
 let g:netrw_dirhistmax=0
