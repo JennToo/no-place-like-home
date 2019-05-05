@@ -10,4 +10,4 @@ then
 fi
 
 . dotfiles/profile
-ansible-playbook -i hosts.ini playbook.yml --ask-sudo-pass
+ANSIBLE_STDOUT_CALLBACK=debug ansible-playbook -i hosts.ini playbook.yml --ask-sudo-pass
