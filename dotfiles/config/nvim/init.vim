@@ -75,7 +75,7 @@ let g:rst_syntax_folding = 0
 let g:riv_auto_fold_force = 0
 set nofoldenable
 
-set wildignore+=*/.cquery/*
-set wildignore+=*/.ezdebugger/*
+set wildignore+="*/.cquery/*,*/.ezdebugger/*,*.o,*.d"
+let g:CommandTMaxFiles=200000
 
 let g:netrw_dirhistmax=0
