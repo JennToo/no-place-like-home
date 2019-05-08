@@ -113,6 +113,7 @@
       vars:
         packages:
         - build-essential
+        - clang-tools-7
         - code
         - cowsay
         - curl

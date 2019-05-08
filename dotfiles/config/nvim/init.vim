@@ -65,7 +65,9 @@ highlight ALEWarningSign ctermbg=yellow guibg=yellow
 
 let g:ale_linters = {
 \   'python': ['flake8', 'pylint', 'black', 'mypy'],
+\   'cpp': ['clangd', "clangcheck"],
 \}
+let g:ale_cpp_clangcheck_executable = "clang-check-7"
 
 " rst folding is annoying
 let g:riv_disable_folding = 1
