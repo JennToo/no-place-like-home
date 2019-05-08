@@ -38,12 +38,6 @@ set smartindent
 set scrolloff=3
 set autoread
 
-" LanguageClient-neovim config
-let g:LanguageClient_serverCommands = {
-    \ 'rust': ['rustup', 'run', 'stable', 'rls'],
-    \ }
-let g:LanguageClient_autoStart = 1
-
 " vim-choosewin config
 nmap <Leader>w <Plug>(choosewin)
 
@@ -65,9 +59,8 @@ highlight ALEWarningSign ctermbg=yellow guibg=yellow
 
 let g:ale_linters = {
 \   'python': ['flake8', 'pylint', 'black', 'mypy'],
-\   'cpp': ['clangd', "clangcheck"],
+\   'cpp': ['ccls'],
 \}
-let g:ale_cpp_clangcheck_executable = "clang-check-7"
 
 " rst folding is annoying
 let g:riv_disable_folding = 1
@@ -77,7 +70,7 @@ let g:rst_syntax_folding = 0
 let g:riv_auto_fold_force = 0
 set nofoldenable
 
-set wildignore+="*/.cquery/*,*/.ezdebugger/*,*.o,*.d"
+set wildignore+="*/.ccls-cache/*,*/.ezdebugger/*,*.o,*.d"
 let g:CommandTMaxFiles=200000
 
 let g:netrw_dirhistmax=0
