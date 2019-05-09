@@ -1,6 +1,13 @@
 - hosts: all
   connection: local
   tasks:
+    - name: Setup directories
+      file:
+        dest: "{{ lookup('env','HOME') }}/{{ item }}"
+        state: directory
+      with_items:
+        - .config
+        - .ssh
     - name: Setup dotfiles
       file:
         src: "{{ playbook_dir }}/dotfiles/{{ item.src }}"
@@ -32,8 +39,8 @@
           - bravo
           - charlie
           - delta
-          - echo
-          - foxtrot
+          - dpoe-lite5
+          - dpoe-lite6
           - dpoe-lite7
           - dpoe-lite8
           - dpoe-lite9
@@ -123,6 +130,7 @@
         - google-chrome-stable
         - htop
         - keepass2
+        - libssl1.0-dev
         - meld
         - mgba-qt
         - neovim
@@ -161,7 +169,7 @@
       gem:
         name: neovim
     - name: Install rust
-      shell: "curl https://sh.rustup.rs -sSf | sh -s -- -y --no-modify-path && rustup component add rls rustc-src"
+      shell: "curl https://sh.rustup.rs -sSf | sh -s -- -y --no-modify-path && rustup component add rls rust-src"
       args:
         creates: "{{ lookup('env', 'HOME') }}/.cargo/bin/rustc"
     - name: Install ripgrep

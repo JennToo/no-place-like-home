@@ -3,11 +3,16 @@
 set -e
 set -x
 
+if [ -z "$NO_BECOME_PROMPT" ]
+then
+    PROMPT=-K
+fi
+
 if ! command -v ansible-playbook
 then
-    sudo add-apt-repository ppa:ansible/ansible
-    sudo apt-get install python3-pip ansible cowsay
+    sudo add-apt-repository -y ppa:ansible/ansible
+    sudo apt-get install -y python3-pip ansible cowsay
 fi
 
 . dotfiles/profile
-ANSIBLE_STDOUT_CALLBACK=debug ansible-playbook -i hosts.ini playbook.yml -K
+ANSIBLE_STDOUT_CALLBACK=debug ansible-playbook -i hosts.ini playbook.yml $PROMPT
