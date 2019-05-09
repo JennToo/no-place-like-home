@@ -3,9 +3,4 @@ URxvt*scrollWithBuffer: true
 URxvt*scrollTtyKeypress: true
 URxvt.font: xft:DeJaVuSansMono:size=8
 URxvt.letterSpace: -1
-
-URxvt*scrollBar:          true
-URxvt*thickness:          5
-URxvt*scrollColor:        #1E1E1E
-URxvt*scrollBar_right:    true
-URxvt*scrollstyle:        plain
+URxvt*scrollBar:          false
