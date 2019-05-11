@@ -113,6 +113,11 @@
       apt_repository:
         repo: "deb http://us.archive.ubuntu.com/ubuntu {{ ansible_distribution_release|lower }} universe"
         state: present
+    - name: Update apt packages
+      become: yes
+      apt:
+        upgrade: dist
+        update_cache: yes
     - name: Install apt packages 
       become: yes
       apt:
@@ -157,6 +162,7 @@
         name: "{{ packages }}"
         executable: pip3
         extra_args: --user
+        state: latest
       vars:
         packages:
           - black
@@ -168,10 +174,13 @@
     - name: Install neovim ruby extension
       gem:
         name: neovim
+        state: latest
     - name: Install rust
       shell: "curl https://sh.rustup.rs -sSf | sh -s -- -y --no-modify-path && rustup component add rls rust-src"
       args:
         creates: "{{ lookup('env', 'HOME') }}/.cargo/bin/rustc"
+    - name: Update rust
+      shell: "rustup update"
     - name: Install ripgrep
       command: cargo install ripgrep
       args:
@@ -192,3 +201,5 @@
       shell: "dkp-pacman -Sy --noconfirm gba-dev"
       args:
         creates: "/opt/devkitpro/libgba/lib/libgba.a"
+    - name: Update devkitARM
+      shell: "dkp-pacman -Syu"
