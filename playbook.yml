@@ -202,4 +202,4 @@
       args:
         creates: "/opt/devkitpro/libgba/lib/libgba.a"
     - name: Update devkitARM
-      shell: "dkp-pacman -Syu"
+      shell: "dkp-pacman -Syu --noconfirm"
