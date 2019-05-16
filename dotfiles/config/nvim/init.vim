@@ -62,6 +62,19 @@ let g:ale_linters = {
 \   'cpp': ['ccls'],
 \}
 
+let g:ale_python_pyls_config = {
+      \   'pyls': {
+      \     'plugins': {
+      \       'pycodestyle': {
+      \         'enabled': v:false
+      \       },
+      \       'pylint': {
+      \         'enabled': v:false
+      \       }
+      \     }
+      \   },
+\ }
+
 " rst folding is annoying
 let g:riv_disable_folding = 1
 let g:riv_fold_level = 0
