@@ -166,10 +166,11 @@
       vars:
         packages:
           - black
-          - flake8
           - neovim
           - pycodestyle
+          - pylama
           - pylint
+          - python-language-server
           - virtualenv
     - name: Install neovim ruby extension
       gem:

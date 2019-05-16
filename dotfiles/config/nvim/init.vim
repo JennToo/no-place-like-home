@@ -58,7 +58,7 @@ highlight ALEErrorSign ctermbg=red guibg=red
 highlight ALEWarningSign ctermbg=yellow guibg=yellow
 
 let g:ale_linters = {
-\   'python': ['flake8', 'pylint', 'black', 'mypy'],
+\   'python': ['pylama', 'pyls'],
 \   'cpp': ['ccls'],
 \}
 
