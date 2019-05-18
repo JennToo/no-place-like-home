@@ -143,6 +143,7 @@
         - pkg-config
         - python3-pip
         - ruby
+        - ruby-bundler
         - ruby-dev
         - rxvt
         - sbt
