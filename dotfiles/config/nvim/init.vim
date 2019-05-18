@@ -58,9 +58,22 @@ highlight ALEErrorSign ctermbg=red guibg=red
 highlight ALEWarningSign ctermbg=yellow guibg=yellow
 
 let g:ale_linters = {
-\   'python': ['flake8', 'pylint', 'black', 'mypy'],
+\   'python': ['pylama', 'pyls'],
 \   'cpp': ['ccls'],
 \}
+
+let g:ale_python_pyls_config = {
+      \   'pyls': {
+      \     'plugins': {
+      \       'pycodestyle': {
+      \         'enabled': v:false
+      \       },
+      \       'pylint': {
+      \         'enabled': v:false
+      \       }
+      \     }
+      \   },
+\ }
 
 " rst folding is annoying
 let g:riv_disable_folding = 1
