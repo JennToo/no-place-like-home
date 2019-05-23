@@ -56,6 +56,15 @@
       become: yes
       apt:
         name: apt-transport-https
+    - name: Add erlang key
+      become: yes
+      apt_key:
+        url: https://packages.erlang-solutions.com/ubuntu/erlang_solutions.asc
+    - name: Add erlang repo
+      become: yes
+      apt_repository:
+        repo: "deb https://packages.erlang-solutions.com/ubuntu {{ ansible_distribution_release|lower }} contrib"
+        filename: erlang-solutions
     - name: Add chrome key
       become: yes
       apt_key:
@@ -130,6 +139,8 @@
         - curl
         - default-jdk
         - docker-ce
+        - elixir
+        - esl-erlang
         - gdb
         - git
         - google-chrome-stable
