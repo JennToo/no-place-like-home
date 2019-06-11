@@ -179,6 +179,11 @@
         packages:
           - spotify
           - discord
+    - name: IntelliJ
+      become: yes
+      snap:
+        name: intellij-idea-community
+        classic: yes
     - name: Add user to docker group
       become: yes
       user:
