@@ -163,6 +163,22 @@
         - verilator
         - virtualenvwrapper
         - xclip
+    - name: Remove apt packages 
+      become: yes
+      apt:
+        name: "{{ packages }}"
+        state: absent
+      vars:
+        packages:
+        - thunderbird
+    - name: Add sandboxed snaps
+      become: yes
+      snap:
+        name: "{{ packages }}"
+      vars:
+        packages:
+          - spotify
+          - discord
     - name: Add user to docker group
       become: yes
       user:
