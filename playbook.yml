@@ -151,6 +151,7 @@
         - mgba-qt
         - neovim
         - owncloud-client
+        - openssh-server
         - pkg-config
         - python3-pip
         - ruby
