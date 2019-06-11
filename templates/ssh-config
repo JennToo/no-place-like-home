@@ -13,6 +13,8 @@ Host infra.{{ testbed }}
     PubkeyAuthentication no
     User adtran
 Host rolt.{{ testbed }}
+    StrictHostKeyChecking no
+    UserKnownHostsFile /dev/null
     PubkeyAuthentication no
     User hsvroot
 Host rolt-oob.{{ testbed }}
