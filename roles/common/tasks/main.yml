@@ -14,6 +14,8 @@
   with_items:
     - src: gitconfig
       dest: .gitconfig
+    - src: gitignore
+      dest: .gitignore
     - src: config/nvim
       dest: .config/nvim
     - src: bashrc
