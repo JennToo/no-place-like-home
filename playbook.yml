@@ -175,6 +175,7 @@
         packages:
           - black
           - neovim
+          - poetry
           - pycodestyle
           - pylama
           - pylint
