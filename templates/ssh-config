@@ -7,9 +7,13 @@ Host tor.testbed
 
 {% for testbed in testbeds %}
 Host dpoe.{{ testbed }}
+    StrictHostKeyChecking no
+    UserKnownHostsFile /dev/null
     PubkeyAuthentication no
     User adtran
 Host infra.{{ testbed }}
+    StrictHostKeyChecking no
+    UserKnownHostsFile /dev/null
     PubkeyAuthentication no
     User adtran
 Host rolt.{{ testbed }}
@@ -18,6 +22,8 @@ Host rolt.{{ testbed }}
     PubkeyAuthentication no
     User hsvroot
 Host rolt-oob.{{ testbed }}
+    StrictHostKeyChecking no
+    UserKnownHostsFile /dev/null
     PubkeyAuthentication no
     User hsvroot
 {% endfor %}
