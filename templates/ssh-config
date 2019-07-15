@@ -4,6 +4,10 @@ Host nat.ddns.me
 Host tor.testbed
     PubkeyAuthentication no
     User ocnos
+Host cn-bm-jwilcox.adtran.com
+    User jwilcox
+    ForwardAgent yes
+    ForwardX11 yes
 
 {% for testbed in testbeds %}
 Host dpoe.{{ testbed }}
