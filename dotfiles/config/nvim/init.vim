@@ -13,6 +13,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'w0rp/ale'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'nfvs/vim-perforce'
+Plug 'ARM9/arm-syntax-vim'
 
 call plug#end()
 
@@ -89,3 +90,5 @@ set wildignore+="*/.ccls-cache/*,*/.ezdebugger/*,*.o,*.d"
 let g:CommandTMaxFiles=200000
 
 let g:netrw_dirhistmax=0
+
+au BufNewFile,BufRead *.s,*.S set filetype=arm " arm = armv6/7
