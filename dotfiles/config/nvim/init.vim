@@ -13,6 +13,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'w0rp/ale'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'nfvs/vim-perforce'
+Plug 'ARM9/arm-syntax-vim'
 
 call plug#end()
 
@@ -25,6 +26,7 @@ nmap <Leader>t  :terminal<CR>:file<Space>
 autocmd TermOpen * setlocal nonumber norelativenumber
 set spelllang=en
 set spellfile=$HOME/.config/nvim/en.utf-8.add
+vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
 
 " Get indents that actually make sense
 filetype plugin indent on
@@ -56,6 +58,7 @@ let g:ale_sign_error = "!"
 let g:ale_sign_warning = "-"
 highlight ALEErrorSign ctermbg=red guibg=red
 highlight ALEWarningSign ctermbg=yellow guibg=yellow
+let g:ale_asm_gcc_executable = "arm-none-eabi-gcc"
 
 let g:ale_linters = {
 \   'python': ['pylama', 'pyls'],
@@ -87,3 +90,5 @@ set wildignore+="*/.ccls-cache/*,*/.ezdebugger/*,*.o,*.d"
 let g:CommandTMaxFiles=200000
 
 let g:netrw_dirhistmax=0
+
+au BufNewFile,BufRead *.s,*.S set filetype=arm " arm = armv6/7

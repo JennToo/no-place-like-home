@@ -1,4 +1,5 @@
 compile_commands.json
-.vscode
-.ezdebugger
-.ccls-cache
+/.vscode
+/.ezdebugger
+/.ccls-cache
+/.idea
