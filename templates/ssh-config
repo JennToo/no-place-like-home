@@ -1,6 +1,6 @@
 Host nat.ddns.me
     Port 28
-    User nitori
+    User jwilcox
 Host tor.testbed
     PubkeyAuthentication no
     User ocnos
