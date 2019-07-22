@@ -1,6 +1,13 @@
 Host nat.ddns.me
     Port 28
     User jwilcox
+    ForwardAgent yes
+    ForwardX11 yes
+Host argentina3
+    Port 28
+    User jwilcox
+    ForwardAgent yes
+    ForwardX11 yes
 Host tor.testbed
     PubkeyAuthentication no
     User ocnos
