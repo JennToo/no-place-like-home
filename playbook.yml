@@ -207,3 +207,7 @@
     - name: Update devkitARM
       become: yes
       shell: "dkp-pacman -Syu --noconfirm"
+    - name: Neovim plugin update
+      shell: nvim -E -c PlugInstall -c qa
+    - name: Neovim plugin update
+      shell: nvim -E -c PlugUpdate -c qa
