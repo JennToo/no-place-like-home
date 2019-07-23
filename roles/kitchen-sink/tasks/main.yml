@@ -121,6 +121,8 @@
     - sbt
     - shellcheck
     - tmux
+    - tree
+    - ttf-mscorefonts-installer
     - verilator
     - virtualenvwrapper
     - xclip
