@@ -2,4 +2,4 @@
   connection: local
   roles:
     - common
-    - kitchen-sink
+    - gui

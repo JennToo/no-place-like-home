@@ -1,0 +1,58 @@
+- name: Add chrome key
+  become: yes
+  apt_key:
+    id: 6494C6D6997C215E
+    keyserver: keyserver.ubuntu.com
+- name: Add chrome repo
+  become: yes
+  apt_repository:
+    repo: "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main"
+    filename: google-chrome
+- name: Add MS key
+  become: yes
+  apt_key:
+    url: https://packages.microsoft.com/keys/microsoft.asc
+- name: Add VS Code repo
+  become: yes
+  apt_repository:
+    repo: "deb [arch=amd64] http://packages.microsoft.com/repos/vscode stable main"
+    filename: vscode
+- name: Install apt packages 
+  become: yes
+  apt:
+    name: "{{ packages }}"
+  vars:
+    packages:
+    - code
+    - google-chrome-stable
+    - keepass2
+    - krita
+    - meld
+    - mgba-qt
+    - rxvt
+    - ttf-mscorefonts-installer
+- name: Add sandboxed snaps
+  become: yes
+  snap:
+    name: "{{ packages }}"
+  vars:
+    packages:
+      - spotify
+      - discord
+- name: IntelliJ
+  become: yes
+  snap:
+    name: intellij-idea-community
+    classic: yes
+- name: Install devkitPro pacman
+  become: yes
+  apt:
+    deb: https://github.com/devkitPro/pacman/releases/download/devkitpro-pacman-1.0.1/devkitpro-pacman.deb
+- name: Install devkitARM
+  become: yes
+  shell: "dkp-pacman -Sy --noconfirm gba-dev"
+  args:
+    creates: "/opt/devkitpro/libgba/lib/libgba.a"
+- name: Update devkitARM
+  become: yes
+  shell: "dkp-pacman -Syu --noconfirm"
