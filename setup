@@ -15,4 +15,4 @@ then
 fi
 
 . dotfiles/profile
-ANSIBLE_STDOUT_CALLBACK=debug ansible-playbook -i hosts.ini playbook.yml $PROMPT
+ANSIBLE_STDOUT_CALLBACK=debug ansible-playbook -i hosts.ini -l "$(hostname)" playbook.yml $PROMPT
