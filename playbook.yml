@@ -1,4 +1,8 @@
-- hosts: all
+- hosts:
+   - cn-bm-jwilcox
+   - cn-lp-jwilcox
+   - Argentina3
+   - Mexico3
   connection: local
   roles:
     - common
