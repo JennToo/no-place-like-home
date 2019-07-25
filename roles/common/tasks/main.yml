@@ -131,7 +131,9 @@
     - ruby-bundler
     - ruby-dev
     - sbt
+    - sl
     - shellcheck
+    - sshfs
     - tmux
     - tree
     - verilator

@@ -3,6 +3,8 @@
 HOSTS="nat.ddns.me argentina3"
 MOUNT_POINT="$HOME/Share"
 
+mkdir -p "$MOUNT_POINT"
+
 if mount | grep "$MOUNT_POINT"
 then
     echo "Already mounted"
