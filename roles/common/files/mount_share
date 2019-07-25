@@ -1,0 +1,23 @@
+#!/bin/bash
+
+HOSTS="nat.ddns.me argentina3"
+MOUNT_POINT="$HOME/Share"
+
+if mount | grep "$MOUNT_POINT"
+then
+    echo "Already mounted"
+    exit 0
+fi
+
+for HOST in $HOSTS
+do
+    echo "Trying $HOST"
+    if sshfs -oport=28 "$HOST:/mnt/bigdata" "$MOUNT_POINT"
+    then
+        echo "Connected to $HOST"
+        exit 0
+    fi
+done
+
+echo "Failed on all hosts"
+exit 1

@@ -2,7 +2,7 @@
    - cn-bm-jwilcox
    - cn-lp-jwilcox
    - Argentina3
-   - Mexico3
+   - Mexico3U
   connection: local
   roles:
     - common
