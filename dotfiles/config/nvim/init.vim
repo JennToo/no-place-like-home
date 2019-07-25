@@ -14,6 +14,7 @@ Plug 'w0rp/ale'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'nfvs/vim-perforce'
 Plug 'ARM9/arm-syntax-vim'
+Plug 'zxqfl/tabnine-vim'
 
 call plug#end()
 
