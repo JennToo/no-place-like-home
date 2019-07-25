@@ -5,6 +5,7 @@
   with_items:
     - .config
     - .ssh
+    - .local/bin
 - name: "Install dotfiles"
   file:
     src: "{{ playbook_dir }}/dotfiles/{{ item.src }}"
@@ -28,6 +29,11 @@
       dest: .tmux.conf
     - src: Xresources
       dest: .Xresources
+- name: "Install helper executables"
+  copy:
+    src: mount_share
+    dest: "{{ lookup('env','HOME') }}/.local/bin/mount_share"
+    mode: preserve
 - name: ssh-config
   template:
     src: templates/ssh-config
@@ -125,7 +131,9 @@
     - ruby-bundler
     - ruby-dev
     - sbt
+    - sl
     - shellcheck
+    - sshfs
     - tmux
     - tree
     - verilator
