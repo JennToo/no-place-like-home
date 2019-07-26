@@ -25,6 +25,7 @@
     packages:
     - code
     - google-chrome-stable
+    - inkscape
     - keepass2
     - krita
     - meld

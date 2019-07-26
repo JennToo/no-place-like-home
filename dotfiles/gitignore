@@ -3,3 +3,5 @@ compile_commands.json
 /.ezdebugger
 /.ccls-cache
 /.idea
+.bloop
+/.metals
