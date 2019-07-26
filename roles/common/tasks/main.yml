@@ -138,6 +138,7 @@
     - tree
     - verilator
     - virtualenvwrapper
+    - wireshark
     - xclip
 - name: Remove apt packages 
   become: yes
