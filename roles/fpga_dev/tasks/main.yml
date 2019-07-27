@@ -5,3 +5,4 @@
   vars:
     packages:
     - gtkwave
+    - verilator

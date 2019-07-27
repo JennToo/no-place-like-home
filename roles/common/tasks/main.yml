@@ -125,7 +125,6 @@
     - sshfs
     - tmux
     - tree
-    - verilator
     - virtualenvwrapper
     - wireshark
     - xclip
