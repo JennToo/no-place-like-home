@@ -173,3 +173,5 @@
   shell: nvim -E -c PlugInstall -c qa
 - name: Neovim plugin update
   shell: nvim -E -c PlugUpdate -c qa
+- name: Neovim remote plugin update
+  shell: nvim -E -c UpdateRemotePlugins -c qa

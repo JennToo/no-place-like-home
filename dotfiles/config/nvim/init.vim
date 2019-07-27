@@ -14,6 +14,10 @@ Plug 'w0rp/ale'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'nfvs/vim-perforce'
 Plug 'ARM9/arm-syntax-vim'
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
 
 call plug#end()
 
@@ -96,3 +100,11 @@ let g:CommandTMaxFiles=200000
 let g:netrw_dirhistmax=0
 
 au BufNewFile,BufRead *.s,*.S set filetype=arm " arm = armv6/7
+
+
+let g:LanguageClient_serverCommands = {
+    \ 'scala': ['metals-vim'],
+    \ }
+nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
