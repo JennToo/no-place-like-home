@@ -5,11 +5,9 @@ Plug 'wincent/command-t', {
     \   'do': 'cd ruby/command-t/ext/command-t && ruby extconf.rb && make'
     \ }
 Plug 'roxma/nvim-yarp'
-Plug 't9md/vim-choosewin'
 Plug 'flazz/vim-colorschemes'
 Plug 'jremmen/vim-ripgrep'
 Plug 'nathanalderson/yang.vim'
-Plug 'tpope/vim-fugitive'
 Plug 'w0rp/ale'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'nfvs/vim-perforce'
@@ -26,6 +24,7 @@ set clipboard=unnamedplus
 set number relativenumber
 highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/
+:autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
 nmap <Leader>t  :terminal<CR>:file<Space>
 autocmd TermOpen * setlocal nonumber norelativenumber
 set spelllang=en
@@ -43,9 +42,6 @@ set autoindent
 set smartindent
 set scrolloff=3
 set autoread
-
-" vim-choosewin config
-nmap <Leader>w <Plug>(choosewin)
 
 " Command-T config
 nmap <Leader>ff <Plug>(CommandT)
