@@ -124,6 +124,7 @@
     - libssl1.0-dev
     - neovim
     - openssh-server
+    - pandoc
     - pkg-config
     - python3-pip
     - python3-venv
