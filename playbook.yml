@@ -6,4 +6,5 @@
   connection: local
   roles:
     - common
+    - fpga_dev
     - gui
