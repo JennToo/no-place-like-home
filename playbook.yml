@@ -7,4 +7,5 @@
   roles:
     - common
     - fpga_dev
+    - scala_dev
     - gui
