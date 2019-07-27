@@ -1,0 +1,21 @@
+- name: Install apt packages 
+  become: yes
+  apt:
+    name: "{{ packages }}"
+  vars:
+    packages:
+    - binutils-arm-none-eabi
+    - gdb-multiarch
+    - mgba-qt
+- name: Install devkitPro pacman
+  become: yes
+  apt:
+    deb: https://github.com/devkitPro/pacman/releases/download/devkitpro-pacman-1.0.1/devkitpro-pacman.deb
+- name: Install devkitARM
+  become: yes
+  shell: "dkp-pacman -Sy --noconfirm gba-dev"
+  args:
+    creates: "/opt/devkitpro/libgba/lib/libgba.a"
+- name: Update devkitARM
+  become: yes
+  shell: "dkp-pacman -Syu --noconfirm"

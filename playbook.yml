@@ -8,4 +8,5 @@
     - common
     - fpga_dev
     - scala_dev
+    - gba_dev
     - gui

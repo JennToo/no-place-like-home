@@ -29,7 +29,6 @@
     - keepass2
     - krita
     - meld
-    - mgba-qt
     - rxvt
     - ttf-mscorefonts-installer
 - name: Add sandboxed snaps
@@ -45,15 +44,3 @@
   snap:
     name: intellij-idea-community
     classic: yes
-- name: Install devkitPro pacman
-  become: yes
-  apt:
-    deb: https://github.com/devkitPro/pacman/releases/download/devkitpro-pacman-1.0.1/devkitpro-pacman.deb
-- name: Install devkitARM
-  become: yes
-  shell: "dkp-pacman -Sy --noconfirm gba-dev"
-  args:
-    creates: "/opt/devkitpro/libgba/lib/libgba.a"
-- name: Update devkitARM
-  become: yes
-  shell: "dkp-pacman -Syu --noconfirm"

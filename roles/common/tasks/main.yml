@@ -100,14 +100,13 @@
     name: "{{ packages }}"
   vars:
     packages:
-    - binutils-arm-none-eabi
     - build-essential
     - cowsay
     - curl
     - docker-ce
     - elixir
     - esl-erlang
-    - gdb
+    - gdb-multiarch
     - git
     - htop
     - libssl1.0-dev
