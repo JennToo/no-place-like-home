@@ -9,4 +9,5 @@
     - fpga_dev
     - scala_dev
     - gba_dev
+    - erlang_dev
     - gui
