@@ -12,3 +12,13 @@
     - erlang_dev
     - gui
     - snaps
+- hosts:
+   - no-place-like-home-test
+  connection: local
+  roles:
+    - common
+    - fpga_dev
+    - scala_dev
+    - gba_dev
+    - erlang_dev
+    - gui

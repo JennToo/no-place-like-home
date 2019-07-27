@@ -4,4 +4,4 @@ set -e
 set -x
 
 docker build -t no-place-like-home-test .
-docker run -it -u 1000 --rm no-place-like-home-test
+docker run -it -u 1000 --hostname no-place-like-home-test --rm no-place-like-home-test

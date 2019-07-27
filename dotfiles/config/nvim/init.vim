@@ -51,7 +51,11 @@ nmap <C-]> <Plug>(ale_go_to_definition)
 " Color scheme
 set t_Co=256
 set background=light
-colorscheme PaperColor
+try
+    colorscheme PaperColor
+catch /^Vim\%((\a\+)\)\=:E185/
+    " deal with it
+endtry
 
 " ALE
 let g:ale_sign_error = "!"
