@@ -8,13 +8,17 @@
   apt_repository:
     repo: "deb https://dl.bintray.com/sbt/debian /"
     state: present
-- name: Install apt packages 
+- name: Add gradle PPA
+  apt_repository:
+    repo: "ppa:cwchien/gradle"
+- name: Install apt packages
   become: yes
   apt:
     name: "{{ packages }}"
   vars:
     packages:
     - default-jdk
+    - gradle
     - sbt
 - name: Install coursier
   get_url:
