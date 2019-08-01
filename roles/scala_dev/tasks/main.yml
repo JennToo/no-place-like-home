@@ -9,6 +9,7 @@
     repo: "deb https://dl.bintray.com/sbt/debian /"
     state: present
 - name: Add gradle PPA
+  become: yes
   apt_repository:
     repo: "ppa:cwchien/gradle"
 - name: Install apt packages
