@@ -10,6 +10,7 @@
     - scala_dev
     - gba_dev
     - erlang_dev
+    - haskell_dev
     - gui
     - snaps
 - hosts:

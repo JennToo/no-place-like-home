@@ -1,0 +1,5 @@
+- name: Install stack
+  become: yes
+  shell: curl -sSL https://get.haskellstack.org/ | sh
+  args:
+    creates: /usr/loca/bin/stack
