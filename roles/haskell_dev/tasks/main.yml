@@ -2,4 +2,17 @@
   become: yes
   shell: curl -sSL https://get.haskellstack.org/ | sh
   args:
-    creates: /usr/loca/bin/stack
+    creates: /usr/local/bin/stack
+- name: Add hvr ppa
+  become: yes
+  apt_repository:
+    repo: "ppa:hvr/ghc"
+- name: Install apt packages
+  become: yes
+  apt:
+    name: "{{ packages }}"
+  vars:
+    packages:
+      - cabal-install-2.2
+      - ghc-8.4.3
+      - libtinfo-dev

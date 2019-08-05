@@ -6,6 +6,7 @@
     - .config
     - .ssh
     - .local/bin
+    - .stack
 - name: "Install dotfiles"
   file:
     src: "{{ playbook_dir }}/dotfiles/{{ item.src }}"
@@ -19,6 +20,8 @@
       dest: .gitignore
     - src: config/nvim
       dest: .config/nvim
+    - src: stack/config.yaml
+      dest: .stack/config.yaml
     - src: bashrc
       dest: .bashrc
     - src: inputrc
