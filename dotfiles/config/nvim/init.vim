@@ -67,6 +67,7 @@ let g:ale_asm_gcc_executable = "arm-none-eabi-gcc"
 let g:ale_linters = {
 \   'python': ['pylama', 'pyls'],
 \   'cpp': ['ccls'],
+\   'haskell': ['stack-build'],
 \}
 
 let g:ale_python_pyls_config = {
