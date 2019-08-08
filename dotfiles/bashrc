@@ -24,7 +24,7 @@ function msdos_pwd
 
 if [ "$HOSTNAME" = "cn-bm-jwilcox" ]
 then
-PS1='C:`msdos_pwd`> '
+PS1='\033[1mC:`msdos_pwd`> \033[0m'
 else
 PS1='\[\033[01;32m\]\h\[\033[00m\] \[\033[01;34m\]\w\[\033[00m\] \$ '
 fi
