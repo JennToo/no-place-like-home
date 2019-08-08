@@ -65,7 +65,7 @@ highlight ALEWarningSign ctermbg=yellow guibg=yellow
 let g:ale_asm_gcc_executable = "arm-none-eabi-gcc"
 
 let g:ale_linters = {
-\   'python': ['pylama', 'pyls'],
+\   'python': ['pylama'],
 \   'cpp': ['ccls'],
 \   'haskell': ['stack-build'],
 \}
@@ -101,6 +101,7 @@ au BufNewFile,BufRead *.s,*.S set filetype=arm " arm = armv6/7
 
 let g:LanguageClient_serverCommands = {
     \ 'scala': ['metals-vim'],
+    \ 'python': ['pyls'],
     \ }
 nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
 nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
