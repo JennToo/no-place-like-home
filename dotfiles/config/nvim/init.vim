@@ -68,6 +68,7 @@ let g:ale_linters = {
 \   'python': ['pylama'],
 \   'cpp': ['ccls'],
 \   'haskell': ['stack-build'],
+\   'vhdl': ['vunit'],
 \}
 
 let g:ale_python_pyls_config = {
@@ -106,3 +107,22 @@ let g:LanguageClient_serverCommands = {
 nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
 nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
 nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
+
+function! GetVunitCommand(buffer) abort
+    let l:vunit_path = ale#path#FindNearestFile(a:buffer, 'vunit')
+    let l:project_root = fnamemodify(l:vunit_path, ':h')
+    let l:cd_string = l:project_root isnot# ''
+    \   ? ale#path#CdString(l:project_root)
+    \   : ale#path#BufferCdString(a:buffer)
+
+    return l:cd_string
+    \      . "./vunit --compile"
+endfunction
+
+call ale#linter#Define('vhdl', {
+\   'name': 'vunit',
+\   'output_stream': 'stdout',
+\   'executable': './vunit',
+\   'command': function('GetVunitCommand'),
+\   'callback': 'ale_linters#vhdl#ghdl#Handle',
+\})
