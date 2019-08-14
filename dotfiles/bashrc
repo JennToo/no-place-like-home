@@ -24,14 +24,14 @@ function msdos_pwd
 
 if [ "$HOSTNAME" = "cn-bm-jwilcox" ]
 then
-PS1='C:`msdos_pwd`> '
-echo
-echo
-echo "Microsoft(R) Windows 95"
-echo "   (C)Copyright Microsoft Corp 1981-1996."
-echo
+    PS1='\[\033[1mC\]:`msdos_pwd`> \[\033[0m\]'
+    echo
+    echo
+    echo "Microsoft(R) Windows 95"
+    echo "   (C)Copyright Microsoft Corp 1981-1996."
+    echo
 else
-PS1='\[\033[01;32m\]\h\[\033[00m\] \[\033[01;34m\]\w\[\033[00m\] \$ '
+    PS1='\[\033[01;32m\]\h\[\033[00m\] \[\033[01;34m\]\w\[\033[00m\] \$ '
 fi
 
 

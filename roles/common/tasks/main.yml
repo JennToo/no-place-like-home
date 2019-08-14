@@ -20,6 +20,10 @@
       dest: .gitignore
     - src: config/nvim
       dest: .config/nvim
+    - src: config/pycodestyle
+      dest: .config/pycodestyle
+    - src: config/pylintrc
+      dest: .config/pylintrc
     - src: stack/config.yaml
       dest: .stack/config.yaml
     - src: bashrc
