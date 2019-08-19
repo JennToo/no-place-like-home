@@ -92,7 +92,7 @@ let g:rst_syntax_folding = 0
 let g:riv_auto_fold_force = 0
 set nofoldenable
 
-set wildignore=*/.ccls-cache/*,*/.ezdebugger/*,*.o,*.d,*.class,*.jar
+set wildignore=*/.ccls-cache/*,*/.ezdebugger/*,*.o,*.d,*.class,*.jar,*.pyc
 let g:CommandTMaxFiles=200000
 
 let g:netrw_dirhistmax=0
