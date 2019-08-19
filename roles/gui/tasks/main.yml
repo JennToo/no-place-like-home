@@ -24,6 +24,7 @@
   vars:
     packages:
     - code
+    - dia
     - google-chrome-stable
     - inkscape
     - keepass2
