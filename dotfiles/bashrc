@@ -22,7 +22,7 @@ function msdos_pwd
     echo $dir | tr '/' '\\'
 }
 
-if [ "$HOSTNAME" = "cn-bm-jwilcox" ]
+if [ "$HOSTNAME" = "cn-bm-jwilcox" ] || [ "$HOSTNAME" = "cn-lp-jwilcox" ]
 then
     PS1='\[\033[1mC\]:`msdos_pwd`> \[\033[0m\]'
     echo
