@@ -6,8 +6,3 @@
     packages:
       - spotify
       - discord
-- name: IntelliJ
-  become: yes
-  snap:
-    name: intellij-idea-community
-    classic: yes
