@@ -21,7 +21,7 @@ call plug#end()
 
 " General vim config
 set clipboard=unnamedplus
-set number relativenumber
+set number
 highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/
 :autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
@@ -65,7 +65,6 @@ highlight ALEWarningSign ctermbg=yellow guibg=yellow
 let g:ale_asm_gcc_executable = "arm-none-eabi-gcc"
 
 let g:ale_linters = {
-\   'python': ['pylama'],
 \   'cpp': ['ccls'],
 \   'haskell': ['stack-build'],
 \   'vhdl': ['vunit'],
@@ -107,6 +106,7 @@ let g:LanguageClient_serverCommands = {
 nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
 nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
 nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
+let g:LanguageClient_useVirtualText=0
 
 function! GetVunitCommand(buffer) abort
     let l:vunit_path = ale#path#FindNearestFile(a:buffer, 'vunit')
