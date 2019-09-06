@@ -16,6 +16,7 @@ Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
     \ 'do': 'bash install.sh',
     \ }
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
 call plug#end()
 
@@ -107,6 +108,7 @@ nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
 nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
 nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
 let g:LanguageClient_useVirtualText=0
+let g:deoplete#enable_at_startup = 1
 
 function! GetVunitCommand(buffer) abort
     let l:vunit_path = ale#path#FindNearestFile(a:buffer, 'vunit')
