@@ -149,6 +149,7 @@
       - black
       - neovim
       - poetry
+      - pre-commit
       - pycodestyle
       - pylama
       - pylint
