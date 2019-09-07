@@ -103,6 +103,7 @@ au BufNewFile,BufRead *.s,*.S set filetype=arm " arm = armv6/7
 let g:LanguageClient_serverCommands = {
     \ 'scala': ['metals-vim'],
     \ 'python': ['pyls'],
+    \ 'rust': ['rustup', 'run', 'stable', 'rls'],
     \ }
 nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
 nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
