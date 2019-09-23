@@ -4,9 +4,13 @@ if [ -n "$BASH_VERSION" ]; then
     fi
 fi
 
+GOPATH="$HOME/repo/go"
+GOROOT="$HOME/.local/share/go"
+
 PATH="$HOME/.local/bin:$PATH"
 PATH="$HOME/.cargo/bin:$PATH"
 PATH="$HOME/.luarocks/bin:$PATH"
+PATH="$GOROOT/bin:$PATH"
 
 # Ruby is stupid, change my mind
 if which ruby >/dev/null && which gem >/dev/null; then
