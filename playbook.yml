@@ -3,6 +3,7 @@
    - cn-lp-jwilcox
    - Argentina3
    - Mexico3U
+   - peru
   connection: local
   roles:
     - common
