@@ -76,7 +76,7 @@
   apt:
     upgrade: dist
     update_cache: yes
-- name: Install apt packages 
+- name: Install apt packages
   become: yes
   apt:
     name: "{{ packages }}"
@@ -107,7 +107,7 @@
     - virtualenvwrapper
     - wireshark
     - xclip
-- name: Remove apt packages 
+- name: Remove apt packages
   become: yes
   apt:
     name: "{{ packages }}"

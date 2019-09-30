@@ -1,0 +1,25 @@
+#!/usr/bin/env python3
+import subprocess
+
+installed = set(
+    subprocess.run(["code", "--list-extensions"], stdout=subprocess.PIPE)
+    .stdout.decode("utf-8")
+    .split("\n")
+)
+
+desired = {
+    "ms-azuretools.vscode-docker",
+    "ms-python.python",
+    "ms-vscode.cpptools",
+    "ms-vscode.csharp",
+    "ms-vscode.go",
+    "oderwat.indent-rainbow",
+    "slevesque.perforce",
+}
+
+for extension in desired:
+    if extension in installed:
+        print(f"Skipping {extension} since it is already installed")
+    else:
+        print(f"Installing {extension}")
+        subprocess.run(["code", "--install-extension", extension], check=True)

@@ -17,7 +17,7 @@
   apt_repository:
     repo: "deb [arch=amd64] http://packages.microsoft.com/repos/vscode stable main"
     filename: vscode
-- name: Install apt packages 
+- name: Install apt packages
   become: yes
   apt:
     name: "{{ packages }}"
@@ -32,3 +32,5 @@
     - meld
     - rxvt
     - ttf-mscorefonts-installer
+- name: Install VSCode extensions
+  script: install_vscode_extensions
