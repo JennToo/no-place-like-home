@@ -87,6 +87,8 @@ let g:netrw_dirhistmax=0
 
 au BufNewFile,BufRead *.s,*.S set filetype=arm " arm = armv6/7
 
+au BufNewFile,BufRead *.md,*.rst setlocal spell
+
 
 let g:LanguageClient_serverCommands = {
     \ 'scala': ['metals-vim'],
