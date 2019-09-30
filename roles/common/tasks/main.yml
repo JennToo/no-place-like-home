@@ -45,25 +45,6 @@
   template:
     src: templates/ssh-config
     dest: "{{ lookup('env','HOME') }}/.ssh/config"
-  vars:
-    testbeds:
-      - alpha
-      - bravo
-      - charlie
-      - delta
-      - dpoe-lite5
-      - dpoe-lite6
-      - dpoe-lite7
-      - dpoe-lite8
-      - dpoe-lite9
-      - dpoe-lite10
-      - dpoe-lite11
-      - dpoe-lite12
-      - dpoe1
-      - dpoe2
-      - dpoe3
-      - dpoe-scale1
-      - dpoe-fbw1
 - name: Install apt transport https
   become: yes
   apt:

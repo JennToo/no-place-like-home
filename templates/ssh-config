@@ -3,38 +3,7 @@ Host nat.ddns.me
     User jwilcox
     ForwardAgent yes
     ForwardX11 yes
-Host argentina3
-    Port 28
-    User jwilcox
-    ForwardAgent yes
-    ForwardX11 yes
-Host tor.testbed
-    PubkeyAuthentication no
-    User ocnos
 Host cn-bm-jwilcox.adtran.com
     User jwilcox
     ForwardAgent yes
     ForwardX11 yes
-
-{% for testbed in testbeds %}
-Host dpoe.{{ testbed }}
-    StrictHostKeyChecking no
-    UserKnownHostsFile /dev/null
-    PubkeyAuthentication no
-    User adtran
-Host infra.{{ testbed }}
-    StrictHostKeyChecking no
-    UserKnownHostsFile /dev/null
-    PubkeyAuthentication no
-    User adtran
-Host rolt.{{ testbed }}
-    StrictHostKeyChecking no
-    UserKnownHostsFile /dev/null
-    PubkeyAuthentication no
-    User hsvroot
-Host rolt-oob.{{ testbed }}
-    StrictHostKeyChecking no
-    UserKnownHostsFile /dev/null
-    PubkeyAuthentication no
-    User hsvroot
-{% endfor %}
