@@ -1,0 +1,7 @@
+{
+    "workbench.colorTheme": "Default Light+",
+    "files.exclude": {
+        "**/.ezdebugger": true
+    },
+    "editor.gotoLocation.multiple": "gotoAndPeek"
+}

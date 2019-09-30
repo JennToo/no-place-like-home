@@ -4,6 +4,7 @@
     state: directory
   with_items:
     - .config
+    - .config/Code/User
     - .ssh
     - .local/bin
     - .stack
@@ -24,6 +25,8 @@
       dest: .config/pycodestyle
     - src: config/pylintrc
       dest: .config/pylintrc
+    - src: config/Code/User/settings.json
+      dest: .config/Code/User/settings.json
     - src: stack/config.yaml
       dest: .stack/config.yaml
     - src: bashrc
