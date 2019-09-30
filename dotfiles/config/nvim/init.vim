@@ -68,21 +68,9 @@ let g:ale_asm_gcc_executable = "arm-none-eabi-gcc"
 let g:ale_linters = {
 \   'cpp': ['ccls'],
 \   'haskell': ['stack-build'],
+\   'python': ['pylama'],
 \   'vhdl': ['vunit'],
 \}
-
-let g:ale_python_pyls_config = {
-      \   'pyls': {
-      \     'plugins': {
-      \       'pycodestyle': {
-      \         'enabled': v:false
-      \       },
-      \       'pylint': {
-      \         'enabled': v:false
-      \       }
-      \     }
-      \   },
-\ }
 
 " rst folding is annoying
 let g:riv_disable_folding = 1
@@ -102,7 +90,6 @@ au BufNewFile,BufRead *.s,*.S set filetype=arm " arm = armv6/7
 
 let g:LanguageClient_serverCommands = {
     \ 'scala': ['metals-vim'],
-    \ 'python': ['pyls'],
     \ 'rust': ['rustup', 'run', 'stable', 'rls'],
     \ }
 nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
