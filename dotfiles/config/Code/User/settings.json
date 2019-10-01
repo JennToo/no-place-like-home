@@ -13,4 +13,6 @@
         "rgba(224, 247, 255, 0.7)"
     ],
     "csharp.suppressDotnetInstallWarning": true,
+    "python.formatting.provider": "black",
+    "python.jediEnabled": false,
 }
