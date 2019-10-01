@@ -15,4 +15,5 @@
     "csharp.suppressDotnetInstallWarning": true,
     "python.formatting.provider": "black",
     "python.jediEnabled": false,
+    "git.enableSmartCommit": true,
 }
