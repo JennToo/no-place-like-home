@@ -5,6 +5,13 @@
         "**/.ezdebugger": true
     },
     "editor.gotoLocation.multiple": "gotoAndPeek",
+    "csharp.suppressDotnetInstallWarning": true,
+    "python.formatting.provider": "black",
+    "python.jediEnabled": false,
+    "git.enableSmartCommit": true,
+    "git.confirmSync": false,
+    "git.autofetch": true,
+    "editor.fontSize": 12,
     "indentRainbow.colors": [
         "rgba(224, 247, 255, 0.7)",
         "rgba(253, 224, 255, 0.7)",
@@ -12,10 +19,8 @@
         "rgba(253, 224, 255, 0.7)",
         "rgba(224, 247, 255, 0.7)"
     ],
-    "csharp.suppressDotnetInstallWarning": true,
-    "python.formatting.provider": "black",
-    "python.jediEnabled": false,
-    "git.enableSmartCommit": true,
-    "git.confirmSync": false,
-    "git.autofetch": true,
+    "indentRainbow.errorColor": "rgba(220,220,220,0.6)",
+    "indentRainbow.ignoreErrorLanguages": [
+        "*"
+    ]
 }
