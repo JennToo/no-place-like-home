@@ -2,7 +2,7 @@
 import subprocess
 
 installed = set(
-    subprocess.run(["code", "--list-extensions"], stdout=subprocess.PIPE)
+    subprocess.run(["code", "--list-extensions"], stdout=subprocess.PIPE, check=True)
     .stdout.decode("utf-8")
     .split("\n")
 )
@@ -15,6 +15,7 @@ desired = {
     "ms-vscode.go",
     "oderwat.indent-rainbow",
     "slevesque.perforce",
+    "rust-lang.rust",
 }
 
 for extension in desired:
