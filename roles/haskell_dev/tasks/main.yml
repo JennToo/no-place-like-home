@@ -16,3 +16,11 @@
       - cabal-install-2.2
       - ghc-8.4.3
       - libtinfo-dev
+- name: "It's Brittany!"
+  command: stack install brittany
+  args:
+    creates: "{{ lookup('env', 'HOME') }}/.local/bin/brittany"
+- name: Install hlint
+  command: stack install hlint
+  args:
+    creates: "{{ lookup('env', 'HOME') }}/.local/bin/hlint"
