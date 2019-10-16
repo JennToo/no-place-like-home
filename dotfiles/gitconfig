@@ -2,5 +2,4 @@
 	email = jennifer@nitori.org
 	name = Jennifer Wilcox
 [core]
-	editor = nvim
 	excludesfile = /home/jwilcox/.gitignore
