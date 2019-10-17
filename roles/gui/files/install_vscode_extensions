@@ -8,15 +8,17 @@ installed = set(
 )
 
 desired = {
+    "humao.rest-client",
     "justusadam.language-haskell",
+    "mhutchie.git-graph",
     "ms-azuretools.vscode-docker",
     "ms-python.python",
     "ms-vscode.cpptools",
     "ms-vscode.csharp",
     "ms-vscode.go",
     "oderwat.indent-rainbow",
-    "slevesque.perforce",
     "rust-lang.rust",
+    "slevesque.perforce",
 }
 
 for extension in desired:
