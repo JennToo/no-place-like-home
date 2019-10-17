@@ -8,6 +8,7 @@ installed = set(
 )
 
 desired = {
+    "justusadam.language-haskell",
     "ms-azuretools.vscode-docker",
     "ms-python.python",
     "ms-vscode.cpptools",
