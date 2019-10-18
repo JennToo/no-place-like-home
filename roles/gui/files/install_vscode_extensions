@@ -8,6 +8,7 @@ installed = set(
 )
 
 desired = {
+    "be5invis.toml",
     "humao.rest-client",
     "justusadam.language-haskell",
     "mhutchie.git-graph",
