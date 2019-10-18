@@ -27,6 +27,8 @@
       dest: .config/pylintrc
     - src: config/Code/User/settings.json
       dest: .config/Code/User/settings.json
+    - src: config/Code/User/keybindings.json
+      dest: .config/Code/User/keybindings.json
     - src: stack/config.yaml
       dest: .stack/config.yaml
     - src: bashrc

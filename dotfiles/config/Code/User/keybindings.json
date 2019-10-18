@@ -1,0 +1,6 @@
+[
+    {
+        "key": "ctrl+i t",
+        "command": "workbench.action.tasks.test"
+    }
+]
