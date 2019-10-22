@@ -20,6 +20,7 @@ desired = {
     "oderwat.indent-rainbow",
     "rust-lang.rust",
     "slevesque.perforce",
+    "spmeesseman.vscode-taskexplorer",
 }
 
 for extension in desired:
