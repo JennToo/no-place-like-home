@@ -11,6 +11,7 @@ desired = {
     "be5invis.toml",
     "humao.rest-client",
     "justusadam.language-haskell",
+    "lextudio.restructuredtext",
     "mhutchie.git-graph",
     "ms-azuretools.vscode-docker",
     "ms-python.python",
