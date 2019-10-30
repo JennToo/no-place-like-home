@@ -9,7 +9,6 @@ Plug 'flazz/vim-colorschemes'
 Plug 'jremmen/vim-ripgrep'
 Plug 'nathanalderson/yang.vim'
 Plug 'w0rp/ale'
-Plug 'christoomey/vim-tmux-navigator'
 Plug 'nfvs/vim-perforce'
 Plug 'ARM9/arm-syntax-vim'
 Plug 'autozimu/LanguageClient-neovim', {
