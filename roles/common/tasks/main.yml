@@ -162,6 +162,10 @@
   command: cargo install cargo-edit
   args:
     creates: "{{ lookup('env', 'HOME') }}/.cargo/bin/cargo-add"
+- name: Add thumbv7m-none-eabi target
+  command: rustup target add --toolchain nightly thumbv7m-none-eabi
+  args:
+    creates: "{{ lookup('env', 'HOME') }}/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/thumbv7m-none-eabi"
 - name: Neovim plugin update
   shell: nvim -E -c PlugInstall -c qa
 - name: Neovim plugin update
