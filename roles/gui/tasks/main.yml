@@ -17,6 +17,15 @@
   apt_repository:
     repo: "deb [arch=amd64] http://packages.microsoft.com/repos/vscode stable main"
     filename: vscode
+- name: Add ownCloud key
+  become: yes
+  apt_key:
+    url: https://download.opensuse.org/repositories/isv:ownCloud:desktop/Ubuntu_18.04/Release.key
+- name: Add ownCloud repo
+  become: yes
+  apt_repository:
+    repo: "deb http://download.opensuse.org/repositories/isv:/ownCloud:/desktop/Ubuntu_18.04/ /"
+    filename: owncloud
 - name: Install apt packages
   become: yes
   apt:
@@ -30,6 +39,7 @@
     - keepass2
     - krita
     - meld
+    - owncloud-client
     - rxvt
     - ttf-mscorefonts-installer
 - name: Install VSCode extensions

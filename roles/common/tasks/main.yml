@@ -116,7 +116,6 @@
     state: absent
   vars:
     packages:
-    - owncloud-client
     - thunderbird
 - name: Add user to docker group
   become: yes
