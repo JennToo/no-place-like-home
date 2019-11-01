@@ -1,0 +1,12 @@
+[Unit]
+Description=ownCloud SSH tunnel
+After=network.target
+
+[Service]
+Environment="SSH_AUTH_SOCK=/run/user/1000/keyring/ssh"
+ExecStart=/usr/bin/ssh -NTC -o ServerAliveInterval=60 -o ExitOnForwardFailure=yes -L 8080:localhost:8080 nat.ddns.me
+RestartSec=3
+Restart=always
+
+[Install]
+WantedBy=default.target

@@ -44,3 +44,9 @@
     - ttf-mscorefonts-installer
 - name: Install VSCode extensions
   script: install_vscode_extensions
+- name: Enable owncloud tunnel service
+  systemd:
+    state: started
+    enabled: yes
+    scope: user
+    name: owncloud-tunnel

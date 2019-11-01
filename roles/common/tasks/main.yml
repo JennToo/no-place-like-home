@@ -5,6 +5,7 @@
   with_items:
     - .config
     - .config/Code/User
+    - .config/systemd/user
     - .ssh
     - .local/bin
     - .stack
@@ -29,6 +30,8 @@
       dest: .config/Code/User/settings.json
     - src: config/Code/User/keybindings.json
       dest: .config/Code/User/keybindings.json
+    - src: config/systemd/user/owncloud-tunnel.service
+      dest: .config/systemd/user/owncloud-tunnel.service
     - src: stack/config.yaml
       dest: .stack/config.yaml
     - src: bashrc
