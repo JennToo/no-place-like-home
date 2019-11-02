@@ -49,4 +49,5 @@
     state: started
     enabled: yes
     scope: user
+    daemon_reload: yes
     name: owncloud-tunnel
