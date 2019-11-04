@@ -1,3 +1,6 @@
+let g:python_host_prog = "/home/jwilcox/.virtualenvs/neovim-py2/bin/python"
+let g:python3_host_prog = "/home/jwilcox/.virtualenvs/neovim-py3/bin/python"
+
 call plug#begin('~/.local/share/nvim/plugged')
 
 Plug 'sheerun/vim-polyglot'
@@ -18,6 +21,7 @@ Plug 'autozimu/LanguageClient-neovim', {
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
 call plug#end()
+
 
 " General vim config
 set clipboard=unnamedplus
