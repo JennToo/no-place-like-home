@@ -40,3 +40,11 @@ config
 virtualenv
 Ctrl
 linting
+SystemD
+HTTPS
+linux
+OneDrive
+meme
+ownCloud
+PTY
+Ansible
