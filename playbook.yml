@@ -10,7 +10,6 @@
     - fpga_dev
     - scala_dev
     - gba_dev
-    - erlang_dev
     - haskell_dev
     - go_dev
     - gui
@@ -23,7 +22,6 @@
     - fpga_dev
     - scala_dev
     - gba_dev
-    - erlang_dev
     - haskell_dev
     - go_dev
     - gui

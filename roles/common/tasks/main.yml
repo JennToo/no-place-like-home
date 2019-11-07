@@ -120,6 +120,7 @@
     state: absent
   vars:
     packages:
+    - elixir
     - thunderbird
 - name: Add user to docker group
   become: yes
