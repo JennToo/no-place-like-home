@@ -34,3 +34,7 @@ if [ -e "$HOME/.nix-profile/etc/profile.d/nix.sh" ]
 then
     . "$HOME/.nix-profile/etc/profile.d/nix.sh"
 fi
+
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS=@im=fcitx
