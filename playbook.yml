@@ -1,5 +1,6 @@
 - hosts:
    - cn-bm-jwilcox
+   - cn-bm-jwilcox2
    - cn-lp-jwilcox
    - Argentina3
    - Mexico3U
