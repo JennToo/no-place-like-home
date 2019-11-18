@@ -36,9 +36,9 @@
     - dia
     - fcitx
     - fcitx-googlepinyin
-    - fctix-table-wbpy
-    - fctix-pinyin
-    - fctix-sumpinyin
+    - fcitx-table-wbpy
+    - fcitx-pinyin
+    - fcitx-sunpinyin
     - google-chrome-stable
     - inkscape
     - keepass2
