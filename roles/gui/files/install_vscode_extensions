@@ -22,6 +22,7 @@ desired = {
     "rust-lang.rust",
     "slevesque.perforce",
     "spmeesseman.vscode-taskexplorer",
+    "visualstudioexptteam.vscodeintellicode",
 }
 
 for extension in desired:
