@@ -4,12 +4,14 @@
     state: directory
   with_items:
     - .config
+    - .config/autostart
     - .config/Code/User
     - .config/systemd/user
     - .ssh
     - .local/bin
     - .stack
     - .virtualenvs
+    - .gnupg
 - name: "Install dotfiles"
   file:
     src: "{{ playbook_dir }}/dotfiles/{{ item.src }}"
@@ -33,8 +35,14 @@
       dest: .config/Code/User/keybindings.json
     - src: config/systemd/user/owncloud-tunnel.service
       dest: .config/systemd/user/owncloud-tunnel.service
+    - src: config/autostart/gnome-keyring-ssh.desktop
+      dest: .config/autostart/gnome-keyring-ssh.desktop
     - src: stack/config.yaml
       dest: .stack/config.yaml
+    - src: gnupg/gpg.conf
+      dest: .gnupg/gpg.conf
+    - src: gnupg/gpg-agent.conf
+      dest: .gnupg/gpg-agent.conf
     - src: bashrc
       dest: .bashrc
     - src: inputrc
@@ -94,19 +102,22 @@
     - docker-ce
     - gdb-multiarch
     - git
+    - gnupg2
     - htop
     - libssl1.0-dev
     - neovim
     - openssh-server
     - pandoc
+    - pcscd
     - pkg-config
     - python3-pip
     - python3-venv
     - ruby
     - ruby-bundler
     - ruby-dev
-    - sl
+    - scdaemon
     - shellcheck
+    - sl
     - sshfs
     - tmux
     - tree
