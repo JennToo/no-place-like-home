@@ -27,5 +27,8 @@
     "eslint.packageManager": "yarn",
     "files.insertFinalNewline": true,
     "editor.suggestSelection": "first",
-    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue"
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "files.associations": {
+        "*.make": "makefile"
+    }
 }
