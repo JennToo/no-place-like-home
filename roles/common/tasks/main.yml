@@ -25,10 +25,6 @@
       dest: .gitignore
     - src: config/nvim
       dest: .config/nvim
-    - src: config/pycodestyle
-      dest: .config/pycodestyle
-    - src: config/pylintrc
-      dest: .config/pylintrc
     - src: config/Code/User/settings.json
       dest: .config/Code/User/settings.json
     - src: config/Code/User/keybindings.json

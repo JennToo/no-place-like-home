@@ -1,5 +1,0 @@
-[MESSAGES CONTROL]
-disable=import-error,
-        missing-docstring,
-        fixme,
-        bad-continuation
