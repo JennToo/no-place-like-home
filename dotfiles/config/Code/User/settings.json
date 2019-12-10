@@ -7,7 +7,6 @@
     "editor.gotoLocation.multiple": "gotoAndPeek",
     "csharp.suppressDotnetInstallWarning": true,
     "python.formatting.provider": "black",
-    "python.jediEnabled": false,
     "git.enableSmartCommit": true,
     "git.confirmSync": false,
     "git.autofetch": true,
