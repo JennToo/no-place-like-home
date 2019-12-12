@@ -29,5 +29,6 @@
     "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
     "files.associations": {
         "*.make": "makefile"
-    }
+    },
+    "terminal.integrated.rendererType": "experimentalWebgl"
 }
