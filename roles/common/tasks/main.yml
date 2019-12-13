@@ -29,8 +29,6 @@
       dest: .config/Code/User/settings.json
     - src: config/Code/User/keybindings.json
       dest: .config/Code/User/keybindings.json
-    - src: config/systemd/user/owncloud-tunnel.service
-      dest: .config/systemd/user/owncloud-tunnel.service
     - src: config/autostart/gnome-keyring-ssh.desktop
       dest: .config/autostart/gnome-keyring-ssh.desktop
     - src: stack/config.yaml
