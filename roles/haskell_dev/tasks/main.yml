@@ -3,24 +3,10 @@
   shell: curl -sSL https://get.haskellstack.org/ | sh
   args:
     creates: /usr/local/bin/stack
-- name: Add hvr ppa
-  become: yes
-  apt_repository:
-    repo: "ppa:hvr/ghc"
 - name: Install apt packages
   become: yes
   apt:
     name: "{{ packages }}"
   vars:
     packages:
-      - cabal-install-2.2
-      - ghc-8.4.3
       - libtinfo-dev
-- name: "It's Brittany!"
-  command: stack install brittany
-  args:
-    creates: "{{ lookup('env', 'HOME') }}/.local/bin/brittany"
-- name: Install hlint
-  command: stack install hlint
-  args:
-    creates: "{{ lookup('env', 'HOME') }}/.local/bin/hlint"
