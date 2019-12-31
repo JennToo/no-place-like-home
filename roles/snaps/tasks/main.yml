@@ -6,3 +6,11 @@
     packages:
       - spotify
       - discord
+- name: Add classic snaps
+  become: yes
+  snap:
+    name: "{{ packages }}"
+    classic: yes
+  vars:
+    packages:
+      - kubectl
