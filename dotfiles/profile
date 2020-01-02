@@ -38,3 +38,6 @@ fi
 export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
+
+export GITHUB_HOST=github.adtran.com
+export HUB_PROTOCOL=ssh

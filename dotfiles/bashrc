@@ -55,3 +55,10 @@ if ! shopt -oq posix; then
 fi
 
 [ -f $HOME/.bash_secrets ] && . "$HOME/.bash_secrets"
+
+function fclone() {
+    hub clone "$1"
+    cd "$(basename $1)"
+    git remote rename origin upstream
+    hub fork --remote-name origin
+}
