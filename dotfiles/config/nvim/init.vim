@@ -3,7 +3,7 @@ let g:python3_host_prog = "/home/jwilcox/.virtualenvs/neovim-py3/bin/python"
 
 call plug#begin('~/.local/share/nvim/plugged')
 
-Plug 'sheerun/vim-polyglot', { 'tag': 'v4.0.0' }
+Plug 'sheerun/vim-polyglot'
 Plug 'wincent/command-t', {
     \   'do': 'cd ruby/command-t/ext/command-t && ruby extconf.rb && make'
     \ }
