@@ -121,6 +121,7 @@
   vars:
     packages:
     - elixir
+    - krita
     - thunderbird
 - name: Add user to docker group
   become: yes
