@@ -3,7 +3,11 @@ Host nat.ddns.me
     User jwilcox
     ForwardAgent yes
     ForwardX11 yes
-Host cn-bm-jwilcox.adtran.com
+Host cn-bm-jwilcox2.adtran.com
+    User jwilcox
+    ForwardAgent yes
+    ForwardX11 yes
+Host cn-lp-jwilcox.adtran.com
     User jwilcox
     ForwardAgent yes
     ForwardX11 yes
