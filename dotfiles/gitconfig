@@ -5,3 +5,5 @@
 	excludesfile = /home/jwilcox/.gitignore
 [hub]
 	host = github.adtran.com
+[commit]
+	gpgsign = true
