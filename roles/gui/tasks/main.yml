@@ -1,8 +1,7 @@
 - name: Add chrome key
   become: yes
   apt_key:
-    id: 6494C6D6997C215E
-    keyserver: keyserver.ubuntu.com
+    url: https://dl.google.com/linux/linux_signing_key.pub
 - name: Add chrome repo
   become: yes
   apt_repository:

@@ -8,6 +8,7 @@
   connection: local
   roles:
     - common
+    - js_dev
     - fpga_dev
     - scala_dev
     - gba_dev
@@ -20,6 +21,7 @@
   connection: local
   roles:
     - common
+    - js_dev
     - fpga_dev
     - scala_dev
     - gba_dev
