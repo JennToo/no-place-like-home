@@ -19,6 +19,7 @@ Plug 'autozimu/LanguageClient-neovim', {
     \ 'do': 'bash install.sh',
     \ }
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'deoplete-plugins/deoplete-jedi'
 
 call plug#end()
 
@@ -86,7 +87,7 @@ set nofoldenable
 set wildignore=*/.ccls-cache/*,*/.ezdebugger/*,*.o,*.d,*.class,*.jar,*.pyc
 let g:CommandTMaxFiles=200000
 
-let g:netrw_dirhistmax=0
+let g:netrw_dirhistmax = 0
 
 au BufNewFile,BufRead *.s,*.S set filetype=arm " arm = armv6/7
 
@@ -100,8 +101,11 @@ let g:LanguageClient_serverCommands = {
 nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
 nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
 nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
-let g:LanguageClient_useVirtualText=0
+let g:LanguageClient_useVirtualText = 0
+
 let g:deoplete#enable_at_startup = 1
+autocmd CompleteDone * silent! pclose!
+let g:deoplete#sources#jedi#ignore_private_members = 1
 
 function! GetVunitCommand(buffer) abort
     let l:vunit_path = ale#path#FindNearestFile(a:buffer, 'vunit')
