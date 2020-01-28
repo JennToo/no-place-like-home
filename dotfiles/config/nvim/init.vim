@@ -20,6 +20,7 @@ Plug 'autozimu/LanguageClient-neovim', {
     \ }
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'deoplete-plugins/deoplete-jedi'
+Plug 'davidhalter/jedi-vim'
 
 call plug#end()
 
@@ -106,6 +107,8 @@ let g:LanguageClient_useVirtualText = 0
 let g:deoplete#enable_at_startup = 1
 autocmd CompleteDone * silent! pclose!
 let g:deoplete#sources#jedi#ignore_private_members = 1
+
+let g:jedi#completions_enabled = 0
 
 function! GetVunitCommand(buffer) abort
     let l:vunit_path = ale#path#FindNearestFile(a:buffer, 'vunit')
