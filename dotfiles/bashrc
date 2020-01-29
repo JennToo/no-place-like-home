@@ -15,25 +15,7 @@ shopt -s checkwinsize
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
-
-function msdos_pwd
-{
-    local dir="`pwd`"
-    echo $dir | tr '/' '\\'
-}
-
-if [ "$HOSTNAME" = "cn-bm-jwilcox" ] || [ "$HOSTNAME" = "cn-lp-jwilcox" ]
-then
-    PS1='C:`msdos_pwd`> '
-    echo
-    echo
-    echo "Microsoft(R) Windows 95"
-    echo "   (C)Copyright Microsoft Corp 1981-1996."
-    echo
-else
-    PS1='\[\033[01;32m\]\h\[\033[00m\] \[\033[01;34m\]\w\[\033[00m\] \$ '
-fi
-
+PS1='\[\033[01;32m\]\h\[\033[00m\] \[\033[01;34m\]\w\[\033[00m\] \$ '
 
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
