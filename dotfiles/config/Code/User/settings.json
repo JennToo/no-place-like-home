@@ -30,5 +30,17 @@
     "files.associations": {
         "*.make": "makefile"
     },
-    "terminal.integrated.rendererType": "experimentalWebgl"
+    "terminal.integrated.rendererType": "experimentalWebgl",
+    "python.jediEnabled": false,
+    "files.watcherExclude": {
+        "**/*.d": true,
+        "**/*.mo": true,
+        "**/*.o": true,
+        "**/*.po": true,
+        "**/*.lo": true,
+        "**/*.Po": true,
+        "bld_*/**.html": true,
+        "**/*.so*": true,
+        "**/*.a": true
+    }
 }
