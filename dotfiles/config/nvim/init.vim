@@ -9,7 +9,6 @@ Plug 'wincent/command-t', {
     \ }
 Plug 'roxma/nvim-yarp'
 Plug 'flazz/vim-colorschemes'
-Plug 'jremmen/vim-ripgrep'
 Plug 'nathanalderson/yang.vim'
 Plug 'w0rp/ale'
 Plug 'nfvs/vim-perforce'
@@ -52,7 +51,6 @@ set autoread
 " Command-T config
 nmap <Leader>ff <Plug>(CommandT)
 nmap <Leader>b <Plug>(CommandTBuffer)
-nmap <C-]> <Plug>(ale_go_to_definition)
 
 " Color scheme
 set t_Co=256
@@ -74,7 +72,6 @@ let g:ale_linters = {
 \   'cpp': ['ccls'],
 \   'haskell': ['stack-build'],
 \   'python': ['pylama'],
-\   'vhdl': ['vunit'],
 \}
 
 " rst folding is annoying
@@ -93,6 +90,7 @@ let g:netrw_dirhistmax = 0
 au BufNewFile,BufRead *.s,*.S set filetype=arm " arm = armv6/7
 
 au BufNewFile,BufRead *.md,*.rst setlocal spell
+autocmd FileType gitcommit setlocal spell
 
 
 let g:LanguageClient_serverCommands = {
@@ -109,22 +107,3 @@ autocmd CompleteDone * silent! pclose!
 let g:deoplete#sources#jedi#ignore_private_members = 1
 
 let g:jedi#completions_enabled = 0
-
-function! GetVunitCommand(buffer) abort
-    let l:vunit_path = ale#path#FindNearestFile(a:buffer, 'vunit')
-    let l:project_root = fnamemodify(l:vunit_path, ':h')
-    let l:cd_string = l:project_root isnot# ''
-    \   ? ale#path#CdString(l:project_root)
-    \   : ale#path#BufferCdString(a:buffer)
-
-    return l:cd_string
-    \      . "./vunit --compile"
-endfunction
-
-call ale#linter#Define('vhdl', {
-\   'name': 'vunit',
-\   'output_stream': 'stdout',
-\   'executable': './vunit',
-\   'command': function('GetVunitCommand'),
-\   'callback': 'ale_linters#vhdl#ghdl#Handle',
-\})
