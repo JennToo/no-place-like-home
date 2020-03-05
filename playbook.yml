@@ -1,5 +1,4 @@
 - hosts:
-   - cn-bm-jwilcox
    - cn-bm-jwilcox2
    - cn-lp-jwilcox
    - Argentina3
@@ -12,8 +11,6 @@
     - fpga_dev
     - scala_dev
     - gba_dev
-    - haskell_dev
-    - go_dev
     - gui
     - snaps
 - hosts:
@@ -25,6 +22,4 @@
     - fpga_dev
     - scala_dev
     - gba_dev
-    - haskell_dev
-    - go_dev
     - gui
