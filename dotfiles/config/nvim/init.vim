@@ -108,3 +108,4 @@ autocmd CompleteDone * silent! pclose!
 let g:deoplete#sources#jedi#ignore_private_members = 1
 
 let g:jedi#completions_enabled = 0
+let g:jedi#show_call_signatures = 0
