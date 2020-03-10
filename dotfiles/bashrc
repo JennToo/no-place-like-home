@@ -44,3 +44,24 @@ function fclone() {
     git remote rename origin upstream
     hub fork --remote-name origin
 }
+
+PROMPT_COMMAND="porg_venv_activate"
+porg_venv_activate() {
+    if [ -e .porg/venvs ] && [ -e .porg/porg-i-venv ]
+    then
+        if ! [ "$PORG_ACTIVATED" = 1 ]
+        then
+            VENV=$(ls .porg/venvs | sort | tail -n 1)
+            echo "Activating porg venv $VENV"
+            . ".porg/venvs/$VENV/bin/activate"
+            export PORG_ACTIVATED=1
+        fi
+    else
+        if [ "$PORG_ACTIVATED" = 1 ] && type deactivate >/dev/null
+        then
+            echo "Deactivating porg venv"
+            deactivate
+        fi
+        export PORG_ACTIVATED=0
+    fi
+}
