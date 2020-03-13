@@ -29,6 +29,7 @@
     - fcitx-table-wbpy
     - fcitx-pinyin
     - fcitx-sunpinyin
+    - fonts-noto
     - google-chrome-stable
     - inkscape
     - keepass2
