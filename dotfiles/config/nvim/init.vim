@@ -21,6 +21,7 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'deoplete-plugins/deoplete-jedi'
 Plug 'davidhalter/jedi-vim'
 Plug 'vim-scripts/groovyindent-unix'
+Plug 'tjvr/vim-nearley'
 
 call plug#end()
 
