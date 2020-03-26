@@ -2,14 +2,21 @@
 import subprocess
 
 installed = set(
-    subprocess.run(["code", "--list-extensions"], stdout=subprocess.PIPE, check=True)
-    .stdout.decode("utf-8")
-    .split("\n")
+    map(
+        str.lower,
+        subprocess.run(
+            ["code", "--list-extensions"], stdout=subprocess.PIPE, check=True
+        )
+        .stdout.decode("utf-8")
+        .split("\n"),
+    )
 )
 
 desired = {
     "bbenoist.nix",
     "be5invis.toml",
+    "dbaeumer.vscode-eslint",
+    "editorconfig.editorconfig",
     "humao.rest-client",
     "justusadam.language-haskell",
     "lextudio.restructuredtext",
@@ -20,6 +27,7 @@ desired = {
     "ms-vscode-remote.vscode-remote-extensionpack",
     "ms-vscode.cpptools",
     "ms-vscode.go",
+    "ms-vsliveshare.vsliveshare",
     "oderwat.indent-rainbow",
     "rust-lang.rust",
     "slevesque.perforce",
