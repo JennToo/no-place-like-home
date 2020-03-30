@@ -13,6 +13,7 @@ installed = set(
 )
 
 desired = {
+    "alefragnani.bookmarks",
     "bbenoist.nix",
     "be5invis.toml",
     "dbaeumer.vscode-eslint",
@@ -28,8 +29,10 @@ desired = {
     "ms-vscode.cpptools",
     "ms-vscode.go",
     "ms-vsliveshare.vsliveshare",
+    "mshr-h.veriloghdl",
     "oderwat.indent-rainbow",
     "rust-lang.rust",
+    "scalameta.metals",
     "slevesque.perforce",
     "spmeesseman.vscode-taskexplorer",
     "visualstudioexptteam.vscodeintellicode",

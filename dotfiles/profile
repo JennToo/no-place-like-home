@@ -29,6 +29,7 @@ export VISUAL="nvim"
 export EDITOR="nvim"
 
 export QSYS_ROOTDIR="$HOME/.local/share/intelFPGA_lite/18.1/quartus/sopc_builder/bin"
+export VIVADO_ROOTDIR="/opt/Xilinx/Vivado/2018.3"
 
 if [ -e "$HOME/.nix-profile/etc/profile.d/nix.sh" ]
 then
