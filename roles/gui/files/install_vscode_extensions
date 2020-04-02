@@ -16,6 +16,7 @@ desired = {
     "alefragnani.bookmarks",
     "bbenoist.nix",
     "be5invis.toml",
+    "bkromhout.vscode-tcl",
     "dbaeumer.vscode-eslint",
     "editorconfig.editorconfig",
     "humao.rest-client",
