@@ -28,7 +28,8 @@
     "editor.suggestSelection": "first",
     "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
     "files.associations": {
-        "*.make": "makefile"
+        "*.make": "makefile",
+        "*.xdc": "tcl"
     },
     "terminal.integrated.rendererType": "experimentalWebgl",
     "python.jediEnabled": false,
