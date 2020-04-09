@@ -34,7 +34,6 @@
     - inkscape
     - keepass2
     - meld
-    - rxvt
     - ttf-mscorefonts-installer
 - name: Install VSCode extensions
   script: install_vscode_extensions
