@@ -121,6 +121,7 @@
   vars:
     packages:
     - elixir
+    - evolution
     - krita
     - thunderbird
 - name: Add user to docker group
