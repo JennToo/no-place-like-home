@@ -10,7 +10,6 @@ fi
 
 if ! command -v ansible-playbook
 then
-    sudo add-apt-repository -y ppa:ansible/ansible
     sudo apt-get install -y python3-pip ansible cowsay
 fi
 

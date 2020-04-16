@@ -9,7 +9,6 @@
     - .config/systemd/user
     - .ssh
     - .local/bin
-    - .stack
     - .virtualenvs
     - .gnupg
 - name: "Install dotfiles"
@@ -31,8 +30,6 @@
       dest: .config/Code/User/keybindings.json
     - src: config/autostart/gnome-keyring-ssh.desktop
       dest: .config/autostart/gnome-keyring-ssh.desktop
-    - src: stack/config.yaml
-      dest: .stack/config.yaml
     - src: gnupg/gpg.conf
       dest: .gnupg/gpg.conf
     - src: gnupg/gpg-agent.conf
@@ -60,15 +57,6 @@
   apt_key:
     url: https://download.docker.com/linux/ubuntu/gpg
     id: 9DC858229FC7DD38854AE2D88D81803C0EBFCD88
-- name: Prepare docker repo
-  become: yes
-  apt_repository:
-    repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release|lower }} stable"
-    filename: docker-ce
-- name: Add neovim PPA
-  become: yes
-  apt_repository:
-    repo: ppa:neovim-ppa/stable
 - name: Add universe repo
   become: yes
   apt_repository:
@@ -88,12 +76,12 @@
     - build-essential
     - cowsay
     - curl
-    - docker-ce
+    - docker.io
     - gdb-multiarch
     - git
     - gnupg2
     - htop
-    - libssl1.0-dev
+    - libssl-dev
     - neovim
     - openssh-server
     - pandoc
@@ -101,6 +89,7 @@
     - pkg-config
     - python3-pip
     - python3-venv
+    - ripgrep
     - ruby
     - ruby-bundler
     - ruby-dev
@@ -156,31 +145,8 @@
     creates: "{{ lookup('env', 'HOME') }}/.cargo/bin/rustc"
 - name: Update rust
   shell: "rustup update"
-- name: Install ripgrep
-  command: cargo install ripgrep
-  args:
-    creates: "{{ lookup('env', 'HOME') }}/.cargo/bin/rg"
-- name: Install cargo-xbuild
-  command: cargo install cargo-xbuild
-  args:
-    creates: "{{ lookup('env', 'HOME') }}/.cargo/bin/cargo-xbuild"
-- name: Install cargo-edit
-  command: cargo install cargo-edit
-  args:
-    creates: "{{ lookup('env', 'HOME') }}/.cargo/bin/cargo-add"
-- name: Setup neovim virtualenv Python 2
-  pip:
-    name: pynvim
-    virtualenv: "{{ lookup('env', 'HOME') }}/.virtualenvs/neovim-py2"
-    virtualenv_python: python2.7
 - name: Setup neovim virtualenv Python 3
   pip:
     name: pynvim
     virtualenv: "{{ lookup('env', 'HOME') }}/.virtualenvs/neovim-py3"
-    virtualenv_python: python3.6
-- name: Neovim plugin update
-  shell: nvim -E -c PlugInstall -c qa
-- name: Neovim plugin update
-  shell: nvim -E -c PlugUpdate -c qa
-- name: Neovim remote plugin update
-  shell: nvim -E -c UpdateRemotePlugins -c qa
+    virtualenv_python: python3.8
