@@ -145,3 +145,11 @@
     name: pynvim
     virtualenv: "{{ lookup('env', 'HOME') }}/.virtualenvs/neovim-py3"
     virtualenv_python: python3.8
+- name: Download insect
+  get_url:
+    url: https://github.com/sharkdp/insect/releases/download/v5.3.0/insect-linux-x64
+    dest: "{{ lookup('env','HOME') }}/.local/bin/insect"
+- name: Chmod insect
+  file:
+    path: "{{ lookup('env','HOME') }}/.local/bin/insect"
+    mode: a+x
