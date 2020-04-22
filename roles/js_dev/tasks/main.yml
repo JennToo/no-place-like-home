@@ -1,3 +1,12 @@
+- name: Prepare nodejs repo key
+  become: yes
+  apt_key:
+    url: https://deb.nodesource.com/gpgkey/nodesource.gpg.key
+- name: Add nodejs repository
+  become: yes
+  apt_repository:
+    repo: "deb https://deb.nodesource.com/node_14.x {{ ansible_distribution_release|lower }} main"
+    filename: nodejs
 - name: Prepare yarn repo key
   become: yes
   apt_key:
