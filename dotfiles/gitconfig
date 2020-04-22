@@ -7,3 +7,14 @@
 	host = github.adtran.com
 [commit]
 	gpgsign = true
+[alias]
+    yeet = push
+    yoink = pull
+    tea = status
+    woke = commit
+    vibe-check = reset
+    fam = remote
+    extra = commit --ammend
+    stan = merge
+    bruh = blame
+    fomo = fetch
