@@ -47,11 +47,11 @@ function fclone() {
 
 PROMPT_COMMAND="porg_venv_activate"
 porg_venv_activate() {
-    if [ -e .porg/venvs ] && [ -e .porg/porg-i-venv ]
+    if [ -e .porg/venvs ] && [ -e .porg/venvs/porg-i ]
     then
         if ! [ "$PORG_ACTIVATED" = 1 ]
         then
-            VENV=$(ls .porg/venvs | sort | tail -n 1)
+            VENV=$(ls .porg/venvs | grep -v porg-i | sort | tail -n 1)
             echo "Activating porg venv $VENV"
             . ".porg/venvs/$VENV/bin/activate"
             export PORG_ACTIVATED=1
