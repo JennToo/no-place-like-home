@@ -72,6 +72,7 @@
     - cowsay
     - curl
     - docker.io
+    - fzf
     - gdb-multiarch
     - git
     - gnupg2
@@ -130,10 +131,6 @@
       - pylama
       - pylint
       - virtualenv
-- name: Install neovim ruby extension
-  gem:
-    name: neovim
-    state: latest
 - name: Install rust
   shell: "curl https://sh.rustup.rs -sSf | sh -s -- -y --no-modify-path && rustup component add rls rust-src"
   args:

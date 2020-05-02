@@ -65,3 +65,5 @@ porg_venv_activate() {
         export PORG_ACTIVATED=0
     fi
 }
+
+alias nf='nvim $(fzf)'

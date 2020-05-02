@@ -3,9 +3,6 @@ let g:python3_host_prog = "/home/jwilcox/.virtualenvs/neovim-py3/bin/python"
 call plug#begin('~/.local/share/nvim/plugged')
 
 Plug 'sheerun/vim-polyglot'
-Plug 'wincent/command-t', {
-    \   'do': 'cd ruby/command-t/ext/command-t && ruby extconf.rb && make'
-    \ }
 Plug 'roxma/nvim-yarp'
 Plug 'flazz/vim-colorschemes'
 Plug 'nathanalderson/yang.vim'
@@ -21,6 +18,8 @@ Plug 'deoplete-plugins/deoplete-jedi'
 Plug 'davidhalter/jedi-vim'
 Plug 'vim-scripts/groovyindent-unix'
 Plug 'tjvr/vim-nearley'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 
 call plug#end()
 
@@ -50,8 +49,8 @@ set scrolloff=3
 set autoread
 
 " Command-T config
-nmap <Leader>ff <Plug>(CommandT)
-nmap <Leader>b <Plug>(CommandTBuffer)
+nnoremap <Leader>ff :Files<Cr>
+nnoremap <Leader>b :Buffers<Cr>
 
 " Color scheme
 set t_Co=256
