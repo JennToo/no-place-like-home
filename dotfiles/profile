@@ -29,3 +29,5 @@ fi
 export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
+
+export FZF_DEFAULT_COMMAND="fdfind --type f -I --ignore-file $HOME/.fdignore"

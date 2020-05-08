@@ -1,0 +1,11 @@
+*.pyc
+*.o
+*.d
+__pycache__
+*.egg-info
+*.so.*
+*.class
+*.jar
+.ezdebugger
+*.tar.gz
+*.whl
