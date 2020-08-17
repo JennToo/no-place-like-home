@@ -5,8 +5,6 @@
 	excludesfile = /home/jwilcox/.gitignore
 [hub]
 	host = github.adtran.com
-[commit]
-	gpgsign = true
 [alias]
     yeet = push
     yoink = pull
