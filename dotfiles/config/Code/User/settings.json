@@ -43,5 +43,6 @@
         "bld_*/**.html": true,
         "**/*.so*": true,
         "**/*.a": true
-    }
+    },
+    "python.languageServer": "Microsoft"
 }
