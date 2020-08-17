@@ -16,6 +16,7 @@
     - snaps
 - hosts:
    - no-place-like-home-test
+   - LAPTOP-KF5TTGVL
   connection: local
   roles:
     - common
