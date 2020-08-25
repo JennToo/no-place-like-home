@@ -31,3 +31,8 @@ export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
 
 export FZF_DEFAULT_COMMAND="fdfind --type f -I --ignore-file $HOME/.fdignore"
+
+if grep -i microsoft /proc/version >/dev/null
+then
+    export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0
+fi

@@ -1,6 +1,12 @@
 #!/usr/bin/env python3
 import subprocess
 
+with open("/proc/version", "r") as f:
+    if "microsoft" in f.read().lower():
+        print("Skipping in WSL2")
+        exit(0)
+
+
 installed = set(
     map(
         str.lower,
