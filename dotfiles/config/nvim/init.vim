@@ -69,7 +69,7 @@ highlight ALEWarningSign ctermbg=yellow guibg=yellow
 let g:ale_asm_gcc_executable = "arm-none-eabi-gcc"
 
 let g:ale_linters = {
-\   'cpp': ['ccls'],
+\   'cpp': [],
 \   'haskell': ['stack-build'],
 \   'python': ['pylama'],
 \}
@@ -96,11 +96,13 @@ autocmd FileType gitcommit setlocal spell
 let g:LanguageClient_serverCommands = {
     \ 'scala': ['metals-vim'],
     \ 'rust': ['rustup', 'run', 'stable', 'rls'],
+    \ 'cpp': ['clangd'],
     \ }
 nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
 nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
 nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
-let g:LanguageClient_useVirtualText = 0
+let g:LanguageClient_useVirtualText = 'No'
+let g:LanguageClient_loggingLevel = 'DEBUG'
 
 let g:deoplete#enable_at_startup = 1
 autocmd CompleteDone * silent! pclose!
