@@ -17,6 +17,7 @@
 - hosts:
    - no-place-like-home-test
    - LAPTOP-KF5TTGVL
+   - DESKTOP-LTP3LOJ
   connection: local
   roles:
     - common
