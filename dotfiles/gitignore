@@ -7,3 +7,4 @@ compile_commands.json
 .metals
 /*.iml
 /project/metals.sbt
+/.clangd
