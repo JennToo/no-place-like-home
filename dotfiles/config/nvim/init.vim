@@ -35,6 +35,7 @@ autocmd TermOpen * setlocal nonumber norelativenumber
 set spelllang=en
 set spellfile=$HOME/.config/nvim/en.utf-8.add
 vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
+set cursorline
 
 " Get indents that actually make sense
 filetype plugin indent on
