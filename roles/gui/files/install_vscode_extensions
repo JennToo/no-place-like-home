@@ -34,7 +34,6 @@ desired = {
     "ms-python.python",
     "ms-vscode-remote.vscode-remote-extensionpack",
     "ms-vscode.cpptools",
-    "ms-vscode.go",
     "ms-vsliveshare.vsliveshare",
     "mshr-h.veriloghdl",
     "oderwat.indent-rainbow",

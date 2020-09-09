@@ -5,6 +5,7 @@
    - mexico3
    - Mexico3U
    - peru
+   - laptopvm
   connection: local
   roles:
     - common

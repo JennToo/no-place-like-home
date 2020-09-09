@@ -103,7 +103,6 @@
     - sshfs
     - tmux
     - tree
-    - virtualenvwrapper
     - wireshark
     - xclip
 - name: Remove apt packages
