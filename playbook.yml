@@ -6,9 +6,11 @@
    - Mexico3U
    - peru
    - laptopvm
+   - desktopvm
   connection: local
   roles:
     - common
+    - re
     - js_dev
     - fpga_dev
     - scala_dev

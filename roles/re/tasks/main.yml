@@ -1,0 +1,21 @@
+- name: Install apt packages
+  become: yes
+  apt:
+    name: "{{ packages }}"
+  vars:
+    packages:
+    - binwalk
+    - radare2
+    - radare2-cutter
+- name: Download ghidra
+  become: yes
+  get_url:
+    url: https://ghidra-sre.org/ghidra_9.1.2_PUBLIC_20200212.zip
+    dest: /opt/ghidra_9.1.2.zip
+  register: got_ghidra
+- name: Unpack ghidra
+  become: yes
+  unarchive:
+    src: /opt/ghidra_9.1.2.zip
+    dest: /opt
+  when: got_ghidra.changed
