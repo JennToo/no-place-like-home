@@ -66,4 +66,7 @@ porg_venv_activate() {
     fi
 }
 
+export GPG_TTY="$(tty)"
 alias nf='nvim $(fzf)'
+export GH_HOST=github.adtran.com
+eval "$(gh completion -s bash)"
