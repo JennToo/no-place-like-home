@@ -75,11 +75,13 @@
     name: "{{ packages }}"
   vars:
     packages:
+    - bison
     - build-essential
     - clangd-10
     - cowsay
     - curl
     - fd-find
+    - flex
     - fzf
     - gdb-multiarch
     - git

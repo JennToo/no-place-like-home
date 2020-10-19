@@ -1,0 +1,12 @@
+- name: Create cache dir
+  file:
+    dest: "{{ home }}/.cache/ansible-downloads"
+    state: directory
+- name: Clone cc65
+  git:
+    repo: "https://github.com/cc65/cc65.git"
+    dest: "{{ home }}/.cache/ansible-downloads/cc65"
+  register: cc65
+- name: Build and install cc65
+  shell: "make -C {{ home }}/.cache/ansible-downloads/cc65 && make -C {{ home }}/.cache/ansible-downloads/cc65 PREFIX={{ home }}/.local install"
+  when: cc65.changed

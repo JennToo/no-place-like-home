@@ -7,6 +7,9 @@
    - peru
    - laptopvm
    - desktopvm
+  vars:
+    home: "{{ lookup('env', 'HOME') }}"
+    user: "{{ lookup('env', 'USER') }}"
   connection: local
   roles:
     - common
@@ -15,6 +18,7 @@
     - fpga_dev
     - scala_dev
     - gba_dev
+    - cx16
     - gui
     - snaps
 - hosts:

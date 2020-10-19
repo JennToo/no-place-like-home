@@ -6,3 +6,5 @@
     packages:
     - gcc-arm-none-eabi
     - mgba-qt
+    - libasound-dev
+    - libgtk-3-dev
