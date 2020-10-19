@@ -10,3 +10,22 @@
 - name: Build and install cc65
   shell: "make -C {{ home }}/.cache/ansible-downloads/cc65 && make -C {{ home }}/.cache/ansible-downloads/cc65 PREFIX={{ home }}/.local install"
   when: cc65.changed
+- name: Create emulator dir
+  file:
+    dest: "{{ home }}/.local/share/x16-emu"
+    state: directory
+- name: Download emulator
+  get_url:
+    url: https://github.com/commanderx16/x16-emulator/releases/download/r38/x16emu_linux-r38.zip
+    dest: "{{ home }}/.cache/ansible-downloads"
+  register: x16_emu
+- name: Install emulator
+  unarchive:
+    src: "{{ x16_emu.dest }}"
+    dest: "{{ home }}/.local/share/x16-emu"
+  when: x16_emu.changed
+- name: Setup symlink for emulator
+  file:
+    src: "{{ home }}/.local/share/x16-emu/x16emu"
+    dest: "{{ home }}/.local/bin/x16emu"
+    state: link
