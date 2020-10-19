@@ -34,7 +34,7 @@ nmap <Leader>t  :terminal<CR>:file<Space>
 autocmd TermOpen * setlocal nonumber norelativenumber
 set spelllang=en
 set spellfile=$HOME/.config/nvim/en.utf-8.add
-vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
+vnoremap <C-r> "hy:%s#<C-r>h##gc<left><left><left>
 set cursorline
 
 " Get indents that actually make sense
@@ -49,12 +49,10 @@ set smartindent
 set scrolloff=3
 set autoread
 
-" Command-T config
 nnoremap <Leader>ff :Files<Cr>
 nnoremap <Leader>b :Buffers<Cr>
 
 " Color scheme
-set t_Co=256
 set background=light
 try
     colorscheme PaperColor
@@ -84,7 +82,6 @@ let g:riv_auto_fold_force = 0
 set nofoldenable
 
 set wildignore=*/.ccls-cache/*,*/.ezdebugger/*,*.o,*.d,*.class,*.jar,*.pyc
-let g:CommandTMaxFiles=200000
 
 let g:netrw_dirhistmax = 0
 
@@ -92,7 +89,6 @@ au BufNewFile,BufRead *.s,*.S set filetype=arm " arm = armv6/7
 
 au BufNewFile,BufRead *.md,*.rst setlocal spell
 autocmd FileType gitcommit setlocal spell
-
 
 let g:LanguageClient_serverCommands = {
     \ 'scala': ['metals-vim'],

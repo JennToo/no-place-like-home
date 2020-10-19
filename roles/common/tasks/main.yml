@@ -64,6 +64,16 @@
   apt_repository:
     repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release|lower }} stable"
     filename: docker
+- name: Prepare gh repo key
+  become: yes
+  apt_key:
+    keyserver: keyserver.ubuntu.com
+    id: C99B11DEB97541F0
+- name: Add gh repo
+  become: yes
+  apt_repository:
+    repo: "deb https://cli.github.com/packages {{ ansible_distribution_release|lower }} main"
+    filename: gh
 - name: Update apt packages
   become: yes
   apt:
@@ -84,6 +94,7 @@
     - flex
     - fzf
     - gdb-multiarch
+    - gh
     - git
     - gnupg2
     - htop
