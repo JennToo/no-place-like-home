@@ -13,6 +13,7 @@
   connection: local
   roles:
     - common
+    - bazel
     - re
     - js_dev
     - fpga_dev

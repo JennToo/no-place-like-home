@@ -1,0 +1,16 @@
+- name: Prepare bazel repo key
+  become: yes
+  apt_key:
+    url: https://bazel.build/bazel-release.pub.gpg
+- name: Add bazel repo
+  become: yes
+  apt_repository:
+    repo: "deb [arch=amd64] https://storage.googleapis.com/bazel-apt stable jdk1.8"
+    filename: bazel
+- name: Install apt packages
+  become: yes
+  apt:
+    name: "{{ packages }}"
+  vars:
+    packages:
+    - bazel
