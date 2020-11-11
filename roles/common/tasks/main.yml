@@ -90,6 +90,7 @@
     - clangd-10
     - cowsay
     - curl
+    - docker-ce
     - fd-find
     - flex
     - fzf
