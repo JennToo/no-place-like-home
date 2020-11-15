@@ -6,3 +6,26 @@
     packages:
     - gtkwave
     - verilator
+- name: Create verible directory
+  file:
+    dest: "{{ lookup('env', 'HOME') }}/.local/share/veriable-0.0.705"
+    state: directory
+- name: Download verible binaries
+  unarchive:
+    src: https://github.com/google/verible/releases/download/v0.0-705-g75249d0/verible-v0.0-705-g75249d0-Ubuntu-20.04-focal-x86_64.tar.gz
+    dest: "{{ lookup('env', 'HOME') }}/.local/share/veriable-0.0.705"
+    extra_opts: "--strip-components=1"
+    remote_src: yes
+- name: Symlink verible binaries
+  file:
+    src: "{{ lookup('env', 'HOME') }}/.local/share/veriable-0.0.705/bin/{{ item }}"
+    dest: "{{ lookup('env', 'HOME') }}/.local/bin/{{ item }}"
+    state: link
+  loop:
+    - verible-patch-tool
+    - verible-verilog-diff
+    - verible-verilog-format
+    - verible-verilog-lint
+    - verilog_diff
+    - verilog_format
+    - verilog_lint
