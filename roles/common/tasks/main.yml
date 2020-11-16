@@ -87,7 +87,6 @@
     packages:
     - bison
     - build-essential
-    - clangd-10
     - cowsay
     - curl
     - docker-ce
@@ -175,9 +174,3 @@
   file:
     path: "{{ lookup('env','HOME') }}/.local/bin/insect"
     mode: a+x
-- name: Setup clangd symlink
-  become: yes
-  file:
-    src: /usr/bin/clangd-10
-    dest: /usr/bin/clangd
-    state: link
