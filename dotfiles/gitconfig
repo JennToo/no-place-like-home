@@ -14,3 +14,5 @@
     extra = commit --ammend
     stan = merge
     bruh = blame
+[credential]
+	helper = store
