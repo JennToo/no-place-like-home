@@ -13,3 +13,7 @@ Host cn-lp-jwilcox.adtran.com
     User jwilcox
     ForwardAgent yes
     ForwardX11 yes
+Host electropi
+    User jwilcox
+    ForwardAgent yes
+    ForwardX11 yes

@@ -1,0 +1,6 @@
+- name: Install rust
+  shell: "curl https://sh.rustup.rs -sSf | sh -s -- -y --no-modify-path && rustup component add rls rust-src"
+  args:
+    creates: "{{ lookup('env', 'HOME') }}/.cargo/bin/rustc"
+- name: Update rust
+  shell: "rustup update"

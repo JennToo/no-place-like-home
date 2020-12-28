@@ -6,3 +6,4 @@
   connection: local
   roles:
     - common
+    - docker

@@ -6,8 +6,10 @@
   connection: local
   roles:
     - common
+    - docker
     - bazel
     - re
+    - rust_dev
     - js_dev
     - fpga_dev
     - cpp_dev

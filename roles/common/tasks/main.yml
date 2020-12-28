@@ -54,16 +54,6 @@
   become: yes
   apt:
     name: apt-transport-https
-- name: Prepare docker repo key
-  become: yes
-  apt_key:
-    url: https://download.docker.com/linux/ubuntu/gpg
-    id: 9DC858229FC7DD38854AE2D88D81803C0EBFCD88
-- name: Add docker repo
-  become: yes
-  apt_repository:
-    repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release|lower }} stable"
-    filename: docker
 - name: Prepare gh repo key
   become: yes
   apt_key:
@@ -89,7 +79,6 @@
     - build-essential
     - cowsay
     - curl
-    - docker-ce
     - fd-find
     - flex
     - fzf
@@ -148,12 +137,6 @@
       - pylama
       - pylint
       - virtualenv
-- name: Install rust
-  shell: "curl https://sh.rustup.rs -sSf | sh -s -- -y --no-modify-path && rustup component add rls rust-src"
-  args:
-    creates: "{{ lookup('env', 'HOME') }}/.cargo/bin/rustc"
-- name: Update rust
-  shell: "rustup update"
 - name: Setup neovim virtualenv Python 3
   pip:
     name: pynvim
