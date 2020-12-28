@@ -1,0 +1,8 @@
+- hosts:
+   - localhost
+  vars:
+    home: "{{ lookup('env', 'HOME') }}"
+    user: "{{ lookup('env', 'USER') }}"
+  connection: local
+  roles:
+    - common
