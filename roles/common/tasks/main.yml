@@ -101,7 +101,6 @@
     - libssl-dev
     - neovim
     - openssh-server
-    - pandoc
     - pcscd
     - pkg-config
     - python3-pip
@@ -113,10 +112,8 @@
     - scdaemon
     - shellcheck
     - sl
-    - sshfs
     - tmux
     - tree
-    - wireshark
     - xclip
 - name: Remove apt packages
   become: yes

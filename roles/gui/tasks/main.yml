@@ -35,5 +35,6 @@
     - keepass2
     - meld
     - ttf-mscorefonts-installer
+    - wireshark
 - name: Install VSCode extensions
   script: install_vscode_extensions
