@@ -115,12 +115,6 @@
     - evolution
     - krita
     - thunderbird
-- name: Add user to docker group
-  become: yes
-  user:
-    name: "{{ lookup('env', 'USER') }}"
-    groups: docker
-    append: yes
 - name: Install python packages
   pip:
     name: "{{ packages }}"
@@ -141,7 +135,7 @@
   pip:
     name: pynvim
     virtualenv: "{{ lookup('env', 'HOME') }}/.virtualenvs/neovim-py3"
-    virtualenv_python: python3.8
+    virtualenv_python: python3
 - name: Add jedi to neovim virtualenv
   pip:
     name: jedi

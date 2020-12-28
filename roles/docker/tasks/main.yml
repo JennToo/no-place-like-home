@@ -12,3 +12,9 @@
   become: yes
   apt:
     name: docker-ce
+- name: Add user to docker group
+  become: yes
+  user:
+    name: "{{ lookup('env', 'USER') }}"
+    groups: docker
+    append: yes
