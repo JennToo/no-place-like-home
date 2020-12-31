@@ -46,6 +46,14 @@
       dest: .tmux.conf
     - src: Xresources
       dest: .Xresources
+- name: "Install local scripts"
+  file:
+    src: "{{ item }}"
+    dest: "{{ lookup('env','HOME') }}/.local/bin/{{ item | basename }}"
+    state: link
+    force: yes
+  with_fileglob:
+    - "{{ playbook_dir }}/bin/*"
 - name: ssh-config
   template:
     src: templates/ssh-config

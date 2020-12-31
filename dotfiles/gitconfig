@@ -16,3 +16,5 @@
     bruh = blame
 [credential]
 	helper = store
+[init]
+	defaultBranch = main

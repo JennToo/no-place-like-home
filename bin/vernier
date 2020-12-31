@@ -1,0 +1,26 @@
+#!/usr/bin/env python3
+
+cm = 10.0
+mm = 1.0
+
+main_scale = 1 * cm
+vernier_scale = 1.0 / 5.0 * mm
+
+try:
+    while True:
+        main_raw = input("   Main: ")
+        vernier_raw = input("Vernier: ")
+
+        try:
+            main_value = float(main_raw) * main_scale
+            vernier_value = float(vernier_raw) * vernier_scale
+
+            print(f"{main_value} mm + {vernier_value} mm\n")
+            print(f" => {main_value + vernier_value} mm")
+        except ValueError:
+            print("Invalid number, try again")
+        print()
+except (EOFError, KeyboardInterrupt):
+    pass
+
+print()
