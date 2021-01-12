@@ -20,6 +20,7 @@ Plug 'vim-scripts/groovyindent-unix'
 Plug 'tjvr/vim-nearley'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'nathanaelkane/vim-indent-guides'
 
 call plug#end()
 
@@ -108,3 +109,5 @@ let g:deoplete#sources#jedi#ignore_private_members = 1
 
 let g:jedi#completions_enabled = 0
 let g:jedi#show_call_signatures = 0
+
+let g:indent_guides_enable_on_vim_startup = 1
