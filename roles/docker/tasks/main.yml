@@ -18,3 +18,9 @@
     name: "{{ lookup('env', 'USER') }}"
     groups: docker
     append: yes
+- name: Install docker-compose
+  pip:
+    name: docker-compose
+    executable: pip3
+    extra_args: --user
+    state: latest
