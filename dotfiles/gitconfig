@@ -3,6 +3,7 @@
 	name = Jennifer Wilcox
 [core]
 	excludesfile = /home/jwilcox/.gitignore
+	quotePath = false
 [hub]
 	host = github.adtran.com
 [alias]

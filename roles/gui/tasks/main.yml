@@ -28,11 +28,6 @@
     packages:
     - code
     - dia
-    - fcitx
-    - fcitx-googlepinyin
-    - fcitx-pinyin
-    - fcitx-sunpinyin
-    - fcitx-table-wbpy
     - fonts-noto
     - freecad
     - google-chrome-stable
