@@ -17,4 +17,6 @@
 [credential]
 	helper = store
 [init]
-	defaultBranch = main
+	defaultbranch = main
+[lfs]
+	url = https://artifactory.adtran.com/artifactory/api/lfs/gitlfs

@@ -4,7 +4,7 @@ cm = 10.0
 mm = 1.0
 
 main_scale = 1 * cm
-vernier_scale = 1.0 / 5.0 * mm
+vernier_scale = 1.0 / 5.0 / 2.0 * mm
 
 try:
     while True:
