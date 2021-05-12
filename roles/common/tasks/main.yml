@@ -109,6 +109,7 @@
     - scdaemon
     - shellcheck
     - sl
+    - sshpass
     - tmux
     - tree
     - xclip

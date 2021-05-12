@@ -1,0 +1,24 @@
+- name: Install apt packages
+  become: yes
+  apt:
+    name: "{{ packages }}"
+  vars:
+    packages:
+    - fcitx
+    - fcitx-googlepinyin
+    - fcitx-pinyin
+    - fcitx-sunpinyin
+    - fcitx-table-wbpy
+- name: Setup Kylin key
+  become: yes
+  apt_key:
+    url: "https://keyserver.ubuntu.com/pks/lookup?&op=get&search=0x73BC8FBCF5DE40C6ADFCFFFA9C949F2093F565FF"
+- name: Setup Kylin repo
+  become: yes
+  apt_repository:
+    repo: "deb http://archive.ubuntukylin.com/ukui focal main"
+    filename: kylin
+- name: Install Sogou
+  become: yes
+  apt:
+    name: sogouimebs
