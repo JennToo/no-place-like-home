@@ -71,6 +71,11 @@ then
     export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0
 fi
 
+function prj() {
+    RESULT=$(find "$HOME/repo/" -maxdepth 3 -name '.git' -type d -printf '%h\n' | sed "s#$HOME/repo/##g" | fzf)
+    cd "$HOME/repo/$RESULT"
+}
+
 export GPG_TTY="$(tty)"
 alias nf='nvim $(fzf)'
 export GH_HOST=github.adtran.com

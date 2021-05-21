@@ -19,5 +19,3 @@
 	helper = store
 [init]
 	defaultbranch = main
-[lfs]
-	url = https://artifactory.adtran.com/artifactory/api/lfs/gitlfs
