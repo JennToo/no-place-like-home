@@ -37,6 +37,12 @@ if ! shopt -oq posix; then
 fi
 
 [ -f $HOME/.bash_secrets ] && . "$HOME/.bash_secrets"
+[ -f $HOME/.bash_local ] && . "$HOME/.bash_local"
+
+if ! [ -n "$PROJECTS_HOME" ]
+then
+    export PROJECTS_HOME="$HOME/repo"
+fi
 
 function fclone() {
     hub clone "$1"
@@ -72,8 +78,8 @@ then
 fi
 
 function prj() {
-    RESULT=$(find "$HOME/repo/" -maxdepth 3 -name '.git' -type d -printf '%h\n' | sed "s#$HOME/repo/##g" | fzf)
-    cd "$HOME/repo/$RESULT"
+    RESULT=$(find "$PROJECTS_HOME/" -maxdepth 3 -name '.git' -type d -printf '%h\n' | sed "s#$PROJECTS_HOME/##g" | fzf)
+    cd "$PROJECTS_HOME/$RESULT"
 }
 
 export GPG_TTY="$(tty)"
