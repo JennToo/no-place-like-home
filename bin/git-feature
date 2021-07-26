@@ -1,0 +1,6 @@
+#!/bin/bash
+
+set -ex
+
+git fetch upstream
+git checkout -b "$1" --no-track upstream/master
