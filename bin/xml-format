@@ -1,0 +1,9 @@
+#!/bin/bash
+
+if [ $# -ne 1 ]
+then
+    echo "Usage: xml-format file"
+    exit 1
+fi
+
+xmllint --format "$1" | sponge "$1"
