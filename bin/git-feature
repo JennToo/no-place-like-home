@@ -2,5 +2,12 @@
 
 set -ex
 
+if git for-each-ref --format '%(refname:short)' refs | grep upstream/main
+then
+    BRANCH=upstream/main
+else
+    BRANCH=upstream/master
+fi
+
 git fetch upstream
-git checkout -b "$1" --no-track upstream/master
+git checkout -b "$1" --no-track $BRANCH
