@@ -72,7 +72,7 @@ let g:ale_asm_gcc_executable = "arm-none-eabi-gcc"
 let g:ale_linters = {
 \   'cpp': [],
 \   'haskell': ['stack-build'],
-\   'python': ['pylama'],
+\   'python': [],
 \}
 
 " rst folding is annoying
