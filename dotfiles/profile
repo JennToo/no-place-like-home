@@ -12,14 +12,11 @@ PATH="$HOME/.cargo/bin:$PATH"
 export P4CONFIG=.p4config
 export P4IGNORE=.p4ignore
 export PACKAGE_MAKE_USE_BEAR=1
-export PACKAGE_MAKE_USE_CCACHE=1
 export INSTALL4J_JAVA_HOME_OVERRIDE=/usr/lib/jvm/java-8-openjdk-amd64/
 export OS_CLOUD=openstack
 
 export VISUAL="nvim"
 export EDITOR="nvim"
-
-export VIVADO_ROOTDIR="/opt/Xilinx/Vivado/2018.3"
 
 if [ -e "$HOME/.nix-profile/etc/profile.d/nix.sh" ]
 then

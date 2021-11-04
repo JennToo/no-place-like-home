@@ -44,5 +44,6 @@
         "**/*.so*": true,
         "**/*.a": true
     },
-    "python.languageServer": "Microsoft"
+    "extensions.ignoreRecommendations": true,
+    "python.languageServer": "Pylance"
 }
