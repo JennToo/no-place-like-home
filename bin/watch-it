@@ -5,9 +5,7 @@ import os
 
 
 def walk_git_files():
-    with subprocess.Popen(
-        ["git", "ls-files", "-o", "-c"], stdout=subprocess.PIPE
-    ) as proc:
+    with subprocess.Popen(["git", "ls-files", "-c"], stdout=subprocess.PIPE) as proc:
         for line in proc.stdout:
             yield line[:-1]
 
@@ -33,9 +31,16 @@ def wait_on_these(files):
 
 
 def take_action():
+    if os.path.exists(".watch-it.toml"):
+        contents = load_toml(".watch-it.toml")
+        actions = contents.get("actions")
+        if actions:
+            for action in actions:
+                run(action)
+            return
+
     if os.path.exists("pyproject.toml"):
-        with open("pyproject.toml", "r") as f:
-            contents = toml.load(f)
+        contents = load_toml("pyproject.toml")
         if contents.get("tool", {}).get("porg"):
             take_porg_action()
             return
@@ -47,6 +52,11 @@ def take_porg_action():
     run("porg format")
     run("porg test")
     run("porg check")
+
+
+def load_toml(path):
+    with open(path, "r") as f:
+        return toml.load(f)
 
 
 def run(cmd):
