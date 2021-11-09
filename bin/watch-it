@@ -9,6 +9,13 @@ def walk_git_files():
         for line in proc.stdout:
             yield line[:-1]
 
+    with subprocess.Popen(
+        ["git", "status", "--porcelain"], stdout=subprocess.PIPE
+    ) as proc:
+        for line in proc.stdout:
+            if line.startswith(b"?? "):
+                yield line[3:-1]
+
 
 def wait_on_these(files):
     with subprocess.Popen(
@@ -73,7 +80,7 @@ def main():
             except subprocess.CalledProcessError:
                 pass
 
-    except InterruptedError:
+    except KeyboardInterrupt:
         pass
 
 
