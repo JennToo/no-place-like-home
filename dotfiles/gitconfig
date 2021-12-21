@@ -19,3 +19,7 @@
 	helper = store
 [init]
 	defaultbranch = main
+[pull]
+	rebase = false
+[blame]
+	ignoreRevsFile = .git-blame-ignore-revs
