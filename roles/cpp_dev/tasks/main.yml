@@ -14,7 +14,3 @@
     src: /usr/bin/clangd-10
     dest: /usr/bin/clangd
     state: link
-- name: Install catch2
-  become: yes
-  apt:
-    deb: "http://mirrors.kernel.org/ubuntu/pool/universe/c/catch2/catch2_2.13.0-1_all.deb"
