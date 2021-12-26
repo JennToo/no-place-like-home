@@ -94,7 +94,7 @@ autocmd FileType gitcommit setlocal spell
 
 let g:LanguageClient_serverCommands = {
     \ 'scala': ['metals-vim'],
-    \ 'rust': ['rustup', 'run', 'stable', 'rls'],
+    \ 'rust': ['rust-analyzer'],
     \ 'cpp': ['clangd'],
     \ 'c': ['clangd'],
     \ }
