@@ -83,8 +83,10 @@ function prj() {
     cd "$PROJECTS_HOME/$RESULT"
 }
 
-export GPG_TTY="$(tty)"
 alias nf='nvim $(fzf)'
+alias vrg='nvim -c :Rg'
+
+export GPG_TTY="$(tty)"
 export GH_HOST=github.adtran.com
 eval "$(gh completion -s bash)"
 # BEGIN ANSIBLE MANAGED BLOCK ta5k

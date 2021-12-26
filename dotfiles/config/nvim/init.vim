@@ -7,8 +7,6 @@ Plug 'roxma/nvim-yarp'
 Plug 'flazz/vim-colorschemes'
 Plug 'nathanalderson/yang.vim'
 Plug 'w0rp/ale'
-Plug 'nfvs/vim-perforce'
-Plug 'ARM9/arm-syntax-vim'
 Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
     \ 'do': 'bash install.sh',
@@ -17,11 +15,9 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'deoplete-plugins/deoplete-jedi'
 Plug 'davidhalter/jedi-vim'
 Plug 'vim-scripts/groovyindent-unix'
-Plug 'tjvr/vim-nearley'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'nathanaelkane/vim-indent-guides'
-Plug 'maxbane/vim-asm_ca65'
 
 call plug#end()
 
