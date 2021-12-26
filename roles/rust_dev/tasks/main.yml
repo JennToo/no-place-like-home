@@ -4,3 +4,11 @@
     creates: "{{ lookup('env', 'HOME') }}/.cargo/bin/rustc"
 - name: Update rust
   shell: "rustup update"
+- name: Download rust-analyzer
+  get_url:
+    url: https://github.com/rust-analyzer/rust-analyzer/releases/download/2021-12-20/rust-analyzer-x86_64-unknown-linux-gnu.gz
+    dest: "{{ lookup('env', 'HOME') }}/.local/rust-analyzer-2021-12-20.gz"
+  register: rust_analyzer
+- name: Extract rust-analyzer
+  when: rust_analyzer.changed
+  shell: "gunzip -c {{ lookup('env', 'HOME') }}/.local/rust-analyzer-2021-12-20.gz >{{ lookup('env', 'HOME') }}/.local/bin/rust-analyzer && chmod +x {{ lookup('env', 'HOME') }}/.local/bin/rust-analyzer"
