@@ -7,13 +7,11 @@ Host cn-bm-jwilcox2.adtran.com
     User jwilcox
     ForwardAgent yes
     ForwardX11 yes
-    RemoteForward /run/user/1000/gnupg/S.gpg-agent:/run/user/1000/gnupg/S.gpg-agent.extra
-    StreamLocalBindUnlink yes
-Host cn-lp-jwilcox.adtran.com
-    User jwilcox
+Host simserver6.adtran.com
+    User ubuntu
     ForwardAgent yes
     ForwardX11 yes
-Host electropi
-    User jwilcox
+Host simserver7.adtran.com
+    User ubuntu
     ForwardAgent yes
     ForwardX11 yes
