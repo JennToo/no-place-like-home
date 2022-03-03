@@ -6,8 +6,8 @@ esac
 
 HISTCONTROL=ignoreboth
 shopt -s histappend
-HISTSIZE=50000
-HISTFILESIZE=50000
+HISTSIZE=5000000
+HISTFILESIZE=5000000
 
 shopt -s checkwinsize
 shopt -s globstar
@@ -83,8 +83,11 @@ function prj() {
     cd "$PROJECTS_HOME/$RESULT"
 }
 
+function vrg() {
+    nvim -c ":Rg $1"
+}
+
 alias nf='nvim $(fzf)'
-alias vrg='nvim -c :Rg'
 
 export GPG_TTY="$(tty)"
 export GH_HOST=github.adtran.com
@@ -93,3 +96,10 @@ eval "$(gh completion -s bash)"
 export GHS_LMWHICH="@ghs"
 export GHS_LMHOST="@corp-licmgr.adtran.com"
 # END ANSIBLE MANAGED BLOCK ta5k
+export ARTIFACTORY_SERVER=https://artifactory.adtran.com
+# BEGIN ANSIBLE MANAGED BLOCK
+if [[ ! $PATH =~ $HOME/.local/bin && -d $HOME/.local/bin ]]
+then
+    PATH="$HOME/.local/bin:$PATH"
+fi
+# END ANSIBLE MANAGED BLOCK

@@ -15,11 +15,12 @@
     extra = commit --ammend
     stan = merge
     bruh = blame
-[credential]
-	helper = store
 [init]
 	defaultbranch = main
 [pull]
 	rebase = false
 [blame]
 	ignoreRevsFile = .git-blame-ignore-revs
+[credential "https://github.adtran.com"]
+	username = jwilcox
+	helper = cache --timeout=32400

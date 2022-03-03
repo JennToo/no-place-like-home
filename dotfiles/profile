@@ -6,7 +6,6 @@ if [ -n "$BASH_VERSION" ]; then
     fi
 fi
 
-PATH="$HOME/.local/bin:$PATH"
 PATH="$HOME/.cargo/bin:$PATH"
 
 export P4CONFIG=.p4config
@@ -33,4 +32,3 @@ if grep -i microsoft /proc/version >/dev/null
 then
     export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0
 fi
-if sudo sysctl fs.protected_regular | grep 2 >/dev/null ; then sudo sysctl -w fs.protected_regular=0 ; fi
