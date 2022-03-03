@@ -26,8 +26,6 @@
       dest: .fdignore
     - src: config/nvim
       dest: .config/nvim
-    - src: config/Code/User/settings.json
-      dest: .config/Code/User/settings.json
     - src: config/Code/User/keybindings.json
       dest: .config/Code/User/keybindings.json
     - src: config/autostart/gnome-keyring-ssh.desktop
