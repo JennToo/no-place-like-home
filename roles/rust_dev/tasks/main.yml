@@ -12,3 +12,7 @@
 - name: Extract rust-analyzer
   when: rust_analyzer.changed
   shell: "gunzip -c {{ lookup('env', 'HOME') }}/.local/rust-analyzer-2021-12-20.gz >{{ lookup('env', 'HOME') }}/.local/bin/rust-analyzer && chmod +x {{ lookup('env', 'HOME') }}/.local/bin/rust-analyzer"
+- name: Install flip-link
+  command: "cargo install flip-link"
+  args:
+    creates: "{{ home }}/.cargo/bin/flip-link"
