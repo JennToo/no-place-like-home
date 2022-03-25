@@ -11,6 +11,7 @@
     - .local/bin
     - .virtualenvs
     - .gnupg
+    - .FreeCAD
 - name: "Install dotfiles"
   file:
     src: "{{ playbook_dir }}/dotfiles/{{ item.src }}"
@@ -44,6 +45,8 @@
       dest: .tmux.conf
     - src: Xresources
       dest: .Xresources
+    - src: FreeCAD/Macro
+      dest: .FreeCAD/Macro
 - name: "Install local scripts"
   file:
     src: "{{ item }}"

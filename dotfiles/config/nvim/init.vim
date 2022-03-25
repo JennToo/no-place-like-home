@@ -87,6 +87,7 @@ au BufNewFile,BufRead *.s,*.S set filetype=arm " arm = armv6/7
 au BufNewFile,BufRead *.a65 set ft=asm_ca65
 au BufNewFile,BufRead *.md,*.rst setlocal spell
 autocmd FileType gitcommit setlocal spell
+au BufNewFile,BufRead *.FCMacro set ft=python
 
 let g:LanguageClient_serverCommands = {
     \ 'scala': ['metals-vim'],
