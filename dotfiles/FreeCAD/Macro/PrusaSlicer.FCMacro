@@ -42,13 +42,14 @@ def main():
         raise RuntimeError("No active document")
 
     objects_to_export = Gui.Selection.getSelection()
-    mesh_path = tempfile.mktemp(prefix="FreeCAD-mesh", suffix=".stl")
 
     try:
         # Create temporary doc to store meshes so that we don't affect current doc history
         tmp_doc = app.newDocument("meshes")
         meshes = []
+        name = ""
         for o in objects_to_export:
+            name += o.Label
             if o.TypeId == "Mesh::Feature":
                 meshes.append(o)
             else:
@@ -64,6 +65,7 @@ def main():
                 meshes.append(mesh)
 
         if meshes:
+            mesh_path = tempfile.mktemp(prefix=name + "-", suffix=".stl")
             Mesh.export(meshes, mesh_path)
         else:
             raise RuntimeError("No object selected")
