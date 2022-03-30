@@ -89,6 +89,9 @@ function vrg() {
 
 alias nf='nvim $(fzf)'
 
+alias forgetful_ssh='ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null'
+alias forgetful_scp='scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null'
+
 export GPG_TTY="$(tty)"
 export GH_HOST=github.adtran.com
 eval "$(gh completion -s bash)"
