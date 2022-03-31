@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=Prusa Slicer
+Exec=/home/jwilcox/.local/bin/prusa-slicer
+Terminal=false
+Icon=prusa-slicer

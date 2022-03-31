@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=FreeCAD Link Stage 3
+Exec=/home/jwilcox/.local/bin/freecad-linkstage3
+Terminal=false
+Icon=freecad
