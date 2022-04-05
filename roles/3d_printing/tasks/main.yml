@@ -4,19 +4,17 @@
     checksum: "md5:110178ee326e68c79dd0f5d845f8835e"
     dest: "{{ home }}/.local/bin/prusa-slicer"
     mode: "700"
-- name: Download FreeCAD-LinkStage3
-  get_url:
-    url: "https://github.com/realthunder/FreeCAD_assembly3/releases/download/0.11/FreeCAD-asm3-Daily-Conda-Py3-Qt5-20220111-glibc2.12-x86_64.AppImage"
-    checksum: "md5:fcdcb31513e7118051d7695222f2fdd3"
-    dest: "{{ home }}/.local/bin/freecad-linkstage3"
-    mode: "700"
+- name: Install realthunder FreeCAD
+  become: yes
+  snap:
+    name: freecad-realthunder
+    channel: "latest/edge"
 - name: Install desktop entries
   shell: "desktop-file-install --dir={{ home }}/.local/share/applications roles/3d_printing/files/{{ item }} && update-desktop-database {{ home }}/.local/share/applications"
   args:
     creates: "{{ home }}/.local/share/applications/{{ item }}"
   loop:
     - PrusaSlicer.desktop
-    - FreeCAD-LS3.desktop
 - name: Create icons directory
   file:
     state: directory
