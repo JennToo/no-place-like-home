@@ -1,17 +1,6 @@
+Include /home/jwilcox/.ssh/config.d/*.conf
 Host nat.ddns.me
     Port 28
     User jwilcox
-    ForwardAgent yes
-    ForwardX11 yes
-Host cn-bm-jwilcox2.adtran.com
-    User jwilcox
-    ForwardAgent yes
-    ForwardX11 yes
-Host simserver6.adtran.com
-    User ubuntu
-    ForwardAgent yes
-    ForwardX11 yes
-Host simserver7.adtran.com
-    User ubuntu
     ForwardAgent yes
     ForwardX11 yes
