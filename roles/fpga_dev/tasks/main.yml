@@ -1,34 +1,3 @@
-- name: Install apt packages
-  become: yes
-  apt:
-    name: "{{ packages }}"
-  vars:
-    packages:
-    - gtkwave
-    - verilator
-- name: Create verible directory
-  file:
-    dest: "{{ lookup('env', 'HOME') }}/.local/share/veriable-0.0.705"
-    state: directory
-- name: Download verible binaries
-  unarchive:
-    src: https://github.com/google/verible/releases/download/v0.0-705-g75249d0/verible-v0.0-705-g75249d0-Ubuntu-20.04-focal-x86_64.tar.gz
-    dest: "{{ lookup('env', 'HOME') }}/.local/share/veriable-0.0.705"
-    extra_opts: "--strip-components=1"
-    remote_src: yes
-- name: Symlink verible binaries
-  file:
-    src: "{{ lookup('env', 'HOME') }}/.local/share/veriable-0.0.705/bin/{{ item }}"
-    dest: "{{ lookup('env', 'HOME') }}/.local/bin/{{ item }}"
-    state: link
-  loop:
-    - verible-patch-tool
-    - verible-verilog-diff
-    - verible-verilog-format
-    - verible-verilog-lint
-    - verilog_diff
-    - verilog_format
-    - verilog_lint
 - name: Setup ULX3S udev rule
   become: yes
   copy:
@@ -38,7 +7,3 @@
       SUBSYSTEM=="tty", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6015", MODE="664", GROUP="dialout"
       # this is for ujprog libusb access
       ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6015", GROUP="dialout", MODE="666"
-- name: Install ULX3S toolchain
-  become: yes
-  apt:
-    deb: https://github.com/alpin3/ulx3s/releases/download/v2020.10.12/ulx3s-toolchain_2020.10.12-2_amd64.deb

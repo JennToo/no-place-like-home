@@ -1,8 +1,0 @@
-- name: Install apt packages
-  become: yes
-  apt:
-    name: "{{ packages }}"
-  vars:
-    packages:
-    - default-jdk
-    - sbt
