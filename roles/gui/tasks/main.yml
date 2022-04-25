@@ -16,10 +16,6 @@
   apt_repository:
     repo: "deb [arch=amd64] http://packages.microsoft.com/repos/vscode stable main"
     filename: vscode
-- name: Add FreeCad repo
-  become: yes
-  apt_repository:
-    repo: ppa:freecad-maintainers/freecad-stable
 - name: Install apt packages
   become: yes
   apt:

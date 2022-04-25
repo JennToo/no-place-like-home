@@ -71,7 +71,7 @@
 - name: Add gh repo
   become: yes
   apt_repository:
-    repo: "deb https://cli.github.com/packages {{ ansible_distribution_release|lower }} main"
+    repo: "deb https://cli.github.com/packages stable main"
     filename: gh
 - name: Update apt packages
   become: yes

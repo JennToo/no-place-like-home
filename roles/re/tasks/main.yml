@@ -5,5 +5,3 @@
   vars:
     packages:
     - binwalk
-    - radare2
-    - radare2-cutter
