@@ -8,3 +8,4 @@ compile_commands.json
 /*.iml
 /project/metals.sbt
 /.clangd
+/.cache/clangd
