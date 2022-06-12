@@ -7,6 +7,7 @@
     - bear
     - clang-format
     - clangd-14
+    - cmake
     - g++-10
 - name: Setup clangd symlink
   become: yes
