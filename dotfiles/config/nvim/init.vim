@@ -2,18 +2,13 @@ let g:python3_host_prog = "/home/jwilcox/.virtualenvs/neovim-py3/bin/python"
 
 call plug#begin('~/.local/share/nvim/plugged')
 
+Plug 'neovim/nvim-lspconfig'
+Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
 Plug 'sheerun/vim-polyglot'
 Plug 'roxma/nvim-yarp'
 Plug 'flazz/vim-colorschemes'
 Plug 'nathanalderson/yang.vim'
 Plug 'w0rp/ale'
-Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'deoplete-plugins/deoplete-jedi'
-Plug 'davidhalter/jedi-vim'
 Plug 'Nitori-/vim-groovy'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
@@ -21,7 +16,6 @@ Plug 'nathanaelkane/vim-indent-guides'
 Plug 'maxbane/vim-asm_ca65'
 
 call plug#end()
-
 
 " General vim config
 set clipboard=unnamedplus
@@ -90,23 +84,22 @@ au BufNewFile,BufRead *.md,*.rst setlocal spell
 autocmd FileType gitcommit setlocal spell
 au BufNewFile,BufRead *.FCMacro set ft=python
 
-let g:LanguageClient_serverCommands = {
-    \ 'scala': ['metals-vim'],
-    \ 'rust': ['rust-analyzer'],
-    \ 'cpp': ['clangd'],
-    \ 'c': ['clangd'],
-    \ }
-nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
-nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
-nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
-let g:LanguageClient_useVirtualText = 'No'
-let g:LanguageClient_loggingLevel = 'DEBUG'
-
-let g:deoplete#enable_at_startup = 1
-autocmd CompleteDone * silent! pclose!
-let g:deoplete#sources#jedi#ignore_private_members = 1
-
-let g:jedi#completions_enabled = 0
-let g:jedi#show_call_signatures = 0
-
 let g:indent_guides_enable_on_vim_startup = 1
+
+lua <<EOF
+local lspconfig = require('lspconfig')
+
+vim.g.coq_settings = {
+    auto_start = 'shut-up',
+    clients = {
+        snippets = {
+            warn = {}
+        }
+    }
+}
+
+local servers = { 'clangd', 'rust_analyzer', 'pyright' }
+for _, lsp in ipairs(servers) do
+  lspconfig[lsp].setup(require('coq').lsp_ensure_capabilities({}))
+end
+EOF
