@@ -152,7 +152,8 @@
     virtualenv: "{{ lookup('env', 'HOME') }}/.virtualenvs/neovim-py3"
 - name: Download insect
   get_url:
-    url: https://github.com/sharkdp/insect/releases/download/v5.3.0/insect-linux-x64
+    url: https://github.com/sharkdp/insect/releases/download/v5.7.0/insect-linux-x64
+    checksum: sha256:38d0971342c741bcc688416059ad936b371d4fc5f74883a4369952b1ff4e3b02.
     dest: "{{ lookup('env','HOME') }}/.local/bin/insect"
 - name: Chmod insect
   file:

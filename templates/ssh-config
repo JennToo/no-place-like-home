@@ -1,5 +1,5 @@
 Include /home/jwilcox/.ssh/config.d/*.conf
-Host nat.ddns.me
+Host home.nitori.org
     Port 28
     User jwilcox
     ForwardAgent yes

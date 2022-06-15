@@ -19,8 +19,6 @@
 	defaultbranch = main
 [pull]
 	rebase = false
-[blame]
-	ignoreRevsFile = .git-blame-ignore-revs
 [credential "https://github.adtran.com"]
 	username = jwilcox
 	helper = cache --timeout=32400
