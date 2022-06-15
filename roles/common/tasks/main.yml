@@ -137,9 +137,9 @@
       - neovim
       - poetry
       - pre-commit
-      - pycodestyle
       - pylama
       - pylint
+      - pyright
       - virtualenv
 - name: Setup neovim virtualenv Python 3
   pip:
