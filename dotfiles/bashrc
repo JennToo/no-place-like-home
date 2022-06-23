@@ -101,6 +101,8 @@ export GHS_LMHOST="@corp-licmgr.adtran.com"
 # END ANSIBLE MANAGED BLOCK ta5k
 export ARTIFACTORY_SERVER=https://artifactory.adtran.com
 export DOCKERBINARY=/opt/lsk-docker/docker
+
+. "$HOME/.nvm/nvm.sh"
 # BEGIN ANSIBLE MANAGED BLOCK
 if [[ ! $PATH =~ $HOME/.local/bin && -d $HOME/.local/bin ]]
 then
