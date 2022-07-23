@@ -1,0 +1,28 @@
+#!/usr/bin/env python3
+from tkinter import Tk, ttk
+from subprocess import run
+import atexit
+
+root = Tk()
+frame = ttk.Frame(root, padding=10)
+frame.grid()
+ttk.Label(frame, text="Delay:").grid(column=0, row=0)
+delay_amount = ttk.Spinbox(frame, from_=1, to=30, increment=1)
+delay_amount.grid(column=1, row=0)
+delay_amount.set(1)
+
+def enable():
+    print(f"Enabling monitor at {delay_amount.get()}")
+    run(["pactl", "unload-module", "module-loopback"], check=False)
+    run(["pactl", "load-module", "module-loopback", f"latency_msec={delay_amount.get()}000"], check=True)
+
+def disable():
+    print("Disabling monitor")
+    run(["pactl", "unload-module", "module-loopback"], check=False)
+
+ttk.Button(frame, text="Enable Monitoring", command=enable).grid(column=0, row=1, padx=10, pady=10)
+ttk.Button(frame, text="Disable Monitoring", command=disable).grid(column=1, row=1)
+
+atexit.register(disable)
+
+root.mainloop()
