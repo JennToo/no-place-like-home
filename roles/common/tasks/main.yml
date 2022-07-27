@@ -124,7 +124,6 @@
     - elixir
     - evolution
     - krita
-    - thunderbird
 - name: Install python packages
   pip:
     name: "{{ packages }}"
