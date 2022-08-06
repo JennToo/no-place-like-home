@@ -47,6 +47,8 @@
       dest: .Xresources
     - src: FreeCAD/Macro
       dest: .FreeCAD/Macro
+    - src: ideavimrc
+      dest: .ideavimrc
 - name: "Install local scripts"
   file:
     src: "{{ item }}"
