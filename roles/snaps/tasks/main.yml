@@ -7,6 +7,7 @@
       - spotify
       - discord
       - krita
+      - pinta
 - name: Add classic snaps
   become: yes
   snap:
