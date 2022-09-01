@@ -1,0 +1,31 @@
+#!/bin/bash
+
+# Script for writing floppy disk images to a USB drive formatted for a Gotek
+# floppy emulator.
+#
+# Inspired by numbers from:
+# https://github.com/xtcrefugee/gotek-usb-batch-files/blob/4e1ce8faaf1e34d618772cd6360cb6bf969e18d2/extract.cmd
+
+set -ex
+
+DRIVE="$1"
+IMAGE="$2"
+FLOPPY="$3"
+
+# Sanity check that this is running against the right drive. This will vary
+# depending on the USB stick size
+DRIVE_SIZE_EXPECTED="15376318464"
+
+if ! [ "$DRIVE_SIZE_EXPECTED" = "$(sudo blockdev --getsize64 "$DRIVE")" ]
+then
+    echo "Drive sanity check failed"
+    exit 1
+fi
+
+BLOCK_COUNT=1440
+BLOCK_SIZE=1k
+OFFSET_COUNT=1536
+
+FULL_OFFSET=$((OFFSET_COUNT * FLOPPY))
+
+sudo dd if="$IMAGE" of="$DRIVE" bs=$BLOCK_SIZE count=$BLOCK_COUNT seek=$FULL_OFFSET
