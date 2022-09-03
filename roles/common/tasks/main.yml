@@ -91,6 +91,7 @@
     - cowsay
     - curl
     - fd-find
+    - flatpak
     - flex
     - fzf
     - gdb-multiarch
@@ -160,3 +161,9 @@
   file:
     path: "{{ lookup('env','HOME') }}/.local/bin/insect"
     mode: a+x
+- name: Add the flathub flatpak repository remote to the user installation
+  become: yes
+  community.general.flatpak_remote:
+    name: flathub
+    state: present
+    flatpakrepo_url: https://flathub.org/repo/flathub.flatpakrepo

@@ -1,0 +1,7 @@
+- name: Install game flatpaks
+  become: yes
+  flatpak:
+    name: '{{ item }}'
+  loop:
+    - io.openrct2.OpenRCT2
+    - org.openttd.OpenTTD
