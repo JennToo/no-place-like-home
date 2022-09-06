@@ -65,16 +65,6 @@
   become: yes
   apt:
     name: apt-transport-https
-- name: Prepare gh repo key
-  become: yes
-  apt_key:
-    keyserver: keyserver.ubuntu.com
-    id: C99B11DEB97541F0
-- name: Add gh repo
-  become: yes
-  apt_repository:
-    repo: "deb https://cli.github.com/packages stable main"
-    filename: gh
 - name: Update apt packages
   become: yes
   apt:
@@ -95,7 +85,6 @@
     - flex
     - fzf
     - gdb-multiarch
-    - gh
     - git
     - gnupg2
     - htop
