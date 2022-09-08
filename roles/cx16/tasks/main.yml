@@ -16,7 +16,7 @@
     state: directory
 - name: Download emulator
   get_url:
-    url: https://github.com/commanderx16/x16-emulator/releases/download/r38/x16emu_linux-r38.zip
+    url: https://github.com/commanderx16/x16-emulator/releases/download/r41/x16emu_linux-r41.zip
     dest: "{{ home }}/.cache/ansible-downloads"
   register: x16_emu
 - name: Install emulator
