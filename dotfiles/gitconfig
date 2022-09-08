@@ -22,3 +22,5 @@
 [credential "https://github.adtran.com"]
 	username = jwilcox
 	helper = cache --timeout=32400
+[diff]
+	external = difft
