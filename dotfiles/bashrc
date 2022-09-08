@@ -94,7 +94,7 @@ alias forgetful_scp='scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/
 
 export GPG_TTY="$(tty)"
 export GH_HOST=github.adtran.com
-if command -v gh
+if command -v gh >/dev/null
 then
     eval "$(gh completion -s bash)"
 fi
