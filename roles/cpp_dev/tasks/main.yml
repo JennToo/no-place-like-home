@@ -9,6 +9,7 @@
     - clangd-14
     - cmake
     - g++-10
+    - ninja-build
 - name: Setup clangd symlink
   become: yes
   file:
