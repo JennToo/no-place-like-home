@@ -94,7 +94,7 @@ alias forgetful_scp='scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/
 
 export GPG_TTY="$(tty)"
 export GH_HOST=github.adtran.com
-if command -v gh
+if command -v gh >/dev/null
 then
     eval "$(gh completion -s bash)"
 fi
@@ -110,6 +110,11 @@ then
     . "$HOME/.nvm/nvm.sh"
 fi
 
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 # BEGIN ANSIBLE MANAGED BLOCK
 if [[ ! $PATH =~ $HOME/.local/bin && -d $HOME/.local/bin ]]
 then
