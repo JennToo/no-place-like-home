@@ -96,7 +96,7 @@ export GPG_TTY="$(tty)"
 export GH_HOST=github.adtran.com
 if command -v gh >/dev/null
 then
-    eval "$(gh completion -s bash)"
+eval "$(gh completion -s bash)"
 fi
 # BEGIN ANSIBLE MANAGED BLOCK ta5k
 export GHS_LMWHICH="@ghs"
