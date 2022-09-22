@@ -1,3 +1,5 @@
 /playbook.retry
 /playbook.yml
 *.spl
+*.pyc
+__pycache__
