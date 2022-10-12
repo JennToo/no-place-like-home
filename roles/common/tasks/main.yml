@@ -89,7 +89,6 @@
     - gnupg2
     - htop
     - libssl-dev
-    - neovim
     - openssh-server
     - pcscd
     - pkg-config
@@ -116,6 +115,17 @@
     - elixir
     - evolution
     - krita
+- name: Download neovim
+  get_url:
+    url: https://github.com/neovim/neovim/releases/download/v0.8.0/nvim-linux64.deb
+    checksum: sha256:215c88e8cf3fefcd02ef45dc8cdad563e1c601faeddca41565b6b852fceb26b5
+    dest: "{{ lookup('env','HOME') }}/.local/share/neovim.deb"
+  register: neovim_dl
+- name: Install neovim
+  become: yes
+  apt:
+    deb: "{{ neovim_dl.dest }}"
+  when: neovim_dl.changed
 - name: Install python packages
   pip:
     name: "{{ packages }}"
