@@ -98,6 +98,13 @@ vim.g.coq_settings = {
     }
 }
 
+local opts = { noremap=true, silent=true }
+vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
+vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
+vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
+vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
+
 local servers = { 'clangd', 'rust_analyzer', 'pyright' }
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup(require('coq').lsp_ensure_capabilities({}))
