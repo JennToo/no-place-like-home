@@ -166,3 +166,14 @@
     name: flathub
     state: present
     flatpakrepo_url: https://flathub.org/repo/flathub.flatpakrepo
+- name: Download difftastic
+  get_url:
+    url: https://github.com/Wilfred/difftastic/releases/download/0.36.1/difft-x86_64-unknown-linux-gnu.tar.gz
+    checksum: sha256:4acc8dbd23a8e61d4f2dad94dba98cb2d9d5b2a9c7c12f22a78d2ce841707524
+    dest: "{{ lookup('env','HOME') }}/.local/share/difft.tar.gz"
+  register: difft_dl
+- name: Extract difftastic
+  ansible.builtin.unarchive:
+    src: "{{ difft_dl.dest }}"
+    dest: "{{ lookup('env','HOME') }}/.local/bin/"
+  when: difft_dl.changed

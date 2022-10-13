@@ -19,5 +19,3 @@
   loop:
     - pkg: flip-link
       creates: "{{ home }}/.cargo/bin/flip-link"
-    - pkg: difftastic
-      creates: "{{ home }}/.cargo/bin/difft"
