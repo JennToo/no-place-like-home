@@ -6,12 +6,13 @@
   shell: "rustup update"
 - name: Download rust-analyzer
   get_url:
-    url: https://github.com/rust-analyzer/rust-analyzer/releases/download/2021-12-20/rust-analyzer-x86_64-unknown-linux-gnu.gz
-    dest: "{{ lookup('env', 'HOME') }}/.local/rust-analyzer-2021-12-20.gz"
+    url: https://github.com/rust-lang/rust-analyzer/releases/download/2022-10-10/rust-analyzer-x86_64-unknown-linux-gnu.gz
+    dest: "{{ lookup('env', 'HOME') }}/.local/rust-analyzer.gz"
+    checksum: sha256:38535e9231285123e1dfa838908e61624f0f5dd8cb58e255408b30ea19a3a6eb
   register: rust_analyzer
 - name: Extract rust-analyzer
   when: rust_analyzer.changed
-  shell: "gunzip -c {{ lookup('env', 'HOME') }}/.local/rust-analyzer-2021-12-20.gz >{{ lookup('env', 'HOME') }}/.local/bin/rust-analyzer && chmod +x {{ lookup('env', 'HOME') }}/.local/bin/rust-analyzer"
+  shell: "gunzip -c {{ rust_analyzer.dest }} >{{ lookup('env', 'HOME') }}/.local/bin/rust-analyzer && chmod +x {{ lookup('env', 'HOME') }}/.local/bin/rust-analyzer"
 - name: Install required apt packages
   become: yes
   apt:
