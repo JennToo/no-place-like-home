@@ -10,6 +10,7 @@
     - bazel
     - re
     - rust_dev
+    - lisp_dev
     - fpga_dev
     - cpp_dev
     - gba_dev

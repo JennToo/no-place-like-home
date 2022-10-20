@@ -14,6 +14,7 @@ silent! let g:plugs['vim-colorschemes'].commit = 'fd8f122cef604330c96a6a6e434682
 silent! let g:plugs['vim-groovy'].commit = '114d8adbbbb39da09d61336b357e337943b15b1b'
 silent! let g:plugs['vim-indent-guides'].commit = '765084d38bf102a95ab966fb06472e83fa7deff7'
 silent! let g:plugs['vim-polyglot'].commit = '38282d58387cff48ac203f6912c05e4c8686141b'
+silent! let g:plugs['vlime'].commit = '3205f02306314ab8cfc9034cf72097891c923e9d'
 silent! let g:plugs['yang.vim'].commit = '0edaeb616be8f66caed2c888095446006fd4a6fa'
 
 PlugUpdate!
