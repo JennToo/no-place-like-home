@@ -15,6 +15,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'maxbane/vim-asm_ca65'
 Plug 'vlime/vlime', {'rtp': 'vim/'}
+Plug 'kovisoft/paredit'
 
 call plug#end()
 
