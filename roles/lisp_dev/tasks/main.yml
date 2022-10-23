@@ -1,3 +1,7 @@
+- name: Setup racket PPA
+  become: yes
+  apt_repository:
+    repo: ppa:plt/racket
 - name: Install apt packages
   become: yes
   apt:
@@ -7,6 +11,7 @@
     - sbcl-source
     - sbcl-doc
     - cl-quicklisp
+    - racket
 - name: Install quicklisp
   shell: "sbcl --load /usr/share/common-lisp/source/quicklisp/quicklisp.lisp --script ./roles/lisp_dev/files/quicklisp-install.lisp"
   args:
