@@ -47,6 +47,8 @@ set autoread
 nnoremap <Leader>ff :Files<Cr>
 nnoremap <Leader>b :Buffers<Cr>
 
+inoremap <C-L> λ
+
 " Color scheme
 set background=light
 try
