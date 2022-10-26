@@ -99,7 +99,8 @@ vim.g.coq_settings = {
         snippets = {
             warn = {}
         }
-    }
+    },
+    display = { icons = { mode = 'none' } }
 }
 
 local opts = { noremap=true, silent=true }
