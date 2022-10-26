@@ -12,6 +12,8 @@
     - .virtualenvs
     - .gnupg
     - .FreeCAD
+    - .local/share
+    - .fonts
 - name: "Install dotfiles"
   file:
     src: "{{ playbook_dir }}/dotfiles/{{ item.src }}"
@@ -27,6 +29,8 @@
       dest: .fdignore
     - src: config/nvim
       dest: .config/nvim
+    - src: config/alacritty
+      dest: .config/alacritty
     - src: config/Code/User/keybindings.json
       dest: .config/Code/User/keybindings.json
     - src: config/autostart/gnome-keyring-ssh.desktop
