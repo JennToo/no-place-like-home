@@ -14,6 +14,7 @@
     - fpga_dev
     - cpp_dev
     - gba_dev
+    - emacs
     - cx16
     - gui
     - snaps

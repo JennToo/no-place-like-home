@@ -1,0 +1,15 @@
+---
+- name: Install apt packages
+  become: true
+  apt:
+    name: "{{ item }}"
+  loop:
+    - emacs
+    - fonts-nanum
+    - fonts-nanum-extra
+- name: Install spacemacs
+  git:
+    repo: https://github.com/syl20bnr/spacemacs
+    dest: "{{ lookup('env','HOME') }}/.emacs.d"
+    version: develop
+    update: false
