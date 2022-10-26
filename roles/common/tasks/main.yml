@@ -27,6 +27,8 @@
       dest: .gitignore
     - src: fdignore
       dest: .fdignore
+    - src: spacemacs
+      dest: .spacemacs
     - src: config/nvim
       dest: .config/nvim
     - src: config/alacritty
