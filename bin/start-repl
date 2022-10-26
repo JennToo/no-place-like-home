@@ -1,0 +1,20 @@
+#!/bin/bash
+
+REPL="racket -i"
+if [ -n "$1" ]
+then
+    REPL="$1"
+    shift
+fi
+
+cleanup() {
+    tmux select-pane -T Shelly
+}
+
+trap cleanup EXIT
+
+set -ex
+
+tmux select-pane -T REPL
+
+$REPL "$@"

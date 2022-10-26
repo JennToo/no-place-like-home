@@ -1,0 +1,13 @@
+#!/bin/bash
+
+set -eu
+
+TARGET="$1"
+INDEX="$(tmux list-panes -F '#{window_index}.#{pane_index} "#{pane_title}"' | awk '$2 ~ /"'"$TARGET"'"/ { print $1 }')"
+KEYS="$(cat </dev/stdin)"
+
+if [ -n "$INDEX" ]
+then
+    tmux send-keys -t "$INDEX" -l "$KEYS"
+    tmux send-keys -t "$INDEX" Enter
+fi

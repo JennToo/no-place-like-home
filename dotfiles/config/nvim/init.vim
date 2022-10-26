@@ -48,6 +48,8 @@ nnoremap <Leader>ff :Files<Cr>
 nnoremap <Leader>b :Buffers<Cr>
 
 inoremap <C-L> λ
+nnoremap <Leader>st mavip:w !tmux-sender REPL<Cr><Cr>`a
+vnoremap <Leader>ss :w !tmux-sender REPL<Cr><Cr>
 
 " Color scheme
 set background=light

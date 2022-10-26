@@ -1,0 +1,12 @@
+---
+font:
+  normal:
+    family: Source Code Pro
+    style: Medium
+colors:
+  primary:
+    background: '#ffffff'
+    foreground: '#000000'
+  normal:
+    green: '#3AAB75'
+    blue: '#1A498B'
