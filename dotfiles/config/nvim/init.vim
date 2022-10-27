@@ -9,7 +9,7 @@ Plug 'roxma/nvim-yarp'
 Plug 'flazz/vim-colorschemes'
 Plug 'nathanalderson/yang.vim'
 Plug 'w0rp/ale'
-Plug 'Nitori-/vim-groovy'
+Plug 'JennToo/vim-groovy'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'nathanaelkane/vim-indent-guides'
