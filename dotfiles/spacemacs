@@ -10,7 +10,7 @@ This function should only modify configuration layer settings."
    dotspacemacs-configuration-layer-path '()
 
    dotspacemacs-configuration-layers
-   '(
+   '(auto-completion
      common-lisp
      emacs-lisp
      helm
