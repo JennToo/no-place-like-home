@@ -7,6 +7,9 @@
     - emacs
     - fonts-nanum
     - fonts-nanum-extra
+    # This is for vterm
+    - libtool
+    - libtool-bin
 - name: Install spacemacs
   git:
     repo: https://github.com/syl20bnr/spacemacs
