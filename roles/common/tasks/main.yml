@@ -185,3 +185,9 @@
     src: "{{ difft_dl.dest }}"
     dest: "{{ lookup('env','HOME') }}/.local/bin/"
   when: difft_dl.changed
+- name: Install WatchIt
+  get_url:
+    url: https://github.com/ADTRAN/WatchIt/releases/download/v1.0.0/watchit
+    dest: "{{ lookup('env','HOME') }}/.local/bin/watchit"
+    checksum: sha256:ecae0fb92d2cb6efdbb2f34bbfbcc0d00a486231939ebd73f5155881962af367
+    mode: '0755'
