@@ -9,6 +9,7 @@
     - .config/systemd/user
     - .ssh
     - .local/bin
+    - .local/src
     - .virtualenvs
     - .gnupg
     - .FreeCAD
