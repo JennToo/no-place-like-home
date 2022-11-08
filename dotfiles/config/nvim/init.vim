@@ -89,6 +89,7 @@ au BufNewFile,BufRead *.a65 set ft=asm_ca65
 au BufNewFile,BufRead *.md,*.rst setlocal spell
 autocmd FileType gitcommit setlocal spell
 au BufNewFile,BufRead *.FCMacro set ft=python
+au BufNewFile,BufRead *.zuo set ft=racket
 
 let g:indent_guides_enable_on_vim_startup = 1
 
