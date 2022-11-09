@@ -1,0 +1,6 @@
+- name: Install alire
+  get_url:
+    url: https://github.com/alire-project/alire/releases/download/v1.2.1/alr-1.2.1-x86_64.AppImage
+    dest: "{{ home }}/.local/bin/alr"
+    mode: "755"
+    checksum: sha256:2a3171cb46de653f34bb1dae7ef784c9f6b33dd972c02c24f903b1428aa00e3f

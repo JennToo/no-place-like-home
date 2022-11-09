@@ -13,6 +13,7 @@
     - lisp_dev
     - fpga_dev
     - cpp_dev
+    - ada_dev
     - gba_dev
     - emacs
     - cx16
