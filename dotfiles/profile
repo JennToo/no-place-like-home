@@ -32,3 +32,9 @@ if grep -i microsoft /proc/version >/dev/null
 then
     export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0
 fi
+
+GNATSTUDIO_HOME="$HOME/.local/share/gnatstudio-23.0w-20220512-x86_64-linux-bin"
+if [ -e "$GNATSTUDIO_HOME" ]
+then
+    PATH=$PATH:$GNATSTUDIO_HOME/bin
+fi

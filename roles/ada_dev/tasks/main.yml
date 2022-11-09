@@ -4,3 +4,14 @@
     dest: "{{ home }}/.local/bin/alr"
     mode: "755"
     checksum: sha256:2a3171cb46de653f34bb1dae7ef784c9f6b33dd972c02c24f903b1428aa00e3f
+- name: Download gnatstudio
+  get_url:
+    url: https://github.com/AdaCore/gnatstudio/releases/download/gnatstudio-cr-20220512/gnatstudio-23.0w-20220512-x86_64-linux-bin.tar.gz
+    dest: "{{ home }}/.local/share/gnatstudio.tar.gz"
+    checksum: sha256:788bde77af2affb0797a783e2f158ca230d89858c0e4eb18355abd20e146baa0
+  register: gnatstudio
+- name: Extract gnatstudio
+  unarchive:
+    src: "{{ gnatstudio.dest }}"
+    dest: "{{ home }}/.local/share"
+  when: gnatstudio.changed
