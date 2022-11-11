@@ -42,6 +42,21 @@
   synchronize:
     src: "{{ lookup('env','HOME') }}/.local/share/source-code-pro/OTF/"
     dest: "{{ lookup('env','HOME') }}/.fonts/"
+- name: Download Ubuntu Mono Nerd Font
+  get_url:
+    url: https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/UbuntuMono.zip
+    dest: "{{ home }}/.local/share/UbuntuMono-Nerd.zip"
+    checksum: sha256:6a5b0cf6ec7c20c93d3854d0ffa1f0944ad18d11b6574d057b401ece63f64c56
+  register: ubuntu_nerd
+- name: Install Ubuntu Mono Nerd Font
+  unarchive:
+    src: "{{ ubuntu_nerd.dest }}"
+    dest: "{{ home }}/.fonts"
+  when: ubuntu_nerd.changed
+  register: ubuntu_nerd_install
+- name: Update font cache
+  shell: fc-cache -fv
+  when: ubuntu_nerd_install.changed
 - name: "Install cargo packages"
   community.general.cargo:
     name: "{{ item }}"
