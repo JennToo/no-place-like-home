@@ -1,5 +1,8 @@
-let g:python3_host_prog = "/home/jwilcox/.virtualenvs/neovim-py3/bin/python"
+lua <<EOF
+vim.g.python3_host_prog = "/home/jwilcox/.virtualenvs/neovim-py3/bin/python"
 
+vim.api.nvim_exec(
+[[
 call plug#begin('~/.local/share/nvim/plugged')
 
 Plug 'neovim/nvim-lspconfig'
@@ -14,86 +17,107 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'maxbane/vim-asm_ca65'
-Plug 'vlime/vlime', {'rtp': 'vim/'}
 Plug 'kovisoft/paredit'
 
 call plug#end()
+]], true)
 
-" General vim config
-set clipboard=unnamedplus
-set number
-highlight ExtraWhitespace ctermbg=red guibg=red
-match ExtraWhitespace /\s\+$/
-:autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
-nmap <Leader>t  :terminal<CR>:file<Space>
-autocmd TermOpen * setlocal nonumber norelativenumber
-set spelllang=en
-set spellfile=$HOME/.config/nvim/en.utf-8.add
-vnoremap <C-r> "hy:%s#<C-r>h##gc<left><left><left>
-set cursorline
+vim.opt.clipboard= "unnamedplus"
+vim.opt.number = true
+vim.opt.spelllang="en"
+vim.opt.spellfile="~/.config/nvim/en.utf-8.add"
+vim.opt.cursorline = true
 
-" Get indents that actually make sense
-filetype plugin indent on
-set shiftwidth=4
-set tabstop=4
-set softtabstop=0
-set expandtab
-set smarttab
-set autoindent
-set smartindent
-set scrolloff=3
-set autoread
+vim.api.nvim_create_autocmd('TermOpen', {
+    pattern = "*",
+    callback = function()
+        vim.opt.number = false
+        vim.opt.relativenumber = false
+    end
+})
 
-nnoremap <Leader>ff :Files<Cr>
-nnoremap <Leader>b :Buffers<Cr>
+-- Get indents that actually make sense
+vim.opt.shiftwidth = 4
+vim.opt.tabstop = 4
+vim.opt.softtabstop = 0
+vim.opt.expandtab = true
+vim.opt.smarttab = true
+vim.opt.autoindent = true
+vim.opt.smartindent = true
+vim.opt.scrolloff = 3
+vim.opt.autoread = true
 
-inoremap <C-L> λ
-nnoremap <Leader>st mavip:w !tmux-sender REPL<Cr><Cr>`a
-vnoremap <Leader>ss :w !tmux-sender REPL<Cr><Cr>
+local opts = { noremap=true }
+vim.keymap.set('v', '<C-r>', '"hy:%s#<C-r>h##gc<left><left><left>', opts)
+vim.keymap.set('i', '<C-l>', 'λ', opts)
+vim.keymap.set('n', '<Leader>ff', ':Files<Cr>', opts)
+vim.keymap.set('n', '<Leader>b', ':Buffers<Cr>', opts)
+vim.keymap.set('n', '<Leader>st', 'mavip:w !tmux-sender REPL<Cr><Cr>`a', opts)
+vim.keymap.set('v', '<Leader>ss', ':w !tmux-sender REPL<Cr><Cr>', opts)
 
-" Color scheme
-set background=light
+-- TODO: How to convert this?
+vim.api.nvim_exec(
+[[
 try
     colorscheme PaperColor
 catch /^Vim\%((\a\+)\)\=:E185/
     " deal with it
 endtry
+]], true)
+vim.opt.background=light
 
-" ALE
-let g:ale_sign_error = "!"
-let g:ale_sign_warning = "-"
-highlight ALEErrorSign ctermbg=red guibg=red
-highlight ALEWarningSign ctermbg=yellow guibg=yellow
-let g:ale_asm_gcc_executable = "arm-none-eabi-gcc"
+-- ALE
+vim.g.ale_sign_error = "!"
+vim.g.ale_sign_warning = "-"
+vim.g.ale_asm_gcc_executable = "arm-none-eabi-gcc"
+vim.g.ale_linters = {
+    cpp = {},
+    python = {},
+}
+vim.api.nvim_set_hl(0, 'ALEErrorSign', { bg = 'red' })
+vim.api.nvim_set_hl(0, 'ALEWarningSign', { bg = 'yellow' })
 
-let g:ale_linters = {
-\   'cpp': [],
-\   'haskell': ['stack-build'],
-\   'python': [],
-\}
+-- rst folding is annoying
+vim.g.riv_disable_folding = 1
+vim.g.riv_fold_level = 0
+vim.g.riv_fold_auto_update = 0
+vim.g.rst_syntax_folding = 0
+vim.g.riv_auto_fold_force = 0
+vim.opt.foldenable = false
 
-" rst folding is annoying
-let g:riv_disable_folding = 1
-let g:riv_fold_level = 0
-let g:riv_fold_auto_update = 0
-let g:rst_syntax_folding = 0
-let g:riv_auto_fold_force = 0
-set nofoldenable
+vim.opt.wildignore = {
+    '*/.ccls-cache/*',
+    '*/.ezdebugger/*',
+    '*.o',
+    '*.d',
+    '*.class',
+    '*.jar',
+    '*.pyc'
+}
 
-set wildignore=*/.ccls-cache/*,*/.ezdebugger/*,*.o,*.d,*.class,*.jar,*.pyc
+vim.api.nvim_create_autocmd({'BufNewFile', 'BufRead'}, {
+    pattern = {'*.s', '*.S', '*.a65'},
+    callback = function()
+        vim.opt.filetype = 'asm_ca65'
+    end
+})
 
-let g:netrw_dirhistmax = 0
+vim.api.nvim_create_autocmd({'BufNewFile', 'BufRead'}, {
+    pattern = {'*.zuo'},
+    callback = function()
+        vim.opt.filetype = 'racket'
+    end
+})
 
-au BufNewFile,BufRead *.s,*.S set filetype=asm_ca65
-au BufNewFile,BufRead *.a65 set ft=asm_ca65
-au BufNewFile,BufRead *.md,*.rst setlocal spell
-autocmd FileType gitcommit setlocal spell
-au BufNewFile,BufRead *.FCMacro set ft=python
-au BufNewFile,BufRead *.zuo set ft=racket
+vim.api.nvim_create_autocmd('FileType', {
+    pattern = {'gitcommit', 'markdown', 'rst'},
+    callback = function()
+        vim.opt_local.spell = true
+    end
+})
 
-let g:indent_guides_enable_on_vim_startup = 1
+vim.g.indent_guides_enable_on_vim_startup = 1
 
-lua <<EOF
 local lspconfig = require('lspconfig')
 
 vim.g.coq_settings = {
