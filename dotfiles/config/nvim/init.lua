@@ -8,7 +8,6 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
 Plug 'sheerun/vim-polyglot'
 Plug 'roxma/nvim-yarp'
-Plug 'flazz/vim-colorschemes'
 Plug 'nathanalderson/yang.vim'
 Plug 'w0rp/ale'
 Plug 'JennToo/vim-groovy'
@@ -17,6 +16,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'maxbane/vim-asm_ca65'
 Plug 'kovisoft/paredit'
+Plug 'rose-pine/neovim'
 
 call plug#end()
 ]], true)
@@ -54,16 +54,16 @@ vim.keymap.set('n', '<Leader>b', ':Buffers<Cr>', opts)
 vim.keymap.set('n', '<Leader>st', 'mavip:w !tmux-sender REPL<Cr><Cr>`a', opts)
 vim.keymap.set('v', '<Leader>ss', ':w !tmux-sender REPL<Cr><Cr>', opts)
 
+vim.o.background = "light"
 -- TODO: How to convert this?
 vim.api.nvim_exec(
 [[
 try
-    colorscheme PaperColor
+    colorscheme rose-pine
 catch /^Vim\%((\a\+)\)\=:E185/
     " deal with it
 endtry
 ]], true)
-vim.opt.background=light
 
 -- ALE
 vim.g.ale_sign_error = "!"
