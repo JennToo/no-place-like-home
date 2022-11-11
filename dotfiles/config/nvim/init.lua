@@ -1,4 +1,3 @@
-lua <<EOF
 vim.g.python3_host_prog = "/home/jwilcox/.virtualenvs/neovim-py3/bin/python"
 
 vim.api.nvim_exec(
@@ -141,4 +140,3 @@ local servers = { 'clangd', 'rust_analyzer', 'pyright' }
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup(require('coq').lsp_ensure_capabilities({}))
 end
-EOF
