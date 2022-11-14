@@ -8,11 +8,6 @@
     checksum: "sha256:95123af8b82035add43ceef6d31ef0b91b1a5c7280261cb9db4a0de08387b9d5"
     dest: "{{ home }}/.local/bin/prusa-slicer"
     mode: "700"
-- name: Install realthunder FreeCAD
-  become: yes
-  snap:
-    name: freecad-realthunder
-    channel: "latest/edge"
 - name: Install desktop entries
   shell: "desktop-file-install --dir={{ home }}/.local/share/applications roles/3d_printing/files/{{ item }} && update-desktop-database {{ home }}/.local/share/applications"
   args:

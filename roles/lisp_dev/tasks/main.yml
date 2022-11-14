@@ -12,10 +12,6 @@
     - sbcl-doc
     - cl-quicklisp
     - racket
-- name: Install quicklisp
-  shell: "sbcl --load /usr/share/common-lisp/source/quicklisp/quicklisp.lisp --script ./roles/lisp_dev/files/quicklisp-install.lisp"
-  args:
-    creates: "{{ lookup('env', 'HOME') }}/.local/share/quicklisp/setup.lisp"
 - name: Clone racket
   git:
     repo: https://github.com/racket/racket.git

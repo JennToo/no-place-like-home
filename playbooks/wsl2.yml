@@ -10,10 +10,12 @@
     - bazel
     - re
     - rust_dev
-    - js_dev
+    - lisp_dev
     - fpga_dev
     - cpp_dev
-    - scala_dev
+    - ada_dev
     - gba_dev
+    - emacs
     - cx16
     - gui
+    - 3d_printing
