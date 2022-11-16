@@ -1,11 +1,11 @@
 - name: Install apt packages
-  become: yes
-  apt:
+  become: true
+  ansible.builtin.apt:
     name: "{{ packages }}"
   vars:
     packages:
-    - fcitx
-    - fcitx-googlepinyin
-    - fcitx-pinyin
-    - fcitx-sunpinyin
-    - fcitx-table-wbpy
+      - fcitx
+      - fcitx-googlepinyin
+      - fcitx-pinyin
+      - fcitx-sunpinyin
+      - fcitx-table-wbpy

@@ -4,7 +4,7 @@ Host home.nitori.org
     User jwilcox
     ForwardAgent yes
     ForwardX11 yes
-Host jenntoo.adtran.com
+Host jenntoo.test.adtran.com
     Port 22
     User jwilcox
     ForwardAgent yes

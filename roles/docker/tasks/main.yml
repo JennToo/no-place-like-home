@@ -1,25 +1,25 @@
 - name: Prepare docker repo key
-  become: yes
-  apt_key:
+  become: true
+  ansible.builtin.apt_key:
     url: https://download.docker.com/linux/ubuntu/gpg
     id: 9DC858229FC7DD38854AE2D88D81803C0EBFCD88
 - name: Add docker repo
-  become: yes
-  apt_repository:
-    repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release|lower }} stable"
+  become: true
+  ansible.builtin.apt_repository:
+    repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release | lower }} stable"
     filename: docker
 - name: Install apt packages
-  become: yes
-  apt:
+  become: true
+  ansible.builtin.apt:
     name: docker-ce
 - name: Add user to docker group
-  become: yes
-  user:
-    name: "{{ lookup('env', 'USER') }}"
+  become: true
+  ansible.builtin.user:
+    name: "{{ user }}"
     groups: docker
-    append: yes
+    append: true
 - name: Install docker-compose
-  pip:
+  ansible.builtin.pip:
     name: docker-compose
     executable: pip3
     extra_args: --user

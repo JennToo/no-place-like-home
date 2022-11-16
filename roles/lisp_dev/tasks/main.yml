@@ -1,10 +1,10 @@
 - name: Setup racket PPA
-  become: yes
-  apt_repository:
+  become: true
+  ansible.builtin.apt_repository:
     repo: ppa:plt/racket
 - name: Install apt packages
-  become: yes
-  apt:
+  become: true
+  ansible.builtin.apt:
     name: "{{ item }}"
   loop:
     - sbcl
@@ -13,16 +13,16 @@
     - cl-quicklisp
     - racket
 - name: Clone racket
-  git:
+  ansible.builtin.git:
     repo: https://github.com/racket/racket.git
-    dest: "{{ lookup('env','HOME') }}/.local/src/racket"
+    dest: "{{ home }}/.local/src/racket"
     version: v8.6
     update: false
 - name: Build zuo
-  shell: |
+  ansible.builtin.shell: |
     cd ~/.local/src/racket/racket/src/zuo
     ./configure --prefix=$HOME/.local
     make
     make install
   args:
-    creates: "{{ lookup('env','HOME') }}/.local/bin/zuo"
+    creates: "{{ home }}/.local/bin/zuo"

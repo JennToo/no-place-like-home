@@ -1,16 +1,16 @@
 - name: Install Chicago95 key
-  become: yes
-  apt_key:
+  become: true
+  ansible.builtin.apt_key:
     url: https://download.opensuse.org/repositories/home:bgstack15:Chicago95/xUbuntu_20.04/Release.key
     id: FB2572B7B977DBCD
 - name: Install Chicago95 repo
-  become: yes
-  apt_repository:
+  become: true
+  ansible.builtin.apt_repository:
     repo: "deb http://download.opensuse.org/repositories/home:/bgstack15:/Chicago95/xUbuntu_20.04/ /"
     filename: chicago95
 - name: Install apt packages
-  become: yes
-  apt:
+  become: true
+  ansible.builtin.apt:
     name: "{{ packages }}"
   vars:
     packages:

@@ -1,16 +1,17 @@
-- hosts:
+- name: Desktop Linux
+  hosts:
    - localhost
   vars:
-    home: "{{ lookup('env', 'HOME') }}"
-    user: "{{ lookup('env', 'USER') }}"
+   home: "{{ lookup('env', 'HOME') }}"
+   user: "{{ lookup('env', 'USER') }}"
   connection: local
   roles:
-    - common
-    - docker
-    - rust_dev
-    - cpp_dev
-    - haskell_dev
-    - gui
-    - snaps
-    - 3d_printing
-    - games
+   - common
+   - docker
+   - rust_dev
+   - cpp_dev
+   - haskell_dev
+   - gui
+   - snaps
+   - 3d_printing
+   - games

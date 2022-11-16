@@ -1,7 +1,7 @@
 ---
 - name: Install apt packages
   become: true
-  apt:
+  ansible.builtin.apt:
     name: "{{ item }}"
   loop:
     - emacs
@@ -11,8 +11,8 @@
     - libtool
     - libtool-bin
 - name: Install spacemacs
-  git:
+  ansible.builtin.git:
     repo: https://github.com/syl20bnr/spacemacs
-    dest: "{{ lookup('env','HOME') }}/.emacs.d"
+    dest: "{{ home }}/.emacs.d"
     version: develop
     update: false

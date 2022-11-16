@@ -1,26 +1,26 @@
 - name: Prepare nodejs repo key
-  become: yes
-  apt_key:
+  become: true
+  ansible.builtin.apt_key:
     url: https://deb.nodesource.com/gpgkey/nodesource.gpg.key
 - name: Add nodejs repository
-  become: yes
-  apt_repository:
-    repo: "deb https://deb.nodesource.com/node_14.x {{ ansible_distribution_release|lower }} main"
+  become: true
+  ansible.builtin.apt_repository:
+    repo: "deb https://deb.nodesource.com/node_14.x {{ ansible_distribution_release | lower }} main"
     filename: nodejs
 - name: Prepare yarn repo key
-  become: yes
-  apt_key:
+  become: true
+  ansible.builtin.apt_key:
     url: https://dl.yarnpkg.com/debian/pubkey.gpg
 - name: Add yarn repository
-  become: yes
-  apt_repository:
+  become: true
+  ansible.builtin.apt_repository:
     repo: "deb https://dl.yarnpkg.com/debian/ stable main"
     filename: yarn
 - name: Install apt packages
-  become: yes
-  apt:
+  become: true
+  ansible.builtin.apt:
     name: "{{ packages }}"
   vars:
     packages:
-    - nodejs
-    - yarn
+      - nodejs
+      - yarn

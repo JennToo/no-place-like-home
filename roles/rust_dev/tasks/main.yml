@@ -1,21 +1,22 @@
 - name: Install rust
-  shell: "curl https://sh.rustup.rs -sSf | sh -s -- -y --no-modify-path && rustup component add rls rust-src"
+  ansible.builtin.shell: "curl https://sh.rustup.rs -sSf | sh -s -- -y --no-modify-path && rustup component add rls rust-src"
   args:
     creates: "{{ lookup('env', 'HOME') }}/.cargo/bin/rustc"
 - name: Update rust
-  shell: "rustup update"
+  ansible.builtin.command: "rustup update"
 - name: Download rust-analyzer
-  get_url:
+  ansible.builtin.get_url:
     url: https://github.com/rust-lang/rust-analyzer/releases/download/2022-10-10/rust-analyzer-x86_64-unknown-linux-gnu.gz
     dest: "{{ lookup('env', 'HOME') }}/.local/rust-analyzer.gz"
     checksum: sha256:38535e9231285123e1dfa838908e61624f0f5dd8cb58e255408b30ea19a3a6eb
+    mode: "644"
   register: rust_analyzer
 - name: Extract rust-analyzer
   when: rust_analyzer.changed
-  shell: "gunzip -c {{ rust_analyzer.dest }} >{{ lookup('env', 'HOME') }}/.local/bin/rust-analyzer && chmod +x {{ lookup('env', 'HOME') }}/.local/bin/rust-analyzer"
+  ansible.builtin.shell: "gunzip -c {{ rust_analyzer.dest }} >{{ home }}/.local/bin/rust-analyzer && chmod +x {{ home }}/.local/bin/rust-analyzer"
 - name: Install required apt packages
-  become: yes
-  apt:
+  become: true
+  ansible.builtin.apt:
     name: "{{ item }}"
   loop:
     - libudev-dev

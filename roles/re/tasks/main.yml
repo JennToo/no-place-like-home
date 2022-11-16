@@ -1,7 +1,7 @@
 - name: Install apt packages
-  become: yes
-  apt:
+  become: true
+  ansible.builtin.apt:
     name: "{{ packages }}"
   vars:
     packages:
-    - binwalk
+      - binwalk

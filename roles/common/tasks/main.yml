@@ -1,26 +1,33 @@
-- name: "Setup configuration directories"
-  file:
-    dest: "{{ lookup('env','HOME') }}/{{ item }}"
+- name: Setup configuration directories
+  ansible.builtin.file:
+    dest: "{{ home }}/{{ item }}"
     state: directory
+    mode: "755"
   with_items:
     - .config
     - .config/autostart
     - .config/Code/User
     - .config/systemd/user
-    - .ssh
     - .local/bin
     - .local/src
     - .virtualenvs
-    - .gnupg
     - .FreeCAD
     - .local/share
     - .fonts
-- name: "Install dotfiles"
-  file:
+- name: Setup sensitive directories
+  ansible.builtin.file:
+    dest: "{{ home }}/{{ item }}"
+    state: directory
+    mode: "700"
+  with_items:
+    - .gnupg
+    - .ssh
+- name: Install dotfiles
+  ansible.builtin.file:
     src: "{{ playbook_dir }}/dotfiles/{{ item.src }}"
-    dest: "{{ lookup('env','HOME') }}/{{ item.dest }}"
+    dest: "{{ home }}/{{ item.dest }}"
     state: link
-    force: yes
+    force: true
   with_items:
     - src: gitconfig
       dest: .gitconfig
@@ -58,85 +65,87 @@
       dest: .ideavimrc
     - src: sbclrc
       dest: .sbclrc
-- name: "Install local scripts"
-  file:
+- name: Install local scripts
+  ansible.builtin.file:
     src: "{{ item }}"
-    dest: "{{ lookup('env','HOME') }}/.local/bin/{{ item | basename }}"
+    dest: "{{ home }}/.local/bin/{{ item | basename }}"
     state: link
-    force: yes
+    force: true
   with_fileglob:
     - "{{ playbook_dir }}/bin/*"
-- name: ssh-config
-  template:
+- name: Generate ssh-config
+  ansible.builtin.template:
     src: templates/ssh-config
-    dest: "{{ lookup('env','HOME') }}/.ssh/config"
+    dest: "{{ home }}/.ssh/config"
+    mode: "600"
 - name: Install apt transport https
-  become: yes
-  apt:
+  become: true
+  ansible.builtin.apt:
     name: apt-transport-https
 - name: Update apt packages
-  become: yes
-  apt:
+  become: true
+  ansible.builtin.apt:
     upgrade: dist
-    update_cache: yes
+    update_cache: true
 - name: Install apt packages
-  become: yes
-  apt:
+  become: true
+  ansible.builtin.apt:
     name: "{{ packages }}"
   vars:
     packages:
-    - bison
-    - build-essential
-    - cowsay
-    - curl
-    - fd-find
-    - flatpak
-    - flex
-    - fzf
-    - gdb-multiarch
-    - git
-    - gnupg2
-    - htop
-    - libssl-dev
-    - openssh-server
-    - pcscd
-    - pkg-config
-    - python3-pip
-    - python3-venv
-    - ripgrep
-    - ruby
-    - ruby-bundler
-    - ruby-dev
-    - scdaemon
-    - shellcheck
-    - sl
-    - sshpass
-    - tmux
-    - tree
-    - xclip
+      - bison
+      - build-essential
+      - cowsay
+      - curl
+      - fd-find
+      - flatpak
+      - flex
+      - fzf
+      - gdb-multiarch
+      - git
+      - gnupg2
+      - htop
+      - libssl-dev
+      - openssh-server
+      - pcscd
+      - pkg-config
+      - python3-pip
+      - python3-venv
+      - ripgrep
+      - ruby
+      - ruby-bundler
+      - ruby-dev
+      - scdaemon
+      - shellcheck
+      - sl
+      - sshpass
+      - tmux
+      - tree
+      - xclip
 - name: Remove apt packages
-  become: yes
-  apt:
+  become: true
+  ansible.builtin.apt:
     name: "{{ packages }}"
     state: absent
   vars:
     packages:
-    - elixir
-    - evolution
-    - krita
+      - elixir
+      - evolution
+      - krita
 - name: Download neovim
-  get_url:
+  ansible.builtin.get_url:
     url: https://github.com/neovim/neovim/releases/download/v0.8.0/nvim-linux64.deb
     checksum: sha256:215c88e8cf3fefcd02ef45dc8cdad563e1c601faeddca41565b6b852fceb26b5
-    dest: "{{ lookup('env','HOME') }}/.local/share/neovim.deb"
+    dest: "{{ home }}/.local/share/neovim.deb"
+    mode: "644"
   register: neovim_dl
 - name: Install neovim
-  become: yes
-  apt:
+  become: true
+  ansible.builtin.apt:
     deb: "{{ neovim_dl.dest }}"
   when: neovim_dl.changed
 - name: Install python packages
-  pip:
+  ansible.builtin.pip:
     name: "{{ packages }}"
     executable: pip3
     extra_args: --user
@@ -152,43 +161,41 @@
       - pyright
       - virtualenv
 - name: Setup neovim virtualenv Python 3
-  pip:
+  ansible.builtin.pip:
     name: pynvim
     virtualenv: "{{ lookup('env', 'HOME') }}/.virtualenvs/neovim-py3"
     virtualenv_python: python3
 - name: Add jedi to neovim virtualenv
-  pip:
+  ansible.builtin.pip:
     name: jedi
     virtualenv: "{{ lookup('env', 'HOME') }}/.virtualenvs/neovim-py3"
 - name: Download insect
-  get_url:
+  ansible.builtin.get_url:
     url: https://github.com/sharkdp/insect/releases/download/v5.7.0/insect-linux-x64
     checksum: sha256:38d0971342c741bcc688416059ad936b371d4fc5f74883a4369952b1ff4e3b02.
-    dest: "{{ lookup('env','HOME') }}/.local/bin/insect"
-- name: Chmod insect
-  file:
-    path: "{{ lookup('env','HOME') }}/.local/bin/insect"
-    mode: a+x
+    dest: "{{ home }}/.local/bin/insect"
+    mode: "755"
 - name: Add the flathub flatpak repository remote to the user installation
-  become: yes
+  become: true
   community.general.flatpak_remote:
     name: flathub
     state: present
     flatpakrepo_url: https://flathub.org/repo/flathub.flatpakrepo
 - name: Download difftastic
-  get_url:
+  ansible.builtin.get_url:
     url: https://github.com/Wilfred/difftastic/releases/download/0.36.1/difft-x86_64-unknown-linux-gnu.tar.gz
     checksum: sha256:4acc8dbd23a8e61d4f2dad94dba98cb2d9d5b2a9c7c12f22a78d2ce841707524
-    dest: "{{ lookup('env','HOME') }}/.local/share/difft.tar.gz"
+    dest: "{{ home }}/.local/share/difft.tar.gz"
+    mode: "644"
   register: difft_dl
 - name: Extract difftastic
   ansible.builtin.unarchive:
     src: "{{ difft_dl.dest }}"
-    dest: "{{ lookup('env','HOME') }}/.local/bin/"
+    dest: "{{ home }}/.local/bin/"
   when: difft_dl.changed
 - name: Install WatchIt
-  get_url:
+  ansible.builtin.get_url:
     url: https://github.com/ADTRAN/WatchIt/releases/download/v1.0.0/watchit
-    dest: "{{ lookup('env','HOME') }}/.local/bin/watchit"
+    dest: "{{ home }}/.local/bin/watchit"
     checksum: sha256:ecae0fb92d2cb6efdbb2f34bbfbcc0d00a486231939ebd73f5155881962af367
-    mode: '0755'
+    mode: '755'

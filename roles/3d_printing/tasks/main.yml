@@ -1,26 +1,28 @@
 - name: Get dependencies
-  become: yes
-  apt:
+  become: true
+  ansible.builtin.apt:
     name: libfuse2
 - name: Download PrusaSlicer
-  get_url:
+  ansible.builtin.get_url:
     url: "https://github.com/prusa3d/PrusaSlicer/releases/download/version_2.5.0/PrusaSlicer-2.5.0+linux-x64-GTK3-202209060725.AppImage"
     checksum: "sha256:95123af8b82035add43ceef6d31ef0b91b1a5c7280261cb9db4a0de08387b9d5"
     dest: "{{ home }}/.local/bin/prusa-slicer"
     mode: "700"
 - name: Install desktop entries
-  shell: "desktop-file-install --dir={{ home }}/.local/share/applications roles/3d_printing/files/{{ item }} && update-desktop-database {{ home }}/.local/share/applications"
+  ansible.builtin.shell: "desktop-file-install --dir={{ home }}/.local/share/applications roles/3d_printing/files/{{ item }} && update-desktop-database {{ home }}/.local/share/applications"
   args:
     creates: "{{ home }}/.local/share/applications/{{ item }}"
   loop:
     - PrusaSlicer.desktop
 - name: Create icons directory
-  file:
+  ansible.builtin.file:
     state: directory
     dest: "{{ home }}/.local/share/icons"
+    mode: "755"
 - name: Copy icons
-  copy:
+  ansible.builtin.copy:
     src: "{{ item }}"
     dest: "{{ home }}/.local/share/icons/{{ item }}"
+    mode: "644"
   loop:
     - prusa-slicer.png

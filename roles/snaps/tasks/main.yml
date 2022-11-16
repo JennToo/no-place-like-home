@@ -1,6 +1,6 @@
 - name: Add sandboxed snaps
-  become: yes
-  snap:
+  become: true
+  community.general.snap:
     name: "{{ packages }}"
   vars:
     packages:
@@ -9,10 +9,10 @@
       - krita
       - pinta
 - name: Add classic snaps
-  become: yes
-  snap:
+  become: true
+  community.general.snap:
     name: "{{ packages }}"
-    classic: yes
+    classic: true
   vars:
     packages:
       - kubectl

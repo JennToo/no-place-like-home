@@ -1,6 +1,6 @@
 - name: Install game flatpaks
-  become: yes
-  flatpak:
+  become: true
+  community.general.flatpak:
     name: '{{ item }}'
   loop:
     - io.openrct2.OpenRCT2

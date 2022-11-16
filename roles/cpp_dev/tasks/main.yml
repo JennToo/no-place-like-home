@@ -1,18 +1,18 @@
 - name: Install apt packages
-  become: yes
-  apt:
+  become: true
+  ansible.builtin.apt:
     name: "{{ packages }}"
   vars:
     packages:
-    - bear
-    - clang-format
-    - clangd-14
-    - cmake
-    - g++-10
-    - ninja-build
+      - bear
+      - clang-format
+      - clangd-14
+      - cmake
+      - g++-10
+      - ninja-build
 - name: Setup clangd symlink
-  become: yes
-  file:
+  become: true
+  ansible.builtin.file:
     src: /usr/bin/clangd-14
     dest: /usr/bin/clangd
     state: link
