@@ -1,3 +1,0 @@
-actions = [
-    "black bin/{watch-it,vernier}"
-]

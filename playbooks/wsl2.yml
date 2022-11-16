@@ -7,15 +7,8 @@
   roles:
     - common
     - docker
-    - bazel
-    - re
     - rust_dev
-    - lisp_dev
-    - fpga_dev
     - cpp_dev
-    - ada_dev
-    - gba_dev
-    - emacs
-    - cx16
+    - haskell_dev
     - gui
     - 3d_printing

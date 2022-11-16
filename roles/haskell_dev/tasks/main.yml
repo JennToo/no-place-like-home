@@ -1,0 +1,16 @@
+- name: Install required apt packages
+  become: true
+  apt:
+    name: "{{ item }}"
+  loop:
+    - build-essential
+    - libffi-dev
+    - libgmp-dev
+    - libncurses-dev
+    - libtinfo5
+- name: Install ghcup
+  get_url:
+    url: https://downloads.haskell.org/~ghcup/0.1.18.0/x86_64-linux-ghcup-0.1.18.0
+    checksum: sha256:94559eb7c4569919446af1597d07675e803c20b150323edb7f9d8601c8bbda50
+    dest: "{{ home }}/.local/bin/ghcup"
+    mode: "755"
