@@ -58,9 +58,3 @@
 - name: Update font cache
   ansible.builtin.command: fc-cache -fv
   when: ubuntu_nerd_install.changed
-- name: "Install cargo packages"
-  community.general.cargo:
-    name: "{{ item }}"
-    state: latest
-  loop:
-    - alacritty
