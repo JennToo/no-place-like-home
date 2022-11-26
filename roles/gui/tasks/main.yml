@@ -58,3 +58,9 @@
 - name: Update font cache
   ansible.builtin.command: fc-cache -fv
   when: ubuntu_nerd_install.changed
+- name: Download Joplin
+  ansible.builtin.get_url:
+    url: https://github.com/laurent22/joplin/releases/download/v2.8.8/Joplin-2.8.8.AppImage
+    dest: "{{ home }}/.local/bin/Joplin"
+    checksum: sha256:637fc21d10e7e17b6dea2cfe215135809332eb0f217a9d3049efb66938957447
+    mode: "755"
