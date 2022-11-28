@@ -42,3 +42,8 @@ if [ -e "$GNATSTUDIO_HOME" ]
 then
     PATH=$PATH:$GNATSTUDIO_HOME/bin
 fi
+
+if [ -e "/opt/Xilinx/Vivado/opt/Xilinx/Vivado/2022.2/bin" ]
+then
+    PATH="$PATH:/opt/Xilinx/Vivado/opt/Xilinx/Vivado/2022.2/bin"
+fi
