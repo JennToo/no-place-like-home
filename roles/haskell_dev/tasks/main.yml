@@ -14,3 +14,21 @@
     checksum: sha256:94559eb7c4569919446af1597d07675e803c20b150323edb7f9d8601c8bbda50
     dest: "{{ home }}/.local/bin/ghcup"
     mode: "755"
+- name: Install core tools
+  ansible.builtin.command: "ghcup install {{ item.tool }} {{ item.version }} --set"
+  args:
+    creates: "{{ home }}/.ghcup/bin/{{ item.tool }}-{{ item.version }}"
+  loop:
+    - tool: ghc
+      version: 9.0.2
+    - tool: cabal
+      version: 3.6.2.0
+    - tool: stack
+      version: 2.9.1
+- name: Install haskell-based tools
+  ansible.builtin.command: "ghcup run stack install {{ item.tool }}"
+  args:
+    creates: "{{ home }}/.local/bin/{{ item.tool }}"
+  loop:
+    - tool: ormolu
+    - tool: hlint
