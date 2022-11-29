@@ -64,3 +64,21 @@
     dest: "{{ home }}/.local/bin/Joplin"
     checksum: sha256:637fc21d10e7e17b6dea2cfe215135809332eb0f217a9d3049efb66938957447
     mode: "755"
+- name: Download Cascadia Code
+  ansible.builtin.get_url:
+    url: https://github.com/microsoft/cascadia-code/releases/download/v2111.01/CascadiaCode-2111.01.zip
+    dest: "{{ home }}/.local/share/CascadiaCode.zip"
+    checksum: sha256:51fd68176dffb87e2fbc79381aef7f5c9488b58918dee223cd7439b5aa14e712
+    mode: "644"
+  register: cascadia_code
+- name: Install Cascadia Code Font
+  ansible.builtin.unarchive:
+    src: "{{ cascadia_code.dest }}"
+    dest: "{{ home }}/.fonts"
+    extra_opts:
+      - -j
+  when: cascadia_code.changed
+  register: cascadia_code_install
+- name: Update font cache
+  ansible.builtin.command: fc-cache -fv
+  when: cascadia_code_install.changed
