@@ -72,6 +72,7 @@ vim.g.ale_asm_gcc_executable = "arm-none-eabi-gcc"
 vim.g.ale_linters = {
     cpp = {},
     python = {},
+    haskell = {},
 }
 vim.api.nvim_set_hl(0, 'ALEErrorSign', { bg = 'red' })
 vim.api.nvim_set_hl(0, 'ALEWarningSign', { bg = 'yellow' })
@@ -136,7 +137,7 @@ vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
 vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
 vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
 
-local servers = { 'clangd', 'rust_analyzer', 'pyright' }
+local servers = { 'clangd', 'rust_analyzer', 'pyright', 'hls' }
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup(require('coq').lsp_ensure_capabilities({}))
 end
