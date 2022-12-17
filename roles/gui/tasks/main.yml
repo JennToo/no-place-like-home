@@ -79,6 +79,12 @@
       - -j
   when: cascadia_code.changed
   register: cascadia_code_install
+- name: Download sitelen pona pona
+  ansible.builtin.get_url:
+    url: https://github.com/jackhumbert/sitelen-pona-pona/releases/download/v0.2/sitelen-pona-pona.otf
+    dest: "{{ home }}/.fonts/"
+    checksum: sha256:5927f08abbbd22cb41d6451c857bbbe6c29b1beb8cd67ddd646240ad93b3112f
+    mode: "644"
 - name: Update font cache
   ansible.builtin.command: fc-cache -fv
   when: cascadia_code_install.changed
