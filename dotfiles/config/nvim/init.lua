@@ -13,7 +13,7 @@ Plug 'w0rp/ale'
 Plug 'JennToo/vim-groovy'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'nathanaelkane/vim-indent-guides'
+Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'maxbane/vim-asm_ca65'
 Plug 'kovisoft/paredit'
 Plug 'rose-pine/neovim'
