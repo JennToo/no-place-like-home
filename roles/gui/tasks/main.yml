@@ -32,6 +32,12 @@
       - meld
       - obs-studio
       - wireshark
+- name: Install flatpaks
+  become: true
+  community.general.flatpak:
+    name: '{{ item }}'
+  loop:
+    - com.getpostman.Postman
 - name: Clone source-code-pro font repo
   ansible.builtin.git:
     repo: https://github.com/adobe-fonts/source-code-pro.git
