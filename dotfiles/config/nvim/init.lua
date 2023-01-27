@@ -21,6 +21,7 @@ Plug 'rose-pine/neovim'
 call plug#end()
 ]], true)
 
+vim.opt.termguicolors = true
 vim.opt.clipboard= "unnamedplus"
 vim.opt.number = true
 vim.opt.spelllang="en"
@@ -116,8 +117,6 @@ vim.api.nvim_create_autocmd('FileType', {
     end
 })
 
-vim.g.indent_guides_enable_on_vim_startup = 1
-
 local lspconfig = require('lspconfig')
 
 vim.g.coq_settings = {
@@ -141,3 +140,25 @@ local servers = { 'clangd', 'rust_analyzer', 'pyright', 'hls' }
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup(require('coq').lsp_ensure_capabilities({}))
 end
+
+vim.cmd [[highlight IndentBlanklineIndent1 guibg=#E4EEEE gui=nocombine]]
+vim.cmd [[highlight IndentBlanklineIndent2 guibg=#F9E9E5 gui=nocombine]]
+vim.cmd [[highlight IndentBlanklineIndent3 guibg=#FAF5EF gui=nocombine]]
+vim.cmd [[highlight IndentBlanklineIndent4 guibg=#F9E9E5 gui=nocombine]]
+
+require("indent_blankline").setup {
+    char = "",
+    char_highlight_list = {
+        "IndentBlanklineIndent1",
+        "IndentBlanklineIndent2",
+        "IndentBlanklineIndent3",
+        "IndentBlanklineIndent4",
+    },
+    space_char_highlight_list = {
+        "IndentBlanklineIndent1",
+        "IndentBlanklineIndent2",
+        "IndentBlanklineIndent3",
+        "IndentBlanklineIndent4",
+    },
+    show_trailing_blankline_indent = false,
+}
