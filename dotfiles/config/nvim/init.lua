@@ -74,6 +74,7 @@ vim.g.ale_linters = {
     cpp = {},
     python = {},
     haskell = {},
+    json = {'jq'},
 }
 vim.api.nvim_set_hl(0, 'ALEErrorSign', { bg = 'red' })
 vim.api.nvim_set_hl(0, 'ALEWarningSign', { bg = 'yellow' })
@@ -114,6 +115,13 @@ vim.api.nvim_create_autocmd('FileType', {
     pattern = {'gitcommit', 'markdown', 'rst'},
     callback = function()
         vim.opt_local.spell = true
+    end
+})
+
+vim.api.nvim_create_autocmd('FileType', {
+    pattern = {'json'},
+    callback = function()
+        vim.opt_local.formatprg = 'jq'
     end
 })
 
