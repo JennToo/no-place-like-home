@@ -13,7 +13,7 @@ Plug 'w0rp/ale'
 Plug 'JennToo/vim-groovy'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'nathanaelkane/vim-indent-guides'
+Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'maxbane/vim-asm_ca65'
 Plug 'kovisoft/paredit'
 Plug 'rose-pine/neovim'
@@ -21,10 +21,11 @@ Plug 'rose-pine/neovim'
 call plug#end()
 ]], true)
 
+vim.opt.termguicolors = true
 vim.opt.clipboard= "unnamedplus"
 vim.opt.number = true
 vim.opt.spelllang="en"
-vim.opt.spellfile="~/.config/nvim/en.utf-8.add"
+vim.opt.spellfile="/home/jwilcox/.config/nvim/en.utf-8.add"
 vim.opt.cursorline = true
 
 vim.api.nvim_create_autocmd('TermOpen', {
@@ -73,6 +74,7 @@ vim.g.ale_linters = {
     cpp = {},
     python = {},
     haskell = {},
+    json = {'jq'},
 }
 vim.api.nvim_set_hl(0, 'ALEErrorSign', { bg = 'red' })
 vim.api.nvim_set_hl(0, 'ALEWarningSign', { bg = 'yellow' })
@@ -116,7 +118,12 @@ vim.api.nvim_create_autocmd('FileType', {
     end
 })
 
-vim.g.indent_guides_enable_on_vim_startup = 1
+vim.api.nvim_create_autocmd('FileType', {
+    pattern = {'json'},
+    callback = function()
+        vim.opt_local.formatprg = 'jq'
+    end
+})
 
 local lspconfig = require('lspconfig')
 
@@ -141,3 +148,25 @@ local servers = { 'clangd', 'rust_analyzer', 'pyright', 'hls' }
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup(require('coq').lsp_ensure_capabilities({}))
 end
+
+vim.cmd [[highlight IndentBlanklineIndent1 guibg=#E4EEEE gui=nocombine]]
+vim.cmd [[highlight IndentBlanklineIndent2 guibg=#F9E9E5 gui=nocombine]]
+vim.cmd [[highlight IndentBlanklineIndent3 guibg=#FAF5EF gui=nocombine]]
+vim.cmd [[highlight IndentBlanklineIndent4 guibg=#F9E9E5 gui=nocombine]]
+
+require("indent_blankline").setup {
+    char = "",
+    char_highlight_list = {
+        "IndentBlanklineIndent1",
+        "IndentBlanklineIndent2",
+        "IndentBlanklineIndent3",
+        "IndentBlanklineIndent4",
+    },
+    space_char_highlight_list = {
+        "IndentBlanklineIndent1",
+        "IndentBlanklineIndent2",
+        "IndentBlanklineIndent3",
+        "IndentBlanklineIndent4",
+    },
+    show_trailing_blankline_indent = false,
+}

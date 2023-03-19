@@ -1,0 +1,8 @@
+#!/bin/bash
+
+set -eux
+
+BASE_BRANCH="$1"
+CURRENT_BRANCH="$(git branch --show-current)"
+MERGE_BASE="$(git merge-base "$BASE_BRANCH" "$CURRENT_BRANCH")"
+git reset "$MERGE_BASE"

@@ -172,9 +172,29 @@
 - name: Download insect
   ansible.builtin.get_url:
     url: https://github.com/sharkdp/insect/releases/download/v5.7.0/insect-linux-x64
-    checksum: sha256:38d0971342c741bcc688416059ad936b371d4fc5f74883a4369952b1ff4e3b02.
+    checksum: sha256:38d0971342c741bcc688416059ad936b371d4fc5f74883a4369952b1ff4e3b02
     dest: "{{ home }}/.local/bin/insect"
     mode: "755"
+- name: Download qalculate
+  ansible.builtin.get_url:
+    url: https://github.com/Qalculate/qalculate-gtk/releases/download/v4.5.1/qalculate-4.5.1-x86_64.tar.xz
+    checksum: sha256:524dd94472c5d522c1211f917bcf7c711481aa13b14974804f23a202c0ada91d
+    dest: "{{ home }}/.local/share/qalculate-gtk-4.5.1.tar.xz"
+    mode: "644"
+  register: qalculate_dl
+- name: Unpack qalculate
+  ansible.builtin.unarchive:
+    src: "{{ qalculate_dl.dest }}"
+    dest: "{{ home }}/.local/share/qalculate"
+  when: qalculate_dl.changed
+- name: Install qalculate
+  ansible.builtin.file:
+    src: "{{ home }}/.local/share/qalculate/qalculate-4.5.1/{{ item }}"
+    dest: "{{ home }}/.local/bin/{{ item }}"
+    state: link
+  loop:
+    - qalc
+    - qalculate
 - name: Add the flathub flatpak repository remote to the user installation
   become: true
   community.general.flatpak_remote:

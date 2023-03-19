@@ -32,6 +32,12 @@
       - meld
       - obs-studio
       - wireshark
+- name: Install flatpaks
+  become: true
+  community.general.flatpak:
+    name: '{{ item }}'
+  loop:
+    - com.getpostman.Postman
 - name: Clone source-code-pro font repo
   ansible.builtin.git:
     repo: https://github.com/adobe-fonts/source-code-pro.git
@@ -87,3 +93,5 @@
 - name: Update font cache
   ansible.builtin.command: fc-cache -fv
   when: cascadia_code_install.changed or sitelen_pona_pona.changed or ubuntu_nerd_install.changed or source_code_pro.changed
+- name: Setup GNOME Terminal profile
+  ansible.builtin.shell: "dconf load /org/gnome/terminal/legacy/profiles:/ <roles/gui/files/gnome_terminal.dconf"
