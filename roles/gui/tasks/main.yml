@@ -42,6 +42,7 @@
   ansible.posix.synchronize:
     src: "{{ home }}/.local/share/source-code-pro/OTF/"
     dest: "{{ home }}/.fonts/"
+  register: source_code_pro
 - name: Download Ubuntu Mono Nerd Font
   ansible.builtin.get_url:
     url: https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/UbuntuMono.zip
@@ -55,9 +56,6 @@
     dest: "{{ home }}/.fonts"
   when: ubuntu_nerd.changed
   register: ubuntu_nerd_install
-- name: Update font cache
-  ansible.builtin.command: fc-cache -fv
-  when: ubuntu_nerd_install.changed
 - name: Download Joplin
   ansible.builtin.get_url:
     url: https://github.com/laurent22/joplin/releases/download/v2.8.8/Joplin-2.8.8.AppImage
@@ -85,6 +83,7 @@
     dest: "{{ home }}/.fonts/"
     checksum: sha256:5927f08abbbd22cb41d6451c857bbbe6c29b1beb8cd67ddd646240ad93b3112f
     mode: "644"
+  register: sitelen_pona_pona
 - name: Update font cache
   ansible.builtin.command: fc-cache -fv
-  when: cascadia_code_install.changed
+  when: cascadia_code_install.changed or sitelen_pona_pona.changed or ubuntu_nerd_install.changed or source_code_pro.changed
