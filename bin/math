@@ -1,6 +1,0 @@
-#!/bin/bash
-
-set -e
-
-cd -- "$(dirname -- "$(readlink ${BASH_SOURCE[0]})")/../virtualenvs/math"
-exec poetry run bpython -i startup.py
