@@ -134,8 +134,8 @@
       - krita
 - name: Download neovim
   ansible.builtin.get_url:
-    url: https://github.com/neovim/neovim/releases/download/v0.8.0/nvim-linux64.deb
-    checksum: sha256:215c88e8cf3fefcd02ef45dc8cdad563e1c601faeddca41565b6b852fceb26b5
+    url: https://github.com/neovim/neovim/releases/download/v0.8.3/nvim-linux64.deb
+    checksum: sha256:0828910da0b532e7564b1d200645bd846e6b2e1d10aa3111e36b59c1521b16f0 
     dest: "{{ home }}/.local/share/neovim.deb"
     mode: "644"
   register: neovim_dl
@@ -177,9 +177,9 @@
     mode: "755"
 - name: Download qalculate
   ansible.builtin.get_url:
-    url: https://github.com/Qalculate/qalculate-gtk/releases/download/v4.5.1/qalculate-4.5.1-x86_64.tar.xz
-    checksum: sha256:524dd94472c5d522c1211f917bcf7c711481aa13b14974804f23a202c0ada91d
-    dest: "{{ home }}/.local/share/qalculate-gtk-4.5.1.tar.xz"
+    url: https://github.com/Qalculate/qalculate-gtk/releases/download/v4.6.0/qalculate-4.6.0-x86_64.tar.xz
+    checksum: sha256:fdeb542120e017ef2745a6eeb3b8522a86c251c71502ab6fcaa1116955bb399b
+    dest: "{{ home }}/.local/share/qalculate-gtk.tar.xz"
     mode: "644"
   register: qalculate_dl
 - name: Unpack qalculate
@@ -189,7 +189,7 @@
   when: qalculate_dl.changed
 - name: Install qalculate
   ansible.builtin.file:
-    src: "{{ home }}/.local/share/qalculate/qalculate-4.5.1/{{ item }}"
+    src: "{{ home }}/.local/share/qalculate/qalculate-4.6.0/{{ item }}"
     dest: "{{ home }}/.local/bin/{{ item }}"
     state: link
   loop:
@@ -203,8 +203,8 @@
     flatpakrepo_url: https://flathub.org/repo/flathub.flatpakrepo
 - name: Download difftastic
   ansible.builtin.get_url:
-    url: https://github.com/Wilfred/difftastic/releases/download/0.36.1/difft-x86_64-unknown-linux-gnu.tar.gz
-    checksum: sha256:4acc8dbd23a8e61d4f2dad94dba98cb2d9d5b2a9c7c12f22a78d2ce841707524
+    url: https://github.com/Wilfred/difftastic/releases/download/0.45.0/difft-x86_64-unknown-linux-gnu.tar.gz
+    checksum: sha256:8ae5f04faba95c868d3f878da7b96d23d6e6943e8b100d0041d4ed8778f83a07
     dest: "{{ home }}/.local/share/difft.tar.gz"
     mode: "644"
   register: difft_dl
