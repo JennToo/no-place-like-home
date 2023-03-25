@@ -13,6 +13,7 @@
     - .virtualenvs
     - .FreeCAD
     - .local/share
+    - .local/share/qalculate
     - .fonts
 - name: Setup sensitive directories
   ansible.builtin.file:
