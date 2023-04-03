@@ -108,3 +108,7 @@ then
     PATH="$HOME/.local/bin:$PATH"
 fi
 # END ANSIBLE MANAGED BLOCK
+if command -v porg >/dev/null
+then
+eval "$(porg _completions bootstrap bash)"
+fi
