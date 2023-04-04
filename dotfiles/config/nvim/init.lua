@@ -5,17 +5,22 @@ vim.api.nvim_exec(
 call plug#begin('~/.local/share/nvim/plugged')
 
 Plug 'neovim/nvim-lspconfig'
-Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-cmdline'
+Plug 'hrsh7th/nvim-cmp'
+Plug 'hrsh7th/cmp-vsnip'
+Plug 'hrsh7th/vim-vsnip'
+Plug 'andersevenrud/cmp-tmux'
+
 Plug 'sheerun/vim-polyglot'
 Plug 'roxma/nvim-yarp'
-Plug 'nathanalderson/yang.vim'
 Plug 'w0rp/ale'
 Plug 'JennToo/vim-groovy'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'lukas-reineke/indent-blankline.nvim'
-Plug 'maxbane/vim-asm_ca65'
-Plug 'kovisoft/paredit'
 Plug 'rose-pine/neovim'
 
 call plug#end()
@@ -126,16 +131,31 @@ vim.api.nvim_create_autocmd('FileType', {
 })
 
 local lspconfig = require('lspconfig')
+local cmp = require('cmp')
 
-vim.g.coq_settings = {
-    auto_start = 'shut-up',
-    clients = {
-        snippets = {
-            warn = {}
-        }
+cmp.setup({
+    snippet = {
+      expand = function(args)
+        vim.fn["vsnip#anonymous"](args.body)
+      end,
     },
-    display = { icons = { mode = 'none' } }
-}
+    window = {},
+    mapping = cmp.mapping.preset.insert({
+        ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+        ['<C-f>'] = cmp.mapping.scroll_docs(4),
+        ['<C-Space>'] = cmp.mapping.complete(),
+        ['<C-e>'] = cmp.mapping.abort(),
+        ['<CR>'] = cmp.mapping.confirm({ select = true }),
+    }),
+    sources = cmp.config.sources({
+        { name = 'nvim_lsp' },
+        { name = 'buffer' },
+        { name = 'path' },
+        { name = 'tmux' },
+    }, {
+        { name = 'vsnip' },
+    })
+})
 
 local opts = { noremap=true, silent=true }
 vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
@@ -145,8 +165,11 @@ vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
 vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
 
 local servers = { 'clangd', 'rust_analyzer', 'pyright', 'hls' }
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
 for _, lsp in ipairs(servers) do
-  lspconfig[lsp].setup(require('coq').lsp_ensure_capabilities({}))
+  lspconfig[lsp].setup {
+      capabilities = capabilities
+  }
 end
 
 vim.cmd [[highlight IndentBlanklineIndent1 guibg=#E4EEEE gui=nocombine]]
