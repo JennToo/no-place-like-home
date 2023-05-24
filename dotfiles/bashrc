@@ -1,3 +1,9 @@
+# BEGIN ANSIBLE MANAGED BLOCK
+if [[ ! $PATH =~ $HOME/.local/bin && -d $HOME/.local/bin ]]
+then
+    PATH="$HOME/.local/bin:$PATH"
+fi
+# END ANSIBLE MANAGED BLOCK
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
@@ -99,12 +105,6 @@ fi
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
-# BEGIN ANSIBLE MANAGED BLOCK
-if [[ ! $PATH =~ $HOME/.local/bin && -d $HOME/.local/bin ]]
-then
-    PATH="$HOME/.local/bin:$PATH"
-fi
-# END ANSIBLE MANAGED BLOCK
 if command -v porg >/dev/null
 then
 eval "$(porg _completions bootstrap bash)"
