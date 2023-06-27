@@ -4,15 +4,7 @@
   ansible.builtin.apt:
     name: "{{ item }}"
   loop:
-    - emacs
-    - fonts-nanum
-    - fonts-nanum-extra
+    - emacs28-nativecomp
     # This is for vterm
     - libtool
     - libtool-bin
-- name: Install spacemacs
-  ansible.builtin.git:
-    repo: https://github.com/syl20bnr/spacemacs
-    dest: "{{ home }}/.emacs.d"
-    version: develop
-    update: false

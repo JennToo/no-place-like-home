@@ -1,3 +1,4 @@
+---
 - name: Setup configuration directories
   ansible.builtin.file:
     dest: "{{ home }}/{{ item }}"
@@ -8,6 +9,7 @@
     - .config/autostart
     - .config/Code/User
     - .config/systemd/user
+    - .config/emacs
     - .local/bin
     - .local/src
     - .virtualenvs
@@ -42,6 +44,8 @@
       dest: .config/nvim
     - src: config/alacritty
       dest: .config/alacritty
+    - src: emacs/init.el
+      dest: .config/emacs/init.el
     - src: config/Code/User/keybindings.json
       dest: .config/Code/User/keybindings.json
     - src: config/autostart/gnome-keyring-ssh.desktop
