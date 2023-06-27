@@ -67,7 +67,7 @@ porg_venv_activate() {
         export PORG_ACTIVATED=0
     fi
 }
-PROMPT_COMMAND="porg_venv_activate;history -a;history -n"
+PROMPT_COMMAND="porg_venv_activate;history -a"
 
 function prj() {
     RESULT=$(find "$PROJECTS_HOME/" -maxdepth 3 -name '.git' -type d -printf '%h\n' | sed "s#$PROJECTS_HOME/##g" | fzf)
