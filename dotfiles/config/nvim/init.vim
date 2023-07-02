@@ -1,30 +1,37 @@
-vim.g.python3_host_prog = "/home/jwilcox/.virtualenvs/neovim-py3/bin/python"
+lua << EOF
+if vim.fn.filereadable("/home/jwilcox/.virtualenvs/neovim-py3/bin/python") ~= 0
+then
+    vim.g.python3_host_prog = "/home/jwilcox/.virtualenvs/neovim-py3/bin/python"
+end
 
-vim.api.nvim_exec(
-[[
-call plug#begin('~/.local/share/nvim/plugged')
+if vim.fn.filereadable("/home/jwilcox/.config/nvim/autoload/plug.vim") ~= 0
+then
+    vim.api.nvim_exec(
+    [[
+    call plug#begin('~/.local/share/nvim/plugged')
 
-Plug 'neovim/nvim-lspconfig'
-Plug 'hrsh7th/cmp-nvim-lsp'
-Plug 'hrsh7th/cmp-buffer'
-Plug 'hrsh7th/cmp-path'
-Plug 'hrsh7th/cmp-cmdline'
-Plug 'hrsh7th/nvim-cmp'
-Plug 'hrsh7th/cmp-vsnip'
-Plug 'hrsh7th/vim-vsnip'
-Plug 'andersevenrud/cmp-tmux'
+    Plug 'neovim/nvim-lspconfig'
+    Plug 'hrsh7th/cmp-nvim-lsp'
+    Plug 'hrsh7th/cmp-buffer'
+    Plug 'hrsh7th/cmp-path'
+    Plug 'hrsh7th/cmp-cmdline'
+    Plug 'hrsh7th/nvim-cmp'
+    Plug 'hrsh7th/cmp-vsnip'
+    Plug 'hrsh7th/vim-vsnip'
+    Plug 'andersevenrud/cmp-tmux'
 
-Plug 'sheerun/vim-polyglot'
-Plug 'roxma/nvim-yarp'
-Plug 'w0rp/ale'
-Plug 'JennToo/vim-groovy'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
-Plug 'lukas-reineke/indent-blankline.nvim'
-Plug 'rose-pine/neovim'
+    Plug 'sheerun/vim-polyglot'
+    Plug 'roxma/nvim-yarp'
+    Plug 'w0rp/ale'
+    Plug 'JennToo/vim-groovy'
+    Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+    Plug 'junegunn/fzf.vim'
+    Plug 'lukas-reineke/indent-blankline.nvim'
+    Plug 'rose-pine/neovim'
 
-call plug#end()
-]], true)
+    call plug#end()
+    ]], true)
+end
 
 vim.api.nvim_exec(
 [[
@@ -210,3 +217,4 @@ require("indent_blankline").setup {
     },
     show_trailing_blankline_indent = false,
 }
+EOF
