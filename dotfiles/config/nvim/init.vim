@@ -28,6 +28,8 @@ then
     Plug 'junegunn/fzf.vim'
     Plug 'lukas-reineke/indent-blankline.nvim'
     Plug 'rose-pine/neovim'
+    Plug 'nvim-lua/plenary.nvim'
+    Plug 'NeogitOrg/neogit'
 
     call plug#end()
     ]], true)
