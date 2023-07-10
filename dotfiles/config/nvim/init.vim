@@ -86,6 +86,11 @@ vim.keymap.set('n', '<Leader>st', 'mavip:w !tmux-sender REPL<Cr><Cr>`a', opts)
 vim.keymap.set('v', '<Leader>ss', ':w !tmux-sender REPL<Cr><Cr>', opts)
 
 vim.o.background = "light"
+require('rose-pine').setup({
+    highlight_groups = {
+		StatusLine = { fg = 'pine', bg = 'pine', blend = 10 },
+    }
+})
 -- TODO: How to convert this?
 vim.api.nvim_exec(
 [[
