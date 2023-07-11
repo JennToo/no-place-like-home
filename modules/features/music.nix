@@ -9,6 +9,7 @@
     fluidsynth
     geonkick
     musescore
+    sfizz
     surge-XT
   ];
   users.users.jwilcox.extraGroups = [ "audio" ];

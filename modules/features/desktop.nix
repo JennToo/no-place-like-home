@@ -37,6 +37,7 @@
     pavucontrol
     prusa-slicer
     pinta
+    transmission-gtk
     xfce.xfce4-pulseaudio-plugin
     xfce.xfce4-whiskermenu-plugin
     zoom-us
