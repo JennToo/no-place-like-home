@@ -12,6 +12,11 @@
   programs.xwayland.enable = true;
 
   services.printing.enable = true;
+  services.avahi = {
+    enable = true;
+    nssmdns = true;
+    openFirewall = true;
+  };
 
   sound.enable = true;
   hardware.pulseaudio.enable = false;
