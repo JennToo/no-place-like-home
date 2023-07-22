@@ -9,22 +9,23 @@
           customRC = builtins.readFile ../../dotfiles/config/nvim/init.vim;
           packages.nix = with pkgs.vimPlugins; {
             start = [
-              nvim-lspconfig
-              vim-polyglot
-              vim-nix
-              nvim-yarp
               ale
+              cmp-buffer
+              cmp-cmdline
+              cmp-nvim-lsp
+              cmp-path
+              cmp-tmux
+              cmp-vsnip
               fzf-vim
               indent-blankline-nvim
-              rose-pine
-              cmp-nvim-lsp
-              cmp-buffer
-              cmp-path
-              cmp-cmdline
+              neogit
               nvim-cmp
-              cmp-vsnip
+              nvim-lspconfig
+              nvim-yarp
+              rose-pine
+              vim-nix
+              vim-polyglot
               vim-vsnip
-              cmp-tmux
             ];
           };
         };
