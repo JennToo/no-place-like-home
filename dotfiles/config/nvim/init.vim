@@ -88,7 +88,8 @@ vim.keymap.set('v', '<Leader>ss', ':w !tmux-sender REPL<Cr><Cr>', opts)
 vim.o.background = "light"
 require('rose-pine').setup({
     highlight_groups = {
-		StatusLine = { fg = 'pine', bg = 'pine', blend = 10 },
+		StatusLine = { fg = 'pine', bg = 'pine', blend = 20 },
+		StatusLineNC = { fg = 'pine' },
     }
 })
 -- TODO: How to convert this?
