@@ -20,7 +20,7 @@
         {
           networking.hostName = "venezuela";
           boot.kernelPackages =
-            inputs.nixpkgs.legacyPackages.x86_64-linux.linuxPackages_6_3;
+            inputs.nixpkgs.legacyPackages.x86_64-linux.linuxPackages_6_4;
 
           fileSystems."/mnt/bigdata-local" = {
             device = "/dev/disk/by-uuid/a4a04330-a8e3-48b8-b706-4a35637c94ac";
