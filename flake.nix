@@ -43,6 +43,7 @@
         ./modules/features/games.nix
         ./modules/features/ssh-server.nix
         ./modules/features/bash-developer.nix
+        ./modules/features/lisp-developer.nix
         ./modules/features/python-developer.nix
         ./modules/features/music.nix
         ./modules/features/no-sleep.nix
