@@ -174,16 +174,10 @@
   ansible.builtin.pip:
     name: jedi
     virtualenv: "{{ lookup('env', 'HOME') }}/.virtualenvs/neovim-py3"
-- name: Download insect
-  ansible.builtin.get_url:
-    url: https://github.com/sharkdp/insect/releases/download/v5.7.0/insect-linux-x64
-    checksum: sha256:38d0971342c741bcc688416059ad936b371d4fc5f74883a4369952b1ff4e3b02
-    dest: "{{ home }}/.local/bin/insect"
-    mode: "755"
 - name: Download qalculate
   ansible.builtin.get_url:
-    url: https://github.com/Qalculate/qalculate-gtk/releases/download/v4.6.0/qalculate-4.6.0-x86_64.tar.xz
-    checksum: sha256:fdeb542120e017ef2745a6eeb3b8522a86c251c71502ab6fcaa1116955bb399b
+    url: https://github.com/Qalculate/qalculate-gtk/releases/download/v4.8.0/qalculate-4.8.0-x86_64.tar.xz
+    checksum: sha256:1d48842479dcd1c52026bdafb2ef50ba8756ef7845135293c8b2e2120d85a31b
     dest: "{{ home }}/.local/share/qalculate-gtk.tar.xz"
     mode: "644"
   register: qalculate_dl
@@ -194,7 +188,7 @@
   when: qalculate_dl.changed
 - name: Install qalculate
   ansible.builtin.file:
-    src: "{{ home }}/.local/share/qalculate/qalculate-4.6.0/{{ item }}"
+    src: "{{ home }}/.local/share/qalculate/qalculate-4.8.0/{{ item }}"
     dest: "{{ home }}/.local/bin/{{ item }}"
     state: link
   loop:
