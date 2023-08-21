@@ -16,6 +16,7 @@
     - .FreeCAD
     - .local/share
     - .local/share/qalculate
+    - .local/share/neovim
     - .fonts
 - name: Setup sensitive directories
   ansible.builtin.file:
@@ -137,18 +138,26 @@
       - elixir
       - evolution
       - krita
+      - neovim
 - name: Download neovim
   ansible.builtin.get_url:
-    url: https://github.com/neovim/neovim/releases/download/v0.8.3/nvim-linux64.deb
-    checksum: sha256:0828910da0b532e7564b1d200645bd846e6b2e1d10aa3111e36b59c1521b16f0 
-    dest: "{{ home }}/.local/share/neovim.deb"
+    url: https://github.com/neovim/neovim/releases/download/v0.9.1/nvim-linux64.tar.gz
+    checksum: sha256:6c083017304213c3a3efde8d332a52231b8df8206d35146942097c303ebf93d5
+    dest: "{{ home }}/.local/share/neovim-0.9.1.tar.gz"
     mode: "644"
   register: neovim_dl
-- name: Install neovim
-  become: true
-  ansible.builtin.apt:
-    deb: "{{ neovim_dl.dest }}"
+- name: Unpack neovim
+  ansible.builtin.unarchive:
+    src: "{{ neovim_dl.dest }}"
+    dest: "{{ home }}/.local/share/neovim"
   when: neovim_dl.changed
+- name: Install neovim
+  ansible.builtin.file:
+    src: "{{ home }}/.local/share/neovim/nvim-linux64/bin/{{ item }}"
+    dest: "{{ home }}/.local/bin/{{ item }}"
+    state: link
+  loop:
+    - nvim
 - name: Install python packages
   ansible.builtin.pip:
     name: "{{ packages }}"
