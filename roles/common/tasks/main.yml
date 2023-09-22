@@ -33,8 +33,6 @@
     state: link
     force: true
   with_items:
-    - src: gitconfig
-      dest: .gitconfig
     - src: gitignore
       dest: .gitignore
     - src: fdignore
@@ -84,6 +82,11 @@
     src: templates/ssh-config
     dest: "{{ home }}/.ssh/config"
     mode: "600"
+- name: Generate gitconfig
+  ansible.builtin.template:
+    src: templates/gitconfig
+    dest: "{{ home }}/.gitconfig"
+    mode: "655"
 - name: Install apt transport https
   become: true
   ansible.builtin.apt:

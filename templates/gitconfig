@@ -1,20 +1,9 @@
 [user]
-	email = jennifer@nitori.org
+	email = {{ git_email }}
 	name = Jennifer Wilcox
 [core]
 	excludesfile = /home/jwilcox/.gitignore
 	quotePath = false
-[hub]
-	host = github.adtran.com
-[alias]
-    yeet = push
-    yoink = pull
-    tea = status
-    vibe-check = reset
-    fam = remote
-    extra = commit --ammend
-    stan = merge
-    bruh = blame
 [init]
 	defaultbranch = main
 [pull]
