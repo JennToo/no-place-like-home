@@ -86,7 +86,7 @@ function vrg() {
     nvim -c ":Rg $1"
 }
 
-alias nf='nvim $(fzf)'
+alias nf='nvim -c "split" -c "wincmd j" -c "terminal" $(fzf)'
 
 alias forgetful_ssh='ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null'
 alias forgetful_scp='scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null'
