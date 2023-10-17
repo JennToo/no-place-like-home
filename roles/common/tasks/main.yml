@@ -69,6 +69,15 @@
       dest: .ideavimrc
     - src: sbclrc
       dest: .sbclrc
+- name: Install etc config
+  become: true
+  ansible.builtin.copy:
+    src: "{{ playbook_dir }}/dotfiles/etc/{{ item.src }}"
+    dest: "{{ item.dest }}"
+    mode: "0644"
+  with_items:
+    - src: sshd_extras.conf
+      dest: /etc/ssh/sshd_config.d/sshd_extras.conf
 - name: Install local scripts
   ansible.builtin.file:
     src: "{{ item }}"

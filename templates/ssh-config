@@ -4,11 +4,6 @@ Host home.nitori.org
     User jwilcox
     ForwardAgent yes
     ForwardX11 yes
-Host jenntoo.test.adtran.com
-    Port 22
-    User jwilcox
-    ForwardAgent yes
-    ForwardX11 yes
 Host simserver6.cable.adtran.com
     Port 22
     User ubuntu
@@ -17,5 +12,10 @@ Host simserver6.cable.adtran.com
 Host simserver7.cable.adtran.com
     Port 22
     User ubuntu
+    ForwardAgent yes
+    ForwardX11 yes
+Host jwilco7670l.adtran.com
+    Port 22
+    User jwilcox
     ForwardAgent yes
     ForwardX11 yes
