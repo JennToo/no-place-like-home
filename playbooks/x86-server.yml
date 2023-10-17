@@ -7,4 +7,5 @@
   connection: local
   roles:
     - common
+    - ssh-2fa
     - docker

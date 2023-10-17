@@ -1,0 +1,15 @@
+---
+- name: Install apt packages
+  become: true
+  ansible.builtin.apt:
+    name: libpam-google-authenticator
+- name: Set PAM config
+  become: true
+  ansible.builtin.lineinfile:
+    path: /etc/pam.d/sshd
+    line: "auth required pam_google_authenticator.so"
+- name: Set sshd config
+  become: true
+  ansible.builtin.lineinfile:
+    path: /etc/ssh/sshd_config
+    line: "ChallengeResponseAuthentication yes"

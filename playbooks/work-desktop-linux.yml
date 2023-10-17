@@ -8,6 +8,7 @@
   connection: local
   roles:
    - common
+   - ssh-2fa
    - rust_dev
    - cpp_dev
    - gui
