@@ -47,3 +47,5 @@ if [ -e "/opt/Xilinx/Vivado/2022.2/bin" ]
 then
     PATH="$PATH:/opt/Xilinx/Vivado/2022.2/bin"
 fi
+
+export DX_BETA_FEATURES=1
