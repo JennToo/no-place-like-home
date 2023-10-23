@@ -152,6 +152,8 @@
       - krita
 - name: Install neovim
   ansible.builtin.import_tasks: neovim.yml
+- name: Install qalculate
+  ansible.builtin.import_tasks: qalculate.yml
 - name: Install python packages
   ansible.builtin.pip:
     name: "{{ packages }}"
@@ -177,26 +179,6 @@
   ansible.builtin.pip:
     name: jedi
     virtualenv: "{{ lookup('env', 'HOME') }}/.virtualenvs/neovim-py3"
-- name: Download qalculate
-  ansible.builtin.get_url:
-    url: https://github.com/Qalculate/qalculate-gtk/releases/download/v4.8.0/qalculate-4.8.0-x86_64.tar.xz
-    checksum: sha256:1d48842479dcd1c52026bdafb2ef50ba8756ef7845135293c8b2e2120d85a31b
-    dest: "{{ home }}/.local/share/qalculate-gtk.tar.xz"
-    mode: "644"
-  register: qalculate_dl
-- name: Unpack qalculate
-  ansible.builtin.unarchive:
-    src: "{{ qalculate_dl.dest }}"
-    dest: "{{ home }}/.local/share/qalculate"
-  when: qalculate_dl.changed
-- name: Install qalculate
-  ansible.builtin.file:
-    src: "{{ home }}/.local/share/qalculate/qalculate-4.8.0/{{ item }}"
-    dest: "{{ home }}/.local/bin/{{ item }}"
-    state: link
-  loop:
-    - qalc
-    - qalculate
 - name: Add the flathub flatpak repository remote to the user installation
   become: true
   community.general.flatpak_remote:

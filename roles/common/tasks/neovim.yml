@@ -37,7 +37,7 @@
     set -ex
     rm -rf /opt/neovim
     git clean -dxf
-    make CMAKE_BUILD_TYPE=RelWithDebInfo CMAKE_INSTALL_PREFIX=/opt/neovim
+    make -j{{ ansible_processor_cores }} CMAKE_BUILD_TYPE=RelWithDebInfo CMAKE_INSTALL_PREFIX=/opt/neovim
     make install
   args:
     chdir: /opt/build/neovim
