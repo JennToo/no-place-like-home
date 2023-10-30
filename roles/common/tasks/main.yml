@@ -185,21 +185,11 @@
     name: flathub
     state: present
     flatpakrepo_url: https://flathub.org/repo/flathub.flatpakrepo
-- name: Download difftastic
-  ansible.builtin.get_url:
-    url: https://github.com/Wilfred/difftastic/releases/download/0.45.0/difft-x86_64-unknown-linux-gnu.tar.gz
-    checksum: sha256:8ae5f04faba95c868d3f878da7b96d23d6e6943e8b100d0041d4ed8778f83a07
-    dest: "{{ home }}/.local/share/difft.tar.gz"
-    mode: "644"
-  register: difft_dl
-- name: Extract difftastic
-  ansible.builtin.unarchive:
-    src: "{{ difft_dl.dest }}"
-    dest: "{{ home }}/.local/bin/"
-  when: difft_dl.changed
+- name: Install difftastic
+  ansible.builtin.command: cargo install --locked --version 0.52.0 difftastic
+  args:
+    creates: "{{ home }}/.cargo/bin/difft"
 - name: Install WatchIt
-  ansible.builtin.get_url:
-    url: https://github.com/ADTRAN/WatchIt/releases/download/v1.0.0/watchit
-    dest: "{{ home }}/.local/bin/watchit"
-    checksum: sha256:ecae0fb92d2cb6efdbb2f34bbfbcc0d00a486231939ebd73f5155881962af367
-    mode: '755'
+  ansible.builtin.command: cargo install --locked --git https://github.com/ADTRAN/WatchIt.git
+  args:
+    creates: "{{ home }}/.cargo/bin/watchit"
