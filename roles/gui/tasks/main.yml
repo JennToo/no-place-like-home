@@ -24,6 +24,7 @@
     packages:
       - code
       - dia
+      - flatpak
       - fonts-noto
       - freecad
       - google-chrome-stable
@@ -89,3 +90,9 @@
   when: cascadia_code_install.changed or sitelen_pona_pona.changed or ubuntu_nerd_install.changed or source_code_pro.changed
 - name: Setup GNOME Terminal profile
   ansible.builtin.shell: "dconf load /org/gnome/terminal/legacy/profiles:/ <roles/gui/files/gnome_terminal.dconf"
+- name: Add the flathub flatpak repository remote to the user installation
+  become: true
+  community.general.flatpak_remote:
+    name: flathub
+    state: present
+    flatpakrepo_url: https://flathub.org/repo/flathub.flatpakrepo

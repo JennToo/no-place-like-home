@@ -116,7 +116,6 @@
       - cowsay
       - curl
       - fd-find
-      - flatpak
       - flex
       - fzf
       - gdb-multiarch
@@ -179,9 +178,3 @@
   ansible.builtin.pip:
     name: jedi
     virtualenv: "{{ lookup('env', 'HOME') }}/.virtualenvs/neovim-py3"
-- name: Add the flathub flatpak repository remote to the user installation
-  become: true
-  community.general.flatpak_remote:
-    name: flathub
-    state: present
-    flatpakrepo_url: https://flathub.org/repo/flathub.flatpakrepo
