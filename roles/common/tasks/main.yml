@@ -185,11 +185,3 @@
     name: flathub
     state: present
     flatpakrepo_url: https://flathub.org/repo/flathub.flatpakrepo
-- name: Install difftastic
-  ansible.builtin.command: cargo install --locked --version 0.52.0 difftastic
-  args:
-    creates: "{{ home }}/.cargo/bin/difft"
-- name: Install WatchIt
-  ansible.builtin.command: cargo install --locked --git https://github.com/ADTRAN/WatchIt.git
-  args:
-    creates: "{{ home }}/.cargo/bin/watchit"
