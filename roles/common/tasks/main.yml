@@ -171,10 +171,10 @@
       - virtualenv
 - name: Setup neovim virtualenv Python 3
   ansible.builtin.pip:
-    name: pynvim
-    virtualenv: "{{ lookup('env', 'HOME') }}/.virtualenvs/neovim-py3"
+    name: "{{ item }}"
+    virtualenv: "{{ home }}/.virtualenvs/neovim-py3"
     virtualenv_python: python3
-- name: Add jedi to neovim virtualenv
-  ansible.builtin.pip:
-    name: jedi
-    virtualenv: "{{ lookup('env', 'HOME') }}/.virtualenvs/neovim-py3"
+    virtualenv_command: "{{ home }}/.local/bin/virtualenv"
+  loop:
+    - pynvim
+    - jedi
