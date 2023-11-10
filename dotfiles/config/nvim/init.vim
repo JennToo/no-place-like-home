@@ -30,6 +30,7 @@ then
     Plug 'rose-pine/neovim'
     Plug 'nvim-lua/plenary.nvim'
     Plug 'NeogitOrg/neogit'
+    Plug 'TabbyML/vim-tabby'
 
     call plug#end()
     ]], true)

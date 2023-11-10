@@ -19,3 +19,8 @@ Host jwilco7670l.adtran.com
     User jwilcox
     ForwardAgent yes
     ForwardX11 yes
+Host prima.adtran.com
+    Port 22
+    User jwilcox
+    ForwardAgent yes
+    ForwardX11 yes
