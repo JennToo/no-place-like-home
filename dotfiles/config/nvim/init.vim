@@ -210,20 +210,24 @@ vim.cmd [[highlight IndentBlanklineIndent2 guibg=#F9E9E5 gui=nocombine]]
 vim.cmd [[highlight IndentBlanklineIndent3 guibg=#FAF5EF gui=nocombine]]
 vim.cmd [[highlight IndentBlanklineIndent4 guibg=#F9E9E5 gui=nocombine]]
 
-require("indent_blankline").setup {
-    char = "",
-    char_highlight_list = {
-        "IndentBlanklineIndent1",
-        "IndentBlanklineIndent2",
-        "IndentBlanklineIndent3",
-        "IndentBlanklineIndent4",
+require("ibl").setup {
+    indent = {
+        char = "",
+        highlight = {
+            "IndentBlanklineIndent1",
+            "IndentBlanklineIndent2",
+            "IndentBlanklineIndent3",
+            "IndentBlanklineIndent4",
+        }
     },
-    space_char_highlight_list = {
-        "IndentBlanklineIndent1",
-        "IndentBlanklineIndent2",
-        "IndentBlanklineIndent3",
-        "IndentBlanklineIndent4",
+    whitespace = {
+        remove_blankline_trail = false,
+        highlight = {
+            "IndentBlanklineIndent1",
+            "IndentBlanklineIndent2",
+            "IndentBlanklineIndent3",
+            "IndentBlanklineIndent4",
+        }
     },
-    show_trailing_blankline_indent = false,
 }
 EOF
