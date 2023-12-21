@@ -23,6 +23,7 @@
   vars:
     packages:
       - code
+      - dconf-cli
       - dia
       - flatpak
       - fonts-noto
@@ -33,6 +34,12 @@
       - meld
       - obs-studio
       - wireshark
+- name: Add the flathub flatpak repository remote to the user installation
+  become: true
+  community.general.flatpak_remote:
+    name: flathub
+    state: present
+    flatpakrepo_url: https://flathub.org/repo/flathub.flatpakrepo
 - name: Install flatpaks
   become: true
   community.general.flatpak:
@@ -89,10 +96,4 @@
   ansible.builtin.command: fc-cache -fv
   when: cascadia_code_install.changed or sitelen_pona_pona.changed or ubuntu_nerd_install.changed or source_code_pro.changed
 - name: Setup GNOME Terminal profile
-  ansible.builtin.shell: "dconf load /org/gnome/terminal/legacy/profiles:/ <roles/gui/files/gnome_terminal.dconf"
-- name: Add the flathub flatpak repository remote to the user installation
-  become: true
-  community.general.flatpak_remote:
-    name: flathub
-    state: present
-    flatpakrepo_url: https://flathub.org/repo/flathub.flatpakrepo
+  ansible.builtin.shell: "dconf load /org/gnome/terminal/legacy/profiles:/ <roles/gui/files/gnome_terminal.dconf || true"

@@ -10,6 +10,5 @@
     - docker
     - rust_dev
     - cpp_dev
-    - haskell_dev
     - gui
     - 3d_printing
