@@ -5,6 +5,7 @@
    home: "{{ lookup('env', 'HOME') }}"
    user: "{{ lookup('env', 'USER') }}"
    git_email: "jennifer.wilcox@adtran.com"
+   tabby_endpoint: "http://profluence.adtran.com:8007"
   connection: local
   roles:
    - common

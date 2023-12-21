@@ -1,0 +1,5 @@
+[server]
+endpoint = "{{ tabby_endpoint }}"
+
+[anonymousUsageTracking]
+disable = true

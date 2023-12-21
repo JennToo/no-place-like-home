@@ -18,6 +18,7 @@
     - .local/share/qalculate
     - .local/share/neovim
     - .fonts
+    - .tabby-client/agent
 - name: Setup sensitive directories
   ansible.builtin.file:
     dest: "{{ home }}/{{ item }}"
@@ -91,11 +92,16 @@
     src: templates/ssh-config
     dest: "{{ home }}/.ssh/config"
     mode: "600"
-- name: Generate gitconfig
+- name: Generate templates
   ansible.builtin.template:
-    src: templates/gitconfig
-    dest: "{{ home }}/.gitconfig"
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
     mode: "655"
+  loop:
+    - src: templates/gitconfig
+      dest: "{{ home }}/.gitconfig"
+    - src: templates/tabby-config.toml
+      dest: "{{ home }}/.tabby-client/agent/config.toml"
 - name: Install apt transport https
   become: true
   ansible.builtin.apt:
