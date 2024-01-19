@@ -14,6 +14,16 @@ Host simserver7.cable.adtran.com
     User ubuntu
     ForwardAgent yes
     ForwardX11 yes
+Host frodo.dx.adtran.com
+    Port 22
+    User dx-automation
+    ForwardAgent yes
+    ForwardX11 yes
+Host samwise.dx.adtran.com
+    Port 22
+    User dx-automation
+    ForwardAgent yes
+    ForwardX11 yes
 Host jwilco7670l.adtran.com
     Port 22
     User jwilcox
