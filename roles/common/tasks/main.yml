@@ -102,85 +102,17 @@
       dest: "{{ home }}/.gitconfig"
     - src: templates/tabby-config.toml
       dest: "{{ home }}/.tabby-client/agent/config.toml"
-- name: Install apt transport https
-  become: true
-  ansible.builtin.apt:
-    name: apt-transport-https
-- name: Update apt packages
-  become: true
-  ansible.builtin.apt:
-    upgrade: dist
-    update_cache: true
-- name: Install apt packages
-  become: true
-  ansible.builtin.apt:
-    name: "{{ packages }}"
-  vars:
-    packages:
-      - bison
-      - build-essential
-      - cowsay
-      - curl
-      - fd-find
-      - flex
-      - fzf
-      - gdb-multiarch
-      - git
-      - gnupg2
-      - htop
-      - libssl-dev
-      - openssh-server
-      - pcscd
-      - pkg-config
-      - python3-pip
-      - python3-venv
-      - ripgrep
-      - ruby
-      - ruby-bundler
-      - ruby-dev
-      - scdaemon
-      - shellcheck
-      - sl
-      - sshpass
-      - tmux
-      - tree
-      - xclip
-- name: Remove apt packages
-  become: true
-  ansible.builtin.apt:
-    name: "{{ packages }}"
-    state: absent
-  vars:
-    packages:
-      - elixir
-      - evolution
-      - krita
-- name: Install neovim
-  ansible.builtin.import_tasks: neovim.yml
-- name: Install qalculate
-  ansible.builtin.import_tasks: qalculate.yml
-- name: Install python packages
-  ansible.builtin.pip:
-    name: "{{ packages }}"
-    executable: pip3
-    extra_args: --user
-    state: latest
-  vars:
-    packages:
-      - black
-      - neovim
-      - poetry
-      - pre-commit
-      - pylama
-      - pylint
-      - pyright
-      - virtualenv
+- name: Install packages (Ubuntu)
+  ansible.builtin.import_tasks: ubuntu.yml
+  when: os == 'ubuntu'
+- name: Install packages (Arch)
+  ansible.builtin.import_tasks: arch.yml
+  when: os == 'arch'
 - name: Setup neovim virtualenv Python 3
   ansible.builtin.pip:
     name: "{{ item }}"
     virtualenv: "{{ home }}/.virtualenvs/neovim-py3"
     virtualenv_python: python3
-    virtualenv_command: "{{ home }}/.local/bin/virtualenv"
   loop:
     - pynvim
     - jedi

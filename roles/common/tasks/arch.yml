@@ -1,0 +1,23 @@
+---
+- name: Install packages
+  become: true
+  community.general.pacman:
+    name:
+      - ansible
+      - cowsay
+      - curl
+      - fzf
+      - gdb
+      - libqalculate
+      - neovim
+      - openssh
+      - python-black
+      - python-pip
+      - python-poetry
+      - python-virtualenv
+      - ripgrep
+      - shellcheck
+      - sshpass
+      - tmux
+      - tree
+      - xclip
