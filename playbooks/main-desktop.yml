@@ -10,3 +10,4 @@
   connection: local
   roles:
    - common
+   - gui

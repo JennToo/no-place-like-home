@@ -6,6 +6,7 @@
       - ansible
       - cowsay
       - curl
+      - difftastic
       - fzf
       - gdb
       - libqalculate
@@ -16,6 +17,8 @@
       - python-poetry
       - python-virtualenv
       - ripgrep
+      - rsync
+      - rustup
       - shellcheck
       - sshpass
       - tmux

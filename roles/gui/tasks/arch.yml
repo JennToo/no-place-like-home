@@ -1,0 +1,39 @@
+---
+- name: Install packages
+  become: true
+  community.general.pacman:
+    name:
+      - adobe-source-code-pro-fonts
+      - cheese
+      - chromium
+      - code
+      - cups
+      - dconf-editor
+      - eog
+      - ffmpeg
+      - file-roller
+      - firefox
+      - freecad
+      - gnome
+      - helvum
+      - inkscape
+      - keepass
+      - meld
+      - noto-fonts
+      - noto-fonts-cjk
+      - noto-fonts-emoji
+      - obs-studio
+      - pipewire
+      - pipewire-jack
+      - prusa-slicer
+      - qalculate-gtk
+      - samba
+      - ttf-bitstream-vera
+      - ttf-cascadia-code
+      - ttf-dejavu
+      - ttf-ubuntu-mono-nerd
+      - vlc
+      - wireplumber
+      - wireshark-qt
+      - xorg-xwayland
+# TODO: sitelen pona pona
