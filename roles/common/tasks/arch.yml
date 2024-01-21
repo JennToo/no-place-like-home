@@ -24,3 +24,11 @@
       - tmux
       - tree
       - xclip
+- name: Install Rust toolchain
+  command: rustup default stable
+  args:
+    creates: "{{ home }}/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc"
+- name: Install rust-analyzer
+  command: rustup component add rust-analyzer
+  args:
+    creates: "{{ home }}/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rust-analyzer"

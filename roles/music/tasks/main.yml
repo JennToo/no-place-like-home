@@ -1,0 +1,33 @@
+---
+- name: Install packages
+  become: true
+  community.general.pacman:
+    name:
+      - adlplug-lv2
+      - ardour
+      - audacity
+      - calf
+      - cardinal-lv2
+      - cardinal-standalone
+      - carla
+      - dexed
+      - dexed-standalone
+      - dexed-vst3
+      - distrho-ports-lv2
+      - fluidsynth
+      - liquidsfz-lv2
+      - lsp-plugins-lv2
+      - musescore
+      - noise-repellent
+      - qpwgraph
+      - realtime-privileges
+      - sfizz-lv2
+      - sfizz-standalone
+      - solfege
+      - surge-xt-vst3
+- name: Add user to realtime group
+  become: true
+  ansible.builtin.user:
+    name: "{{ user }}"
+    groups: realtime
+    append: true
