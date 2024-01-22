@@ -230,4 +230,6 @@ require("ibl").setup {
         }
     },
 }
+
+require('neogit').setup {}
 EOF
