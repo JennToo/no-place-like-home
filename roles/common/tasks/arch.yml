@@ -4,6 +4,7 @@
   community.general.pacman:
     name:
       - ansible
+      - base-devel
       - cowsay
       - curl
       - difftastic
