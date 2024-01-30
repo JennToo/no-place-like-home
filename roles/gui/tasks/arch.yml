@@ -15,17 +15,24 @@
       - firefox
       - freecad
       - gnome
+      - gparted
       - helvum
       - inkscape
+      - intel-media-driver
       - keepass
+      - libva-utils
       - meld
+      - mesa-utils
       - networkmanager
       - noto-fonts
       - noto-fonts-cjk
       - noto-fonts-emoji
       - obs-studio
       - pipewire
+      - pipewire-audio
+      - pipewire-alsa
       - pipewire-jack
+      - pipewire-pulse
       - prusa-slicer
       - qalculate-gtk
       - samba
@@ -34,6 +41,8 @@
       - ttf-dejavu
       - ttf-ubuntu-mono-nerd
       - vlc
+      - vulkan-intel
+      - vulkan-tools
       - wireplumber
       - wireshark-qt
       - xorg-xwayland

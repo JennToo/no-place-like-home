@@ -117,3 +117,8 @@ if command -v porg >/dev/null
 then
 eval "$(porg _completions bootstrap bash)"
 fi
+
+if [ -e "$XDG_RUNTIME_DIR/gcr/ssh" ]
+then
+    export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/gcr/ssh"
+fi

@@ -4,13 +4,15 @@
   community.general.pacman:
     name:
       - ansible
-      - bash-completion
       - base-devel
+      - bash-completion
       - cowsay
       - curl
       - difftastic
+      - dosfstools
       - fzf
       - gdb
+      - less
       - libqalculate
       - neovim
       - openssh
@@ -25,6 +27,7 @@
       - sshpass
       - tmux
       - tree
+      - usbutils
       - xclip
 - name: Install Rust toolchain
   command: rustup default stable
