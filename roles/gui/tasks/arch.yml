@@ -19,6 +19,7 @@
       - inkscape
       - keepass
       - meld
+      - networkmanager
       - noto-fonts
       - noto-fonts-cjk
       - noto-fonts-emoji
@@ -36,4 +37,12 @@
       - wireplumber
       - wireshark-qt
       - xorg-xwayland
+- name: Enable services
+  become: true
+  ansible.builtin.systemd_service:
+    name: "{{ item }}"
+    enabled: true
+  loop:
+    - gdm.service
+    - NetworkManager.service
 # TODO: sitelen pona pona

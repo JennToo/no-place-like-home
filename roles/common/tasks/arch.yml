@@ -4,6 +4,7 @@
   community.general.pacman:
     name:
       - ansible
+      - bash-completion
       - base-devel
       - cowsay
       - curl
@@ -33,3 +34,11 @@
   command: rustup component add rust-analyzer
   args:
     creates: "{{ home }}/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rust-analyzer"
+- name: Enable services
+  become: true
+  ansible.builtin.systemd_service:
+    name: "{{ item }}"
+    enabled: true
+  loop:
+    - sshd.service
+    - systemd-timesyncd.service
