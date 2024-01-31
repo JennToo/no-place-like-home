@@ -4,3 +4,7 @@
 *.pyc
 __pycache__
 /venv
+/aurs/*/src
+/aurs/*/pkg
+/aurs/*/*.tar.gz
+/aurs/*/*.zst

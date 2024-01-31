@@ -31,3 +31,14 @@
     name: "{{ user }}"
     groups: realtime
     append: true
+- name: Package facts
+  ansible.builtin.package_facts:
+    manager: pacman
+- name: Build AUR
+  ansible.builtin.command: makepkg --install --syncdeps --needed --noconfirm
+  args:
+    chdir: "aurs/{{ item.name }}"
+  when: 'item.name not in ansible_facts.packages or ansible_facts.packages[item.name][0]["version"] != item.version'
+  loop:
+    - name: octasine
+      version: 0.9.0-1
