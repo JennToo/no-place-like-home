@@ -8,3 +8,4 @@ __pycache__
 /aurs/*/pkg
 /aurs/*/*.tar.gz
 /aurs/*/*.zst
+/aurs/libaudec/libaudec-v0.3.4
