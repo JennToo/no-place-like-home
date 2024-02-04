@@ -1,0 +1,7 @@
+pkg/
+src/
+*~
+carla-*.tar.xz
+carla-*.tar.zst
+carla-*.tar.gz
+carla/
