@@ -9,6 +9,7 @@
       - calf
       - cardinal-lv2
       - cardinal-standalone
+      - carla
       - dexed
       - dexed-standalone
       - dexed-vst3
@@ -34,24 +35,10 @@
   ansible.builtin.package_facts:
     manager: pacman
 - name: Build AUR
-  ansible.builtin.command: makepkg --install --syncdeps --needed --noconfirm --holdver
+  ansible.builtin.command: makepkg --install --syncdeps --needed --noconfirm --holdver --skippgpcheck
   args:
     chdir: "aurs/{{ item.name }}"
   when: 'item.name not in ansible_facts.packages or ansible_facts.packages[item.name][0]["version"] != item.version'
   loop:
     - name: octasine
       version: 0.9.0-1
-    - name: carla-git
-      version: 1:2.5.1.r452.gdf1f800a3-1
-    - name: libaudec
-      version: 0.3.4-1
-    - name: libcyaml
-      version: 1.4.1-1
-    - name: lsp-dsp-lib
-      version: 1.0.20-1
-    - name: reproc
-      version: 14.2.4-2
-    - name: yyjson-git
-      version: 0.8.0.r19.82ea883-1
-    - name: zrythm
-      version: 1.0.0-beta.6.1.1-1

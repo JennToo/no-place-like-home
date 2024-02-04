@@ -9,3 +9,5 @@ __pycache__
 /aurs/*/*.tar.gz
 /aurs/*/*.zst
 /aurs/libaudec/libaudec-v0.3.4
+/aurs/libbacktrace-git/libbacktrace
+/aurs/libbacktrace-git/*.patch
