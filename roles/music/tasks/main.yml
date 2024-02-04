@@ -53,3 +53,5 @@
       version: 14.2.4-2
     - name: yyjson-git
       version: 0.8.0.r19.82ea883-1
+    - name: zrythm
+      version: 1.0.0-beta.6.1.1-1
