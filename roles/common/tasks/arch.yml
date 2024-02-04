@@ -6,16 +6,19 @@
       - ansible
       - base-devel
       - bash-completion
+      - cmake
       - cowsay
       - curl
       - difftastic
+      - docker
       - dosfstools
+      - fuse-overlayfs
       - fzf
       - gdb
-      - iptables-nft
       - less
       - libqalculate
       - neovim
+      - nodejs
       - openssh
       - python-black
       - python-pip
@@ -38,18 +41,18 @@
   command: rustup component add rust-analyzer
   args:
     creates: "{{ home }}/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rust-analyzer"
-- name: Install nftables rule file
-  become: true
-  ansible.builtin.copy:
-    src: etc/nftables.conf
-    dest: /etc/nftables.conf
-    mode: "0644"
 - name: Enable services
   become: true
   ansible.builtin.systemd_service:
     name: "{{ item }}"
     enabled: true
   loop:
-    - nftables.service
+    - docker.service
     - sshd.service
     - systemd-timesyncd.service
+- name: Add user to docker group
+  become: true
+  ansible.builtin.user:
+    name: "{{ user }}"
+    groups: docker
+    append: true
