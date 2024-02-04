@@ -15,6 +15,7 @@
       - fuse-overlayfs
       - fzf
       - gdb
+      - htop
       - less
       - libqalculate
       - neovim
