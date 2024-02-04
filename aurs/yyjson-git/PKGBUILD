@@ -2,7 +2,7 @@
 
 _pkgname=yyjson
 pkgname="$_pkgname-git"
-pkgver=0.8.0.r17.f1867b0
+pkgver=0.8.0.r19.82ea883
 pkgrel=1
 pkgdesc="High performance C JSON library"
 arch=(x86_64)

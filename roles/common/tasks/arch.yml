@@ -18,6 +18,7 @@
       - htop
       - less
       - libqalculate
+      - man-db
       - neovim
       - nodejs
       - openssh

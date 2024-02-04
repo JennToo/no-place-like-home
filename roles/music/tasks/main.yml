@@ -34,7 +34,7 @@
   ansible.builtin.package_facts:
     manager: pacman
 - name: Build AUR
-  ansible.builtin.command: makepkg --install --syncdeps --needed --noconfirm
+  ansible.builtin.command: makepkg --install --syncdeps --needed --noconfirm --holdver
   args:
     chdir: "aurs/{{ item.name }}"
   when: 'item.name not in ansible_facts.packages or ansible_facts.packages[item.name][0]["version"] != item.version'
@@ -45,3 +45,11 @@
       version: 1:2.5.1.r452.gdf1f800a3-1
     - name: libaudec
       version: 0.3.4-1
+    - name: libcyaml
+      version: 1.4.1-1
+    - name: lsp-dsp-lib
+      version: 1.0.20-1
+    - name: reproc
+      version: 14.2.4-2
+    - name: yyjson-git
+      version: 0.8.0.r19.82ea883-1
