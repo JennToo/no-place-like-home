@@ -4,6 +4,7 @@
   community.general.pacman:
     name:
       - adobe-source-code-pro-fonts
+      - breeze
       - cheese
       - chromium
       - code
@@ -21,6 +22,7 @@
       - helvum
       - inkscape
       - intel-media-driver
+      - kdenlive
       - keepass
       - libreoffice-still
       - libusb-compat
