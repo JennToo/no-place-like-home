@@ -51,6 +51,7 @@
       - wireplumber
       - wireshark-qt
       - xorg-xwayland
+      - yt-dlp
 - name: Enable services
   become: true
   ansible.builtin.systemd_service:
