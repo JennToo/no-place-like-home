@@ -10,6 +10,7 @@ then
     [[
     call plug#begin('~/.local/share/nvim/plugged')
 
+    Plug 'github/copilot.vim'
     Plug 'neovim/nvim-lspconfig'
     Plug 'hrsh7th/cmp-nvim-lsp'
     Plug 'hrsh7th/cmp-buffer'
@@ -30,7 +31,6 @@ then
     Plug 'rose-pine/neovim'
     Plug 'nvim-lua/plenary.nvim'
     Plug 'NeogitOrg/neogit'
-    Plug 'TabbyML/vim-tabby'
 
     call plug#end()
     ]], true)
