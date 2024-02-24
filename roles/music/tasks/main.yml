@@ -21,6 +21,7 @@
       - noise-repellent
       - qpwgraph
       - realtime-privileges
+      - reaper
       - sfizz-lv2
       - sfizz-standalone
       - solfege
