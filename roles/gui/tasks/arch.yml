@@ -7,7 +7,6 @@
       - breeze
       - cheese
       - chromium
-      - code
       - cups
       - dconf-editor
       - eog
@@ -17,6 +16,7 @@
       - freecad
       - gnome
       - gnome-shell-extension-caffeine
+      - gnuplot
       - gparted
       - helvum
       - inkscape
