@@ -61,4 +61,15 @@
   loop:
     - gdm.service
     - NetworkManager.service
+- name: Package facts
+  ansible.builtin.package_facts:
+    manager: pacman
+- name: Build AUR
+  ansible.builtin.command: makepkg --install --syncdeps --needed --noconfirm --holdver --skippgpcheck
+  args:
+    chdir: "aurs/{{ item.name }}"
+  when: 'item.name not in ansible_facts.packages or ansible_facts.packages[item.name][0]["version"] != item.version'
+  loop:
+    - name: visual-studio-code-bin
+      version: 1.87.1-1
 # TODO: sitelen pona pona
