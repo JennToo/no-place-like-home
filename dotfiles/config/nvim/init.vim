@@ -11,8 +11,9 @@ then
     call plug#begin('~/.local/share/nvim/plugged')
 
     Plug 'github/copilot.vim'
-    Plug 'neovim/nvim-lspconfig'
-    Plug 'hrsh7th/cmp-nvim-lsp'
+    Plug 'prabirshrestha/vim-lsp'
+    Plug 'mattn/vim-lsp-settings'
+    Plug 'dmitmel/cmp-vim-lsp'
     Plug 'hrsh7th/cmp-buffer'
     Plug 'hrsh7th/cmp-path'
     Plug 'hrsh7th/cmp-cmdline'
@@ -162,7 +163,6 @@ vim.api.nvim_create_autocmd('FileType', {
     end
 })
 
-local lspconfig = require('lspconfig')
 local cmp = require('cmp')
 
 cmp.setup({
@@ -180,7 +180,7 @@ cmp.setup({
         ['<CR>'] = cmp.mapping.confirm({ select = true }),
     }),
     sources = cmp.config.sources({
-        { name = 'nvim_lsp' },
+        { name = 'vim_lsp' },
     }, {
         { name = 'buffer' },
         { name = 'path' },
@@ -196,14 +196,6 @@ vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
 vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
 vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
 vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
-
-local servers = { 'clangd', 'rust_analyzer', 'pyright', 'hls' }
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
-for _, lsp in ipairs(servers) do
-  lspconfig[lsp].setup {
-      capabilities = capabilities
-  }
-end
 
 vim.cmd [[highlight IndentBlanklineIndent1 guibg=#E4EEEE gui=nocombine]]
 vim.cmd [[highlight IndentBlanklineIndent2 guibg=#F9E9E5 gui=nocombine]]
