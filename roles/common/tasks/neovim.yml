@@ -30,7 +30,7 @@
     repo: https://github.com/neovim/neovim.git
     dest: /opt/build/neovim
     force: true
-    version: v0.9.4
+    version: v0.9.5
   register: git
 - name: Build neovim
   become: true
