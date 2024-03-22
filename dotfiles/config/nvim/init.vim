@@ -199,7 +199,10 @@ cmp.setup({
         { name = 'tmux' },
     }, {
         { name = 'vsnip' },
-    })
+    }),
+    completion = {
+        completeopt = 'menu,menuone,noinsert,preview',
+    },
 })
 
 local opts = { noremap=true, silent=true }
