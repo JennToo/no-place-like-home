@@ -1,9 +1,0 @@
-- hosts:
-   - localhost
-  vars:
-    home: "{{ lookup('env', 'HOME') }}"
-    user: "{{ lookup('env', 'USER') }}"
-    git_email: "jennifer@nitori.org"
-  connection: local
-  roles:
-    - common

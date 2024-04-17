@@ -1,117 +1,60 @@
 ---
-- name: Setup configuration directories
-  ansible.builtin.file:
-    dest: "{{ home }}/{{ item }}"
-    state: directory
-    mode: "755"
-  with_items:
-    - .config
-    - .config/autostart
-    - .config/Code/User
-    - .config/systemd/user
-    - .config/emacs
-    - .local/bin
-    - .local/src
-    - .virtualenvs
-    - .FreeCAD
-    - .local/share
-    - .local/share/neovim
-    - .fonts
-    - .tabby-client/agent
-- name: Setup sensitive directories
-  ansible.builtin.file:
-    dest: "{{ home }}/{{ item }}"
-    state: directory
-    mode: "700"
-  with_items:
-    - .gnupg
-    - .ssh
-- name: Install dotfiles
-  ansible.builtin.file:
-    src: "{{ playbook_dir }}/dotfiles/{{ item.src }}"
-    dest: "{{ home }}/{{ item.dest }}"
-    state: link
-    force: true
-  with_items:
-    - src: gitignore
-      dest: .gitignore
-    - src: fdignore
-      dest: .fdignore
-    - src: spacemacs
-      dest: .spacemacs
-    - src: config/nvim
-      dest: .config/nvim
-    - src: config/alacritty
-      dest: .config/alacritty
-    - src: emacs/init.el
-      dest: .config/emacs/init.el
-    - src: config/Code/User/keybindings.json
-      dest: .config/Code/User/keybindings.json
-    - src: config/autostart/gnome-keyring-ssh.desktop
-      dest: .config/autostart/gnome-keyring-ssh.desktop
-    - src: gnupg/gpg.conf
-      dest: .gnupg/gpg.conf
-    - src: gnupg/gpg-agent.conf
-      dest: .gnupg/gpg-agent.conf
-    - src: bashrc
-      dest: .bashrc
-    - src: inputrc
-      dest: .inputrc
-    - src: profile
-      dest: .profile
-    - src: tmux.conf
-      dest: .tmux.conf
-    - src: Xresources
-      dest: .Xresources
-    - src: FreeCAD/Macro
-      dest: .FreeCAD/Macro
-    - src: ideavimrc
-      dest: .ideavimrc
-    - src: sbclrc
-      dest: .sbclrc
-- name: Install etc config
+- name: Install apt transport https
   become: true
-  ansible.builtin.copy:
-    src: "{{ playbook_dir }}/dotfiles/etc/{{ item.src }}"
-    dest: "{{ item.dest }}"
-    mode: "0644"
-  with_items:
-    - src: sshd_extras.conf
-      dest: /etc/ssh/sshd_config.d/sshd_extras.conf
-- name: Install local scripts
-  ansible.builtin.file:
-    src: "{{ item }}"
-    dest: "{{ home }}/.local/bin/{{ item | basename }}"
-    state: link
-    force: true
-  with_fileglob:
-    - "{{ playbook_dir }}/bin/*"
-- name: Generate ssh-config
-  ansible.builtin.template:
-    src: templates/ssh-config
-    dest: "{{ home }}/.ssh/config"
-    mode: "600"
-- name: Generate templates
-  ansible.builtin.template:
-    src: "{{ item.src }}"
-    dest: "{{ item.dest }}"
-    mode: "655"
-  loop:
-    - src: templates/gitconfig
-      dest: "{{ home }}/.gitconfig"
-    - src: templates/tabby-config.toml
-      dest: "{{ home }}/.tabby-client/agent/config.toml"
-- name: Install packages (Ubuntu)
-  ansible.builtin.import_tasks: ubuntu.yml
-  when: os == 'ubuntu'
-- name: Install packages (Arch)
-  ansible.builtin.import_tasks: arch.yml
-  when: os == 'arch'
-- name: Setup neovim virtualenv Python 3
-  ansible.builtin.pip:
-    name: "{{ item }}"
-    virtualenv: "{{ home }}/.virtualenvs/neovim-py3"
-    virtualenv_python: python3
-  loop:
-    - pynvim
-    - jedi
+  ansible.builtin.apt:
+    name: apt-transport-https
+- name: Update apt packages
+  become: true
+  ansible.builtin.apt:
+    upgrade: dist
+    update_cache: true
+- name: Install apt packages
+  become: true
+  ansible.builtin.apt:
+    name: "{{ packages }}"
+  vars:
+    packages:
+      - bison
+      - build-essential
+      - cowsay
+      - curl
+      - fd-find
+      - flex
+      - fzf
+      - gdb-multiarch
+      - git
+      - gnupg2
+      - htop
+      - libssl-dev
+      - neovim
+      - openssh-server
+      - pcscd
+      - pkg-config
+      - python3-pip
+      - python3-pynvim
+      - python3-venv
+      - python3-poetry
+      - qalc
+      - ripgrep
+      - ruby
+      - ruby-bundler
+      - ruby-dev
+      - scdaemon
+      - shellcheck
+      - sl
+      - sshpass
+      - tmux
+      - tree
+      - xclip
+      - virtualenv
+      - black
+- name: Remove apt packages
+  become: true
+  ansible.builtin.apt:
+    name: "{{ packages }}"
+    state: absent
+  vars:
+    packages:
+      - elixir
+      - evolution
+      - krita

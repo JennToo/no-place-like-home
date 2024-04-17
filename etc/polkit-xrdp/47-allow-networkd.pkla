@@ -1,6 +1,0 @@
-[Allow Network Control all Users]
-Identity=unix-user:*
-Action=org.freedesktop.NetworkManager.network-control
-ResultAny=no
-ResultInactive=no
-ResultActive=yes
