@@ -26,11 +26,15 @@
       - gnupg2
       - htop
       - libssl-dev
+      - neovim
       - openssh-server
       - pcscd
       - pkg-config
       - python3-pip
+      - python3-pynvim
       - python3-venv
+      - python3-poetry
+      - qalc
       - ripgrep
       - ruby
       - ruby-bundler
@@ -42,6 +46,8 @@
       - tmux
       - tree
       - xclip
+      - virtualenv
+      - black
 - name: Remove apt packages
   become: true
   ansible.builtin.apt:
@@ -52,23 +58,3 @@
       - elixir
       - evolution
       - krita
-- name: Install neovim
-  ansible.builtin.import_tasks: neovim.yml
-- name: Install qalculate
-  ansible.builtin.import_tasks: qalculate.yml
-- name: Install python packages
-  ansible.builtin.pip:
-    name: "{{ packages }}"
-    executable: pip3
-    extra_args: --user
-    state: latest
-  vars:
-    packages:
-      - black
-      - neovim
-      - poetry
-      - pre-commit
-      - pylama
-      - pylint
-      - pyright
-      - virtualenv

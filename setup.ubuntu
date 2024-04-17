@@ -7,17 +7,11 @@ then
     PROMPT=-K
 fi
 
-if ! command -v ansible-playbook
+if ! command -v ansible
 then
-    sudo apt-get install -y python3-pip python3-venv cowsay
+    sudo apt-get install -y ansible cowsay
 fi
 
 . dotfiles/profile
 
-if ! [ -e venv ]
-then
-    python3 -m venv venv
-    ./venv/bin/pip install -r requirements.lock
-fi
-
-ANSIBLE_STDOUT_CALLBACK=debug ./venv/bin/ansible-playbook -i hosts.ini -l localhost playbook.yml $PROMPT
+ANSIBLE_STDOUT_CALLBACK=debug ansible-playbook -i hosts.ini -l localhost playbook.yml $PROMPT

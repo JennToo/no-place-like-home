@@ -15,7 +15,6 @@
     - .virtualenvs
     - .FreeCAD
     - .local/share
-    - .local/share/qalculate
     - .local/share/neovim
     - .fonts
     - .tabby-client/agent

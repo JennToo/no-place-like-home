@@ -2,6 +2,7 @@
   become: true
   ansible.builtin.apt_key:
     url: https://dl.google.com/linux/linux_signing_key.pub
+    keyring: /etc/apt/trusted.gpg.d/google.gpg
 - name: Add chrome repo
   become: true
   ansible.builtin.apt_repository:
@@ -11,6 +12,7 @@
   become: true
   ansible.builtin.apt_key:
     url: https://packages.microsoft.com/keys/microsoft.asc
+    keyring: /etc/apt/trusted.gpg.d/microsoft.gpg
 - name: Add VS Code repo
   become: true
   ansible.builtin.apt_repository:
@@ -27,7 +29,6 @@
       - dia
       - flatpak
       - fonts-noto
-      - freecad
       - google-chrome-stable
       - inkscape
       - keepass2
