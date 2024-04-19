@@ -5,10 +5,7 @@
    home: "{{ lookup('env', 'HOME') }}"
    user: "{{ lookup('env', 'USER') }}"
    git_email: "jennifer@nitori.org"
-   tabby_endpoint: "http://tabby.home.nitori.org"
-   os: 'arch'
   connection: local
   roles:
    - common
    - gui
-   - music

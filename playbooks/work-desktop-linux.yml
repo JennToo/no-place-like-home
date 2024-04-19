@@ -6,8 +6,6 @@
    home: "{{ lookup('env', 'HOME') }}"
    user: "{{ lookup('env', 'USER') }}"
    git_email: "jennifer.wilcox@adtran.com"
-   tabby_endpoint: "https://tabby.adtran.com:1337"
-   os: ubuntu
   connection: local
   roles:
    - common
