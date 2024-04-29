@@ -122,3 +122,8 @@ if [ -e "$XDG_RUNTIME_DIR/gcr/ssh" ]
 then
     export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/gcr/ssh"
 fi
+
+if command -v keychain >/dev/null
+then
+    eval "$(keychain --quiet --eval id_ed25519)"
+fi

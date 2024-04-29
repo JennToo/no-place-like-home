@@ -106,15 +106,15 @@
       - git
       - gnupg2
       - htop
+      - keychain
       - libssl-dev
       - neovim
-      - openssh-server
       - pcscd
       - pkg-config
       - python3-pip
+      - python3-poetry
       - python3-pynvim
       - python3-venv
-      - python3-poetry
       - qalc
       - ripgrep
       - ruby

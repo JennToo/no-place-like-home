@@ -1,0 +1,12 @@
+- hosts:
+   - localhost
+  vars:
+    home: "{{ lookup('env', 'HOME') }}"
+    user: "{{ lookup('env', 'USER') }}"
+    git_email: "jennifer.wilcox@adtran.com"
+  connection: local
+  roles:
+    - common
+    - rust_dev
+    - cpp_dev
+    - gui
