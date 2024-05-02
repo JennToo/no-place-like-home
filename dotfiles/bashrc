@@ -103,11 +103,8 @@ export GHS_LMHOST="@corp-licmgr.adtran.com"
 export ARTIFACTORY_SERVER=https://artifactory.adtran.com
 export DOCKERBINARY=/opt/lsk-docker/docker
 
-if [ -e "$HOME/.nvm/nvm.sh" ]
-then
-    . "$HOME/.nvm/nvm.sh"
-fi
-
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
