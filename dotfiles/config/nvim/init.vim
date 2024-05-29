@@ -32,6 +32,7 @@ then
     Plug 'rose-pine/neovim'
     Plug 'nvim-lua/plenary.nvim'
     Plug 'NeogitOrg/neogit'
+    Plug 'kovisoft/slimv'
 
     call plug#end()
     ]], true)

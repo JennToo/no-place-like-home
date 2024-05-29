@@ -21,6 +21,7 @@ silent! let g:plugs['nvim-cmp'].commit = 'ce16de5665c766f39c271705b17fff06f7bcb8
 silent! let g:plugs['nvim-lspconfig'].commit = '9266dc26862d8f3556c2ca77602e811472b4c5b8'
 silent! let g:plugs['nvim-yarp'].commit = 'bb5f5e038bfe119d3b777845a76b0b919b35ebc8'
 silent! let g:plugs['plenary.nvim'].commit = '8aad4396840be7fc42896e3011751b7609ca4119'
+silent! let g:plugs['slimv'].commit = 'f4775f044cbb28ff4a444143cd2e6712b3694f21'
 silent! let g:plugs['vim-groovy'].commit = '114d8adbbbb39da09d61336b357e337943b15b1b'
 silent! let g:plugs['vim-polyglot'].commit = 'bc8a81d3592dab86334f27d1d43c080ebf680d42'
 silent! let g:plugs['vim-vsnip'].commit = '02a8e79295c9733434aab4e0e2b8c4b7cea9f3a9'
