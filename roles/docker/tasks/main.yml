@@ -19,9 +19,3 @@
     name: "{{ user }}"
     groups: docker
     append: true
-- name: Install docker-compose
-  ansible.builtin.pip:
-    name: docker-compose
-    executable: pip3
-    extra_args: --user
-    state: latest

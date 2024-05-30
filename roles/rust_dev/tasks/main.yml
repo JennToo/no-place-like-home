@@ -11,14 +11,6 @@
     name: "{{ item }}"
   loop:
     - libudev-dev
-- name: "Install cargo packages"
-  community.general.cargo:
-    name: "{{ item }}"
-    state: latest
-  loop:
-    - flip-link
-    - probe-run
-    - cargo-embed
 - name: Install difftastic
   ansible.builtin.command: cargo install --locked --version 0.52.0 difftastic
   args:

@@ -50,6 +50,8 @@
       dest: .Xresources
     - src: ideavimrc
       dest: .ideavimrc
+    - src: sbclrc
+      dest: .sbclrc
 - name: Install etc config
   become: true
   ansible.builtin.copy:
