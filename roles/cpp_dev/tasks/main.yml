@@ -6,13 +6,14 @@
     packages:
       - bear
       - clang-format
-      - clangd-14
+      - clang-tools
+      - clangd
       - cmake
-      - g++-10
+      - gdb
       - ninja-build
-- name: Setup clangd symlink
+- name: Setup analyze-build symlink
   become: true
   ansible.builtin.file:
-    src: /usr/bin/clangd-14
-    dest: /usr/bin/clangd
+    src: /usr/bin/analyze-build-18
+    dest: /usr/bin/analyze-build
     state: link
