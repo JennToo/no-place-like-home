@@ -6,6 +6,7 @@
     packages:
       - bear
       - clang-format
+      - clang-tidy
       - clang-tools
       - clangd
       - cmake
