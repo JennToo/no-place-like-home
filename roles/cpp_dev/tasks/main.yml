@@ -18,3 +18,30 @@
     src: /usr/bin/analyze-build-18
     dest: /usr/bin/analyze-build
     state: link
+- name: Install more packages
+  become: true
+  ansible.builtin.apt:
+    name: "{{ packages }}"
+  vars:
+    packages:
+      - libasound2-dev
+      - libgl-dev
+      - libgles-dev
+      - libpipewire-0.3-dev
+      - libpulse-dev
+      - libvulkan-dev
+      - libwayland-dev
+      - libx11-dev
+      - libxcursor-dev
+      - libxext-dev
+      - libxfixes-dev
+      - libxi-dev
+      - libxinerama-dev
+      - libxkbcommon-dev
+      - libxrandr-dev
+      - libxss-dev
+      - libxt-dev
+      - libxv-dev
+      - libxxf86vm-dev
+      - wayland-protocols
+  when: gui_packages is defined
