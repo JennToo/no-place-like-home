@@ -43,5 +43,6 @@
       - libxt-dev
       - libxv-dev
       - libxxf86vm-dev
+      - vulkan-validationlayers
       - wayland-protocols
   when: gui_packages is defined
