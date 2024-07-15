@@ -146,9 +146,17 @@
     name: "{{ item }}"
     virtualenv: "{{ home }}/.virtualenvs/neovim-py3"
     virtualenv_python: python3
+    state: latest
   loop:
-    - pynvim
     - jedi
+    - pynvim
+    - pyright
+- name: Setup pyright symlink
+  ansible.builtin.file:
+    src: "{{ home }}/.virtualenvs/neovim-py3/bin/pyright-langserver"
+    dest: "{{ home }}/.local/bin/pyright-langserver"
+    state: link
+    force: true
 - name: Download neovim
   ansible.builtin.get_url:
     url: "https://github.com/neovim/neovim/releases/download/v0.10.0/nvim-linux64.tar.gz"
