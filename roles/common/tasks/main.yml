@@ -110,12 +110,10 @@
       - htop
       - keychain
       - libssl-dev
-      - neovim
       - pcscd
       - pkg-config
       - python3-pip
       - python3-poetry
-      - python3-pynvim
       - python3-venv
       - qalc
       - ripgrep
@@ -141,6 +139,8 @@
       - elixir
       - evolution
       - krita
+      - neovim
+      - python3-pynvim
 - name: Setup neovim virtualenv Python 3
   ansible.builtin.pip:
     name: "{{ item }}"
@@ -149,3 +149,27 @@
   loop:
     - pynvim
     - jedi
+- name: Download neovim
+  ansible.builtin.get_url:
+    url: "https://github.com/neovim/neovim/releases/download/v0.10.0/nvim-linux64.tar.gz"
+    checksum: sha256:be1f0988d0de71c375982b87b86cd28d2bab35ece8285abe3b0aac57604dfc5a
+    dest: "{{ home }}/.cache/nvim-0.10.0.tar.gz"
+- name: Setup neovim directory
+  become: true
+  ansible.builtin.file:
+    dest: /opt/nvim-0.10.0/
+    state: directory
+    mode: "755"
+- name: Extract neovim
+  become: true
+  ansible.builtin.unarchive:
+    creates: /opt/nvim-0.10.0/nvim-linux64/bin/nvim
+    src: "{{ home }}/.cache/nvim-0.10.0.tar.gz"
+    dest: /opt/nvim-0.10.0/
+- name: Symlink neovim
+  become: true
+  ansible.builtin.file:
+    src: /opt/nvim-0.10.0/nvim-linux64/bin/nvim
+    dest: /usr/local/bin/nvim
+    state: link
+    force: true
