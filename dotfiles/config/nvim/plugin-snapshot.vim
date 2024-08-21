@@ -15,7 +15,6 @@ silent! let g:plugs['copilot.lua'].commit = '86537b286f18783f8b67bccd78a4ef43456
 silent! let g:plugs['fzf'].commit = 'ea23539b59d3277cdd34d0ea9ddbcf9c54f350e6'
 silent! let g:plugs['fzf.vim'].commit = '279e1ec068f526e985ee7e3f62a71f083bbe0196'
 silent! let g:plugs['indent-blankline.nvim'].commit = '65e20ab94a26d0e14acac5049b8641336819dfc7'
-silent! let g:plugs['neogit'].commit = '4fb60b903e8a01c9dfd3a59f56292dae667b8339'
 silent! let g:plugs['neovim'].commit = '9e4320d0bab7f261921d6af7d1c1bbc1a1e3dc67'
 silent! let g:plugs['nvim-cmp'].commit = 'd818fd0624205b34e14888358037fb6f5dc51234'
 silent! let g:plugs['nvim-lspconfig'].commit = '01e08d4bf1c35e5126b2ad5209725e4c552289ab'

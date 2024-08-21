@@ -31,7 +31,6 @@ then
     Plug 'lukas-reineke/indent-blankline.nvim'
     Plug 'rose-pine/neovim'
     Plug 'nvim-lua/plenary.nvim'
-    Plug 'NeogitOrg/neogit'
     Plug 'kovisoft/slimv'
 
     call plug#end()
@@ -247,6 +246,4 @@ require("ibl").setup {
         }
     },
 }
-
-require('neogit').setup {}
 EOF
