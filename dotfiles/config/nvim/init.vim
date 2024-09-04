@@ -163,6 +163,13 @@ vim.api.nvim_create_autocmd('FileType', {
     end
 })
 
+vim.api.nvim_create_autocmd('FileType', {
+    pattern = {'groovy'},
+    callback = function()
+        vim.bo.commentstring = '//%s'
+    end
+})
+
 require("copilot_cmp").setup()
 require("copilot").setup({
   suggestion = { enabled = false },
