@@ -164,7 +164,7 @@ vim.api.nvim_create_autocmd('FileType', {
 })
 
 vim.api.nvim_create_autocmd('FileType', {
-    pattern = {'groovy'},
+    pattern = {'groovy', 'Jenkinsfile'},
     callback = function()
         vim.bo.commentstring = '//%s'
     end
