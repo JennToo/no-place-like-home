@@ -150,11 +150,11 @@
   loop:
     - jedi
     - pynvim
-    - pyright
-- name: Setup pyright symlink
+    - python-lsp-server
+- name: Setup pylsp symlink
   ansible.builtin.file:
-    src: "{{ home }}/.virtualenvs/neovim-py3/bin/pyright-langserver"
-    dest: "{{ home }}/.local/bin/pyright-langserver"
+    src: "{{ home }}/.virtualenvs/neovim-py3/bin/pylsp"
+    dest: "{{ home }}/.local/bin/pylsp"
     state: link
     force: true
 - name: Download neovim

@@ -220,7 +220,7 @@ vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
 vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
 
 
-local servers = { 'clangd', 'rust_analyzer', 'pyright', 'hls' }
+local servers = { 'clangd', 'rust_analyzer', 'pylsp', 'hls' }
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
