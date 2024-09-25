@@ -22,16 +22,16 @@ then
     Plug 'andersevenrud/cmp-tmux'
     Plug 'zbirenbaum/copilot-cmp'
 
-    Plug 'sheerun/vim-polyglot'
     Plug 'roxma/nvim-yarp'
     Plug 'w0rp/ale'
-    Plug 'JennToo/vim-groovy'
     Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
     Plug 'junegunn/fzf.vim'
     Plug 'lukas-reineke/indent-blankline.nvim'
     Plug 'rose-pine/neovim'
     Plug 'nvim-lua/plenary.nvim'
     Plug 'kovisoft/slimv'
+
+    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
     call plug#end()
     ]], true)
@@ -252,5 +252,12 @@ require("ibl").setup {
             "IndentBlanklineIndent4",
         }
     },
+}
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = { "groovy", "rst", "cpp", "rust" },
+  auto_install = false,
+  highlight = {
+    enable = true,
+  },
 }
 EOF

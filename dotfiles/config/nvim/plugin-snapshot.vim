@@ -18,11 +18,10 @@ silent! let g:plugs['indent-blankline.nvim'].commit = '65e20ab94a26d0e14acac5049
 silent! let g:plugs['neovim'].commit = '9e4320d0bab7f261921d6af7d1c1bbc1a1e3dc67'
 silent! let g:plugs['nvim-cmp'].commit = 'd818fd0624205b34e14888358037fb6f5dc51234'
 silent! let g:plugs['nvim-lspconfig'].commit = '01e08d4bf1c35e5126b2ad5209725e4c552289ab'
+silent! let g:plugs['nvim-treesitter'].commit = 'b9002f6fe679e2b8025a46116081c0da629a6b8c'
 silent! let g:plugs['nvim-yarp'].commit = 'bb5f5e038bfe119d3b777845a76b0b919b35ebc8'
 silent! let g:plugs['plenary.nvim'].commit = 'a3e3bc82a3f95c5ed0d7201546d5d2c19b20d683'
 silent! let g:plugs['slimv'].commit = 'e2c2bbb698c89de8c8aa91ad9ab1fd40ef6add00'
-silent! let g:plugs['vim-groovy'].commit = '114d8adbbbb39da09d61336b357e337943b15b1b'
-silent! let g:plugs['vim-polyglot'].commit = 'bc8a81d3592dab86334f27d1d43c080ebf680d42'
 silent! let g:plugs['vim-vsnip'].commit = '02a8e79295c9733434aab4e0e2b8c4b7cea9f3a9'
 
 PlugUpdate!
