@@ -1,0 +1,10 @@
+[Unit]
+Description=Headless instance of sway
+
+[Service]
+ExecStart=/usr/bin/sway
+Environment="WLR_BACKENDS=headless"
+Environment="WLR_LIBINPUT_NO_DEVICES=1"
+
+[Install]
+WantedBy=default.target

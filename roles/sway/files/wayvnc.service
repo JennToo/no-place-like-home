@@ -1,0 +1,11 @@
+[Unit]
+Description=WayVNC instance bound to localhost
+Requires=sway-headless.service
+After=sway-headless.service
+
+[Service]
+ExecStart=/usr/bin/wayvnc
+Environment="WAYLAND_DISPLAY=wayland-1"
+
+[Install]
+WantedBy=default.target

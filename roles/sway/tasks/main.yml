@@ -1,0 +1,28 @@
+---
+- name: Setup configuration directories
+  ansible.builtin.file:
+    dest: "{{ home }}/{{ item }}"
+    state: directory
+    mode: "755"
+  with_items:
+    - .config/systemd/user
+- name: Install service units
+  ansible.builtin.file:
+    src: "{{ playbook_dir }}/roles/sway/files/{{ item }}"
+    dest: "{{ home }}/.config/systemd/user/{{ item }}"
+    state: link
+    force: true
+  loop:
+    - sway-headless.service
+    - wayvnc.service
+- name: Install apt packages
+  become: true
+  ansible.builtin.apt:
+    name: "{{ packages }}"
+  vars:
+    packages:
+      - suckless-tools
+      - sway
+      - swayidle
+      - swaylock
+      - wayvnc

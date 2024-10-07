@@ -6,6 +6,7 @@
     git_email: "jennifer.wilcox@adtran.com"
   connection: local
   roles:
+    - sway
     - common
     - rust_dev
     - cpp_dev

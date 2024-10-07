@@ -7,6 +7,7 @@
   with_items:
     - .config
     - .config/emacs
+    - .config/sway
     - .local/bin
     - .local/src
     - .virtualenvs
@@ -52,6 +53,8 @@
       dest: .ideavimrc
     - src: sbclrc
       dest: .sbclrc
+    - src: sway-config
+      dest: .config/sway/config
 - name: Install etc config
   become: true
   ansible.builtin.copy:
