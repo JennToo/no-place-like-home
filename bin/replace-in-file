@@ -1,0 +1,43 @@
+#!/usr/bin/env python3
+import sys
+import argparse
+import pathlib
+
+
+def parse_args():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("old", help="old string")
+    parser.add_argument("new", help="new string")
+    parser.add_argument("file", help="file to replace in", type=pathlib.Path)
+    return parser.parse_args()
+
+
+def main():
+    args = parse_args()
+
+    try:
+        contents = args.file.read_text(encoding="utf-8")
+    except FileNotFoundError:
+        print(f"File not found: {args.file}", file=sys.stderr)
+        sys.exit(1)
+    except PermissionError:
+        print(f"Permission denied: {args.file}", file=sys.stderr)
+        sys.exit(1)
+    except UnicodeDecodeError:
+        print(f"File is not a text file: {args.file}", file=sys.stderr)
+        sys.exit(1)
+
+    if args.old not in contents:
+        sys.exit(0)
+
+    contents = contents.replace(args.old, args.new)
+
+    try:
+        contents = args.file.write_text(contents, encoding="utf-8")
+    except PermissionError:
+        print(f"Permission denied: {args.file}", file=sys.stderr)
+        sys.exit(1)
+
+
+if __name__ == "__main__":
+    main()
