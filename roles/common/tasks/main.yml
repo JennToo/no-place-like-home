@@ -8,6 +8,7 @@
     - .config
     - .config/emacs
     - .config/sway
+    - .config/foot
     - .local/bin
     - .local/src
     - .virtualenvs
@@ -55,6 +56,8 @@
       dest: .sbclrc
     - src: sway-config
       dest: .config/sway/config
+    - src: config/foot/foot.ini
+      dest: .config/foot/foot.ini
 - name: Install etc config
   become: true
   ansible.builtin.copy:
