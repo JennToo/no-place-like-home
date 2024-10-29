@@ -1,0 +1,14 @@
+{
+    "layer": "top",
+    "position": "bottom",
+    "modules-left": [],
+    "modules-center": ["wlr/taskbar"],
+    "modules-right": ["tray", "clock"],
+    "wlr/taskbar": {
+        "format": "{app_id}",
+        "on-click": "minimize-raise",
+    },
+    "clock": {
+        "format-alt": "{:%a, %d. %b  %H:%M}"
+    }
+}

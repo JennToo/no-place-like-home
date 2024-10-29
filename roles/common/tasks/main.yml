@@ -9,6 +9,8 @@
     - .config/emacs
     - .config/sway
     - .config/foot
+    - .config/kanshi
+    - .config/waybar
     - .local/bin
     - .local/src
     - .virtualenvs
@@ -56,8 +58,16 @@
       dest: .sbclrc
     - src: sway-config
       dest: .config/sway/config
+    - src: kanshi-config
+      dest: .config/kanshi/config
+    - src: labwc
+      dest: .config/labwc
     - src: config/foot/foot.ini
       dest: .config/foot/foot.ini
+    - src: waybar-config.jsonc
+      dest: .config/waybar/config
+    - src: waybar-style.css
+      dest: .config/waybar/style.css
 - name: Install etc config
   become: true
   ansible.builtin.copy:

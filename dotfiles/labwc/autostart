@@ -1,0 +1,4 @@
+systemd-cat swaybg -c '#113344' &
+systemd-cat kanshi &
+systemd-cat waybar &
+systemd-cat mako &
