@@ -10,6 +10,7 @@
 	rebase = false
 [credential "https://github.adtran.com"]
 	username = jwilcox
-	helper = cache --timeout=32400
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
 [diff]
 	external = difft
