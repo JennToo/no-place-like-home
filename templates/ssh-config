@@ -11,7 +11,7 @@ Host jennifer-vm.dx.adtran.com
     ForwardX11 yes
 Host frodo.dx.adtran.com
     Port 22
-    User dx-automation
+    User jwilcox
     ForwardAgent yes
     ForwardX11 yes
 Host samwise.dx.adtran.com
