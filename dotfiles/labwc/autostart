@@ -1,3 +1,10 @@
+#!/bin/bash
+
+# Start with lock on VNC connections as an extra security measure
+if [ "$WLR_BACKENDS" = "headless" ]; then
+    systemd-cat swaylock -f -c faf4ed &
+fi
+
 systemd-cat swaybg -c '#113344' &
 systemd-cat kanshi &
 systemd-cat waybar &

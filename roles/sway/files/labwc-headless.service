@@ -1,10 +1,8 @@
 [Unit]
-Description=Headless instance of labwc
+Description=Headless instance of labwc over VNC
 
 [Service]
-ExecStart=/usr/bin/labwc
-Environment="WLR_BACKENDS=headless"
-Environment="WLR_LIBINPUT_NO_DEVICES=1"
+ExecStart=/usr/local/bin/labwc-headless-vnc.sh
 
 [Install]
 WantedBy=default.target

@@ -13,9 +13,13 @@
     state: link
     force: true
   loop:
-    - sway-headless.service
     - labwc-headless.service
-    - wayvnc.service
+- name: Install VNC script
+  become: true
+  ansible.builtin.copy:
+    src: labwc-headless-vnc.sh
+    dest: /usr/local/bin/labwc-headless-vnc.sh
+    mode: "0755"
 - name: Install apt packages
   become: true
   ansible.builtin.apt:

@@ -1,9 +1,0 @@
-[Unit]
-Description=WayVNC instance bound to localhost
-
-[Service]
-ExecStart=/usr/bin/wayvnc
-Environment="WAYLAND_DISPLAY=wayland-0"
-
-[Install]
-WantedBy=default.target
