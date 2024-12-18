@@ -68,6 +68,12 @@
       dest: .config/waybar/config
     - src: waybar-style.css
       dest: .config/waybar/style.css
+- name: Create sshd config directory
+  become: true
+  ansible.builtin.file:
+    dest: "/etc/ssh/sshd_config.d"
+    state: directory
+    mode: "755"
 - name: Install etc config
   become: true
   ansible.builtin.copy:
