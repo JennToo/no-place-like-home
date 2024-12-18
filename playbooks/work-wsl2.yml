@@ -10,4 +10,5 @@
     - sway
     - rust_dev
     - cpp_dev
+    - fpga_dev
     - gui
