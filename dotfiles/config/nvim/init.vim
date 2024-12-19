@@ -254,7 +254,26 @@ require("ibl").setup {
     },
 }
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = { "groovy", "rst", "cpp", "rust" },
+  ensure_installed = {
+      "cpp",
+      "css",
+      "diff",
+      "groovy",
+      "html",
+      "json",
+      "json5",
+      "jsonc",
+      "make",
+      "rst",
+      "rust",
+      "scss",
+      "sql",
+      "toml",
+      "vhdl",
+      "xml",
+      "yaml",
+      "yang",
+  },
   auto_install = false,
   highlight = {
     enable = true,
