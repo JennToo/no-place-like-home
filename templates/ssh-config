@@ -29,3 +29,8 @@ Host prima.adtran.com
     User dx-automation
     ForwardAgent yes
     ForwardX11 yes
+Host haiti.home.nitori.org
+    Port 22
+    User jwilcox
+    ForwardAgent yes
+    ForwardX11 yes
