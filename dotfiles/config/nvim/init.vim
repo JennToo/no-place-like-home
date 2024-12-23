@@ -30,6 +30,7 @@ then
     Plug 'rose-pine/neovim'
     Plug 'nvim-lua/plenary.nvim'
     Plug 'kovisoft/slimv'
+    Plug 'junegunn/vim-easy-align'
 
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
@@ -81,6 +82,7 @@ vim.opt.autoread = true
 
 local opts = { noremap=true }
 vim.keymap.set('v', '<C-r>', '"hy:%s#<C-r>h##gc<left><left><left>', opts)
+vim.keymap.set('v', 'ga', '<Plug>(EasyAlign)', opts)
 vim.keymap.set('i', '<C-l>', 'λ', opts)
 vim.keymap.set('n', '<Leader>ff', ':Files<Cr>', opts)
 vim.keymap.set('n', '<Leader>b', ':Buffers<Cr>', opts)

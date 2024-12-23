@@ -22,6 +22,7 @@ silent! let g:plugs['nvim-treesitter'].commit = 'a3a732107f8b529f97bf4921b3e1af5
 silent! let g:plugs['nvim-yarp'].commit = 'bb5f5e038bfe119d3b777845a76b0b919b35ebc8'
 silent! let g:plugs['plenary.nvim'].commit = '2d9b06177a975543726ce5c73fca176cedbffe9d'
 silent! let g:plugs['slimv'].commit = '79f7ba2944498663e823b6675efc385732ca13b9'
+silent! let g:plugs['vim-easy-align'].commit = '9815a55dbcd817784458df7a18acacc6f82b1241'
 silent! let g:plugs['vim-vsnip'].commit = '02a8e79295c9733434aab4e0e2b8c4b7cea9f3a9'
 
 PlugUpdate!
