@@ -10,7 +10,6 @@ then
     [[
     call plug#begin('~/.local/share/nvim/plugged')
 
-    Plug 'zbirenbaum/copilot.lua'
     Plug 'neovim/nvim-lspconfig'
     Plug 'hrsh7th/cmp-nvim-lsp'
     Plug 'hrsh7th/cmp-buffer'
@@ -20,7 +19,6 @@ then
     Plug 'hrsh7th/cmp-vsnip'
     Plug 'hrsh7th/vim-vsnip'
     Plug 'andersevenrud/cmp-tmux'
-    Plug 'zbirenbaum/copilot-cmp'
 
     Plug 'roxma/nvim-yarp'
     Plug 'mfussenegger/nvim-lint'
@@ -158,12 +156,6 @@ vim.api.nvim_create_autocmd('FileType', {
     end
 })
 
-require("copilot_cmp").setup()
-require("copilot").setup({
-  suggestion = { enabled = false },
-  panel = { enabled = false },
-})
-
 local lspconfig = require('lspconfig')
 local cmp = require('cmp')
 
@@ -185,8 +177,6 @@ cmp.setup({
         ['<CR>'] = cmp.mapping.confirm({ select = true }),
     }),
     sources = cmp.config.sources({
-        { name = 'copilot' },
-    }, {
         { name = 'nvim_lsp' },
     }, {
         { name = 'buffer' },
