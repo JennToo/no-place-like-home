@@ -29,7 +29,6 @@ then
     Plug 'lukas-reineke/indent-blankline.nvim'
     Plug 'rose-pine/neovim'
     Plug 'nvim-lua/plenary.nvim'
-    Plug 'kovisoft/slimv'
     Plug 'junegunn/vim-easy-align'
 
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
@@ -258,6 +257,7 @@ require'nvim-treesitter.configs'.setup {
       "scss",
       "sql",
       "toml",
+      "vimdoc",
       "vhdl",
       "xml",
       "yaml",
@@ -278,7 +278,7 @@ require('lint').linters.make_ghdl_lint = {
   parser = require("lint.parser").from_pattern(
     "([^:]+):(%d+):(%d+):(.+)",
     { "file", "lnum", "col", "message" },
-    { ["error"] = vim.diagnostic.severity.ERROR },
+    { ["error"] = vim.diagnostic.severity.ERROR, ["warning"] = vim.diagnostic.severity.WARNING },
     { source = "ghdl" }
   ),
 }
