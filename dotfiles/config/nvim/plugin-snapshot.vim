@@ -3,7 +3,6 @@
 
 
 
-silent! let g:plugs['ale'].commit = '1e1604be56f8545099c2d667085a7080f21d4cb3'
 silent! let g:plugs['cmp-buffer'].commit = '3022dbc9166796b644a841a02de8dd1cc1d311fa'
 silent! let g:plugs['cmp-cmdline'].commit = 'd250c63aa13ead745e3a40f61fdd3470efde3923'
 silent! let g:plugs['cmp-nvim-lsp'].commit = '39e2eda76828d88b773cc27a3f61d2ad782c922d'
@@ -17,6 +16,7 @@ silent! let g:plugs['fzf.vim'].commit = '556f45e79ae5e3970054fee4c4373472604a1b4
 silent! let g:plugs['indent-blankline.nvim'].commit = '7871a88056f7144defca9c931e311a3134c5d509'
 silent! let g:plugs['neovim'].commit = '07a887a7bef4aacea8c7caebaf8cbf808cdc7a8e'
 silent! let g:plugs['nvim-cmp'].commit = '40a03dc225383c4f6256596c2cdf27e03b8119b5'
+silent! let g:plugs['nvim-lint'].commit = '1fea92f1d9908eaa5eb8bafe08b4293d7aadaa55'
 silent! let g:plugs['nvim-lspconfig'].commit = '291a8f1a319dc712db85bcc174b0cf406f0a5b69'
 silent! let g:plugs['nvim-treesitter'].commit = 'a3a732107f8b529f97bf4921b3e1af5dcc756bb6'
 silent! let g:plugs['nvim-yarp'].commit = 'bb5f5e038bfe119d3b777845a76b0b919b35ebc8'

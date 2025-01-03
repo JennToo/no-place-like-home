@@ -23,7 +23,7 @@ then
     Plug 'zbirenbaum/copilot-cmp'
 
     Plug 'roxma/nvim-yarp'
-    Plug 'w0rp/ale'
+    Plug 'mfussenegger/nvim-lint'
     Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
     Plug 'junegunn/fzf.vim'
     Plug 'lukas-reineke/indent-blankline.nvim'
@@ -105,19 +105,6 @@ catch /^Vim\%((\a\+)\)\=:E185/
     " deal with it
 endtry
 ]], true)
-
--- ALE
-vim.g.ale_sign_error = "!"
-vim.g.ale_sign_warning = "-"
-vim.g.ale_asm_gcc_executable = "arm-none-eabi-gcc"
-vim.g.ale_linters = {
-    cpp = {},
-    python = {},
-    haskell = {},
-    json = {'jq'},
-}
-vim.api.nvim_set_hl(0, 'ALEErrorSign', { bg = 'red' })
-vim.api.nvim_set_hl(0, 'ALEWarningSign', { bg = 'yellow' })
 
 -- rst folding is annoying
 vim.g.riv_disable_folding = 1
@@ -281,4 +268,27 @@ require'nvim-treesitter.configs'.setup {
     enable = true,
   },
 }
+
+require('lint').linters.make_ghdl_lint = {
+  cmd = 'make',
+  stdin = false,
+  args = {"ghdl-lint"},
+  stream = 'stderr',
+  ignore_exitcode = false,
+  parser = require("lint.parser").from_pattern(
+    "([^:]+):(%d+):(%d+):(.+)",
+    { "file", "lnum", "col", "message" },
+    { ["error"] = vim.diagnostic.severity.ERROR },
+    { source = "ghdl" }
+  ),
+}
+require('lint').linters_by_ft = {
+  vhdl = {'make_ghdl_lint'},
+}
+vim.api.nvim_create_autocmd({ "BufWritePost" }, {
+  callback = function()
+    require("lint").try_lint()
+  end,
+})
+
 EOF
