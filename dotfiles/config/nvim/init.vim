@@ -266,9 +266,9 @@ require('lint').linters.make_ghdl_lint = {
   stream = 'stderr',
   ignore_exitcode = false,
   parser = require("lint.parser").from_pattern(
-    "([^:]+):(%d+):(%d+):(.+)",
-    { "file", "lnum", "col", "message" },
-    { ["error"] = vim.diagnostic.severity.ERROR, ["warning"] = vim.diagnostic.severity.WARNING },
+    "([^:]+):(%d+):(%d+):([^:]+):(.+)",
+    { "file", "lnum", "col", "severity", "message" },
+    { ["error"] = vim.diagnostic.severity.ERROR, ["warning"] = vim.diagnostic.severity.WARN },
     { source = "ghdl" }
   ),
 }
