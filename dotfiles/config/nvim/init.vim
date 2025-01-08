@@ -274,6 +274,7 @@ require('lint').linters.make_ghdl_lint = {
 }
 require('lint').linters_by_ft = {
   vhdl = {'make_ghdl_lint'},
+  sh = {'shellcheck'},
 }
 vim.api.nvim_create_autocmd({ "BufWritePost" }, {
   callback = function()
