@@ -1,0 +1,28 @@
+#!/usr/bin/env python3
+import sys
+import re
+
+PATTERNS = [
+    # python
+    re.compile(
+        r"\s*File \"(?P<file>.*)\", line (?P<line>\d+)"
+    ),
+    # work
+    re.compile(
+        r"\w+: \*(?P<type>\w),\w+ \((?P<file>.*),(?P<line>\d+)\|(?P<col>\d+)\): (?P<message>.*)"
+    )
+]
+
+while line := sys.stdin.readline():
+    for pattern in PATTERNS:
+        match = pattern.match(line)
+        if not match:
+            continue
+        groups_to_print = ["type", "file", "line", "col", "message"]
+        message = ""
+        for group in groups_to_print:
+            try:
+                message += f"{group} {match.group(group)} "
+            except IndexError:
+                message += f"{group} - "
+        print(message.strip())
