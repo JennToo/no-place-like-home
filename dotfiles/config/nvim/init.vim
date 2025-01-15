@@ -35,6 +35,9 @@ then
     ]], true)
 end
 
+local project_name = vim.fs.basename(vim.fn.getcwd())
+pcall(require, "projects/" .. project_name)
+
 vim.api.nvim_exec(
 [[
 :tnoremap <A-h> <C-\><C-N><C-w>h
