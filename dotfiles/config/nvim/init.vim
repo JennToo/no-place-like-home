@@ -61,7 +61,7 @@ vim.opt.spelllang="en"
 vim.opt.spellfile="/home/jwilcox/.config/nvim/en.utf-8.add"
 vim.opt.cursorline = true
 
-vim.opt.makeprg = "quickfix-parser </tmp/last-build.log"
+vim.opt.makeprg = "quickfix-parser /tmp/last-build.log"
 vim.opt.errorformat = "type %t file %f line %l col %c message %m"
 
 vim.api.nvim_create_autocmd('TermOpen', {
