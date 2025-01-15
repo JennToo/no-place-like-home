@@ -12,7 +12,5 @@
 	username = jwilcox
 	helper = 
 	helper = !/usr/bin/gh auth git-credential
-[diff]
-	external = difft
 [push]
 	recurseSubmodules = check
