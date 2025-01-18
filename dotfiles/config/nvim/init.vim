@@ -96,6 +96,7 @@ vim.keymap.set('n', '<Leader>ws', '"hyiw:Rg <C-r>h<Cr>', opts)
 vim.keymap.set('n', '<C-n>', ':cn<Cr>', opts)
 vim.keymap.set('n', '<C-p>', ':cp<Cr>', opts)
 vim.keymap.set('n', '<Leader>cc', ':make<Cr><Cr>:copen<Cr>', opts)
+vim.keymap.set('n', '<Leader>ce', ':make -l e<Cr><Cr>:copen<Cr>', opts)
 vim.keymap.set('n', '<Leader>cq', ':cclose<Cr>', opts)
 
 vim.o.background = "light"

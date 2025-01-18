@@ -2,6 +2,7 @@
 import sys
 import re
 import pathlib
+import argparse
 
 PATTERNS = [
     # python
@@ -19,7 +20,8 @@ PATTERNS = [
 
 
 def main():
-    log_file = pathlib.Path(sys.argv[1])
+    args = parse_args()
+    log_file = pathlib.Path(args.log)
     for line_number, line in enumerate(log_file.read_text().splitlines(keepends=False)):
         for pattern in PATTERNS:
             match = pattern.match(line)
@@ -46,12 +48,25 @@ def main():
             logfile_groups["file"] = str(log_file)
             logfile_groups["line"] = str(line_number + 1)
 
+            if (
+                args.level is not None
+                and args.level.lower() == "e"
+                and groups_found["type"].lower() != "e"
+            ):
+                continue
             print_one(groups_found)
             print_one(logfile_groups)
 
 
 def print_one(groups_found):
     print(" ".join(f"{key} {value}" for key, value in groups_found.items()))
+
+
+def parse_args():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("log", help="Log file to parse")
+    parser.add_argument("-l", "--level", help="Level of messages to show", default=None)
+    return parser.parse_args()
 
 
 if __name__ == "__main__":
