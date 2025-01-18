@@ -10,6 +10,11 @@ PATTERNS = [
     re.compile(
         r"\w+: \*(?P<type>\w),\w+ \((?P<file>.*),(?P<line>\d+)\|(?P<col>\d+)\): (?P<message>.*)"
     ),
+    # Quartus - Example:
+    # Warning (15610): No output dependent on input pin "ENET1_RX_DATA[0]" File: /home/jwilcox/repo/jennifer-learns-vhdl/synth/DE2-115/Computer/DE2_115_Computer.vhd Line: 100
+    re.compile(
+        r"\s*(?P<type>Warning|Error) \(\d+\): (?P<message>.*) File: (?P<file>.*) Line: (?P<line>\d+)"
+    ),
 ]
 
 
@@ -31,6 +36,8 @@ def main():
             for group in groups_to_print:
                 try:
                     groups_found[group] = match.group(group)
+                    if group == "type":
+                        groups_found[group] = groups_found[group][:1]
                 except IndexError:
                     pass
 

@@ -20,6 +20,7 @@ silent! let g:plugs['nvim-treesitter'].commit = '984214ef8e4ca18d77639663319aabd
 silent! let g:plugs['nvim-yarp'].commit = 'bb5f5e038bfe119d3b777845a76b0b919b35ebc8'
 silent! let g:plugs['plenary.nvim'].commit = '3707cdb1e43f5cea73afb6037e6494e7ce847a66'
 silent! let g:plugs['vim-easy-align'].commit = '9815a55dbcd817784458df7a18acacc6f82b1241'
+silent! let g:plugs['vim-markify'].commit = 'ece4eaad9f87421ed267020fd410a71944226a37'
 silent! let g:plugs['vim-vsnip'].commit = '02a8e79295c9733434aab4e0e2b8c4b7cea9f3a9'
 
 PlugUpdate!

@@ -28,6 +28,7 @@ then
     Plug 'rose-pine/neovim'
     Plug 'nvim-lua/plenary.nvim'
     Plug 'junegunn/vim-easy-align'
+    Plug 'dhruvasagar/vim-markify'
 
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
