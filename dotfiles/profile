@@ -17,35 +17,15 @@ export OS_CLOUD=openstack
 export VISUAL="nvim"
 export EDITOR="nvim"
 
-if [ -e "$HOME/.nix-profile/etc/profile.d/nix.sh" ]
-then
-    . "$HOME/.nix-profile/etc/profile.d/nix.sh"
-fi
-
-if [ -e "$HOME/.cabal/bin" ]
-then
-    PATH="$HOME/.cabal/bin:$PATH"
-fi
-if [ -e "$HOME/.ghcup/bin" ]
-then
-    PATH="$HOME/.ghcup/bin:$PATH"
-fi
-
 export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
 
 export FZF_DEFAULT_COMMAND="fdfind --type f -I --ignore-file $HOME/.fdignore"
 
-GNATSTUDIO_HOME="$HOME/.local/share/gnatstudio-23.0w-20220512-x86_64-linux-bin"
-if [ -e "$GNATSTUDIO_HOME" ]
+if [ -e "/home/jwilcox/.local/share/gem/ruby/3.2.0/bin/" ]
 then
-    PATH=$PATH:$GNATSTUDIO_HOME/bin
-fi
-
-if [ -e "/opt/Xilinx/Vivado/2022.2/bin" ]
-then
-    PATH="$PATH:/opt/Xilinx/Vivado/2022.2/bin"
+    PATH="$PATH:/home/jwilcox/.local/share/gem/ruby/3.2.0/bin"
 fi
 
 export DX_BETA_FEATURES=1
