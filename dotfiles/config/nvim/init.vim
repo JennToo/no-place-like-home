@@ -272,21 +272,7 @@ require'nvim-treesitter.configs'.setup {
   },
 }
 
-require('lint').linters.make_ghdl_lint = {
-  cmd = 'make',
-  stdin = false,
-  args = {"ghdl-lint"},
-  stream = 'stderr',
-  ignore_exitcode = false,
-  parser = require("lint.parser").from_pattern(
-    "([^:]+):(%d+):(%d+):([^:]+):(.+)",
-    { "file", "lnum", "col", "severity", "message" },
-    { ["error"] = vim.diagnostic.severity.ERROR, ["warning"] = vim.diagnostic.severity.WARN },
-    { source = "ghdl" }
-  ),
-}
 require('lint').linters_by_ft = {
-  vhdl = {'make_ghdl_lint'},
   sh = {'shellcheck'},
 }
 vim.api.nvim_create_autocmd({ "BufWritePost" }, {
