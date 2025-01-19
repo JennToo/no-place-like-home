@@ -16,6 +16,11 @@ PATTERNS = [
     re.compile(
         r"\s*(?P<type>Warning|Error) \(\d+\): (?P<message>.*) File: (?P<file>.*) Line: (?P<line>\d+)"
     ),
+    # GHDL - Example:
+    # test/tb_vga.vhd:55:30:error: no declaration for "r_fifo_empty"
+    re.compile(
+        r"(?P<file>[^:]+):(?P<line>\d+):(?P<col>\d+):(?P<type>[^:]+): (?P<message>.+)"
+    )
 ]
 
 
