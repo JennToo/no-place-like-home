@@ -29,6 +29,7 @@
       - libgles-dev
       - libpipewire-0.3-dev
       - libpulse-dev
+      - libsdl2-dev
       - libvulkan-dev
       - libwayland-dev
       - libx11-dev

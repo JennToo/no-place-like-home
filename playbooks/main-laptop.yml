@@ -5,7 +5,10 @@
    home: "{{ lookup('env', 'HOME') }}"
    user: "{{ lookup('env', 'USER') }}"
    git_email: "jennifer@nitori.org"
+   gui_packages: true
   connection: local
   roles:
    - common
+   - cpp_dev
+   - fpga_dev
    - gui
