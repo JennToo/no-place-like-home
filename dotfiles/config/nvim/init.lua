@@ -5,34 +5,46 @@ end
 
 if vim.fn.filereadable("/home/jwilcox/.config/nvim/autoload/plug.vim") ~= 0
 then
-    vim.api.nvim_exec(
-    [[
-    call plug#begin('~/.local/share/nvim/plugged')
+    local Plug = vim.fn['plug#']
+    vim.call("plug#begin", '~/.local/share/nvim/plugged')
 
-    Plug 'neovim/nvim-lspconfig'
-    Plug 'hrsh7th/cmp-nvim-lsp'
-    Plug 'hrsh7th/cmp-buffer'
-    Plug 'hrsh7th/cmp-path'
-    Plug 'hrsh7th/cmp-cmdline'
-    Plug 'hrsh7th/nvim-cmp'
-    Plug 'hrsh7th/cmp-vsnip'
-    Plug 'hrsh7th/vim-vsnip'
-    Plug 'andersevenrud/cmp-tmux'
+    Plug('neovim/nvim-lspconfig')
+    Plug('hrsh7th/cmp-nvim-lsp')
+    Plug('hrsh7th/cmp-buffer')
+    Plug('hrsh7th/cmp-path')
+    Plug('hrsh7th/cmp-cmdline')
+    Plug('hrsh7th/nvim-cmp')
+    Plug('hrsh7th/cmp-vsnip')
+    Plug('hrsh7th/vim-vsnip')
+    Plug('andersevenrud/cmp-tmux')
 
-    Plug 'roxma/nvim-yarp'
-    Plug 'mfussenegger/nvim-lint'
-    Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-    Plug 'junegunn/fzf.vim'
-    Plug 'lukas-reineke/indent-blankline.nvim'
-    Plug 'rose-pine/neovim'
-    Plug 'nvim-lua/plenary.nvim'
-    Plug 'junegunn/vim-easy-align'
-    Plug 'dhruvasagar/vim-markify'
+    Plug('roxma/nvim-yarp')
+    Plug('mfussenegger/nvim-lint')
+    Plug(
+        'junegunn/fzf',
+        {
+            ['do'] = function()
+                vim.fn['fzf#install']()
+            end
+        }
+    )
+    Plug('junegunn/fzf.vim')
+    Plug('lukas-reineke/indent-blankline.nvim')
+    Plug('rose-pine/neovim')
+    Plug('nvim-lua/plenary.nvim')
+    Plug('junegunn/vim-easy-align')
+    Plug('dhruvasagar/vim-markify')
 
-    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+    Plug(
+        'nvim-treesitter/nvim-treesitter',
+        {
+            ['do'] = function()
+                vim.fn[':TSUpdate']()
+            end
+        }
+    )
 
-    call plug#end()
-    ]], true)
+    vim.call('plug#end')
 end
 
 local project_name = vim.fs.basename(vim.fn.getcwd())
@@ -102,15 +114,7 @@ require('rose-pine').setup({
 		StatusLineNC = { fg = 'pine' },
     }
 })
--- TODO: How to convert this?
-vim.api.nvim_exec(
-[[
-try
-    colorscheme rose-pine
-catch /^Vim\%((\a\+)\)\=:E185/
-    " deal with it
-endtry
-]], true)
+vim.cmd.colorscheme('rose-pine')
 
 -- rst folding is annoying
 vim.g.riv_disable_folding = 1
