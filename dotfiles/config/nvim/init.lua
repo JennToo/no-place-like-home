@@ -1,4 +1,3 @@
-lua << EOF
 if vim.fn.filereadable("/home/jwilcox/.virtualenvs/neovim-py3/bin/python") ~= 0
 then
     vim.g.python3_host_prog = "/home/jwilcox/.virtualenvs/neovim-py3/bin/python"
@@ -38,22 +37,6 @@ end
 
 local project_name = vim.fs.basename(vim.fn.getcwd())
 pcall(require, "projects/" .. project_name)
-
-vim.api.nvim_exec(
-[[
-:tnoremap <A-h> <C-\><C-N><C-w>h
-:tnoremap <A-j> <C-\><C-N><C-w>j
-:tnoremap <A-k> <C-\><C-N><C-w>k
-:tnoremap <A-l> <C-\><C-N><C-w>l
-:inoremap <A-h> <C-\><C-N><C-w>h
-:inoremap <A-j> <C-\><C-N><C-w>j
-:inoremap <A-k> <C-\><C-N><C-w>k
-:inoremap <A-l> <C-\><C-N><C-w>l
-:nnoremap <A-h> <C-w>h
-:nnoremap <A-j> <C-w>j
-:nnoremap <A-k> <C-w>k
-:nnoremap <A-l> <C-w>l
-]], true)
 
 vim.opt.termguicolors = true
 vim.opt.clipboard= "unnamedplus"
@@ -98,6 +81,19 @@ vim.keymap.set('n', '<C-p>', ':cp<Cr>', opts)
 vim.keymap.set('n', '<Leader>cc', ':make<Cr><Cr>:copen<Cr>', opts)
 vim.keymap.set('n', '<Leader>ce', ':make -l e<Cr><Cr>:copen<Cr>', opts)
 vim.keymap.set('n', '<Leader>cq', ':cclose<Cr>', opts)
+-- Navigation keys
+vim.keymap.set('t', '<A-h>', '<C-\\><C-N><C-w>h', opts)
+vim.keymap.set('t', '<A-j>', '<C-\\><C-N><C-w>j', opts)
+vim.keymap.set('t', '<A-k>', '<C-\\><C-N><C-w>k', opts)
+vim.keymap.set('t', '<A-l>', '<C-\\><C-N><C-w>l', opts)
+vim.keymap.set('i', '<A-h>', '<C-\\><C-N><C-w>h', opts)
+vim.keymap.set('i', '<A-j>', '<C-\\><C-N><C-w>j', opts)
+vim.keymap.set('i', '<A-k>', '<C-\\><C-N><C-w>k', opts)
+vim.keymap.set('i', '<A-l>', '<C-\\><C-N><C-w>l', opts)
+vim.keymap.set('n', '<A-h>', '<C-w>h', opts)
+vim.keymap.set('n', '<A-j>', '<C-w>j', opts)
+vim.keymap.set('n', '<A-k>', '<C-w>k', opts)
+vim.keymap.set('n', '<A-l>', '<C-w>l', opts)
 
 vim.o.background = "light"
 require('rose-pine').setup({
@@ -292,5 +288,3 @@ vim.api.nvim_create_autocmd({ "BufWritePost" }, {
     require("lint").try_lint()
   end,
 })
-
-EOF
