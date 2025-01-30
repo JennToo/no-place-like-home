@@ -205,13 +205,14 @@ cmp.setup({
 
 local opts = { noremap=true, silent=true }
 vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
-vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
-vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
-vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
-vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
+-- The manual says these are on by default, but they don't seem to be
+vim.keymap.set('n', 'grn', vim.lsp.buf.rename, opts)
+vim.keymap.set('n', 'gra', vim.lsp.buf.code_action, opts)
+vim.keymap.set('n', 'grr', vim.lsp.buf.references, opts)
+vim.keymap.set('n', 'gri', vim.lsp.buf.implementation, opts)
+vim.keymap.set('i', '<C-s>', vim.lsp.buf.signature_help, opts)
 
-
-local servers = { 'clangd', 'rust_analyzer', 'pylsp', 'hls' }
+local servers = { 'clangd', 'rust_analyzer', 'pylsp', 'hls', 'vhdl_ls' }
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
