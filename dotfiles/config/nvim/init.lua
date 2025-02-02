@@ -170,6 +170,13 @@ vim.api.nvim_create_autocmd('FileType', {
     end
 })
 
+vim.api.nvim_create_autocmd({'FocusGained', 'BufEnter'}, {
+    pattern = {'*'},
+    callback = function()
+        vim.cmd.checktime()
+    end
+})
+
 local lspconfig = require('lspconfig')
 local cmp = require('cmp')
 
