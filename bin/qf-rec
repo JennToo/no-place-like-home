@@ -1,0 +1,7 @@
+#!/bin/bash
+
+set -o pipefail
+
+export PYTHONUNBUFFERED=1
+
+bash -c "$1" 2>&1 | tee /tmp/last-build.log
