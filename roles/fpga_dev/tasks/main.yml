@@ -36,3 +36,15 @@
     dest: "{{ home }}/.local/bin/vhdl_ls"
     state: link
     force: true
+- name: Download nvc
+  ansible.builtin.get_url:
+    url: https://github.com/nickg/nvc/releases/download/r1.15.1/nvc_1.15.1.git20250122.db31b1a-1_amd64_ubuntu-24.04.deb
+    dest: "{{ home }}/.local/share/nvc_1.15.1.deb"
+    checksum: sha256:2fae62e9d7dc33bc3b054aa397e205f1669e0ae3d7457e02f16a2129a5fb8f4a
+    mode: "0644"
+  register: nvc_download
+- name: Install nvc package
+  become: true
+  ansible.builtin.apt:
+    deb: "{{ nvc_download.dest }}"
+  when: nvc_download.changed
