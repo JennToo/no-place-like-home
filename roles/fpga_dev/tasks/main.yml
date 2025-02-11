@@ -1,3 +1,10 @@
+- name: Install apt packages
+  become: true
+  ansible.builtin.apt:
+    name: "{{ packages }}"
+  vars:
+    packages:
+      - gtkwave
 - name: Create destinations
   ansible.builtin.file:
     dest: "{{ item }}"
