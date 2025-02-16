@@ -115,7 +115,7 @@ then
 eval "$(porg _completions bootstrap bash)"
 fi
 
-if [ -e "$XDG_RUNTIME_DIR/gcr/ssh" ]
+if [ -e "$XDG_RUNTIME_DIR/gcr/ssh" ] && [ -z "$SSH_TTY" ]
 then
     export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/gcr/ssh"
 fi
