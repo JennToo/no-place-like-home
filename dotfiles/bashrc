@@ -122,7 +122,10 @@ fi
 
 if command -v keychain >/dev/null
 then
-    eval "$(keychain --quiet --eval id_ed25519)"
+    if [ -e ~/.ssh/id_ed25519 ]
+    then
+        eval "$(keychain --quiet --eval id_ed25519)"
+    fi
 fi
 
 export QSYS_ROOTDIR="/home/jwilcox/intelFPGA_lite/23.1std/quartus/sopc_builder/bin"
