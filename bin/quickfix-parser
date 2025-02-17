@@ -18,16 +18,22 @@ PATTERNS = [
     ),
     # GHDL - Example:
     # test/tb_vga.vhd:55:30:error: no declaration for "r_fifo_empty"
+    # Also works for nvc (compact mode) - Example:
+    # ../../something/cool.vhd:1234:5: error: no visible declaration for BLAH_BLAH_BLAH
     re.compile(
-        r"(?P<file>[^:]+):(?P<line>\d+):(?P<col>\d+):(?P<type>[^:]+): (?P<message>.+)"
-    )
+        r"(?P<file>[^:]+):(?P<line>\d+):(?P<col>\d+):\s*(?P<type>[^:]+): (?P<message>.+)"
+    ),
 ]
 
 
 def main():
     args = parse_args()
     log_file = pathlib.Path(args.log)
+    working_directory = pathlib.Path(".")
     for line_number, line in enumerate(log_file.read_text().splitlines(keepends=False)):
+        if line_number == 0 and line.startswith("WORKING_DIRECTORY "):
+            working_directory = pathlib.Path(line.split(maxsplit=1)[1])
+
         for pattern in PATTERNS:
             match = pattern.match(line)
             if not match:
@@ -46,6 +52,15 @@ def main():
                     if group == "type":
                         groups_found[group] = groups_found[group][:1]
                 except IndexError:
+                    pass
+
+            parsed_path = pathlib.Path(groups_found["file"])
+            if not parsed_path.is_absolute():
+                try:
+                    groups_found["file"] = str(
+                        (working_directory / parsed_path).resolve(strict=True)
+                    )
+                except OSError:
                     pass
 
             logfile_groups = groups_found.copy()

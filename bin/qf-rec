@@ -4,4 +4,5 @@ set -o pipefail
 
 export PYTHONUNBUFFERED=1
 
-bash -c "$1" 2>&1 | tee /tmp/last-build.log
+echo "WORKING_DIRECTORY $(pwd)" > /tmp/last-build.log
+bash -c "$1" 2>&1 | tee -a /tmp/last-build.log
