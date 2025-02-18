@@ -24,6 +24,7 @@ PATTERNS = [
         r"(?P<file>[^:]+):(?P<line>\d+):(?P<col>\d+):\s*(?P<type>[^:]+): (?P<message>.+)"
     ),
 ]
+TYPE_TRANSLATOR = {"failure": "error"}
 
 
 def main():
@@ -50,6 +51,9 @@ def main():
                 try:
                     groups_found[group] = match.group(group)
                     if group == "type":
+                        groups_found[group] = TYPE_TRANSLATOR.get(
+                            groups_found[group].lower(), groups_found[group]
+                        )
                         groups_found[group] = groups_found[group][:1]
                 except IndexError:
                     pass
