@@ -17,6 +17,7 @@
     - .local/share
     - .local/share/neovim
     - .fonts
+    - .vsnip-local
 - name: Setup sensitive directories
   ansible.builtin.file:
     dest: "{{ home }}/{{ item }}"
@@ -68,6 +69,8 @@
       dest: .config/waybar/config
     - src: waybar-style.css
       dest: .config/waybar/style.css
+    - src: vsnip
+      dest: .vsnip
 - name: Create sshd config directory
   become: true
   ansible.builtin.file:

@@ -199,12 +199,11 @@ cmp.setup({
     }),
     sources = cmp.config.sources({
         { name = 'nvim_lsp' },
+        { name = 'vsnip' },
     }, {
         { name = 'buffer' },
         { name = 'path' },
         { name = 'tmux' },
-    }, {
-        { name = 'vsnip' },
     }),
     completion = {
         completeopt = 'menu,menuone,noinsert,preview',
@@ -232,6 +231,14 @@ vim.cmd [[highlight IndentBlanklineIndent1 guibg=#E4EEEE gui=nocombine]]
 vim.cmd [[highlight IndentBlanklineIndent2 guibg=#F9E9E5 gui=nocombine]]
 vim.cmd [[highlight IndentBlanklineIndent3 guibg=#FAF5EF gui=nocombine]]
 vim.cmd [[highlight IndentBlanklineIndent4 guibg=#F9E9E5 gui=nocombine]]
+
+vim.cmd [[
+    let g:vsnip_snippet_dirs = ["/home/jwilcox/.vsnip-local/"]
+    imap <expr> <Tab>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<Tab>'
+    smap <expr> <Tab>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<Tab>'
+    imap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
+    smap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
+]]
 
 require("ibl").setup {
     indent = {
