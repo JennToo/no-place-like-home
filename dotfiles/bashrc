@@ -124,7 +124,7 @@ if command -v keychain >/dev/null
 then
     if [ -e ~/.ssh/id_ed25519 ]
     then
-        eval "$(keychain --quiet --eval id_ed25519)"
+        eval "$(keychain --quiet --noask --eval id_ed25519)"
     fi
 fi
 
