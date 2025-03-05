@@ -45,11 +45,14 @@ snippet instp
 	);
 
 snippet clockp
-	${1:name}_p: process(clk, arst) is
+	${1:name}: process(clk, arst) is
 	begin
 		if (arst = '0') then
 			${2}
 		elsif rising_edge(clk) then
 			${3}
 		end if;
-	end process ${1:name}_p;
+	end process ${1:name};
+
+snippet oz
+	(others => '0');
