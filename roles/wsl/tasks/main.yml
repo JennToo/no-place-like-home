@@ -1,0 +1,14 @@
+- name: Install system files
+  become: true
+  ansible.builtin.copy:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+    mode: "0644"
+  loop:
+    - src: wslg-x11-fixer.service
+      dest: /etc/systemd/system/wslg-x11-fixer.service
+- name: Enable wslg fixer service
+  become: true
+  ansible.builtin.systemd_service:
+    enabled: true
+    name: wslg-x11-fixer.service
