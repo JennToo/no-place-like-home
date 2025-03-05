@@ -1,0 +1,9 @@
+[Unit]
+Description=Headless instance of labwc over VNC
+
+[Service]
+Type=oneshot
+ExecStart=/bin/bash -c "mount -o remount,rw /tmp/.X11-unix && chmod +t /tmp/.X11-unix/"
+
+[Install]
+WantedBy=default.target
