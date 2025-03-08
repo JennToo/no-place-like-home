@@ -1,0 +1,17 @@
+- name: Install apt packages
+  become: true
+  ansible.builtin.apt:
+    name: "{{ packages }}"
+  vars:
+    packages:
+      - xfce4
+      - xubuntu-core
+- name: Install dotfiles
+  ansible.builtin.file:
+    src: "{{ playbook_dir }}/dotfiles/{{ item.src }}"
+    dest: "{{ home }}/{{ item.dest }}"
+    state: link
+    force: true
+  with_items:
+    - src: xsession
+      dest: .xsession

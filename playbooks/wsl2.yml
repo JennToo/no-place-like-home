@@ -9,6 +9,7 @@
   roles:
     - common
     - wsl
+    - xrdp
     - docker
     - rust_dev
     - cpp_dev
