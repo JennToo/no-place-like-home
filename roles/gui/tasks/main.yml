@@ -1,3 +1,13 @@
+- name: Add signal key
+  become: true
+  ansible.builtin.apt_key:
+    url: https://updates.signal.org/desktop/apt/keys.asc
+    keyring: /etc/apt/trusted.gpg.d/signal.gpg
+- name: Add signal repo
+  become: true
+  ansible.builtin.apt_repository:
+    repo: "deb [arch=amd64 signed-by=/etc/apt/trusted.gpg.d/signal.gpg] https://updates.signal.org/desktop/apt xenial main"
+    filename: signal
 - name: Add chrome key
   become: true
   ansible.builtin.apt_key:
@@ -34,6 +44,7 @@
       - keepass2
       - meld
       - obs-studio
+      - signal-desktop
       - wireshark
 - name: Add the flathub flatpak repository remote to the user installation
   become: true
