@@ -81,6 +81,7 @@ vim.opt.autoread = true
 
 local opts = { noremap=true }
 vim.keymap.set('v', '<C-r>', '"hy:%s#<C-r>h##gc<left><left><left>', opts)
+vim.keymap.set('v', '<C-w>', '"hy:%s#\\<<C-r>h\\>##gc<left><left><left>', opts)
 vim.keymap.set('v', 'ga', '<Plug>(EasyAlign)', opts)
 vim.keymap.set('i', '<C-l>', 'λ', opts)
 vim.keymap.set('n', '<Leader>ff', ':Files<Cr>', opts)
