@@ -55,3 +55,9 @@
   ansible.builtin.apt:
     deb: "{{ nvc_download.dest }}"
   when: nvc_download.changed
+- name: Install USB blaster udev rules
+  become: true
+  ansible.builtin.copy:
+    src: dotfiles/udev/51-usbblaster.rules
+    dest: /etc/udev/rules.d/51-usbblaster.rules 
+    mode: "0644"
