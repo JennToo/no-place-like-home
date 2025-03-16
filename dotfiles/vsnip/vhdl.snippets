@@ -20,7 +20,7 @@ snippet testbench
 		constant CLK_PERIOD : time := 10 ns;
 
 		signal clk  : std_logic := '0';
-		signal arst : std_logic;
+		signal rst  : std_logic;
 	begin
 		clk <= not clk after CLK_PERIOD / 2;
 
@@ -36,20 +36,39 @@ snippet testbench
 		end process stimulus_p;
 	end architecture behave;
 
+snippet cmp
+	library ieee;
+	  use ieee.std_logic_1164.all;
+	  use ieee.numeric_std.all;
+
+	entity ${1:name} is
+	  generic (
+	  );
+	  port (
+	    clk_i : std_logic;
+		rst_i : std_logic;
+	  );
+	end ${1:name};
+
+	architecture rtl of ${1:name} is
+	begin
+	  ${2}
+	end architecture rtl;
+
 snippet instp
-	U_${1:name} : entity work.${1:name}
+	u_${1:name} : entity work.${1:name}
 	port map (
-		clk  => clk,
-		arst => arst,
+		clk_i => clk,
+		rst_i => rst,
 		${2}
 	);
 
 snippet clockp
-	${1:name}: process(clk, arst) is
+	${1:name}: process(clk_i, rst_i) is
 	begin
-		if (arst = '0') then
+		if (rst_i = '0') then
 			${2}
-		elsif rising_edge(clk) then
+		elsif rising_edge(clk_i) then
 			${3}
 		end if;
 	end process ${1:name};
