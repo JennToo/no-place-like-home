@@ -5,6 +5,7 @@
     user: "{{ lookup('env', 'USER') }}"
     git_email: "jennifer@nitori.org"
     gui_packages: true
+    is_wsl2: true
   connection: local
   roles:
     - common

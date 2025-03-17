@@ -4,6 +4,7 @@
     home: "{{ lookup('env', 'HOME') }}"
     user: "{{ lookup('env', 'USER') }}"
     git_email: "jennifer.wilcox@adtran.com"
+    is_wsl2: true
   connection: local
   roles:
     - common

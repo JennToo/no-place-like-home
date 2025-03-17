@@ -44,8 +44,12 @@
       - keepass2
       - meld
       - obs-studio
-      - signal-desktop
       - wireshark
+- name: Install signal on non-WSL2 systems
+  become: true
+  ansible.builtin.apt:
+    name: signal-desktop
+  when: is_wsl2 is undefined
 - name: Add the flathub flatpak repository remote to the user installation
   become: true
   community.general.flatpak_remote:
