@@ -29,5 +29,3 @@ then
 fi
 
 export DX_BETA_FEATURES=1
-
-export QSYS_ROOTDIR="/home/jwilcox/intelFPGA_lite/23.1std/quartus/sopc_builder/bin"

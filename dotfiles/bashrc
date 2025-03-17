@@ -130,3 +130,4 @@ fi
 
 export QSYS_ROOTDIR="/home/jwilcox/intelFPGA_lite/23.1std/quartus/sopc_builder/bin"
 export QUARTUS_ROOTDIR="/home/jwilcox/intelFPGA_lite/23.1std/quartus"
+export OSS_CAD_ROOTDIR="/home/jwilcox/.local/share/oss-cad-suite"
