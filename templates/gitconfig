@@ -4,6 +4,7 @@
 [core]
 	excludesfile = /home/jwilcox/.gitignore
 	quotePath = false
+	hooksPath = /dev/null
 [init]
 	defaultbranch = main
 [pull]
