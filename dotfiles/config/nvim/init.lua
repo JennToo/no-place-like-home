@@ -220,7 +220,7 @@ vim.keymap.set('n', 'grr', vim.lsp.buf.references, opts)
 vim.keymap.set('n', 'gri', vim.lsp.buf.implementation, opts)
 vim.keymap.set('i', '<C-s>', vim.lsp.buf.signature_help, opts)
 
-local servers = { 'clangd', 'rust_analyzer', 'pylsp', 'hls', 'vhdl_ls' }
+local servers = { 'clangd', 'rust_analyzer', 'pylsp', 'vhdl_ls' }
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {

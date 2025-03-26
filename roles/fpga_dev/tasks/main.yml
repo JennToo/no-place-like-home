@@ -32,9 +32,9 @@
   when: cad_download.changed
 - name: Download VHDL LS
   ansible.builtin.get_url:
-    url: https://github.com/VHDL-LS/rust_hdl/releases/download/v0.83.1/vhdl_ls-x86_64-unknown-linux-gnu.zip
-    dest: "{{ home }}/.local/share/vhdl_ls-0.83.1.zip"
-    checksum: sha256:fbff90714c35f61a620ef8801660773d2034e97d8428dc2ce006a39ed10bb1e3
+    url: https://github.com/VHDL-LS/rust_hdl/releases/download/v0.84.0/vhdl_ls-x86_64-unknown-linux-gnu.zip
+    dest: "{{ home }}/.local/share/vhdl_ls-0.84.0.zip"
+    checksum: sha256:e2f1550c987c5f4226cc0f854f6963dbdc3badddaa8a82f4a550e183c0c6b503
     mode: "0644"
   register: vhdl_ls_download
 - name: Install VHDL LS
