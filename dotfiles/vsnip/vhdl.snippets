@@ -1,10 +1,3 @@
-snippet ife
-	if (${1:condition}) then
-	   ${2}
-	else
-	   ${3}
-	end if;
-
 snippet testbench
 	library std;
 	use std.env.all;
@@ -20,7 +13,7 @@ snippet testbench
 		constant CLK_PERIOD : time := 10 ns;
 
 		signal clk  : std_logic := '0';
-		signal rst  : std_logic;
+		signal rst  : std_logic := '1';
 	begin
 		clk <= not clk after CLK_PERIOD / 2;
 
@@ -28,9 +21,9 @@ snippet testbench
 
 		stimulus_p: process
 		begin
-			arst <= '0';
+			rst <= '1';
 			wait for CLK_PERIOD;
-			arst <= '1';
+			rst <= '0';
 
 			finish;
 		end process stimulus_p;
@@ -45,8 +38,8 @@ snippet cmp
 	  generic (
 	  );
 	  port (
-	    clk_i : std_logic;
-		rst_i : std_logic;
+	    clk_i : in std_logic;
+		rst_i : in std_logic;
 	  );
 	end ${1:name};
 
@@ -63,13 +56,15 @@ snippet instp
 		${2}
 	);
 
-snippet clockp
-	${1:name}: process(clk_i, rst_i) is
+snippet sclockp
+	${1:name}: process(clk_i) is
 	begin
-		if (rst_i = '0') then
-			${2}
-		elsif rising_edge(clk_i) then
-			${3}
+		if rising_edge(clk_i) then
+			if (rst_i = '1') then
+				${2}
+			else
+				${3}
+			end if;
 		end if;
 	end process ${1:name};
 
