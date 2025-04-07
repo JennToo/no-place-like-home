@@ -33,7 +33,7 @@ then
     Plug('rose-pine/neovim')
     Plug('nvim-lua/plenary.nvim')
     Plug('junegunn/vim-easy-align')
-    Plug('dhruvasagar/vim-markify')
+    Plug('dknaack/qf-diagnostics.nvim')
 
     Plug(
         'nvim-treesitter/nvim-treesitter',
@@ -308,4 +308,10 @@ vim.api.nvim_create_autocmd({ "BufWritePost" }, {
   callback = function()
     require("lint").try_lint()
   end,
+})
+
+require("qf-diagnostics").setup()
+
+vim.diagnostic.config({
+    virtual_lines = true
 })

@@ -19,8 +19,8 @@ silent! let g:plugs['nvim-lspconfig'].commit = '442e077e326ac467daf9cd63e72120fb
 silent! let g:plugs['nvim-treesitter'].commit = '0e21ee8df6235511c02bab4a5b391d18e165a58d'
 silent! let g:plugs['nvim-yarp'].commit = 'bb5f5e038bfe119d3b777845a76b0b919b35ebc8'
 silent! let g:plugs['plenary.nvim'].commit = '857c5ac632080dba10aae49dba902ce3abf91b35'
+silent! let g:plugs['qf-diagnostics.nvim'].commit = '344e1065d8e09557fe20c04e6051312180e6fa0f'
 silent! let g:plugs['vim-easy-align'].commit = '9815a55dbcd817784458df7a18acacc6f82b1241'
-silent! let g:plugs['vim-markify'].commit = 'ece4eaad9f87421ed267020fd410a71944226a37'
 silent! let g:plugs['vim-vsnip'].commit = 'b7445b3c43acb08c0b74350d046e0088ece88033'
 
 PlugUpdate!
