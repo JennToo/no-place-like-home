@@ -1,4 +1,3 @@
 ---
-qalc_version: 4.8.1
-nvim_version: 0.10.3
-nvim_hash: "be189915a2a0da3615576e2db06a7c714aef0ae926b4da6107e589a3cc623e5c"
+nvim_version: 0.11.0
+nvim_hash: fe0a5bc79e64c5e4d9f844cd96157ebd3919ef1343b329e9ebc3f455924cc7d6

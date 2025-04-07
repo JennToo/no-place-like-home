@@ -184,7 +184,7 @@
     force: true
 - name: Download neovim
   ansible.builtin.get_url:
-    url: "https://github.com/neovim/neovim/releases/download/v{{ nvim_version }}/nvim-linux64.tar.gz"
+    url: "https://github.com/neovim/neovim/releases/download/v{{ nvim_version }}/nvim-linux-x86_64.tar.gz"
     checksum: "sha256:{{ nvim_hash }}"
     dest: "{{ home }}/.cache/nvim-{{ nvim_version }}.tar.gz"
 - name: Setup neovim directory
@@ -202,7 +202,7 @@
 - name: Symlink neovim
   become: true
   ansible.builtin.file:
-    src: "/opt/nvim-{{ nvim_version }}/nvim-linux64/bin/nvim"
+    src: "/opt/nvim-{{ nvim_version }}/nvim-linux-x86_64/bin/nvim"
     dest: /usr/local/bin/nvim
     state: link
     force: true
