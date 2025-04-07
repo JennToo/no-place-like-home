@@ -52,7 +52,6 @@ pcall(require, "projects/" .. project_name)
 
 vim.opt.termguicolors = true
 vim.opt.clipboard= "unnamedplus"
-vim.opt.number = true
 vim.opt.spelllang="en"
 vim.opt.spellfile="/home/jwilcox/.config/nvim/en.utf-8.add"
 vim.opt.cursorline = true
