@@ -60,7 +60,7 @@ vim.opt.makeprg = "quickfix-parser /tmp/last-build.log"
 vim.opt.errorformat = "type %t file %f line %l col %c message %m"
 
 vim.opt.list = true
-vim.opt.listchars="tab:\\u2192 ,trail:\\u27a4"
+vim.opt.listchars="tab:\\u2192 ,trail:\\u2592"
 
 vim.api.nvim_create_autocmd('TermOpen', {
     pattern = "*",
