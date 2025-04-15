@@ -29,3 +29,7 @@ then
 fi
 
 export DX_BETA_FEATURES=1
+# Overriding ansible-generated var
+if false; then
+export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/ssh-agent.socket"
+fi
