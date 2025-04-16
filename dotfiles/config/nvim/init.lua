@@ -39,7 +39,7 @@ then
         'nvim-treesitter/nvim-treesitter',
         {
             ['do'] = function()
-                vim.fn[':TSUpdate']()
+                vim.fn['TSUpdate']()
             end
         }
     )
