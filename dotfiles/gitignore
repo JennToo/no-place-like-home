@@ -9,3 +9,5 @@ compile_commands.json
 /project/metals.sbt
 /.clangd
 /.cache/clangd
+modelsim.ini
+vlog.opt
