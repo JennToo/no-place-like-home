@@ -4,31 +4,6 @@ Host home.nitori.org
     User jwilcox
     ForwardAgent yes
     ForwardX11 yes
-Host jennifer-vm.dx.adtran.com
-    Port 22
-    User jwilcox
-    ForwardAgent yes
-    ForwardX11 yes
-Host frodo.dx.adtran.com
-    Port 22
-    User jwilcox
-    ForwardAgent yes
-    ForwardX11 yes
-Host samwise.dx.adtran.com
-    Port 22
-    User dx-automation
-    ForwardAgent yes
-    ForwardX11 yes
-Host jwilco7670l.adtran.com
-    Port 22
-    User jwilcox
-    ForwardAgent yes
-    ForwardX11 yes
-Host prima.adtran.com
-    Port 22
-    User dx-automation
-    ForwardAgent yes
-    ForwardX11 yes
 Host haiti.home.nitori.org
     Port 22
     User jwilcox
