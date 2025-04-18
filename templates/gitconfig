@@ -11,7 +11,11 @@
 	rebase = false
 [credential "https://github.adtran.com"]
 	username = jwilcox
-	helper = 
 	helper = !/usr/bin/gh auth git-credential
+[submodule]
+	recurse = true
 [push]
 	recurseSubmodules = check
+[fetch]
+	recurseSubmodules = on-demand
+	prune = true
