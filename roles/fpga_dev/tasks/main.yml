@@ -5,6 +5,7 @@
   vars:
     packages:
       - gtkwave
+      - plantuml
 - name: Create destinations
   ansible.builtin.file:
     dest: "{{ item }}"
