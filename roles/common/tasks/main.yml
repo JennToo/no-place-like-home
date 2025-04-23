@@ -13,6 +13,7 @@
     - .config/waybar
     - .local/bin
     - .local/src
+    - .local/share/qalculate
     - .virtualenvs
     - .local/share
     - .local/share/neovim
@@ -71,6 +72,8 @@
       dest: .config/waybar/style.css
     - src: vsnip
       dest: .vsnip
+    - src: qalculate-definitions
+      dest: .local/share/qalculate/definitions
 - name: Create sshd config directory
   become: true
   ansible.builtin.file:
