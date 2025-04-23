@@ -11,6 +11,12 @@ PATTERNS = [
     re.compile(
         r"\w+: \*(?P<type>\w),\w+ \((?P<file>.*),(?P<line>\d+)\|(?P<col>\d+)\): (?P<message>.*)"
     ),
+    re.compile(
+        r"\w+: \*(?P<type>\w),\w+ \((?P<file>.*),(?P<line>\d+)\): (?P<message>.*)"
+    ),
+    re.compile(
+        r"\w+: \*(?P<type>\w),\w+: (?P<message>.*)"
+    ),
     # Quartus - Example:
     # Warning (15610): No output dependent on input pin "ENET1_RX_DATA[0]" File: /home/jwilcox/repo/jennifer-learns-vhdl/synth/DE2-115/Computer/DE2_115_Computer.vhd Line: 100
     re.compile(
@@ -78,7 +84,8 @@ def main():
                 and groups_found["type"].lower() != "e"
             ):
                 continue
-            print_one(groups_found)
+            if groups_found["file"] != "/dev/null":
+                print_one(groups_found)
             print_one(logfile_groups)
 
 
