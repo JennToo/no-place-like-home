@@ -11,3 +11,5 @@ compile_commands.json
 /.cache/clangd
 modelsim.ini
 vlog.opt
+transcript
+vsim.wlf
