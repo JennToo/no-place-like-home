@@ -1,5 +1,12 @@
 Include /home/jwilcox/.ssh/config.d/*.conf
+Host *
+    HashKnownHosts no
 Host home.nitori.org
+    Port 28
+    User jwilcox
+    ForwardAgent yes
+    ForwardX11 yes
+Host argentina3.home.nitori.org
     Port 28
     User jwilcox
     ForwardAgent yes
