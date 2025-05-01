@@ -160,9 +160,19 @@ vim.api.nvim_create_autocmd('FileType', {
 })
 
 vim.api.nvim_create_autocmd('FileType', {
+    pattern = {'vhdl'},
+    callback = function()
+        vim.opt.shiftwidth = 2
+        vim.opt.tabstop = 2
+    end
+})
+
+vim.api.nvim_create_autocmd('FileType', {
     pattern = {'json'},
     callback = function()
         vim.opt_local.formatprg = 'jq'
+        vim.opt.shiftwidth = 2
+        vim.opt.tabstop = 2
     end
 })
 
