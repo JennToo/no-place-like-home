@@ -1,36 +1,10 @@
-- name: Install apt packages
-  become: true
-  ansible.builtin.apt:
-    name: "{{ packages }}"
-  vars:
-    packages:
-      - gtkwave
-      - plantuml
 - name: Create destinations
   ansible.builtin.file:
     dest: "{{ item }}"
     state: directory
     mode: "0755"
   loop:
-    - "{{ home }}/.local/share/oss-cad-suite"
     - "{{ home }}/.local/share/vhdl-ls"
-- name: Download oss-cad-suite
-  ansible.builtin.get_url:
-    url: https://github.com/YosysHQ/oss-cad-suite-build/releases/download/2025-03-16/oss-cad-suite-linux-x64-20250316.tgz
-    dest: "{{ home }}/.local/share/oss-cad-suite-linux-x64-20250316.tgz"
-    checksum: sha256:ddd247836a5c5f0ecc7343252de90ab1652ca2d639d56d96f917a8141c26ab3d
-    mode: "0644"
-  register: cad_download
-- name: Delete old oss-cad-suite
-  ansible.builtin.file:
-    dest: "{{ home }}/.local/share/oss-cad-suite"
-    state: absent
-  when: cad_download.changed
-- name: Install oss-cad-suite
-  ansible.builtin.unarchive:
-    src: "{{ cad_download.dest }}"
-    dest: "{{ home }}/.local/share"
-  when: cad_download.changed
 - name: Download VHDL LS
   ansible.builtin.get_url:
     url: https://github.com/VHDL-LS/rust_hdl/releases/download/v0.84.0/vhdl_ls-x86_64-unknown-linux-gnu.zip
@@ -49,21 +23,3 @@
     dest: "{{ home }}/.local/bin/vhdl_ls"
     state: link
     force: true
-- name: Download nvc
-  ansible.builtin.get_url:
-    url: https://github.com/nickg/nvc/releases/download/r1.15.1/nvc_1.15.1.git20250122.db31b1a-1_amd64_ubuntu-24.04.deb
-    dest: "{{ home }}/.local/share/nvc_1.15.1.deb"
-    checksum: sha256:2fae62e9d7dc33bc3b054aa397e205f1669e0ae3d7457e02f16a2129a5fb8f4a
-    mode: "0644"
-  register: nvc_download
-- name: Install nvc package
-  become: true
-  ansible.builtin.apt:
-    deb: "{{ nvc_download.dest }}"
-  when: nvc_download.changed
-- name: Install USB blaster udev rules
-  become: true
-  ansible.builtin.copy:
-    src: dotfiles/udev/51-usbblaster.rules
-    dest: /etc/udev/rules.d/51-usbblaster.rules 
-    mode: "0644"
