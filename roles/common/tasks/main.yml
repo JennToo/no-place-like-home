@@ -74,21 +74,6 @@
       dest: .vsnip
     - src: qalculate-definitions
       dest: .local/share/qalculate/definitions
-- name: Create sshd config directory
-  become: true
-  ansible.builtin.file:
-    dest: "/etc/ssh/sshd_config.d"
-    state: directory
-    mode: "755"
-- name: Install etc config
-  become: true
-  ansible.builtin.copy:
-    src: "{{ playbook_dir }}/dotfiles/etc/{{ item.src }}"
-    dest: "{{ item.dest }}"
-    mode: "0644"
-  with_items:
-    - src: sshd_extras.conf
-      dest: /etc/ssh/sshd_config.d/sshd_extras.conf
 - name: Install local scripts
   ansible.builtin.file:
     src: "{{ item }}"
@@ -110,65 +95,6 @@
   loop:
     - src: templates/gitconfig
       dest: "{{ home }}/.gitconfig"
-- name: Install apt transport https
-  become: true
-  ansible.builtin.apt:
-    name: apt-transport-https
-- name: Update apt packages
-  become: true
-  ansible.builtin.apt:
-    upgrade: dist
-    update_cache: true
-- name: Install apt packages
-  become: true
-  ansible.builtin.apt:
-    name: "{{ packages }}"
-  vars:
-    packages:
-      - bison
-      - build-essential
-      - cowsay
-      - curl
-      - fd-find
-      - flex
-      - fzf
-      - gdb-multiarch
-      - git
-      - gnupg2
-      - htop
-      - keychain
-      - libssl-dev
-      - pcscd
-      - pkg-config
-      - python3-pip
-      - python3-poetry
-      - python3-venv
-      - qalc
-      - ripgrep
-      - ruby
-      - ruby-bundler
-      - ruby-dev
-      - scdaemon
-      - shellcheck
-      - sl
-      - sshpass
-      - tmux
-      - tree
-      - xclip
-      - virtualenv
-      - black
-- name: Remove apt packages
-  become: true
-  ansible.builtin.apt:
-    name: "{{ packages }}"
-    state: absent
-  vars:
-    packages:
-      - elixir
-      - evolution
-      - krita
-      - neovim
-      - python3-pynvim
 - name: Setup neovim virtualenv Python 3
   ansible.builtin.pip:
     name: "{{ item }}"
@@ -191,21 +117,24 @@
     checksum: "sha256:{{ nvim_hash }}"
     dest: "{{ home }}/.cache/nvim-{{ nvim_version }}.tar.gz"
 - name: Setup neovim directory
-  become: true
   ansible.builtin.file:
-    dest: "/opt/nvim-{{ nvim_version }}/"
+    dest: "{{ home }}/.cache/nvim-{{ nvim_version }}/"
     state: directory
     mode: "755"
 - name: Extract neovim
-  become: true
   ansible.builtin.unarchive:
-    creates: "/opt/nvim-{{ nvim_version }}/nvim-linux64/bin/nvim"
+    creates: "{{ home }}/.cache/nvim-{{ nvim_version }}/nvim-linux64/bin/nvim"
     src: "{{ home }}/.cache/nvim-{{ nvim_version }}.tar.gz"
-    dest: "/opt/nvim-{{ nvim_version }}/"
+    dest: "{{ home }}/.cache/nvim-{{ nvim_version }}/"
 - name: Symlink neovim
-  become: true
   ansible.builtin.file:
-    src: "/opt/nvim-{{ nvim_version }}/nvim-linux-x86_64/bin/nvim"
-    dest: /usr/local/bin/nvim
+    src: "{{ home }}/.cache/nvim-{{ nvim_version }}/nvim-linux-x86_64/bin/nvim"
+    dest: "{{ home }}/.local/bin/nvim"
+    state: link
+    force: true
+- name: Setup fd symlink
+  ansible.builtin.file:
+    src: "/usr/bin/fd"
+    dest: "{{ home }}/.local/bin/fdfind"
     state: link
     force: true
