@@ -1,9 +1,11 @@
-if vim.fn.filereadable("/home/jwilcox/.virtualenvs/neovim-py3/bin/python") ~= 0
+local home = os.getenv("HOME")
+
+if vim.fn.filereadable(home .. "/.virtualenvs/neovim-py3/bin/python") ~= 0
 then
-    vim.g.python3_host_prog = "/home/jwilcox/.virtualenvs/neovim-py3/bin/python"
+    vim.g.python3_host_prog = home .. "/.virtualenvs/neovim-py3/bin/python"
 end
 
-if vim.fn.filereadable("/home/jwilcox/.config/nvim/autoload/plug.vim") ~= 0
+if vim.fn.filereadable(home .. "/.config/nvim/autoload/plug.vim") ~= 0
 then
     local Plug = vim.fn['plug#']
     vim.call("plug#begin", '~/.local/share/nvim/plugged')
@@ -53,7 +55,7 @@ pcall(require, "projects/" .. project_name)
 vim.opt.termguicolors = true
 vim.opt.clipboard= "unnamedplus"
 vim.opt.spelllang="en"
-vim.opt.spellfile="/home/jwilcox/.config/nvim/en.utf-8.add"
+vim.opt.spellfile=home .."/.config/nvim/en.utf-8.add"
 vim.opt.cursorline = true
 
 vim.opt.makeprg = "quickfix-parser /tmp/last-build.log"
