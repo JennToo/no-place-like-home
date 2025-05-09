@@ -34,6 +34,7 @@
     name: "{{ packages }}"
   vars:
     packages:
+      - alacritty
       - code
       - dconf-cli
       - dia

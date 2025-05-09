@@ -40,6 +40,8 @@
       dest: .fdignore
     - src: config/nvim
       dest: .config/nvim
+    - src: config/alacritty.toml
+      dest: .config/alacritty.toml
     - src: gnupg/gpg.conf
       dest: .gnupg/gpg.conf
     - src: gnupg/gpg-agent.conf
