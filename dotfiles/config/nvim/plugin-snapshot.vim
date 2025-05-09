@@ -9,6 +9,7 @@ silent! let g:plugs['cmp-nvim-lsp'].commit = 'a8912b88ce488f411177fc8aed358b04dc
 silent! let g:plugs['cmp-path'].commit = 'c6635aae33a50d6010bf1aa756ac2398a2d54c32'
 silent! let g:plugs['cmp-tmux'].commit = '95b1b921802e6f60627b3e76afb9380fddd87f9a'
 silent! let g:plugs['cmp-vsnip'].commit = '989a8a73c44e926199bfd05fa7a516d51f2d2752'
+silent! let g:plugs['copilot.lua'].commit = '2fe34db04570f6c47db0b752ca421a49b7357c03'
 silent! let g:plugs['fzf'].commit = '9c1a47acf7453f9dad5905b7f23ad06e5195d51f'
 silent! let g:plugs['fzf.vim'].commit = '3cb44a8ba588e1ada409af495bdc6a4d2d37d5da'
 silent! let g:plugs['indent-blankline.nvim'].commit = '005b56001b2cb30bfa61b7986bc50657816ba4ba'
