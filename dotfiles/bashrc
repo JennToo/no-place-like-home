@@ -129,6 +129,7 @@ then
     fi
 fi
 
+export VIVADO="/home/jwilcox/Xilinx/Vivado/2024.2"
 export QSYS_ROOTDIR="/home/jwilcox/intelFPGA_lite/24.1std/quartus/sopc_builder/bin"
 export QUARTUS_ROOTDIR="/home/jwilcox/intelFPGA_lite/24.1std/quartus"
 export OSS_CAD_ROOTDIR="/home/jwilcox/.local/share/oss-cad-suite"
