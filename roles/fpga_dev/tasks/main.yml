@@ -67,3 +67,15 @@
     src: dotfiles/udev/51-usbblaster.rules
     dest: /etc/udev/rules.d/51-usbblaster.rules 
     mode: "0644"
+- name: Setup TerosHDL virtualenv
+  ansible.builtin.pip:
+    name: "{{ item }}"
+    virtualenv: "{{ home }}/.virtualenvs/teroshdl"
+    virtualenv_python: python3
+    state: latest
+  loop:
+    - cocotb
+    - edalize
+    - teroshdl
+    - vunit-hdl
+    - yowasp-yosys
