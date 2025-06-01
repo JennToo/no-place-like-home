@@ -19,7 +19,6 @@ then
     Plug('hrsh7th/cmp-vsnip')
     Plug('hrsh7th/vim-vsnip')
     Plug('andersevenrud/cmp-tmux')
-    Plug('zbirenbaum/copilot.lua')
 
     Plug('roxma/nvim-yarp')
     Plug('mfussenegger/nvim-lint')
@@ -329,10 +328,4 @@ require("qf-diagnostics").setup()
 
 vim.diagnostic.config({
     virtual_lines = true
-})
-
-require('copilot').setup({
-    server = {
-        type = "binary"
-    }
 })
