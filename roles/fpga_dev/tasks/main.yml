@@ -79,3 +79,15 @@
     - teroshdl
     - vunit-hdl
     - yowasp-yosys
+- name: Setup tool symlinks
+  ansible.builtin.file:
+    src: "{{ home }}/.virtualenvs/teroshdl/bin/{{ item }}"
+    dest: "{{ home }}/.local/bin/{{ item }}"
+    state: link
+    force: true
+  loop:
+    - vsg
+    - yowasp-sby
+    - yowasp-yosys
+    - yowasp-yosys-smtbmc
+    - yowasp-yosys-witness
