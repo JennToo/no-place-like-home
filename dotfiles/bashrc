@@ -145,3 +145,13 @@ then
 fi
 
 export PYTHON_KEYRING_BACKEND=keyring.backends.fail.Keyring
+
+# Overriding ansible-generated vars
+if false; then
+export ARTIFACTORY_SERVER=https://artifactory.adtran.com
+export DOCKERBINARY=/opt/lsk-docker/docker
+# BEGIN ANSIBLE MANAGED BLOCK ta5k
+export GHS_LMWHICH="@ghs"
+export GHS_LMHOST="@corp-licmgr.adtran.com"
+# END ANSIBLE MANAGED BLOCK ta5k
+fi
