@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<QALCULATE version="4.9.0">
+<QALCULATE version="3.22.0">
   <function>
     <names>r:clog2</names>
     <expression>ceil(log2(\x))</expression>
