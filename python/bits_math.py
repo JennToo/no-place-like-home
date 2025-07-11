@@ -4,6 +4,9 @@ def bit_reverse(value, bit_len):
         result = (result << 1) | ((value >> src_bit) & 1)
     return result
 
+def bit_invert(value, bit_len):
+    return (~value) & ((1 << bit_len) - 1)
+
 
 def hex_str(value, bit_len):
     count = bit_len // 4
