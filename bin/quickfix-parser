@@ -9,14 +9,12 @@ PATTERNS = [
     re.compile(r"\s*File \"(?P<file>.*)\", line (?P<line>\d+)"),
     # work
     re.compile(
-        r"\w+: \*(?P<type>\w),\w+ \((?P<file>.*),(?P<line>\d+)\|(?P<col>\d+)\): (?P<message>.*)"
+        r"\w+: \*(?P<type>\w),(?P<tag>\w+) \((?P<file>.*),(?P<line>\d+)\|(?P<col>\d+)\): (?P<message>.*)"
     ),
     re.compile(
-        r"\w+: \*(?P<type>\w),\w+ \((?P<file>.*),(?P<line>\d+)\): (?P<message>.*)"
+        r"\w+: \*(?P<type>\w),(?P<tag>\w+) \((?P<file>.*),(?P<line>\d+)\): (?P<message>.*)"
     ),
-    re.compile(
-        r"\w+: \*(?P<type>\w),\w+: (?P<message>.*)"
-    ),
+    re.compile(r"\w+: \*(?P<type>\w),(?P<tag>\w+): (?P<message>.*)"),
     # Quartus - Example:
     # Warning (15610): No output dependent on input pin "ENET1_RX_DATA[0]" File: /home/jwilcox/repo/jennifer-learns-vhdl/synth/DE2-115/Computer/DE2_115_Computer.vhd Line: 100
     re.compile(
@@ -31,6 +29,11 @@ PATTERNS = [
     ),
 ]
 TYPE_TRANSLATOR = {"failure": "error"}
+FILTERS = [
+    {"type": "N", "tag": "CLEAN"},
+    {"type": "W", "tag": "SPDUSD"},
+    {"type": "W", "tag": "CUDEFB"},
+]
 
 
 def main():
@@ -45,13 +48,14 @@ def main():
             match = pattern.match(line)
             if not match:
                 continue
-            groups_to_print = ["type", "file", "line", "col", "message"]
+            groups_to_print = ["type", "file", "line", "col", "message", "tag"]
             groups_found = {
                 "type": "E",
                 "file": "/dev/null",
                 "line": 0,
                 "col": 0,
                 "message": "none",
+                "tag": "none",
             }
             for group in groups_to_print:
                 try:
@@ -72,6 +76,14 @@ def main():
                     )
                 except OSError:
                     pass
+
+            skip = False
+            for filterer in FILTERS:
+                if all(groups_found[key] == value for key, value in filterer.items()):
+                    skip = True
+            if skip:
+                continue
+            del groups_found["tag"]
 
             logfile_groups = groups_found.copy()
             logfile_groups["col"] = "0"

@@ -10,16 +10,9 @@ PATH="$HOME/.cargo/bin:$PATH"
 
 export P4CONFIG=.p4config
 export P4IGNORE=.p4ignore
-export PACKAGE_MAKE_USE_BEAR=1
-export INSTALL4J_JAVA_HOME_OVERRIDE=/usr/lib/jvm/java-8-openjdk-amd64/
-export OS_CLOUD=openstack
 
 export VISUAL="nvim"
 export EDITOR="nvim"
-
-export GTK_IM_MODULE=fcitx
-export QT_IM_MODULE=fcitx
-export XMODIFIERS=@im=fcitx
 
 export FZF_DEFAULT_COMMAND="fdfind --type f -I --ignore-file $HOME/.fdignore"
 
@@ -28,7 +21,6 @@ then
     PATH="$PATH:/home/jwilcox/.local/share/gem/ruby/3.2.0/bin"
 fi
 
-export DX_BETA_FEATURES=1
 # Overriding ansible-generated var
 if false; then
 export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/ssh-agent.socket"

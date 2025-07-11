@@ -7,7 +7,7 @@ snippet testbench
 	use ieee.numeric_std.all;
 
 	entity tb_${1:name} is
-	end tb_${1:name};
+	end entity tb_${1:name};
 
 	architecture behave of tb_${1:name} is
 		constant CLK_PERIOD : time := 10 ns;
@@ -28,7 +28,6 @@ snippet testbench
 			finish;
 		end process stimulus_p;
 	end architecture behave;
-
 snippet cmp
 	library ieee;
 	  use ieee.std_logic_1164.all;
@@ -38,29 +37,28 @@ snippet cmp
 	  generic (
 	  );
 	  port (
-	    clk_i : in std_logic;
-		rst_i : in std_logic;
+	    i_clk : in std_logic;
+	    i_rst : in std_logic;
 	  );
-	end ${1:name};
+	end entity ${1:name};
 
 	architecture rtl of ${1:name} is
 	begin
 	  ${2}
 	end architecture rtl;
-
 snippet instp
 	u_${1:name} : entity work.${1:name}
 	port map (
-		clk_i => clk,
-		rst_i => rst,
-		${2}
+	  i_clk => i_clk,
+	  i_rst => i_rst,
+	  ${2}
 	);
 
 snippet sclockp
-	${1:name}: process(clk_i) is
+	${1:name}: process(i_clk) is
 	begin
-		if rising_edge(clk_i) then
-			if (rst_i = '1') then
+		if rising_edge(i_clk) then
+			if (i_rst = '1') then
 				${2}
 			else
 				${3}
@@ -70,3 +68,13 @@ snippet sclockp
 
 snippet oz
 	(others => '0');
+
+snippet pkg
+	library ieee;
+	  use ieee.std_logic_1164.all;
+
+	package ${1} is
+	end package ${1};
+
+	package body ${1} is
+	end package body ${1};

@@ -87,6 +87,7 @@ function vrg() {
 }
 
 alias nf='nvim -c "split" -c "wincmd j" -c "terminal" $(fzf)'
+alias ff='cd "$(dirname "$(fzf)")"'
 
 alias forgetful_ssh='ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null'
 alias forgetful_scp='scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null'
@@ -96,20 +97,11 @@ if command -v gh >/dev/null
 then
 eval "$(gh completion -s bash)"
 fi
-# BEGIN ANSIBLE MANAGED BLOCK ta5k
-export GHS_LMWHICH="@ghs"
-export GHS_LMHOST="@corp-licmgr.adtran.com"
-# END ANSIBLE MANAGED BLOCK ta5k
-export ARTIFACTORY_SERVER=https://artifactory.adtran.com
-export DOCKERBINARY=/opt/lsk-docker/docker
 
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="$HOME/.sdkman"
-[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 if command -v porg >/dev/null
 then
 eval "$(porg _completions bootstrap bash)"
@@ -128,8 +120,40 @@ then
     fi
 fi
 
-export QSYS_ROOTDIR="/home/jwilcox/intelFPGA_lite/23.1std/quartus/sopc_builder/bin"
-export QUARTUS_ROOTDIR="/home/jwilcox/intelFPGA_lite/23.1std/quartus"
-export OSS_CAD_ROOTDIR="/home/jwilcox/.local/share/oss-cad-suite"
+VIVADO="/home/jwilcox/Xilinx/Vivado/2024.2"
+if [ -e $VIVADO ]
+then
+    export VIVADO
+fi
+
+QSYS_ROOTDIR="/home/jwilcox/intelFPGA_lite/24.1std/quartus/sopc_builder/bin"
+if [ -e $QSYS_ROOTDIR ]
+then
+    export QSYS_ROOTDIR
+fi
+
+QUARTUS_ROOTDIR="/home/jwilcox/intelFPGA_lite/24.1std/quartus"
+if [ -e $QSYS_ROOTDIR ]
+then
+    export QUARTUS_ROOTDIR
+fi
+
+OSS_CAD_ROOTDIR="/home/jwilcox/.local/share/oss-cad-suite"
+if [ -e $OSS_CAD_ROOTDIR ]
+then
+    export OSS_CAD_ROOTDIR
+fi
+
+export PYTHON_KEYRING_BACKEND=keyring.backends.fail.Keyring
+
+# Overriding ansible-generated vars
+if false; then
+export ARTIFACTORY_SERVER=https://artifactory.adtran.com
+export DOCKERBINARY=/opt/lsk-docker/docker
+# BEGIN ANSIBLE MANAGED BLOCK ta5k
+export GHS_LMWHICH="@ghs"
+export GHS_LMHOST="@corp-licmgr.adtran.com"
+# END ANSIBLE MANAGED BLOCK ta5k
+fi
 
 export EDITOR=nvim
