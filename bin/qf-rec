@@ -1,8 +1,14 @@
-#!/bin/bash
+#!/usr/bin/env python3
+import os
+import sys
+import pathlib
+import subprocess
 
-set -o pipefail
+dest = "/tmp/last-build.log"
+os.environ["PYTHONUNBUFFERED"] = "1"
 
-export PYTHONUNBUFFERED=1
+pathlib.Path(dest).write_text(f"WORKING_DIRECTORY {os.getcwd()}\n")
 
-echo "WORKING_DIRECTORY $(pwd)" > /tmp/last-build.log
-bash -c "$1" 2>&1 | tee -a /tmp/last-build.log
+tee = subprocess.Popen(["/usr/bin/tee", "-a", dest], stdin=subprocess.PIPE)
+os.dup2(tee.stdin.fileno(), sys.stdout.fileno(), inheritable=True)
+os.execvp(file=sys.argv[1], args=sys.argv[1:])
