@@ -45,6 +45,7 @@
       - keepass2
       - meld
       - obs-studio
+      - pipewire-jack
       - wireshark
 - name: Install signal on non-WSL2 systems
   become: true
