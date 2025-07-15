@@ -61,33 +61,17 @@
   ansible.builtin.apt:
     deb: "{{ nvc_download.dest }}"
   when: nvc_download.changed
+- name: Create destinations
+  become: true
+  ansible.builtin.file:
+    dest: "{{ item }}"
+    state: directory
+    mode: "0755"
+  loop:
+    - "/etc/udev/rules.d/"
 - name: Install USB blaster udev rules
   become: true
   ansible.builtin.copy:
     src: dotfiles/udev/51-usbblaster.rules
-    dest: /etc/udev/rules.d/51-usbblaster.rules 
+    dest: /etc/udev/rules.d/51-usbblaster.rules
     mode: "0644"
-- name: Setup TerosHDL virtualenv
-  ansible.builtin.pip:
-    name: "{{ item }}"
-    virtualenv: "{{ home }}/.virtualenvs/teroshdl"
-    virtualenv_python: python3
-    state: latest
-  loop:
-    - cocotb
-    - edalize
-    - teroshdl
-    - vunit-hdl
-    - yowasp-yosys
-- name: Setup tool symlinks
-  ansible.builtin.file:
-    src: "{{ home }}/.virtualenvs/teroshdl/bin/{{ item }}"
-    dest: "{{ home }}/.local/bin/{{ item }}"
-    state: link
-    force: true
-  loop:
-    - vsg
-    - yowasp-sby
-    - yowasp-yosys
-    - yowasp-yosys-smtbmc
-    - yowasp-yosys-witness

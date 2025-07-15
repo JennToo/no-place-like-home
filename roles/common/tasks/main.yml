@@ -140,6 +140,7 @@
       - htop
       - keychain
       - libssl-dev
+      - ncdu
       - pcscd
       - pkg-config
       - python3-pip
