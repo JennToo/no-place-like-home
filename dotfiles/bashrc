@@ -157,3 +157,4 @@ export GHS_LMHOST="@corp-licmgr.adtran.com"
 fi
 
 export EDITOR=nvim
+export LANG=en_US.UTF-8
