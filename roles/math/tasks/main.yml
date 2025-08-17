@@ -1,0 +1,12 @@
+- name: Install apt packages
+  become: true
+  ansible.builtin.apt:
+    name: "{{ packages }}"
+  vars:
+    packages:
+      - octave
+      - octave-symbolic
+      - octave-image
+      - octave-audio
+      - octave-video
+      - octave-communications

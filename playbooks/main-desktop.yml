@@ -9,6 +9,7 @@
   roles:
    - common
    - fpga_dev
+   - math
    - docker
    - rust_dev
    - gui
