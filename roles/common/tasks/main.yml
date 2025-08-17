@@ -141,6 +141,7 @@
       - keychain
       - libssl-dev
       - ncdu
+      - ninja-build
       - pcscd
       - pkg-config
       - python3-pip
