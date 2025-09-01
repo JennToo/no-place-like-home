@@ -10,6 +10,7 @@
   roles:
    - common
    - cpp_dev
+   - math
    - rust_dev
    - fpga_dev
    - gui

@@ -128,6 +128,7 @@
   vars:
     packages:
       - bison
+      - black
       - build-essential
       - cowsay
       - curl
@@ -140,6 +141,8 @@
       - htop
       - keychain
       - libssl-dev
+      - libtpm2-pkcs11-1
+      - libtpm2-pkcs11-tools
       - ncdu
       - ninja-build
       - pcscd
@@ -158,9 +161,8 @@
       - sshpass
       - tmux
       - tree
-      - xclip
       - virtualenv
-      - black
+      - xclip
 - name: Remove apt packages
   become: true
   ansible.builtin.apt:
