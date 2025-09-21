@@ -16,9 +16,9 @@
     - "{{ home }}/.local/share/vhdl-ls"
 - name: Download oss-cad-suite
   ansible.builtin.get_url:
-    url: https://github.com/YosysHQ/oss-cad-suite-build/releases/download/2025-03-16/oss-cad-suite-linux-x64-20250316.tgz
+    url: https://github.com/YosysHQ/oss-cad-suite-build/releases/download/2025-09-21/oss-cad-suite-linux-x64-20250921.tgz
     dest: "{{ home }}/.local/share/oss-cad-suite-linux-x64-20250316.tgz"
-    checksum: sha256:ddd247836a5c5f0ecc7343252de90ab1652ca2d639d56d96f917a8141c26ab3d
+    checksum: sha256:3c9a7f639e89ae5e8972254cb3bbd42133fac11ad95dedaf7efb5ec18bde22f9
     mode: "0644"
   register: cad_download
 - name: Delete old oss-cad-suite
