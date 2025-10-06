@@ -241,9 +241,10 @@ vim.keymap.set('i', '<C-s>', vim.lsp.buf.signature_help, opts)
 local servers = { 'clangd', 'rust_analyzer', 'pylsp', 'vhdl_ls' }
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 for _, lsp in ipairs(servers) do
-  lspconfig[lsp].setup {
+  vim.lsp.config (lsp, {
       capabilities = capabilities
-  }
+  })
+  vim.lsp.enable(lsp)
 end
 
 vim.cmd [[highlight IndentBlanklineIndent1 guibg=#E4EEEE gui=nocombine]]
