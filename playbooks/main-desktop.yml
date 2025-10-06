@@ -8,6 +8,7 @@
   connection: local
   roles:
    - common
+   - lisp_dev
    - fpga_dev
    - math
    - docker
