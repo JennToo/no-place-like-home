@@ -5,6 +5,8 @@ then
     vim.g.python3_host_prog = home .. "/.virtualenvs/neovim-py3/bin/python"
 end
 
+vim.g.send_disable_mapping = true
+
 if vim.fn.filereadable(home .. "/.config/nvim/autoload/plug.vim") ~= 0
 then
     local Plug = vim.fn['plug#']
@@ -36,6 +38,7 @@ then
     Plug('nvim-lua/plenary.nvim')
     Plug('junegunn/vim-easy-align')
     Plug('dknaack/qf-diagnostics.nvim')
+    Plug('mtikekar/nvim-send-to-term')
 
     Plug(
         'nvim-treesitter/nvim-treesitter',
@@ -103,6 +106,11 @@ vim.keymap.set('n', '<Leader>cq', ':cclose<Cr>', opts)
 vim.keymap.set('n', '<Leader>dd', function()
     vim.diagnostic.enable(not vim.diagnostic.is_enabled())
 end, opts)
+
+-- The defaults replace 's', which is no good
+vim.keymap.set('n', 'S', '<Plug>Send')
+vim.keymap.set('v', 'S', '<Plug>Send')
+
 -- Navigation keys
 vim.keymap.set('t', '<A-h>', '<C-\\><C-N><C-w>h', opts)
 vim.keymap.set('t', '<A-j>', '<C-\\><C-N><C-w>j', opts)
