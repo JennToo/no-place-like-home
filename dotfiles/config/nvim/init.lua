@@ -55,7 +55,13 @@ pcall(require, "projects/" .. project_name)
 vim.opt.termguicolors = true
 vim.opt.clipboard= "unnamedplus"
 vim.opt.spelllang="en"
-vim.opt.spellfile=home .."/.config/nvim/en.utf-8.add"
+
+if vim.fn.filereadable(home .. "/.local/en.utf-8.add") ~= 0
+then
+    vim.opt.spellfile=home .. "/.local/en.utf-8.add"
+else
+    vim.opt.spellfile=home .. "/.config/nvim/en.utf-8.add"
+end
 vim.opt.cursorline = true
 
 vim.opt.makeprg = "quickfix-parser /tmp/last-build.log"
