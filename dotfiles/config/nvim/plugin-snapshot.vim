@@ -16,6 +16,7 @@ silent! let g:plugs['neovim'].commit = '72a04c4065345b51b56aed4859ea1d884f734097
 silent! let g:plugs['nvim-cmp'].commit = 'b5311ab3ed9c846b585c0c15b7559be131ec4be9'
 silent! let g:plugs['nvim-lint'].commit = '335a6044be16d7701001059cba9baa36fbeef422'
 silent! let g:plugs['nvim-lspconfig'].commit = 'e688b486fe9291f151eae7e5c0b5a5c4ef980847'
+silent! let g:plugs['nvim-parinfer'].commit = '3968e669d9f02589aa311d33cb475b16b27c5fbb'
 silent! let g:plugs['nvim-send-to-term'].commit = 'e0aa448d417a553d19cba8c78d91993387f1ff2d'
 silent! let g:plugs['nvim-treesitter'].commit = '42fc28ba918343ebfd5565147a42a26580579482'
 silent! let g:plugs['nvim-yarp'].commit = 'bb5f5e038bfe119d3b777845a76b0b919b35ebc8'

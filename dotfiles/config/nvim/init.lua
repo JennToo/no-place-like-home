@@ -39,6 +39,7 @@ then
     Plug('junegunn/vim-easy-align')
     Plug('dknaack/qf-diagnostics.nvim')
     Plug('mtikekar/nvim-send-to-term')
+    Plug('gpanders/nvim-parinfer')
 
     Plug(
         'nvim-treesitter/nvim-treesitter',
