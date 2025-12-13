@@ -53,7 +53,6 @@ snippet instp
 	  i_rst => i_rst,
 	  ${2}
 	);
-
 snippet sclockp
 	${1:name}: process(i_clk) is
 	begin
@@ -65,10 +64,8 @@ snippet sclockp
 			end if;
 		end if;
 	end process ${1:name};
-
 snippet oz
 	(others => '0');
-
 snippet pkg
 	library ieee;
 	  use ieee.std_logic_1164.all;
