@@ -215,3 +215,15 @@
     dest: /usr/local/bin/nvim
     state: link
     force: true
+- name: Install uv
+  ansible.builtin.pip:
+    name: uv
+    virtualenv: "{{ home }}/.virtualenvs/uv"
+    virtualenv_python: python3
+    state: latest
+- name: Setup uv symlink
+  ansible.builtin.file:
+    src: "{{ home }}/.virtualenvs/uv/bin/uv"
+    dest: "{{ home }}/.local/bin/uv"
+    state: link
+    force: true
