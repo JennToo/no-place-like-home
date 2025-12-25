@@ -120,7 +120,7 @@ then
     fi
 fi
 
-VIVADO="/home/jwilcox/Xilinx/Vivado/2024.2"
+VIVADO="/home/jwilcox/Xilinx/2025.2/Vivado"
 if [ -e $VIVADO ]
 then
     export VIVADO
