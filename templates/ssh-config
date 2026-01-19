@@ -16,7 +16,7 @@ Host haiti.home.nitori.org
     User jwilcox
     ForwardAgent yes
     ForwardX11 yes
-Host costarica
+Host costarica.home.nitori.org
     Port 22
     User jwilcox
     ForwardAgent yes
