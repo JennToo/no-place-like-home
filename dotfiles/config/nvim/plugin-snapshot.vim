@@ -24,6 +24,7 @@ silent! let g:plugs['plenary.nvim'].commit = 'b9fd5226c2f76c951fc8ed5923d85e4de0
 silent! let g:plugs['qf-diagnostics.nvim'].commit = '344e1065d8e09557fe20c04e6051312180e6fa0f'
 silent! let g:plugs['vim-easy-align'].commit = '9815a55dbcd817784458df7a18acacc6f82b1241'
 silent! let g:plugs['vim-vsnip'].commit = '9bcfabea653abdcdac584283b5097c3f8760abaa'
+silent! let g:plugs['vim-z80'].commit = 'c0341c9b435164f4d6889ae46c1cf8e47f87b058'
 
 PlugUpdate!
 

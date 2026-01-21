@@ -40,6 +40,7 @@ then
     Plug('dknaack/qf-diagnostics.nvim')
     Plug('mtikekar/nvim-send-to-term')
     Plug('gpanders/nvim-parinfer')
+    Plug('samsaga2/vim-z80')
 
     Plug(
         'nvim-treesitter/nvim-treesitter',
