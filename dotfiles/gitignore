@@ -13,3 +13,4 @@ modelsim.ini
 vlog.opt
 transcript
 vsim.wlf
+/vhdl_ls.toml
