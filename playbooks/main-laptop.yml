@@ -15,3 +15,4 @@
    - fpga_dev
    - gui
    - music
+   - kvm_host
