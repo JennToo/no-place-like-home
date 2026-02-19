@@ -6,6 +6,7 @@
   vars:
     packages:
       - bridge-utils
+      - genisoimage
       - libvirt-clients
       - libvirt-daemon-system
       - ovmf
@@ -15,6 +16,7 @@
       - swtpm-tools
       - virt-manager
       - virt-viewer
+      - virtiofsd
 - name: Add user to groups
   become: true
   ansible.builtin.user:
