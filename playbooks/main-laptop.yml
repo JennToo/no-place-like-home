@@ -9,6 +9,7 @@
   connection: local
   roles:
    - common
+   - laptop
    - cpp_dev
    - math
    - rust_dev
