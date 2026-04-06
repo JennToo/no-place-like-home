@@ -102,11 +102,6 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-if command -v porg >/dev/null
-then
-eval "$(porg _completions bootstrap bash)"
-fi
-
 if [ -e "$XDG_RUNTIME_DIR/gcr/ssh" ] && [ -z "$SSH_TTY" ]
 then
     export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/gcr/ssh"
@@ -154,4 +149,8 @@ export DOCKERBINARY=/opt/lsk-docker/docker
 export GHS_LMWHICH="@ghs"
 export GHS_LMHOST="@corp-licmgr.adtran.com"
 # END ANSIBLE MANAGED BLOCK ta5k
+fi
+if command -v porg >/dev/null
+then
+eval "$($HOME/.local/bin/porg _completions bootstrap bash)"
 fi
