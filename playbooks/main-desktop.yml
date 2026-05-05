@@ -8,10 +8,6 @@
   connection: local
   roles:
    - common
-   - lisp_dev
-   - fpga_dev
-   - math
-   - docker
-   - rust_dev
    - gui
-   - music
+   - 3d_printing
+   - kvm_host

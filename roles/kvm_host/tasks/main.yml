@@ -10,7 +10,6 @@
       - libvirt-clients
       - libvirt-daemon-system
       - ovmf
-      - qemu-kvm
       - qemu-system-x86
       - swtpm
       - swtpm-tools

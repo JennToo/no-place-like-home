@@ -6,14 +6,8 @@
     mode: "755"
   with_items:
     - .config
-    - .config/emacs
-    - .config/sway
-    - .config/foot
-    - .config/kanshi
-    - .config/waybar
     - .local/bin
     - .local/src
-    - .local/share/qalculate
     - .virtualenvs
     - .local/share
     - .local/share/neovim
@@ -40,42 +34,14 @@
       dest: .fdignore
     - src: config/nvim
       dest: .config/nvim
-    - src: config/alacritty.toml
-      dest: .config/alacritty.toml
-    - src: gnupg/gpg.conf
-      dest: .gnupg/gpg.conf
-    - src: gnupg/gpg-agent.conf
-      dest: .gnupg/gpg-agent.conf
     - src: bashrc
       dest: .bashrc
-    - src: inputrc
-      dest: .inputrc
     - src: profile
       dest: .profile
     - src: tmux.conf
       dest: .tmux.conf
-    - src: Xresources
-      dest: .Xresources
-    - src: ideavimrc
-      dest: .ideavimrc
-    - src: sbclrc
-      dest: .sbclrc
-    - src: sway-config
-      dest: .config/sway/config
-    - src: kanshi-config
-      dest: .config/kanshi/config
-    - src: labwc
-      dest: .config/labwc
-    - src: config/foot/foot.ini
-      dest: .config/foot/foot.ini
-    - src: waybar-config.jsonc
-      dest: .config/waybar/config
-    - src: waybar-style.css
-      dest: .config/waybar/style.css
     - src: vsnip
       dest: .vsnip
-    - src: qalculate-definitions
-      dest: .local/share/qalculate/definitions
 - name: Create sshd config directory
   become: true
   ansible.builtin.file:
@@ -112,10 +78,6 @@
   loop:
     - src: templates/gitconfig
       dest: "{{ home }}/.gitconfig"
-- name: Install apt transport https
-  become: true
-  ansible.builtin.apt:
-    name: apt-transport-https
 - name: Update apt packages
   become: true
   ansible.builtin.apt:
@@ -127,103 +89,25 @@
     name: "{{ packages }}"
   vars:
     packages:
-      - bison
       - black
       - build-essential
       - cowsay
       - curl
       - fd-find
-      - flex
       - fzf
       - gdb-multiarch
       - git
       - gnupg2
       - htop
+      - btop
       - keychain
-      - libssl-dev
-      - libtpm2-pkcs11-1
-      - libtpm2-pkcs11-tools
       - ncdu
       - ninja-build
-      - pcscd
       - pkg-config
-      - python3-pip
-      - python3-poetry
       - python3-venv
-      - qalc
       - ripgrep
-      - ruby
-      - ruby-bundler
-      - ruby-dev
-      - scdaemon
       - shellcheck
       - sl
-      - sshpass
       - tmux
       - tree
-      - virtualenv
       - xclip
-- name: Remove apt packages
-  become: true
-  ansible.builtin.apt:
-    name: "{{ packages }}"
-    state: absent
-  vars:
-    packages:
-      - elixir
-      - evolution
-      - krita
-      - neovim
-      - python3-pynvim
-- name: Setup neovim virtualenv Python 3
-  ansible.builtin.pip:
-    name: "{{ item }}"
-    virtualenv: "{{ home }}/.virtualenvs/neovim-py3"
-    virtualenv_python: python3
-    state: latest
-  loop:
-    - jedi
-    - pynvim
-    - python-lsp-server
-- name: Setup pylsp symlink
-  ansible.builtin.file:
-    src: "{{ home }}/.virtualenvs/neovim-py3/bin/pylsp"
-    dest: "{{ home }}/.local/bin/pylsp"
-    state: link
-    force: true
-- name: Download neovim
-  ansible.builtin.get_url:
-    url: "https://github.com/neovim/neovim/releases/download/v{{ nvim_version }}/nvim-linux-x86_64.tar.gz"
-    checksum: "sha256:{{ nvim_hash }}"
-    dest: "{{ home }}/.cache/nvim-{{ nvim_version }}.tar.gz"
-- name: Setup neovim directory
-  become: true
-  ansible.builtin.file:
-    dest: "/opt/nvim-{{ nvim_version }}/"
-    state: directory
-    mode: "755"
-- name: Extract neovim
-  become: true
-  ansible.builtin.unarchive:
-    creates: "/opt/nvim-{{ nvim_version }}/nvim-linux64/bin/nvim"
-    src: "{{ home }}/.cache/nvim-{{ nvim_version }}.tar.gz"
-    dest: "/opt/nvim-{{ nvim_version }}/"
-- name: Symlink neovim
-  become: true
-  ansible.builtin.file:
-    src: "/opt/nvim-{{ nvim_version }}/nvim-linux-x86_64/bin/nvim"
-    dest: /usr/local/bin/nvim
-    state: link
-    force: true
-- name: Install uv
-  ansible.builtin.pip:
-    name: uv
-    virtualenv: "{{ home }}/.virtualenvs/uv"
-    virtualenv_python: python3
-    state: latest
-- name: Setup uv symlink
-  ansible.builtin.file:
-    src: "{{ home }}/.virtualenvs/uv/bin/uv"
-    dest: "{{ home }}/.local/bin/uv"
-    state: link
-    force: true

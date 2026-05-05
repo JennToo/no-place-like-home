@@ -14,4 +14,4 @@ fi
 
 . dotfiles/profile
 
-ANSIBLE_STDOUT_CALLBACK=debug ansible-playbook -i hosts.ini -l localhost playbook.yml $PROMPT
+ANSIBLE_STDOUT_CALLBACK=debug ANSIBLE_BECOME_EXE=sudo.ws ansible-playbook -i hosts.ini -l localhost playbook.yml $PROMPT
