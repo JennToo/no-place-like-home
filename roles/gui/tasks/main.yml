@@ -24,7 +24,6 @@
     name: "{{ packages }}"
   vars:
     packages:
-      - code
       - flatpak
       - fonts-noto
       - inkscape
@@ -33,10 +32,14 @@
       - obs-studio
       - pipewire-jack
       - wireshark
-- name: Install signal on non-WSL2 systems
+- name: Install packages on non-WSL2 systems
   become: true
   ansible.builtin.apt:
-    name: signal-desktop
+    name: "{{ packages }}"
+  vars:
+    packages:
+      - code
+      - signal-desktop
   when: is_wsl2 is undefined
 
 - name: Add the flathub flatpak repository remote to the user installation

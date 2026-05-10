@@ -102,12 +102,15 @@
       - btop
       - keychain
       - ncdu
+      - neovim
       - ninja-build
       - pkg-config
+      - python3-debian
       - python3-venv
       - ripgrep
       - shellcheck
       - sl
       - tmux
       - tree
+      - unzip
       - xclip
