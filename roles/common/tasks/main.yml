@@ -104,6 +104,7 @@
       - ncdu
       - neovim
       - ninja-build
+      - podman
       - pkg-config
       - python3-debian
       - python3-venv
