@@ -42,11 +42,12 @@
       - fonts-noto
       - google-chrome-stable
       - inkscape
-      - keepass2
+      - keepassxc
       - meld
       - obs-studio
       - pipewire-jack
       - wireshark
+      - pavucontrol
 - name: Install signal on non-WSL2 systems
   become: true
   ansible.builtin.apt:

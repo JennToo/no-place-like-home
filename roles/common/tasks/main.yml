@@ -129,6 +129,7 @@
     packages:
       - bison
       - black
+      - btop
       - build-essential
       - cowsay
       - curl

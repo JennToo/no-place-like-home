@@ -1,0 +1,9 @@
+---
+- name: Install apt packages
+  become: true
+  ansible.builtin.apt:
+    name: "{{ packages }}"
+  vars:
+    packages:
+      - libreoffice
+      - freerdp3-x11

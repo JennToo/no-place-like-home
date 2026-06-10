@@ -5,8 +5,6 @@
 	excludesfile = /home/jwilcox/.gitignore
 	quotePath = false
 	hooksPath = /dev/null
-[diff]
-	external = difft
 [init]
 	defaultbranch = main
 [pull]
