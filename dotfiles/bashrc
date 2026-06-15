@@ -1,9 +1,9 @@
-# BEGIN ANSIBLE MANAGED BLOCK
+# BEGIN ANSIBLE MANAGED BLOCK essential local-bin path
 if [[ ! $PATH =~ $HOME/.local/bin && -d $HOME/.local/bin ]]
 then
     PATH="$HOME/.local/bin:$PATH"
 fi
-# END ANSIBLE MANAGED BLOCK
+# END ANSIBLE MANAGED BLOCK essential local-bin path
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;

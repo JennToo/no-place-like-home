@@ -10,5 +10,4 @@
   roles:
    - common
    - gui
-   - snaps
    - work
