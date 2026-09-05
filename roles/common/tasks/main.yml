@@ -10,7 +10,6 @@
     - .local/src
     - .virtualenvs
     - .local/share
-    - .local/share/neovim
     - .fonts
     - .vsnip-local
 - name: Setup sensitive directories
@@ -32,8 +31,6 @@
       dest: .gitignore
     - src: fdignore
       dest: .fdignore
-    - src: config/nvim
-      dest: .config/nvim
     - src: bashrc
       dest: .bashrc
     - src: profile
