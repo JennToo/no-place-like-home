@@ -39,7 +39,6 @@
   vars:
     packages:
       - code
-      - signal-desktop
   when: is_wsl2 is undefined
 
 - name: Add the flathub flatpak repository remote to the user installation

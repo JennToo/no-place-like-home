@@ -1,9 +1,9 @@
-# BEGIN ANSIBLE MANAGED BLOCK
+# BEGIN ANSIBLE MANAGED BLOCK essential local-bin path
 if [[ ! $PATH =~ $HOME/.local/bin && -d $HOME/.local/bin ]]
 then
     PATH="$HOME/.local/bin:$PATH"
 fi
-# END ANSIBLE MANAGED BLOCK
+# END ANSIBLE MANAGED BLOCK essential local-bin path
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
@@ -93,10 +93,6 @@ alias forgetful_ssh='ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/
 alias forgetful_scp='scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null'
 
 export GH_HOST=github.adtran.com
-if command -v gh >/dev/null
-then
-eval "$(gh completion -s bash)"
-fi
 
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
@@ -146,15 +142,13 @@ fi
 export PYTHON_KEYRING_BACKEND=keyring.backends.fail.Keyring
 
 # Overriding ansible-generated vars
-if false; then
 export ARTIFACTORY_SERVER=https://artifactory.adtran.com
 export DOCKERBINARY=/opt/lsk-docker/docker
 # BEGIN ANSIBLE MANAGED BLOCK ta5k
 export GHS_LMWHICH="@ghs"
 export GHS_LMHOST="@corp-licmgr.adtran.com"
 # END ANSIBLE MANAGED BLOCK ta5k
-fi
-if command -v porg >/dev/null
-then
-eval "$($HOME/.local/bin/porg _completions bootstrap bash)"
-fi
+# BEGIN ANSIBLE MANAGED BLOCK rustup mirrors
+export RUSTUP_DIST_SERVER=https://artifactory.adtran.com/artifactory/rust-dist-remote
+export RUSTUP_UPDATE_ROOT=https://artifactory.adtran.com/artifactory/rust-dist-remote/rustup
+# END ANSIBLE MANAGED BLOCK rustup mirrors
