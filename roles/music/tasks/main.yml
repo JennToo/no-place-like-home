@@ -4,7 +4,10 @@
     name: "{{ packages }}"
   vars:
     packages:
+      - ardour
+      - ardour-lv2-plugins
       - carla
+      - lsp-plugins-lv2
       - pipewire-jack
 - name: Download furnace
   ansible.builtin.get_url:
@@ -18,3 +21,22 @@
     creates: "/opt/furnace/furnace"
     src: "{{ home }}/.cache/furnace-0.6.8.3-linux-x86_64.tar.gz"
     dest: "/opt/"
+- name: Add theusualsuspects repo
+  become: true
+  ansible.builtin.deb822_repository:
+    name: theusualsuspects
+    types: [deb]
+    uris: https://download.opensuse.org/repositories/home:/theusualsuspects/xUbuntu_26.04/
+    suites: [/]
+    signed_by: "https://download.opensuse.org/repositories/home:/theusualsuspects/xUbuntu_26.04/Release.key"
+- name: Install theusualsuspects apt packages
+  become: true
+  ansible.builtin.apt:
+    name: "{{ packages }}"
+    update_cache: yes
+    cache_valid_time: 3600
+  vars:
+    packages:
+      - theusualsuspects-88emu
+      - theusualsuspects-je8086
+      - theusualsuspects-ostirus
