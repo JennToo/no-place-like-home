@@ -9,6 +9,40 @@
       - carla
       - lsp-plugins-lv2
       - pipewire-jack
+- name: Setup system files
+  become: true
+  ansible.builtin.copy:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+    mode: "0644"
+  loop:
+    - src: "pipewire-jack-x86_64-linux-gnu.conf"
+      dest: "/etc/ld.so.conf.d/pipewire-jack-x86_64-linux-gnu.conf"
+    - src: "audio-limits.conf"
+      dest: "/etc/security/limits.d/audio.conf"
+- name: Setup user directories
+  ansible.builtin.file:
+    dest: "{{ home }}/{{ item }}"
+    state: directory
+    mode: "755"
+  loop:
+    - .config/pipewire/pipewire.conf.d
+- name: Setup user files
+  ansible.builtin.copy:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+    mode: "0644"
+  loop:
+    - src: "pipewire.conf"
+      dest: "{{ home }}/.config/pipewire/pipewire.conf.d/pipewire-overrides.conf"
+- name: Add user to groups
+  become: true
+  ansible.builtin.user:
+    name: "{{ user }}"
+    groups: "{{ item }}"
+    append: true
+  loop:
+    - audio
 - name: Download furnace
   ansible.builtin.get_url:
     url: https://github.com/tildearrow/furnace/releases/download/v0.6.8.3/furnace-0.6.8.3-linux-x86_64.tar.gz
